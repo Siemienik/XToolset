@@ -16,7 +16,7 @@ const renderer = new Renderer(new DebugCellTemplatePool());
         name: "Pierwszy",
         super: {test: 123},
         items: [
-            {firstName: "Paweł", secondName: "Siemienik"},
+            // {firstName: "Paweł", secondName: "Siemienik"},
             {firstName: "Other", secondName: "Siemie"},
             {firstName: "Other", secondName: "Stranger"},
             {firstName: "Paweł", secondName: "Siemienik"},
@@ -25,24 +25,15 @@ const renderer = new Renderer(new DebugCellTemplatePool());
             {firstName: "Paweł", secondName: "Siemienik"},
             {firstName: "Other", secondName: "Siemie"},
             {firstName: "Other", secondName: "Stranger"},
-            {firstName: "Paweł", secondName: "Siemienik"},
-            {firstName: "Other", secondName: "Siemie"},
-            {firstName: "Other", secondName: "Siemie"},
-            {firstName: "Other", secondName: "Stranger"},
-            {firstName: "Paweł", secondName: "Siemienik"},
-            {firstName: "Other", secondName: "Siemie"},
-            {firstName: "LAST", secondName: "Stranger"},
-            {firstName: "LAST", secondName: "Stranger"},
+            // {firstName: "Paweł", secondName: "Siemienik"},
+            // {firstName: "Other", secondName: "Siemie"},
+            // {firstName: "Other", secondName: "Siemie"},
+            // {firstName: "Other", secondName: "Stranger"},
+            // {firstName: "Paweł", secondName: "Siemienik"},
+            // {firstName: "Other", secondName: "Siemie"},
+            // {firstName: "LAST", secondName: "Stranger"},
         ]
     });
 
     await result.xlsx.writeFile('../out.xlsx');
 })();
-// 
-
-
-/*todo
-5. pobieranie parametrów w loop
-6. copy style
-
-*/

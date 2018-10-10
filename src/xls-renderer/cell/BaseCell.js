@@ -21,6 +21,7 @@ class BaseCell {
         }
 
         scope.setCurrentOutputValue(scope.getCurrentTemplateValue());
+        scope.applyStyles();
 
         return this;
     }

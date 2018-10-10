@@ -61,6 +61,19 @@ export default class Scope {
         }
     }
 
+    applyStyles() {
+        if (!this._frozen) {
+            const ct = this.template_cell;
+            const wst = this.template.getWorksheet(ct.ws);
+
+            const co = this.output_cell;
+            const wso = this.output.getWorksheet(co.ws); //todo refactoring
+
+            wso.getRow(co.r).height = wst.getRow(ct.r).height;
+            wso.getCell(co.r, co.c).style = wst.getCell(ct.r, ct.c).style;
+        }
+    }
+
     incrementColl() {
         if (!this._finished) {
             this.template_cell = Object.freeze({...this.template_cell, c: this.template_cell.c + 1});
