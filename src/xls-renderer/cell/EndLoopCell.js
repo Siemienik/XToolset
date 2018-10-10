@@ -9,17 +9,19 @@ class EndLoopCell extends BaseCell {
     apply(scope) {
         super.apply(scope);
 
-        const target = 'i';
+        const target = 'i'; //todo
         const __start = scope.vm[target] && scope.vm[target].__start;
+        const __iterated = scope.vm[target] && scope.vm[target].__iterated;
 
         scope.unfreezeOutput();
         scope.setCurrentOutputValue('');
 
-        if (__start) {
-            scope.vm[target] = {...scope.vm[target], __end: scope.template_cell}
+        scope.vm[target] = {...scope.vm[target], __end: scope.template_cell, __insetRows: true};
+
+        if (__start && !__iterated) {
             scope.template_cell = __start;
         } else {
-            scope.incrementColl();
+            scope.incrementRow();
         }
 
 

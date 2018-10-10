@@ -1,4 +1,5 @@
 import BaseCell from "./BaseCell";
+import Scope from "../Scope";
 
 class ForEachCell extends BaseCell {
     /**
@@ -11,26 +12,37 @@ class ForEachCell extends BaseCell {
         const target = this._getTargetParam(scope);
         const __from = this._getFromParam(scope);
 
-        const __index = scope.vm[target] && scope.vm[target].__index + 1 || 0;
+        const __index = (scope.vm[target] && scope.vm[target].__index || 0) + 1;
         const __start = scope.vm[target] && scope.vm[target].__start || scope.template_cell;
         const __end = scope.vm[target] && scope.vm[target].__end;
-        const next = (scope.vm[__from] || {})[__index];
+        let __insetRows = scope.vm[target] && scope.vm[target].__insetRows || false;
+
+        let next = (scope.vm[__from] || {})[__index - 1];
+        const __iterated = scope.vm[target] && scope.vm[target].__iterated || !next;
 
         scope.setCurrentOutputValue('');
 
-        if (next) {
-            scope.vm[target] = {...next, __from, __index, __start, __end,};
-        } else {
-            if (__end) {
-                scope.template_cell = __end;
-            } else {
-                scope.freezeOutput();
-            }
+        next = next || {};
 
-            delete scope.vm[target];
+        if (__insetRows) {
+            __insetRows = false;
+            for (let i = __end.r; i > __start.r; i--) {
+                scope.output.getWorksheet(scope.output_cell.ws).spliceRows( //todo refactoring
+                    scope.output_cell.r + 1,
+                    0,
+                    scope.template.getWorksheet(scope.template_cell.ws).getRow(i).values
+                );
+            }
         }
 
-        scope.incrementColl();
+
+        if (__iterated) {
+            scope.freezeOutput();
+        }
+
+        scope.incrementRow();
+
+        scope.vm[target] = {...next, __from, __index, __start, __end, __iterated, __insetRows};
 
         return this;
     }

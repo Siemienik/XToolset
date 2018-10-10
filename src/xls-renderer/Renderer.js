@@ -1,7 +1,7 @@
 import Scope from "./Scope";
 import CellTemplatePool from "./CellTemplatePool"
 
-class Rederer {
+export default class Renderer {
     /**
      *  @var {CellTemplatePool}
      */
@@ -19,39 +19,21 @@ class Rederer {
     }
 
     /**
-     * @param {{}} template todo
+     * @param {()=Workbook} templateFactory
      * @param {{}} vm
-     * @returns {{}} output file
+     *
+     * @returns {Workbook} output file
      */
-    render(template, vm) {
-        const output = this._createOutput(template);
+    async render(templateFactory, vm) {
+        const template = await templateFactory();
+        const output = await templateFactory();
+
         const scope = new Scope(template, output, vm);
 
         while (!scope.isFinished()) {
-            scope.tryPayOffDept();
-
-            const value = scope.getCurrentTemplateValue();
-
-            if (typeof value === "undefined") {
-                break;
-            }
-
-            this._cellTemplatePool.match(value).apply(scope);
-
-
+            this._cellTemplatePool.match(scope.getCurrentTemplateValue()).apply(scope);
         }
 
         return output;
     }
-
-    /**
-     * @param {{}} template todo
-     * @returns {{}} output
-     * @private
-     */
-    _createOutput(template) { //todo
-        return {...template};
-    }
 }
-
-export default Rederer

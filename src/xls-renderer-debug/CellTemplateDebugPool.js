@@ -1,6 +1,6 @@
-import CellTemplatePool from "../xls-template-engine/CellTemplatePool";
+import CellTemplatePool from "../xls-renderer/CellTemplatePool";
 
-class CellTemplateDebugPool extends CellTemplatePool {
+export default class CellTemplateDebugPool extends CellTemplatePool {
     /**
      * do normal match and log in console result.
      *
@@ -16,4 +16,3 @@ class CellTemplateDebugPool extends CellTemplatePool {
     }
 }
 
-export default CellTemplateDebugPool

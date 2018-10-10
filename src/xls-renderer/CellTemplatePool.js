@@ -4,6 +4,7 @@ import FinishCell from "./cell/FinishCell";
 import ForEachCell from "./cell/ForEachCell";
 import ContinueCell from "./cell/ContinueCell";
 import EndLoopCell from "./cell/EndLoopCell";
+import EndRowCell from "./cell/EndRowCell";
 
 class CellTemplatePool {
     /**
@@ -12,6 +13,7 @@ class CellTemplatePool {
      */
     _cells = [
         NormalCell,
+        EndRowCell,
         VariableCell,
         ForEachCell,
         FinishCell,
