@@ -34,8 +34,8 @@ class ForEachCell extends BaseCell {
 
         let __endOutput = scope.vm[target] && scope.vm[target].__endOutput;
         let __insetRows = scope.vm[target] && scope.vm[target].__insetRows || false;
-
-        let next = (scope.vm[__from] || {})[__index - 1];
+       
+        let next = __from.split('.').reduce((p, c) => p[c] || {}, scope.vm)[__index - 1];
 
         const __iterated = scope.vm[target] && scope.vm[target].__iterated || !next;
 
