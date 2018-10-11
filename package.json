@@ -1,12 +1,13 @@
 {
     "name": "xls-renderer",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Allows render xlsx files based on template supplied by viewModel.",
-    "main": "src/xls-renderer/Renderer.js",
+    "main": "index.js",
     "scripts": {
-        "example": "cd build && node example.js",
-        "build": "node_modules/.bin/babel -d build -s true src ",
-        "watch": "node_modules/.bin/babel -d build -s true src --watch",
+        "postinstall": "babel src --out-dir lib --copy-files",
+        "example": "cd lib && node example.js",
+        "build": "node_modules/.bin/babel -d lib -s true src ",
+        "watch": "node_modules/.bin/babel -d lib -s true src --watch",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
     "author": "Paweł Siemienik",
@@ -14,6 +15,9 @@
         "babel-cli": "^6.26.0",
         "babel-preset-es2015": "^6.24.1",
         "babel-preset-es2017-node7": "^0.5.2"
+    },
+    "directories": {
+        "lib": "lib/xls-renderer/"
     },
     "dependencies": {
         "exceljs": "^1.6.2"
