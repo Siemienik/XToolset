@@ -49,11 +49,12 @@ export default class Scope {
      * @returns {string}
      */
     getCurrentTemplateValue() {
-        return this.template.getWorksheet(this.template_cell.ws).getCell(this.template_cell.r, this.template_cell.c).text;
+        const value = this.template.getWorksheet(this.template_cell.ws).getCell(this.template_cell.r, this.template_cell.c).value;
+        return value && value.toString() || null;
     }
 
     /**
-     * @param {string} value
+     * @param {string|CellValue} value
      */
     setCurrentOutputValue(value) {
         if (!this._frozen) {

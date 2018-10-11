@@ -1,5 +1,5 @@
 {
-    "name": "xlsx-template-engine",
+    "name": "xls-renderer",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",

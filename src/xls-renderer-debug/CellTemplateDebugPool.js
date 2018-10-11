@@ -15,4 +15,3 @@ export default class CellTemplateDebugPool extends CellTemplatePool {
         return result;
     }
 }
-

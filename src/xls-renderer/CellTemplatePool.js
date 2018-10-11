@@ -5,8 +5,10 @@ import ForEachCell from "./cell/ForEachCell";
 import ContinueCell from "./cell/ContinueCell";
 import EndLoopCell from "./cell/EndLoopCell";
 import EndRowCell from "./cell/EndRowCell";
+import SumCell from "./cell/SumCell";
+import AverageCell from "./cell/AverageCell";
 
-class CellTemplatePool {
+export default class CellTemplatePool {
     /**
      * @type {*[]}
      * @private
@@ -18,7 +20,9 @@ class CellTemplatePool {
         ForEachCell,
         FinishCell,
         EndLoopCell,
-        ContinueCell
+        ContinueCell,
+        SumCell,
+        AverageCell,
     ];
 
     /**
@@ -32,7 +36,7 @@ class CellTemplatePool {
      * @returns {BaseCell}
      */
     match(value) {
-        const type = this._cells.find((x) => x.match(value));
+        const type = this._cells.find((x) => x.match(value || ''));
 
         return type ? this._getInstance(type) : this._getInstance(NormalCell);
     }
@@ -58,5 +62,3 @@ class CellTemplatePool {
 
     }
 }
-
-export default CellTemplatePool
