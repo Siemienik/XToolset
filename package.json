@@ -1,8 +1,8 @@
 {
     "name": "xls-renderer",
     "version": "1.0.0",
-    "description": "",
-    "main": "index.js",
+    "description": "Allows render xlsx files based on template supplied by viewModel.",
+    "main": "src/xls-renderer/Renderer.js",
     "scripts": {
         "example": "cd build && node example.js",
         "build": "node_modules/.bin/babel -d build -s true src ",
