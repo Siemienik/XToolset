@@ -76,6 +76,7 @@ export default class Scope {
             const wso = this.output.getWorksheet(co.ws); //todo refactoring
 
             wso.getRow(co.r).height = wst.getRow(ct.r).height;
+            wso.getColumn(co.c).width = wst.getColumn(ct.c).width || 14.6328125; //todo!
             wso.getCell(co.r, co.c).style = wst.getCell(ct.r, ct.c).style;
         }
     }

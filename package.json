@@ -1,6 +1,6 @@
 {
     "name": "xls-renderer",
-    "version": "1.0.3",
+    "version": "1.0.3f",
     "description": "Allows render xlsx files based on template supplied by viewModel.",
     "main": "index.js",
     "scripts": {
