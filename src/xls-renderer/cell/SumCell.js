@@ -12,10 +12,14 @@ export default class SumCell extends BaseCell {
         const target = this._getTargetParam(scope);
         const __startOutput = scope.vm[target] && scope.vm[target].__startOutput;
         const __endOutput = scope.vm[target] && scope.vm[target].__endOutput;
-        const start = scope.output.getWorksheet(scope.output_cell.ws).getCell(__startOutput, scope.output_cell.c).address; //todo refactoring
-        const end = scope.output.getWorksheet(scope.output_cell.ws).getCell(__endOutput, scope.output_cell.c).address; //todo refactoring
 
-        scope.setCurrentOutputValue({formula: `sum(${start}:${end})`});
+        if (__startOutput && __endOutput) {
+            const start = scope.output.getWorksheet(scope.output_cell.ws).getCell(__startOutput, scope.output_cell.c).address; //todo refactoring
+            const end = scope.output.getWorksheet(scope.output_cell.ws).getCell(__endOutput, scope.output_cell.c).address; //todo refactoring
+
+            scope.setCurrentOutputValue({formula: `sum(${start}:${end})`});
+        }
+        
         scope.incrementColl();
 
         return this;

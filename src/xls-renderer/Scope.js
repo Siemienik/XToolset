@@ -26,18 +26,23 @@ export default class Scope {
     template_cell = Object.freeze({r: 1, c: 1, ws: 1});
 
     /**
+     * @var {int}
+     * @private
+     */
+    _frozen = 0;
+    
+    /**
      * @var {boolean}
      *
      * @private
      */
     _finished = false;
 
-
     /**
-     * todo types
      * @param {Workbook} template
      * @param {Workbook} output
-     * @param {{}} vm
+     *
+     * @param {Object} vm
      */
     constructor(template, output, vm) {
         this.template = template;
@@ -97,11 +102,18 @@ export default class Scope {
     }
 
     freezeOutput() {
-        this._frozen = true;
+        this._frozen++;
     }
 
     unfreezeOutput() {
-        this._frozen = false;
+        this._frozen = Math.max(this._frozen - 1, 0);
+    }
+
+    /**
+     * @returns {boolean}
+     */
+    isFrozen() {
+        return this._frozen > 0;
     }
 
     finish() {

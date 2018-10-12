@@ -9,7 +9,7 @@ class EndLoopCell extends BaseCell {
     apply(scope) {
         super.apply(scope);
 
-        const target = 'i'; //todo
+        const target = scope.getCurrentTemplateValue().split(' ')[2];
         const __start = scope.vm[target] && scope.vm[target].__start;
         const __iterated = scope.vm[target] && scope.vm[target].__iterated;
 
@@ -27,7 +27,6 @@ class EndLoopCell extends BaseCell {
         } else {
             scope.incrementRow();
         }
-
 
         return this;
     }

@@ -7,6 +7,8 @@ import EndLoopCell from "./cell/EndLoopCell";
 import EndRowCell from "./cell/EndRowCell";
 import SumCell from "./cell/SumCell";
 import AverageCell from "./cell/AverageCell";
+import DeleteCell from "./cell/DeleteCell";
+import DumpColsCell from "./cell/DumpColsCell";
 
 export default class CellTemplatePool {
     /**
@@ -21,8 +23,10 @@ export default class CellTemplatePool {
         FinishCell,
         EndLoopCell,
         ContinueCell,
+        DumpColsCell,
         SumCell,
         AverageCell,
+        DeleteCell,
     ];
 
     /**
