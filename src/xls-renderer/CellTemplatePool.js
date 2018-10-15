@@ -9,6 +9,7 @@ import SumCell from "./cell/SumCell";
 import AverageCell from "./cell/AverageCell";
 import DeleteCell from "./cell/DeleteCell";
 import DumpColsCell from "./cell/DumpColsCell";
+import WsNameCell from "./cell/WsNameCell";
 
 export default class CellTemplatePool {
     /**
@@ -26,6 +27,7 @@ export default class CellTemplatePool {
         DumpColsCell,
         SumCell,
         AverageCell,
+        WsNameCell,
         DeleteCell,
     ];
 

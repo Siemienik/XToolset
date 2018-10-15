@@ -31,12 +31,14 @@ class ForEachCell extends BaseCell {
         const __start = scope.vm[target] && scope.vm[target].__start || scope.template_cell;
         const __startOutput = scope.vm[target] && scope.vm[target].__startOutput || scope.output_cell.r + 1;
         const __end = scope.vm[target] && scope.vm[target].__end;
+        const __last = typeof __from.split('.').reduce((p, c) => p[c] || {}, scope.vm)[__index] === 'undefined';
         let __endOutput = scope.vm[target] && scope.vm[target].__endOutput;
         let __insetRows = scope.vm[target] && scope.vm[target].__insetRows || false;
-       
+
         let next = __from.split('.').reduce((p, c) => p[c] || {}, scope.vm)[__index - 1];
 
         let __iterated = scope.vm[target] && scope.vm[target].__iterated;
+        __iterated = typeof __iterated !== 'undefined' && __iterated;
 
         if (!__iterated && !next) {
             __iterated = true;
@@ -78,17 +80,8 @@ class ForEachCell extends BaseCell {
             __insetRows,
             __startOutput,
             __endOutput,
+            __last
         });
-
-        // console.log(target, scope._frozen,{
-        //     __from,
-        //     __index,
-        //     __start,
-        //     __end,
-        //     __iterated,
-        //     __insetRows,
-        //     __startOutput,
-        //     __endOutput,});
         
         return this;
     }

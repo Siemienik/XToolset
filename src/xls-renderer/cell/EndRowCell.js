@@ -9,7 +9,7 @@ export default class EndRowCell extends BaseCell {
     apply(scope) {
         super.apply(scope);
 
-        scope.setCurrentOutputValue("");
+        scope.setCurrentOutputValue(null);
         scope.incrementRow();
 
         return this;
