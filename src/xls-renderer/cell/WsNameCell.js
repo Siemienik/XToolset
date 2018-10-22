@@ -10,10 +10,19 @@ export default class WsNameCell extends BaseCell {
         super.apply(scope);
 
         scope.setCurrentOutputValue(null);
-        scope.output.getWorksheet(scope.output_cell.ws).name = this._getTagetValue(scope) || `Sheet ${scope.output.getWorksheet(scope.output_cell.ws).id}`;
+
+        scope.output.getWorksheet(scope.output_cell.ws).name = this.getName(scope);
         scope.incrementColl();
 
         return this;
+    }
+
+    getName(scope) {
+        let name = this._getTagetValue(scope) || `Sheet ${scope.output.getWorksheet(scope.output_cell.ws).id}`;
+        name = name.replace(/[\\\/*\[\]?]/g, '.');
+        name = name.length > 31 ? name.substr(name.length - 31) : name;
+
+        return name;
     }
 
     /**
