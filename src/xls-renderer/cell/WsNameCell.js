@@ -11,15 +11,25 @@ export default class WsNameCell extends BaseCell {
 
         scope.setCurrentOutputValue(null);
 
-        scope.output.getWorksheet(scope.output_cell.ws).name = this.getName(scope);
+        scope.output.getWorksheet(scope.output_cell.ws).name = this._getName(scope);
         scope.incrementColl();
 
         return this;
     }
 
-    getName(scope) {
-        let name = this._getTagetValue(scope) || `Sheet ${scope.output.getWorksheet(scope.output_cell.ws).id}`;
+    /**
+     * @param {Scope} scope
+     * @returns {string}
+     * @protected
+     */
+    _getName(scope) {
+        let name = this._getTagetValue(scope) || this._getTarget(scope);
         name = name.replace(/[\\\/*\[\]?]/g, '.');
+
+        if (scope.output.worksheets.find(x => x.name === name)) {
+            name += ` ${scope.output_cell.ws}`;
+        }
+        
         name = name.length > 31 ? name.substr(name.length - 31) : name;
 
         return name;
@@ -31,7 +41,16 @@ export default class WsNameCell extends BaseCell {
      * @protected
      */
     _getTagetValue(scope) {
-        return scope.getCurrentTemplateValue().split(' ')[2].split('.').reduce((p, c) => p[c] || "", scope.vm);
+        return this._getTarget(scope).split('.').reduce((p, c) => p[c] || "", scope.vm);
+    }
+
+    /**
+     * @param {Scope} scope
+     * @returns {string}
+     * @protected
+     */
+    _getTarget(scope) {
+        return scope.getCurrentTemplateValue().split(' ')[2];
     }
 
     static match(value) {
