@@ -32,7 +32,7 @@ class FinishCell extends BaseCell {
             scope.template_cell = Object.freeze({...scope.template_cell, r: 1, c: 1});
             scope.output_cell = Object.freeze({...scope.output_cell, ws: scope.output_cell.ws + 1, r: 1, c: 1});
 
-            wst.getImages().forEach((i) => wso.addImage(i.imageId, i.range);
+            wst.getImages().forEach((i) => wso.addImage(i.imageId, i.range));
         }
 
 
