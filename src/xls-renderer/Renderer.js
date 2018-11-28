@@ -20,7 +20,7 @@ export default class Renderer {
 
     /**
      * @param {()=Workbook} templateFactory
-     * @param {{}} vm
+     * @param {Object} vm
      *
      * @returns {Workbook} output file
      */
@@ -34,11 +34,11 @@ export default class Renderer {
             this._cellTemplatePool.match(scope.getCurrentTemplateValue()).apply(scope);
 
             //// TODO let's dry this hell!! (by creating MergedCell and adapt matching algorithm)  
-            const tws = scope.template.getWorksheet(scope.template_cell.ws);
+            const tws = scope.template.worksheets[scope.template_cell.ws];
             const tc = tws.getCell(scope.template_cell.r, scope.template_cell.c).model;
 
             if (tc.master && tc.master !== tc.address) {
-                const ows = scope.output.getWorksheet(scope.output_cell.ws);
+                const ows = scope.output.worksheets[scope.output_cell.ws];
 
                 const tmr = tc.master.match(/\d+/)[0];
                 const tcr = scope.template_cell.r;

@@ -11,7 +11,7 @@ export default class WsNameCell extends BaseCell {
 
         scope.setCurrentOutputValue(null);
 
-        scope.output.getWorksheet(scope.output_cell.ws).name = this._getName(scope);
+        scope.output.worksheets[scope.output_cell.ws].name = this._getName(scope);
         scope.incrementColl();
 
         return this;

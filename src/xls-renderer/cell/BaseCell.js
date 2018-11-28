@@ -20,7 +20,7 @@ class BaseCell {
             throw new TypeError(`'scope' parameter has to be instance of ${Scope.name}`);
         }
         if (scope.output_cell.c > 16384) {
-            scope.output_cell = Object.freeze({...this.output_cell, c: 16384});
+            scope.output_cell = Object.freeze({...scope.output_cell, c: 16384});
         }
         scope.setCurrentOutputValue(scope.getCurrentTemplateValue());
         scope.applyStyles();

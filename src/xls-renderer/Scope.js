@@ -18,12 +18,12 @@ export default class Scope {
     /**
      * @var {{r:int, c:int}}
      */
-    output_cell = Object.freeze({r: 1, c: 1, ws: 1});
+    output_cell = Object.freeze({r: 1, c: 1, ws: 0});
 
     /**
      * @var {{r:int, c:int}}
      */
-    template_cell = Object.freeze({r: 1, c: 1, ws: 1});
+    template_cell = Object.freeze({r: 1, c: 1, ws: 0});
 
     /**
      * @var {int}
@@ -54,30 +54,33 @@ export default class Scope {
      * @returns {string}
      */
     getCurrentTemplateValue() {
-        const value = this.template.getWorksheet(this.template_cell.ws).getCell(this.template_cell.r, this.template_cell.c).value;
+        const value = this.template.worksheets[this.template_cell.ws].getCell(this.template_cell.r, this.template_cell.c).value;
         return value && value.toString() || null;
     }
 
     /**
-     * @param {string|CellValue} value
+     * @param {string} value
      */
     setCurrentOutputValue(value) {
         if (!this._frozen) {
-            this.output.getWorksheet(this.output_cell.ws).getCell(this.output_cell.r, this.output_cell.c).value = value;
+            this.output.worksheets[this.output_cell.ws].getCell(this.output_cell.r, this.output_cell.c).value = value;
         }
     }
 
     applyStyles() {
         if (!this._frozen) {
             const ct = this.template_cell;
-            const wst = this.template.getWorksheet(ct.ws);
+            const wst = this.template.worksheets[ct.ws];
 
             const co = this.output_cell;
-            const wso = this.output.getWorksheet(co.ws); //todo refactoring
+            const wso = this.output.worksheets[co.ws]; //todo refactoring
 
             wso.getRow(co.r).height = wst.getRow(ct.r).height;
-            wso.getColumn(co.c).width = wst.getColumn(ct.c).width || 14.6328125; //todo!
             wso.getCell(co.r, co.c).style = wst.getCell(ct.r, ct.c).style;
+
+            if (wst.getColumn(ct.c).isCustomWidth) {
+                wso.getColumn(co.c).width = wst.getColumn(ct.c).width;
+            }
         }
     }
 
@@ -95,7 +98,7 @@ export default class Scope {
         }
 
         if (this._frozen) {
-            this.output.getWorksheet(this.output_cell.ws).spliceRows(this.output_cell.r + 1, 1); //todo refactoring
+            this.output.worksheets[this.output_cell.ws].spliceRows(this.output_cell.r + 1, 1); //todo refactoring
             this.output_cell = Object.freeze({...this.output_cell, c: 1})
         } else {
             this.output_cell = Object.freeze({...this.output_cell, r: this.output_cell.r + 1, c: 1})

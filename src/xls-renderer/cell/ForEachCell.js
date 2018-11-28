@@ -54,10 +54,10 @@ class ForEachCell extends BaseCell {
             __insetRows = false;
             if (!scope.isFrozen()) {
                 for (let i = __end.r; i > __start.r; i--) {
-                    scope.output.getWorksheet(scope.output_cell.ws).spliceRows( //todo refactoring
+                    scope.output.worksheets[scope.output_cell.ws].spliceRows( //todo refactoring
                         scope.output_cell.r + 1,
                         0,
-                        scope.template.getWorksheet(scope.template_cell.ws).getRow(i)
+                        scope.template.worksheets[scope.template_cell.ws].getRow(i)
                     );
                 }
             }

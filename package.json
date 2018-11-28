@@ -1,10 +1,10 @@
 {
     "name": "xls-renderer",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Allows render xlsx files based on template supplied by viewModel.",
     "main": "index.js",
     "scripts": {
-        "postinstall": "babel src --out-dir lib --copy-files",
+        "postinstall": "babel src --out-dir lib --copy-files && babel ",
         "example": "node lib/example.js",
         "build": "node_modules/.bin/babel -d lib -s true src ",
         "watch": "node_modules/.bin/babel -d lib -s true src --watch",
@@ -20,6 +20,6 @@
         "lib": "lib/"
     },
     "dependencies": {
-        "exceljs": "^1.6.2"
+        "exceljs": "github:p3rio/exceljs#build"
     }
 }
