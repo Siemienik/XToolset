@@ -10,6 +10,7 @@ import AverageCell from "./cell/AverageCell";
 import DeleteCell from "./cell/DeleteCell";
 import DumpColsCell from "./cell/DumpColsCell";
 import WsNameCell from "./cell/WsNameCell";
+import HyperlinkCell from "./cell/HyperlinkCell";
 
 export default class CellTemplatePool {
     /**
@@ -20,6 +21,7 @@ export default class CellTemplatePool {
         NormalCell,
         EndRowCell,
         VariableCell,
+        HyperlinkCell,
         ForEachCell,
         FinishCell,
         EndLoopCell,
