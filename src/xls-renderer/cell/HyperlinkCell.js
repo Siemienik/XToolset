@@ -9,10 +9,12 @@ export default class HyperlinkCell extends BaseCell {
     apply(scope) {
         super.apply(scope);
 
+        scope.setCurrentOutputValue(null);
 
         const url = this._getUrlParam(scope).split('.').reduce((p, c) => p[c] || {}, scope.vm);
-        if (url) {
+        if (typeof url === 'string') {
             const label = this._getLabelParam(scope).split('.').reduce((p, c) => p[c] || {}, scope.vm) || url;
+            console.log(label);
             scope.setCurrentOutputValue({text: label, hyperlink: url});
         }
         
