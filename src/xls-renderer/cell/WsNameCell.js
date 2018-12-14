@@ -54,7 +54,7 @@ export default class WsNameCell extends BaseCell {
     }
 
     static match(value) {
-        return value.substring(0, 10) === '#! WS_NAME';
+        return typeof value === 'string' && value.substring(0, 10) === '#! WS_NAME';
     }
 
 }

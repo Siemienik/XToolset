@@ -20,7 +20,7 @@ class NormalCell extends BaseCell {
      * @returns {boolean}
      */
     static match(value) {
-        return !['##', '#!'].includes(value.substring(0, 2));
+        return typeof value === 'string' && !['##', '#!'].includes(value.substring(0, 2));
     }
 
 }

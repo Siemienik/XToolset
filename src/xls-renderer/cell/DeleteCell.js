@@ -15,7 +15,7 @@ export default class DeleteCell extends BaseCell {
     }
 
     static match(value) {
-        return value.substring(0, 9) === '#! DELETE';
+        return typeof value === 'string' && value.substring(0, 9) === '#! DELETE';
     }
 
 }

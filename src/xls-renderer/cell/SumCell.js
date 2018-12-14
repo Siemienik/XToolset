@@ -39,6 +39,6 @@ export default class SumCell extends BaseCell {
      * @returns {boolean}
      */
     static match(value) {
-        return value.substring(0, 6) === '#! SUM';
+        return typeof value === 'string' && value.substring(0, 6) === '#! SUM';
     }
 }

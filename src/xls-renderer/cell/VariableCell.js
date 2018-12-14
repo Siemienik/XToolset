@@ -23,7 +23,7 @@ class VariableCell extends BaseCell {
      * @returns {boolean}
      */
     static match(value) {
-        return value.substring(0, 2) === '##';
+        return typeof value === 'string' && value.substring(0, 2) === '##';
     }
 
 }

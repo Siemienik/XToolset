@@ -16,7 +16,7 @@ export default class EndRowCell extends BaseCell {
     }
 
     static match(value) {
-        return value === '#! END_ROW';
+        return typeof value === 'string' && value === '#! END_ROW';
     }
 
 }

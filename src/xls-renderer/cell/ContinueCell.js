@@ -19,7 +19,7 @@ class ContinueCell extends ForEachCell {
      * @returns {boolean}
      */
     static match(value) {
-        return value.substring(0, 11) === '#! CONTINUE';
+        return typeof value === 'string' && value.substring(0, 11) === '#! CONTINUE';
     }
 
 }

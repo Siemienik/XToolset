@@ -51,11 +51,10 @@ export default class Scope {
     }
 
     /**
-     * @returns {string}
+     * @returns {string|Object}
      */
     getCurrentTemplateValue() {
-        const value = this.template.worksheets[this.template_cell.ws].getCell(this.template_cell.r, this.template_cell.c).value;
-        return value && value.toString() || null;
+        return this.template.worksheets[this.template_cell.ws].getCell(this.template_cell.r, this.template_cell.c).value;
     }
 
     /**

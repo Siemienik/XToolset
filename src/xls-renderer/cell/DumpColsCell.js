@@ -31,7 +31,7 @@ export default class DumpColsCell extends BaseCell {
      * @returns {boolean}
      */
     static match(value) {
-        return value.substring(0, 12) === '#! DUMP_COLS';
+        return typeof value === 'string' && value.substring(0, 12) === '#! DUMP_COLS';
     }
 
 }

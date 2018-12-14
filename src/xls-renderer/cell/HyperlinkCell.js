@@ -46,6 +46,6 @@ export default class HyperlinkCell extends BaseCell {
      * @returns {boolean}
      */
     static match(value) {
-        return value.substring(0, 12) === '#! HYPERLINK';
+        return typeof value === 'string' && value.substring(0, 12) === '#! HYPERLINK';
     }
 }

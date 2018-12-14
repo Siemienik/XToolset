@@ -39,6 +39,6 @@ export default class AverageCell extends BaseCell {
      * @returns {boolean}
      */
     static match(value) {
-        return value.substring(0, 10) === '#! AVERAGE';
+        return typeof value === 'string' && value.substring(0, 10) === '#! AVERAGE';
     }
 }
