@@ -12,7 +12,7 @@ class VariableCell extends BaseCell {
         const path = scope.getCurrentTemplateValue().substring(3).split('.');
 
         scope.setCurrentOutputValue(path.reduce((p, c) => p[c] || {}, scope.vm));
-        scope.incrementColl();
+        scope.incrementCol();
 
         return this;
     }

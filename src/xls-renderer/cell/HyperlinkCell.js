@@ -17,8 +17,8 @@ export default class HyperlinkCell extends BaseCell {
             console.log(label);
             scope.setCurrentOutputValue({text: label, hyperlink: url});
         }
-        
-        scope.incrementColl();
+
+        scope.incrementCol();
 
         return this;
     }

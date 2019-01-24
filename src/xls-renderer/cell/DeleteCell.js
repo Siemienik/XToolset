@@ -9,7 +9,7 @@ export default class DeleteCell extends BaseCell {
         scope.vm[target] = undefined;
 
         scope.setCurrentOutputValue(null);
-        scope.incrementColl();
+        scope.incrementCol();
 
         return this;
     }

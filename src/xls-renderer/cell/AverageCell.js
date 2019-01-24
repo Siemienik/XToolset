@@ -19,8 +19,8 @@ export default class AverageCell extends BaseCell {
 
             scope.setCurrentOutputValue({formula: `average(${start}:${end})`});
         }
-        
-        scope.incrementColl();
+
+        scope.incrementCol();
 
         return this;
     }

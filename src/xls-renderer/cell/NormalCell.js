@@ -9,7 +9,7 @@ class NormalCell extends BaseCell {
     apply(scope) {
         super.apply(scope);
 
-        scope.incrementColl();
+        scope.incrementCol();
 
         return this;
     }

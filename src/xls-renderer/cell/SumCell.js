@@ -19,8 +19,8 @@ export default class SumCell extends BaseCell {
 
             scope.setCurrentOutputValue({formula: `sum(${start}:${end})`});
         }
-        
-        scope.incrementColl();
+
+        scope.incrementCol();
 
         return this;
     }

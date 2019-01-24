@@ -63,7 +63,7 @@ export default class Scope {
     }
 
     /**
-     * @param {string} value
+     * @param {string|null} value
      */
     setCurrentOutputValue(value) {
         if (!this._frozen) {
@@ -105,7 +105,7 @@ export default class Scope {
         }
     }
 
-    incrementColl() {
+    incrementCol() {
         if (!this._finished) {
             this.template_cell = Object.freeze({...this.template_cell, c: this.template_cell.c + 1});
         }

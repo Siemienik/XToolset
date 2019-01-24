@@ -20,7 +20,7 @@ export default class DumpColsCell extends BaseCell {
             scope.output_cell = Object.freeze({...scope.output_cell, c: scope.output_cell.c + 1});
         });
 
-        scope.incrementColl();
+        scope.incrementCol();
 
         return this;
     }
