@@ -14,7 +14,6 @@ class EndLoopCell extends BaseCell {
         const __iterated = scope.vm[target] && scope.vm[target].__iterated;
 
         scope.unfreezeOutput();
-        scope.setCurrentOutputValue('');
 
         scope.vm[target] = Object.freeze({
             ...scope.vm[target],
