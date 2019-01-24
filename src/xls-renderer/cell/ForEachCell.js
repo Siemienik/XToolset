@@ -40,15 +40,14 @@ class ForEachCell extends BaseCell {
         let __iterated = scope.vm[target] && scope.vm[target].__iterated;
         __iterated = typeof __iterated !== 'undefined' && __iterated;
 
+        scope.setCurrentOutputValue(null);
+        
         if (!__iterated && !next) {
             __iterated = true;
             scope.freezeOutput();
         }
 
-        scope.setCurrentOutputValue(null);
-
         next = next || {};
-
 
         if (__insetRows) {
             __insetRows = false;
