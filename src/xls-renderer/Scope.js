@@ -26,6 +26,11 @@ export default class Scope {
     template_cell = Object.freeze({r: 1, c: 1, ws: 0});
 
     /**
+     * @var {Object.<string, Address>}
+     */
+    _masters = {};
+
+    /**
      * @var {int}
      * @private
      */
@@ -80,6 +85,23 @@ export default class Scope {
             if (wst.getColumn(ct.c).isCustomWidth) {
                 wso.getColumn(co.c).width = wst.getColumn(ct.c).width;
             }
+        }
+    }
+
+    applyMerge() {
+        const tws = this.template.worksheets[this.template_cell.ws];
+        const tc = tws.getCell(this.template_cell.r, this.template_cell.c);
+
+        const ows = this.output.worksheets[this.output_cell.ws];
+        const current = ows.getCell(this.output_cell.r, this.output_cell.c).model.address;
+
+        if (tc.model.master && tc.model.master !== tc.model.address) {
+            const range = `${this._masters[tc.model.master] || tc.model.master}:${current}`;
+
+            ows.unMergeCells(range);
+            ows.mergeCells(range);
+        } else if (tc.isMerged) {
+            this._masters[tc.model.address] = current;
         }
     }
 

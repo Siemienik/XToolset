@@ -24,6 +24,7 @@ class BaseCell {
         }
         scope.setCurrentOutputValue(scope.getCurrentTemplateValue());
         scope.applyStyles();
+        scope.applyMerge();
 
         return this;
     }
