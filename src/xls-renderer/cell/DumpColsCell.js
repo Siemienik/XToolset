@@ -1,4 +1,5 @@
 import BaseCell from "./BaseCell";
+import {ValueType} from "exceljs";
 
 export default class DumpColsCell extends BaseCell {
     /**
@@ -27,11 +28,11 @@ export default class DumpColsCell extends BaseCell {
 
     /**
      * @inheritDoc
-     * @param {string} value
+     * @param {Cell} cell
      * @returns {boolean}
      */
-    static match(value) {
-        return typeof value === 'string' && value.substring(0, 12) === '#! DUMP_COLS';
+    static match(cell) {
+        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 12) === '#! DUMP_COLS';
     }
 
 }

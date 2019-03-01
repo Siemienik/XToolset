@@ -1,4 +1,5 @@
 import ForEachCell from "./ForEachCell";
+import {ValueType} from "exceljs";
 
 class ContinueCell extends ForEachCell {
     /**
@@ -8,18 +9,18 @@ class ContinueCell extends ForEachCell {
      * @protected
      */
     _getFromParam(scope) {
-        const target = this._getTargetParam(scope);
+        const target = ForEachCell._getTargetParam(scope);
 
         return scope.vm[target] && scope.vm[target].__from;
     }
 
     /**
      * @inheritDoc
-     * @param {string} value
+     * @param {Cell} cell
      * @returns {boolean}
      */
-    static match(value) {
-        return typeof value === 'string' && value.substring(0, 11) === '#! CONTINUE';
+    static match(cell) {
+        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 11) === '#! CONTINUE';
     }
 
 }

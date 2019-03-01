@@ -35,7 +35,7 @@ export default class Scope {
      * @private
      */
     _frozen = 0;
-    
+
     /**
      * @var {boolean}
      *
@@ -59,14 +59,22 @@ export default class Scope {
      * @returns {string|Object}
      */
     getCurrentTemplateValue() {
-        return this.template.worksheets[this.template_cell.ws].getCell(this.template_cell.r, this.template_cell.c).value;
+        return this.getCurrentTemplateCell().value;
     }
 
     /**
-     * @param {string|null} value
+     * @returns {Cell}
+     */
+    getCurrentTemplateCell() {
+        return this.template.worksheets[this.template_cell.ws].getCell(this.template_cell.r, this.template_cell.c);
+    }
+
+    /**
+     * @param {?string|{formula:string}|{text:string,hyperlink:string}} value
      */
     setCurrentOutputValue(value) {
         if (!this._frozen) {
+            // noinspection JSValidateTypes - todo exceljs invalid type definition todo
             this.output.worksheets[this.output_cell.ws].getCell(this.output_cell.r, this.output_cell.c).value = value;
         }
     }

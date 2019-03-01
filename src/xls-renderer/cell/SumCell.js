@@ -1,15 +1,16 @@
 import BaseCell from "./BaseCell";
 import Scope from "../Scope";
+import {ValueType} from "exceljs";
 
 export default class SumCell extends BaseCell {
     /**
      * @param {Scope} scope
-     * @returns {ForEachCell}
+     * @returns {SumCell}
      */
     apply(scope) {
         super.apply(scope);
 
-        const target = this._getTargetParam(scope);
+        const target = SumCell._getTargetParam(scope);
         const __startOutput = scope.vm[target] && scope.vm[target].__startOutput;
         const __endOutput = scope.vm[target] && scope.vm[target].__endOutput;
 
@@ -30,15 +31,15 @@ export default class SumCell extends BaseCell {
      * @returns {string}
      * @protected
      */
-    _getTargetParam(scope) {
+    static _getTargetParam(scope) {
         return scope.getCurrentTemplateValue().split(' ')[2];
     }
 
     /**
-     * @param {string} value
+     * @param {Cell} cell
      * @returns {boolean}
      */
-    static match(value) {
-        return typeof value === 'string' && value.substring(0, 6) === '#! SUM';
+    static match(cell) {
+        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 6) === '#! SUM';
     }
 }

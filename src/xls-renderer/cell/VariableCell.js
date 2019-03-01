@@ -1,4 +1,5 @@
 import BaseCell from "./BaseCell";
+import {ValueType} from "exceljs";
 
 class VariableCell extends BaseCell {
     /**
@@ -19,11 +20,11 @@ class VariableCell extends BaseCell {
 
     /**
      * @inheritDoc
-     * @param {string} value
+     * @param {Cell} cell
      * @returns {boolean}
      */
-    static match(value) {
-        return typeof value === 'string' && value.substring(0, 2) === '##';
+    static match(cell) {
+        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 2) === '##';
     }
 
 }

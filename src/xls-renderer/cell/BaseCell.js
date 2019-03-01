@@ -32,10 +32,10 @@ class BaseCell {
     /**
      * check if this commend can parse `value`
      *
-     * @param {string} value
+     * @param {Cell} cell
      * @returns {boolean}
      */
-    static match(value) {
+    static match(cell) {
         return false;
     }
 

@@ -4,13 +4,13 @@ export default class CellTemplateDebugPool extends CellTemplatePool {
     /**
      * do normal match and log in console result.
      *
-     * @param {string} value
+     * @param {Cell} cell
      * @returns {BaseCell}
      */
-    match(value) {
-        const result = super.match(value);
+    match(cell) {
+        const result = super.match(cell);
 
-        console.log(result, value);
+        console.log(result, cell && cell.value);
 
         return result;
     }

@@ -1,19 +1,20 @@
 import BaseCell from "./BaseCell";
 import Scope from "../Scope";
+import {ValueType} from "exceljs";
 
 export default class HyperlinkCell extends BaseCell {
     /**
      * @param {Scope} scope
-     * @returns {ForEachCell}
+     * @returns {HyperlinkCell}
      */
     apply(scope) {
         super.apply(scope);
 
         scope.setCurrentOutputValue(null);
 
-        const url = this._getUrlParam(scope).split('.').reduce((p, c) => p[c] || {}, scope.vm);
+        const url = HyperlinkCell._getUrlParam(scope).split('.').reduce((p, c) => p[c] || {}, scope.vm);
         if (typeof url === 'string') {
-            const label = this._getLabelParam(scope).split('.').reduce((p, c) => p[c] || {}, scope.vm) || url;
+            const label = HyperlinkCell._getLabelParam(scope).split('.').reduce((p, c) => p[c] || {}, scope.vm) || url;
             console.log(label);
             scope.setCurrentOutputValue({text: label, hyperlink: url});
         }
@@ -28,7 +29,7 @@ export default class HyperlinkCell extends BaseCell {
      * @returns {string}
      * @protected
      */
-    _getLabelParam(scope) {
+    static _getLabelParam(scope) {
         return scope.getCurrentTemplateValue().split(' ')[2];
     }
 
@@ -37,15 +38,15 @@ export default class HyperlinkCell extends BaseCell {
      * @returns {string}
      * @protected
      */
-    _getUrlParam(scope) {
+    static _getUrlParam(scope) {
         return scope.getCurrentTemplateValue().split(' ')[3];
     }
 
     /**
-     * @param {string} value
+     * @param {Cell} cell
      * @returns {boolean}
      */
-    static match(value) {
-        return typeof value === 'string' && value.substring(0, 12) === '#! HYPERLINK';
+    static match(cell) {
+        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 12) === '#! HYPERLINK';
     }
 }

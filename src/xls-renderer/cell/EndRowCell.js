@@ -1,4 +1,5 @@
 import BaseCell from "./BaseCell";
+import {ValueType} from "exceljs";
 
 export default class EndRowCell extends BaseCell {
     /**
@@ -15,8 +16,8 @@ export default class EndRowCell extends BaseCell {
         return this;
     }
 
-    static match(value) {
-        return typeof value === 'string' && value === '#! END_ROW';
+    static match(cell) {
+        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value === '#! END_ROW';
     }
 
 }

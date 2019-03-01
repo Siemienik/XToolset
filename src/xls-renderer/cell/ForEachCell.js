@@ -1,5 +1,6 @@
 import BaseCell from "./BaseCell";
 import Scope from "../Scope";
+import {ValueType} from "exceljs";
 
 /**
  * Pattern: `#! FOR_EACH [TARGET] [FROM]`
@@ -23,7 +24,7 @@ class ForEachCell extends BaseCell {
     apply(scope) {
         super.apply(scope);
 
-        const target = this._getTargetParam(scope);
+        const target = ForEachCell._getTargetParam(scope);
         const __from = this._getFromParam(scope);
 
         //todo refactoring
@@ -53,6 +54,7 @@ class ForEachCell extends BaseCell {
             __insetRows = false;
             if (!scope.isFrozen()) {
                 for (let i = __end.r; i > __start.r; i--) {
+                    // noinspection JSCheckFunctionSignatures - todo exceljs signature mismatch
                     scope.output.worksheets[scope.output_cell.ws].spliceRows( //todo refactoring
                         scope.output_cell.r + 1,
                         0,
@@ -61,7 +63,6 @@ class ForEachCell extends BaseCell {
                 }
             }
         }
-
 
         if (__iterated) {
             __endOutput = __endOutput || scope.output_cell.r;
@@ -90,7 +91,7 @@ class ForEachCell extends BaseCell {
      * @returns {string}
      * @protected
      */
-    _getTargetParam(scope) {
+    static _getTargetParam(scope) {
         return scope.getCurrentTemplateValue().split(' ')[2];
     }
 
@@ -105,11 +106,11 @@ class ForEachCell extends BaseCell {
 
 
     /**
-     * @param {string} value
+     * @param {Cell} cell
      * @returns {boolean}
      */
-    static match(value) {
-        return typeof value === 'string' && value.substring(0, 11) === '#! FOR_EACH';
+    static match(cell) {
+        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 11) === '#! FOR_EACH';
     }
 }
 

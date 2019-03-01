@@ -1,10 +1,11 @@
 import BaseCell from "./BaseCell";
+import {ValueType} from "exceljs";
 
 export default class WsNameCell extends BaseCell {
     /**
      * @param {Scope} scope
      *
-     * @returns {EndRowCell}
+     * @returns {WsNameCell}
      */
     apply(scope) {
         super.apply(scope);
@@ -23,7 +24,7 @@ export default class WsNameCell extends BaseCell {
      * @protected
      */
     _getName(scope) {
-        let name = this._getTagetValue(scope) || this._getTarget(scope);
+        let name = WsNameCell._getTargetValue(scope) || WsNameCell._getTarget(scope);
         name = name.replace(/[\\\/*\[\]?]/g, '.');
 
         if (scope.output.worksheets.find(x => x.name === name)) {
@@ -40,8 +41,8 @@ export default class WsNameCell extends BaseCell {
      * @returns {string}
      * @protected
      */
-    _getTagetValue(scope) {
-        return this._getTarget(scope).split('.').reduce((p, c) => p[c] || "", scope.vm);
+    static _getTargetValue(scope) {
+        return WsNameCell._getTarget(scope).split('.').reduce((p, c) => p[c] || "", scope.vm);
     }
 
     /**
@@ -49,12 +50,16 @@ export default class WsNameCell extends BaseCell {
      * @returns {string}
      * @protected
      */
-    _getTarget(scope) {
+    static _getTarget(scope) {
         return scope.getCurrentTemplateValue().split(' ')[2];
     }
 
-    static match(value) {
-        return typeof value === 'string' && value.substring(0, 10) === '#! WS_NAME';
+    /**
+     * @param {Cell} cell
+     * @return {boolean}
+     */
+    static match(cell) {
+        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 10) === '#! WS_NAME';
     }
 
 }

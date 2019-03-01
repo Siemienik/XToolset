@@ -11,7 +11,7 @@ export default class Renderer {
      */
     constructor(cellTemplatePool) {
         if (!cellTemplatePool instanceof CellTemplatePool) {
-            throw new TypeError(`parameter 'cellTemplatePool' has to be instance of ${cellTemplatePool.name}`);
+            throw new TypeError(`parameter 'cellTemplatePool' has to be instance of ${CellTemplatePool.name}`);
         }
 
         this._cellTemplatePool = cellTemplatePool;
@@ -31,7 +31,7 @@ export default class Renderer {
         const scope = new Scope(template, output, vm);
 
         while (!scope.isFinished()) {
-            this._cellTemplatePool.match(scope.getCurrentTemplateValue()).apply(scope);
+            this._cellTemplatePool.match(scope.getCurrentTemplateCell()).apply(scope);
         }
 
         return output;

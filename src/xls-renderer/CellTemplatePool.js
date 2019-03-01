@@ -40,11 +40,11 @@ export default class CellTemplatePool {
     _instances = {};
 
     /**
-     * @param {string} value
+     * @param {Cell} cell
      * @returns {BaseCell}
      */
-    match(value) {
-        const type = this._cells.find((x) => x.match(value || ''));
+    match(cell) {
+        const type = this._cells.find((x) => x.match(cell));
 
         return type ? this._getInstance(type) : this._getInstance(NormalCell);
     }

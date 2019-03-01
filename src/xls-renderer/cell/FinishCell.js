@@ -1,4 +1,5 @@
 import BaseCell from "./BaseCell";
+import {ValueType} from "exceljs";
 
 class FinishCell extends BaseCell {
     apply(scope) {
@@ -6,7 +7,6 @@ class FinishCell extends BaseCell {
         scope.setCurrentOutputValue(null);
 
         let wst = scope.template.worksheets[scope.template_cell.ws];
-        let wso = scope.output.worksheets[scope.output_cell.ws];
 
         if (FinishCell._getCondition(scope)) { //todo refactoring scope.iterateWorksheet 
 
@@ -32,15 +32,17 @@ class FinishCell extends BaseCell {
             scope.template_cell = Object.freeze({...scope.template_cell, r: 1, c: 1});
             scope.output_cell = Object.freeze({...scope.output_cell, ws: scope.output_cell.ws + 1, r: 1, c: 1});
 
-            wst.getImages().forEach((i) => wso.addImage(i.imageId, i.range));
+
+            // noinspection JSCheckFunctionSignatures - todo exceljs type mismatch
+            wst.getImages().forEach((i) => wso.addImage(+i.imageId, i.range));
         }
 
 
         return this;
     }
 
-    static match(value) {
-        return typeof value === 'string' && value.substring(0, 9) === '#! FINISH';
+    static match(cell) {
+        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 9) === '#! FINISH';
     }
 
     /**
