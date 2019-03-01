@@ -12,7 +12,11 @@ class VariableCell extends BaseCell {
 
         const path = scope.getCurrentTemplateValue().substring(3).split('.');
 
-        scope.setCurrentOutputValue(path.reduce((p, c) => p[c] || {}, scope.vm));
+        const value = path.reduce((p, c) => typeof p === 'object' ? p[c] : p, scope.vm);
+        if (value === undefined) { //todo do it better (use logger or somethink like that)
+            console.log(`WARN: ${path} is undefined for output: ${scope.output_cell} when template is:${scope.template_cell}`);
+        }
+        scope.setCurrentOutputValue(value);
         scope.incrementCol();
 
         return this;

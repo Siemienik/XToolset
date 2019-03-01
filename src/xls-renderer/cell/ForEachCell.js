@@ -22,13 +22,15 @@ class ForEachCell extends BaseCell {
      * @returns {ForEachCell}
      */
     apply(scope) {
-        super.apply(scope);
-
         const target = ForEachCell._getTargetParam(scope);
         const __from = this._getFromParam(scope);
 
         //todo refactoring
         const __index = (scope.vm[target] && scope.vm[target].__index || 0) + 1;
+        if (__index === 1) {
+            super.apply(scope);
+        }
+        
         const __start = scope.vm[target] && scope.vm[target].__start || scope.template_cell;
         const __startOutput = scope.vm[target] && scope.vm[target].__startOutput || scope.output_cell.r + 1;
         const __end = scope.vm[target] && scope.vm[target].__end;
