@@ -11,6 +11,7 @@ import DeleteCell from "./cell/DeleteCell";
 import DumpColsCell from "./cell/DumpColsCell";
 import WsNameCell from "./cell/WsNameCell";
 import HyperlinkCell from "./cell/HyperlinkCell";
+import FormulaCell from "./cell/FormulaCell";
 
 export default class CellTemplatePool {
     /**
@@ -21,6 +22,7 @@ export default class CellTemplatePool {
         NormalCell,
         EndRowCell,
         VariableCell,
+        FormulaCell,
         HyperlinkCell,
         ForEachCell,
         FinishCell,
