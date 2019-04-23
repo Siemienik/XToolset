@@ -1,6 +1,6 @@
 {
   "name": "xlsx-import",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Import data from xlsx file using configured pattern",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -8,7 +8,12 @@
     "type": "git",
     "url": "git+https://github.com/Siemienik/xlsx-importer"
   },
-  "keywords": ["Importing data", "Excel", "XLSX", "ExcelJs"],
+  "keywords": [
+    "Importing data",
+    "Excel",
+    "XLSX",
+    "ExcelJs"
+  ],
   "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
   "scripts": {
     "build": "tsc",
@@ -16,8 +21,8 @@
     "lint": "tslint -p tsconfig.json",
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
     "coverageRaport": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report",
-    "prepare": "npm run build", 
-    "prepublishOnly": "npm test && npm run lint", 
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test && npm run lint",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
@@ -36,8 +41,8 @@
   },
   "dependencies": {
     "exceljs": "^1.9.1"
-  }, 
+  },
   "files": [
     "lib/**/*"
-  ] 
+  ]
 }
