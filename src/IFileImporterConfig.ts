@@ -1,8 +1,8 @@
-import IFileImporterColumnConfig from "./IFileImporterColumnConfig";
+import IFileImporterColumnConfig from './IFileImporterColumnConfig';
 
 export default interface IFileImporterConfig {
     name: string;
     worksheet: string;
-    columns: IFileImporterColumnConfig[],
-    rowOffset: number
+    columns: IFileImporterColumnConfig[];
+    rowOffset: number;
 }

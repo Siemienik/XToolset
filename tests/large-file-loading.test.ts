@@ -25,5 +25,5 @@ describe('read sample file "large"', function () {
         chai.expect(result[9].factor).equals(1.1);
         chai.expect(result[399].id).equals(400);
         chai.expect(result[399].factor).equals(1.0025);
-    });
+    }).timeout(5000);
 });

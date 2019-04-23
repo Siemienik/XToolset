@@ -1,10 +1,26 @@
 {
   "name": "xlsx-import",
   "version": "1.0.0",
+  "description": "Import data from xlsx file using configured pattern",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siemienik/xlsx-importer"
+  },
+  "keywords": ["Importing data", "Excel", "XLSX", "ExcelJs"],
+  "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
   "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
-    "testWithCoverage": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report"
+    "coverageRaport": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report"
+    "prepare": "npm run build", 
+    "prepublishOnly": "npm test && npm run lint", 
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
   },
   "devDependencies": {
     "@types/chai": "^4.1.7",
@@ -12,10 +28,16 @@
     "chai": "^4.2.0",
     "mocha": "^6.1.4",
     "nyc": "^14.0.0",
+    "prettier": "^1.17.0",
     "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.4"
   },
   "dependencies": {
     "exceljs": "^1.9.1"
-  }
+  }, 
+  "files": [
+    "lib/**/*"
+  ] 
 }
