@@ -10,7 +10,7 @@ npm i xlsx-import --save
 
 2. write config
 ```javascript
-    const configs = {
+    const config = {
         books: {
             name: 'books',
             worksheet: 'Favourites',
@@ -42,7 +42,7 @@ interface Book {
     const importer = new ExcelJsImporterFactory();
     
     const fileImporter = await  importer.From(filePath);
-    const books = fileImporter.GetAllItems<Book>(); //it returns `Book[]`
+    const books = fileImporter.GetAllItems<Book>(config.books); //it returns `Book[]`
 ```
 
 # Regards
