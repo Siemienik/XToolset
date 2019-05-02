@@ -1,12 +1,11 @@
 import * as chai from 'chai'
 
-import ExcelJsImporterFactory from '../src/ExcelJsImporterFactory' 
+import ImporterFactory from '../src/ImporterFactory' 
 
-describe('read sample file "marsjanie-db"', function () {
+describe('testing vertical list - on file "marsjanie-db"', function () {
     
     const configs = {
         people: {
-            name: 'people',
             worksheet: 'szit1',
             columns: [
                 {index: 1, key: 'id', mapper: (v: string) => Number.parseInt(v)},
@@ -20,7 +19,6 @@ describe('read sample file "marsjanie-db"', function () {
             rowOffset: 6,
         },
         groups: {
-            name: 'groups',
             worksheet: 'grupy',
             columns: [
                 {index: 1, key: 'name',},
@@ -31,9 +29,9 @@ describe('read sample file "marsjanie-db"', function () {
     };
 
     it('worksheet "szit1"', async function () {
-        const importer = new ExcelJsImporterFactory();
-        const fileImporter = await  importer.From('tests/data/marsjanie-db.xlsx');
-        const result = fileImporter.GetAllItems(configs.people);
+        const factory = new ImporterFactory();
+        const importer = await  factory.From('tests/data/marsjanie-db.xlsx');
+        const result = importer.GetAllItems(configs.people);
 
         const expected = [
             {
@@ -77,9 +75,9 @@ describe('read sample file "marsjanie-db"', function () {
         chai.expect(result).eql(expected);
     });
     it('worksheet "grupy"', async function () {
-        const importer = new ExcelJsImporterFactory();
-        const fileImporter = await  importer.From('tests/data/marsjanie-db.xlsx');
-        const result = fileImporter.GetAllItems(configs.groups);
+        const factory = new ImporterFactory();
+        const importer = await  factory.From('tests/data/marsjanie-db.xlsx');
+        const result = importer.GetAllItems(configs.groups);
 
         const expected = [
             {

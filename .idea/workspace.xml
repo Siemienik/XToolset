@@ -1,0 +1,850 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="302dfc79-66f6-4478-8398-563f0c4cfb81" name="Default" comment="Update readme">
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/IImporter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Importer.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ImporterFactory.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/IFieldConfig.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/IListSourceConfig.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/IObjectSourceConfig.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/config/ISourceConfig.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/tests/object-single-items.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ExcelJsImporter.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ExcelJsImporterFactory.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IFileImporter.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IFileImporterColumnConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/IColumnConfig.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/IFileImporterConfig.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/data/marsjanie-db.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/tests/data/marsjanie-db.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/large-file-loading.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/large-files.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/loading-sample-file--marsjanie-db.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/vertical-lists.test.ts" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="IListSourceConfig.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/IListSourceConfig.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IObjectSourceConfig.ts" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/config/IObjectSourceConfig.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="17">
+              <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IFieldConfig.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/IFieldConfig.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="15" selection-start-column="15" selection-end-column="15" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Importer.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Importer.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="306">
+              <caret line="18" column="60" lean-forward="true" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#716#903#0" expanded="true" />
+                <element signature="e#1115#1584#0" expanded="true" />
+                <element signature="e#1337#1519#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/package.json">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="320">
+              <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+            <state split_layout="SPLIT">
+              <first_editor>
+                <caret lean-forward="true" />
+              </first_editor>
+              <second_editor>
+                <markdownNavigatorState />
+              </second_editor>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ImporterFactory.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ImporterFactory.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="204">
+              <caret line="12" selection-end-line="12" />
+              <folding>
+                <element signature="e#0#35#0" expanded="true" />
+                <element signature="e#204#318#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="large-files.test.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/large-files.test.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vertical-lists.test.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/vertical-lists.test.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1190">
+              <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="73" />
+              <folding>
+                <element signature="e#0#28#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="object-single-items.test.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/tests/object-single-items.test.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="16" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IImporter.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/IImporter.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <caret column="49" selection-start-column="49" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="IColumnConfig.ts" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/config/IColumnConfig.ts">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="10" selection-start-line="3" selection-end-line="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/ISourceConfig.ts" />
+        <option value="$PROJECT_DIR$/src/IColumnConfig.ts" />
+        <option value="$PROJECT_DIR$/src/ExcelJsImporter.ts" />
+        <option value="$PROJECT_DIR$/src/IFileImporter.ts" />
+        <option value="$PROJECT_DIR$/src/IImporter.ts" />
+        <option value="$PROJECT_DIR$/tests/large-files.ts" />
+        <option value="$PROJECT_DIR$/tests/vertical-lists.ts" />
+        <option value="$PROJECT_DIR$/src/config/ISourceConfig.ts" />
+        <option value="$PROJECT_DIR$/src/config/IListSourceConfig.ts" />
+        <option value="$PROJECT_DIR$/src/config/IFieldConfig.ts" />
+        <option value="$PROJECT_DIR$/tests/large-files.test.ts" />
+        <option value="$PROJECT_DIR$/tests/vertical-lists.test.ts" />
+        <option value="$PROJECT_DIR$/tests/single-items.test.ts" />
+        <option value="$PROJECT_DIR$/tests/object-single-items.test.ts" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/Importer.ts" />
+        <option value="$PROJECT_DIR$/src/ImporterFactory.ts" />
+        <option value="$PROJECT_DIR$/src/config/IObjectSourceConfig.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/node_modules" />
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="2583" />
+    <option name="height" value="1416" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <autoscrollFromSource ProjectPane="true" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="xlsx-import" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xlsx-import" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xlsx-import" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xlsx-import" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xlsx-import" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xlsx-import" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="config" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xlsx-import" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xlsx-import" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="xlsx-import" type="b2602c69:ProjectViewProjectNode" />
+              <item name="xlsx-import" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="SearchEverywhereHistoryKey" value="Iob&#9;FILE&#9;file://C:/Users/siemi/aProjects/sn/xlsx-import/src/config/IObjectSourceConfig.ts&#10;impo&#9;FILE&#9;file://C:/Users/siemi/aProjects/sn/xlsx-import/src/ImporterFactory.ts&#10;read&#9;FILE&#9;file://C:/Users/siemi/aProjects/sn/xlsx-import/README.md&#10;packa&#9;FILE&#9;file://C:/Users/siemi/aProjects/sn/xlsx-import/package.json&#10;fac&#9;FILE&#9;file://C:/Users/siemi/aProjects/sn/xlsx-import/src/ExcelJsImporterFactory.ts&#10;Exce&#9;FILE&#9;file://C:/Users/siemi/aProjects/sn/xlsx-import/src/ExcelJsImporter.ts&#10;git&#9;FILE&#9;file://C:/Users/siemi/aProjects/sn/xlsx-import/.gitignore" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="js.last.introduce.type" value="CONST" />
+    <property name="last_opened_file_path" value="C:/Program Files/Git/bin/git.exe" />
+    <property name="nodejs.mocha.mocha_node_package_dir" value="$PROJECT_DIR$/node_modules/mocha" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="prettierjs.PrettierConfiguration.Package" value="C:\Users\siemi\aProjects\sn\xlsx-import\node_modules\prettier" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/node_modules/typescript/lib" />
+    <property name="typescript-compiler-editor-notification" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\siemi\aProjects\sn\xlsx-import\src\config" />
+      <recent name="C:\Users\siemi\aProjects\sn\xlsx-import\tests" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\siemi\aProjects\sn\xlsx-import\src" />
+      <recent name="C:\Users\siemi\aProjects\sn\xlsx-import\src\factories" />
+      <recent name="C:\Users\siemi\aProjects\sn\xlsx-import\src\config" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="npm.lint">
+    <configuration name="format" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="format" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
+    <configuration name="lint" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="lint" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
+    <configuration name="test" type="js.build_tools.npm" factoryName="npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="test" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+    </configuration>
+    <configuration name="Unnamed" type="mocha-javascript-test-runner" factoryName="Mocha">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>DIRECTORY</test-kind>
+      <test-directory>tests</test-directory>
+      <recursive>true</recursive>
+    </configuration>
+    <configuration name="reading sigle items (objects).getAllItems should return one correct object" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/tests/object-single-items.test.ts</test-file>
+      <test-names>
+        <name value="reading sigle items (objects)" />
+        <name value="getAllItems should return one correct object" />
+      </test-names>
+    </configuration>
+    <configuration name="reading sigle items (objects).worksheet &quot;grupy&quot;" type="mocha-javascript-test-runner" factoryName="Mocha" temporary="true" nameIsGenerated="true">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <working-directory>$PROJECT_DIR$</working-directory>
+      <pass-parent-env>true</pass-parent-env>
+      <ui>bdd</ui>
+      <extra-mocha-options>--require ts-node/register</extra-mocha-options>
+      <test-kind>TEST</test-kind>
+      <test-file>$PROJECT_DIR$/tests/single-items.test.ts</test-file>
+      <test-names>
+        <name value="reading sigle items (objects)" />
+        <name value="worksheet &quot;grupy&quot;" />
+      </test-names>
+    </configuration>
+    <list>
+      <item itemvalue="Mocha.Unnamed" />
+      <item itemvalue="npm.test" />
+      <item itemvalue="npm.format" />
+      <item itemvalue="npm.lint" />
+      <item itemvalue="Mocha.reading sigle items (objects).worksheet &quot;grupy&quot;" />
+      <item itemvalue="Mocha.reading sigle items (objects).getAllItems should return one correct object" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="npm.lint" />
+        <item itemvalue="npm.format" />
+        <item itemvalue="npm.test" />
+        <item itemvalue="Mocha.reading sigle items (objects).getAllItems should return one correct object" />
+        <item itemvalue="Mocha.reading sigle items (objects).worksheet &quot;grupy&quot;" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="302dfc79-66f6-4478-8398-563f0c4cfb81" name="Default" comment="" />
+      <created>1555681217444</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1555681217444</updated>
+      <workItem from="1555681225308" duration="53000" />
+      <workItem from="1555681310935" duration="7702000" />
+      <workItem from="1556006470407" duration="17093000" />
+      <workItem from="1556207378296" duration="16751000" />
+      <workItem from="1556836303152" duration="1219000" />
+    </task>
+    <task id="LOCAL-00001" summary="Init + Importing data from xlsx data">
+      <created>1556025113231</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1556025113231</updated>
+    </task>
+    <task id="LOCAL-00002" summary="tslint, prettier, tsc setup">
+      <created>1556027039097</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1556027039097</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Update readme, +getting started">
+      <created>1556028357723</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1556028357723</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Update readme">
+      <created>1556044012303</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1556044012303</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="reading_sigle_items_(objects)_worksheet__grupy_ - 2019.04.28 at 18h 53m 14s.xml">
+      <configuration name="reading sigle items (objects).worksheet &quot;grupy&quot;" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="reading_sigle_items_(objects)_getAllItems_should_return_one_correct_object - 2019.04.29 at 15h 44m 18s.xml">
+      <configuration name="reading sigle items (objects).getAllItems should return one correct object" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="reading_sigle_items_(objects)_getAllItems_should_return_one_correct_object - 2019.04.29 at 15h 45m 44s.xml">
+      <configuration name="reading sigle items (objects).getAllItems should return one correct object" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="reading_sigle_items_(objects)_getAllItems_should_return_one_correct_object - 2019.04.29 at 15h 45m 48s.xml">
+      <configuration name="reading sigle items (objects).getAllItems should return one correct object" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="reading_sigle_items_(objects)_getAllItems_should_return_one_correct_object - 2019.04.29 at 15h 46m 03s.xml">
+      <configuration name="reading sigle items (objects).getAllItems should return one correct object" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="reading_sigle_items_(objects)_getAllItems_should_return_one_correct_object - 2019.04.29 at 15h 46m 56s.xml">
+      <configuration name="reading sigle items (objects).getAllItems should return one correct object" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+    <history-entry file="reading_sigle_items_(objects)_getAllItems_should_return_one_correct_object - 2019.04.29 at 15h 47m 02s.xml">
+      <configuration name="reading sigle items (objects).getAllItems should return one correct object" configurationId="mocha-javascript-test-runner" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="8075000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-7" y="-7" width="1721" height="944" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info id="DB Browser" order="2" />
+      <window_info anchor="bottom" id="DB Execution Console" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3164251" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32855436" />
+      <window_info anchor="bottom" id="TypeScript" order="7" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24956064" />
+      <window_info anchor="bottom" id="Docker" order="7" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.39855072" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Messages" order="7" weight="0.3297491" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="Init&#10;Importing data from xlsx data" />
+    <MESSAGE value="Init + Importing data from xlsx data" />
+    <MESSAGE value="tslint, prettier, tsc setup" />
+    <MESSAGE value="Update readme, +getting started" />
+    <MESSAGE value="Update readme" />
+    <option name="LAST_COMMIT_MESSAGE" value="Update readme" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tests/object-single-items.test.ts</url>
+          <line>21</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/tests/object-single-items.test.ts</url>
+          <line>23</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="3" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tests/vertical-lists.test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="72" column="10" lean-forward="true" selection-start-line="72" selection-start-column="10" selection-end-line="73" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/object-single-items.test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="25" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IImporter.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="49" selection-start-column="49" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/IColumnConfig.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="10" lean-forward="true" selection-start-line="3" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Importer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="16" selection-start-line="16" selection-end-line="16" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#716#903#0" expanded="true" />
+            <element signature="e#1115#1584#0" expanded="true" />
+            <element signature="e#1337#1519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="119" selection-start-line="22" selection-start-column="119" selection-end-line="22" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Importer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#716#903#0" expanded="true" />
+            <element signature="e#1115#1584#0" expanded="true" />
+            <element signature="e#1337#1519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ImporterFactory.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="9" selection-start-line="5" selection-start-column="9" selection-end-line="5" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/lists.test.ts" />
+    <entry file="file://$PROJECT_DIR$/tests/large-file.test.ts" />
+    <entry file="file://$PROJECT_DIR$/.prettierrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="612">
+            <caret line="36" column="1" lean-forward="true" selection-start-line="36" selection-start-column="1" selection-end-line="36" selection-end-column="1" />
+          </first_editor>
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="49" selection-start-line="6" selection-start-column="49" selection-end-line="6" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/coverage/lcov-report/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="3" selection-start-column="3" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Sample.ts" />
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/lists.test.ts" />
+    <entry file="file://$PROJECT_DIR$/coverage/lcov-report/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/IFileImporterConfig.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/ExcelJsImporter.d.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/node_modules/exceljs/index.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="788" column="22" selection-start-line="788" selection-start-column="22" selection-end-line="788" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tsconfig.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tslint.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.npmignore" />
+    <entry file="file://$PROJECT_DIR$/tests/large-file.test.ts" />
+    <entry file="file://$PROJECT_DIR$/tests/lists.test.ts" />
+    <entry file="file://$PROJECT_DIR$/tests/single-item.ts" />
+    <entry file="file://$PROJECT_DIR$/src/IImporter.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="31" selection-start-line="2" selection-start-column="31" selection-end-line="2" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IFieldConfig.ts" />
+    <entry file="file://$PROJECT_DIR$/src/IImporterConfig.ts" />
+    <entry file="file://$PROJECT_DIR$/.prettierrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IImporter.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="21" selection-start-column="21" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ImporterFactory.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/importing-lists.ts" />
+    <entry file="file://$PROJECT_DIR$/tests/list-64000-rows.test.ts" />
+    <entry file="file://$PROJECT_DIR$/src/config/ISourceConfig.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="15" selection-start-line="5" selection-start-column="15" selection-end-line="5" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Importer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="49" lean-forward="true" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#716#903#0" expanded="true" />
+            <element signature="e#1115#1584#0" expanded="true" />
+            <element signature="e#1337#1519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/IColumnConfig.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="10" selection-start-line="3" selection-end-line="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/IListSourceConfig.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/vertical-lists.test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1190">
+          <caret line="72" column="10" selection-start-line="72" selection-start-column="10" selection-end-line="73" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/IFieldConfig.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="15" selection-start-column="15" selection-end-column="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/large-files.test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/object-single-items.test.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="8" column="10" selection-start-line="8" selection-start-column="10" selection-end-line="16" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/IImporter.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="49" selection-start-column="49" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret lean-forward="true" />
+          </first_editor>
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="320">
+          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Importer.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="60" lean-forward="true" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#716#903#0" expanded="true" />
+            <element signature="e#1115#1584#0" expanded="true" />
+            <element signature="e#1337#1519#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ImporterFactory.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#0#35#0" expanded="true" />
+            <element signature="e#204#318#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/config/IObjectSourceConfig.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

@@ -1,10 +1,9 @@
 import * as chai from 'chai'
 
-import ExcelJsImporterFactory from '../src/ExcelJsImporterFactory' 
+import ImporterFactory from '../src/ImporterFactory' 
 
 const configs = {
     large: {
-        name: 'large',
         worksheet: 'Sheet1',
         columns: [
             {index: 1, key: 'id', mapper: (v: string) => Number.parseInt(v)},
@@ -14,11 +13,11 @@ const configs = {
     },
 };
 
-describe('read sample file "large"', function () {
-    it('large', async function () {
-        const importer = new ExcelJsImporterFactory();
-        const fileImporter = await  importer.From('tests/data/large-64.xlsx');
-        const result = fileImporter.GetAllItems<{id:number, factor:number}>(configs.large);
+describe('64k rows', function () {
+    it('getAllItems return 64k correct items', async function () {
+        const factory = new ImporterFactory();
+        const importer = await  factory.From('tests/data/large-64.xlsx');
+        const result = importer.GetAllItems<{id:number, factor:number}>(configs.large);
 
         chai.expect(result.length).equals(64000);
         chai.expect(result[9].id).equals(10);
