@@ -1,6 +1,7 @@
 {
   "name": "xlsx-import",
   "version": "2.0.2",
+  "license": "MIT",
   "description": "Import data from xlsx file using configured pattern",
   "main": "xlsx-import/lib/ImporterFactory.js",
   "types": "xlsx-import/lib/ImporterFactory.d.ts",
@@ -21,8 +22,7 @@
     "lint": "tslint -p tsconfig.json",
     "test": "mocha -r ts-node/register tests/**/*.test.ts",
     "coverageRaport": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run lint",
+    "prepublishOnly": "npm test && npm run lint && npm run build",
     "preversion": "npm run lint",
     "version": "npm run format && git add -A src",
     "postversion": "git push && git push --tags"
@@ -40,7 +40,7 @@
     "typescript": "^3.4.4"
   },
   "dependencies": {
-    "exceljs": "^1.9.1"
+    "exceljs": "^3.5.0"
   },
   "files": [
     "lib/**/*"
