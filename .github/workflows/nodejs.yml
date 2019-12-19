@@ -1,4 +1,4 @@
-name: Lint, Build & Test 
+name: lint-build-test 
 
 on: [push]
 
