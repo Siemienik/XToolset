@@ -8,7 +8,7 @@
         "esModuleInterop": true,
         "sourceMap": true,
         "lib": [
-            "es6"
+            "es5"
         ]
     },
     "include": ["src"],
