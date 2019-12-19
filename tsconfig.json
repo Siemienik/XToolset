@@ -6,10 +6,7 @@
         "outDir": "./lib",
         "strict": true,
         "esModuleInterop": true,
-        "sourceMap": true,
-        "lib": [
-            "es2015"
-        ]
+        "sourceMap": true
     },
     "include": ["src"],
     "exclude": [
