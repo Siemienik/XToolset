@@ -1,6 +1,6 @@
 {
   "name": "xlsx-import",
-  "version": "2.0.1",
+  "version": "2.0.2",
   "description": "Import data from xlsx file using configured pattern",
   "main": "xlsx-import/lib/ImporterFactory.js",
   "types": "xlsx-import/lib/ImporterFactory.d.ts",
