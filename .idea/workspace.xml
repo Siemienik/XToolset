@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="302dfc79-66f6-4478-8398-563f0c4cfb81" name="Default" comment="Update readme">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/IImporter.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Importer.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/ImporterFactory.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/IFieldConfig.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/IListSourceConfig.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/IObjectSourceConfig.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/ISourceConfig.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tests/object-single-items.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ExcelJsImporter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/ExcelJsImporterFactory.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IFileImporter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IFileImporterColumnConfig.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/IColumnConfig.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/IFileImporterConfig.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/data/marsjanie-db.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/tests/data/marsjanie-db.xlsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/large-file-loading.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/large-files.test.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/loading-sample-file--marsjanie-db.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tests/vertical-lists.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -45,11 +30,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="IObjectSourceConfig.ts" pinned="false" current-in-tab="true">
+      <file leaf-file-name="IObjectSourceConfig.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/config/IObjectSourceConfig.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+            <state relative-caret-position="85">
+              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -66,13 +54,10 @@
       <file leaf-file-name="Importer.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/Importer.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="60" lean-forward="true" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
+            <state relative-caret-position="238">
+              <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
-                <element signature="e#716#903#0" expanded="true" />
-                <element signature="e#1115#1584#0" expanded="true" />
-                <element signature="e#1337#1519#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -81,8 +66,17 @@
       <file leaf-file-name="package.json" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="320">
-              <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
+            <state relative-caret-position="816">
+              <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="68">
+              <caret line="4" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -91,8 +85,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
             <state split_layout="SPLIT">
-              <first_editor>
-                <caret lean-forward="true" />
+              <first_editor relative-caret-position="102">
+                <caret line="65" selection-start-line="65" selection-end-line="65" />
               </first_editor>
               <second_editor>
                 <markdownNavigatorState />
@@ -104,7 +98,7 @@
       <file leaf-file-name="ImporterFactory.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/ImporterFactory.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
+            <state relative-caret-position="85">
               <caret line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#0#35#0" expanded="true" />
@@ -117,7 +111,7 @@
       <file leaf-file-name="large-files.test.ts" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tests/large-files.test.ts">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
+            <state relative-caret-position="289">
               <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
               <folding>
                 <element signature="e#0#28#0" expanded="true" />
@@ -187,10 +181,12 @@
         <option value="$PROJECT_DIR$/tests/vertical-lists.test.ts" />
         <option value="$PROJECT_DIR$/tests/single-items.test.ts" />
         <option value="$PROJECT_DIR$/tests/object-single-items.test.ts" />
-        <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/Importer.ts" />
         <option value="$PROJECT_DIR$/src/ImporterFactory.ts" />
         <option value="$PROJECT_DIR$/src/config/IObjectSourceConfig.ts" />
+        <option value="$PROJECT_DIR$/package.json" />
+        <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -396,6 +392,7 @@
       <workItem from="1556006470407" duration="17093000" />
       <workItem from="1556207378296" duration="16751000" />
       <workItem from="1556836303152" duration="1219000" />
+      <workItem from="1576756340159" duration="773000" />
     </task>
     <task id="LOCAL-00001" summary="Init + Importing data from xlsx data">
       <created>1556025113231</created>
@@ -452,21 +449,22 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8075000" />
+    <option name="totallyTimeSpent" value="9292000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="-7" width="1721" height="944" extended-state="6" />
+    <frame x="-7" y="-7" width="1638" height="975" extended-state="6" />
     <editor active="true" />
     <layout>
+      <window_info anchor="right" id="PlantUML" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info id="DB Browser" order="2" />
       <window_info anchor="bottom" id="DB Execution Console" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="7" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3164251" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.32855436" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.328341" />
       <window_info anchor="bottom" id="TypeScript" order="7" />
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24956064" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24938424" />
       <window_info anchor="bottom" id="Docker" order="7" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -515,6 +513,16 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/config/IObjectSourceConfig.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/tests/vertical-lists.test.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1190">
@@ -552,9 +560,6 @@
           <caret line="16" selection-start-line="16" selection-end-line="16" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#716#903#0" expanded="true" />
-            <element signature="e#1115#1584#0" expanded="true" />
-            <element signature="e#1337#1519#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -572,9 +577,6 @@
           <caret line="17" column="45" selection-start-line="17" selection-start-column="45" selection-end-line="17" selection-end-column="45" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#716#903#0" expanded="true" />
-            <element signature="e#1115#1584#0" expanded="true" />
-            <element signature="e#1337#1519#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -644,16 +646,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/IFileImporterConfig.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="22" lean-forward="true" selection-start-line="5" selection-start-column="22" selection-end-line="5" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/ExcelJsImporter.d.ts">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/IFileImporterConfig.d.ts" />
     <entry file="file://$PROJECT_DIR$/node_modules/exceljs/index.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="439">
@@ -665,13 +658,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="25" lean-forward="true" selection-start-line="8" selection-start-column="25" selection-end-line="8" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="12" selection-start-line="3" selection-start-column="12" selection-end-line="3" selection-end-column="12" />
         </state>
       </provider>
     </entry>
@@ -731,9 +717,6 @@
           <caret line="4" column="49" lean-forward="true" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#716#903#0" expanded="true" />
-            <element signature="e#1115#1584#0" expanded="true" />
-            <element signature="e#1337#1519#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -774,7 +757,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/large-files.test.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="289">
           <caret line="19" column="22" selection-start-line="19" selection-start-column="22" selection-end-line="19" selection-end-column="22" />
           <folding>
             <element signature="e#0#28#0" expanded="true" />
@@ -796,41 +779,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
-        <state split_layout="SPLIT">
-          <first_editor>
-            <caret lean-forward="true" />
-          </first_editor>
-          <second_editor>
-            <markdownNavigatorState />
-          </second_editor>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="23" column="23" lean-forward="true" selection-start-line="23" selection-start-column="23" selection-end-line="23" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/Importer.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="60" lean-forward="true" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
+        <state relative-caret-position="238">
+          <caret line="18" column="60" selection-start-line="18" selection-start-column="60" selection-end-line="18" selection-end-column="60" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
-            <element signature="e#716#903#0" expanded="true" />
-            <element signature="e#1115#1584#0" expanded="true" />
-            <element signature="e#1337#1519#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/ImporterFactory.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
+        <state relative-caret-position="85">
           <caret line="12" selection-end-line="12" />
           <folding>
             <element signature="e#0#35#0" expanded="true" />
@@ -841,8 +802,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/config/IObjectSourceConfig.ts">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="1" column="38" selection-start-line="1" selection-start-column="38" selection-end-line="1" selection-end-column="38" />
+        <state relative-caret-position="85">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="102">
+            <caret line="65" selection-start-line="65" selection-end-line="65" />
+          </first_editor>
+          <second_editor>
+            <markdownNavigatorState />
+          </second_editor>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="816">
+          <caret line="48" lean-forward="true" selection-start-line="48" selection-end-line="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>

@@ -2,8 +2,8 @@
   "name": "xlsx-import",
   "version": "2.0.1",
   "description": "Import data from xlsx file using configured pattern",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "xlsx-import/lib/ImporterFactory.js",
+  "types": "xlsx-import/lib/ImporterFactory.d.ts",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Siemienik/xlsx-importer"
