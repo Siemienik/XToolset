@@ -24,5 +24,5 @@ describe('64k rows', function () {
         chai.expect(result[9].factor).equals(1.1);
         chai.expect(result[399].id).equals(400);
         chai.expect(result[399].factor).equals(1.0025);
-    }).timeout(5000);
+    }).timeout(15000);
 });
