@@ -3,6 +3,15 @@
 # xlsx-renderer
 Render xlsx from a template (it uses another xlsx file with special commands like "#! FOR_EACH item items")
 
+## Install:
+
+package.json:
+```
+    "xls-renderer": "git+ssh://git@github.com/siemienik/xlsx-renderer.git#release/v1",
+```
+
+`npm install`
+
 ## In Cell Commands:
 
 1. `## varToDisplayInThisCell`
@@ -18,3 +27,32 @@ Render xlsx from a template (it uses another xlsx file with special commands lik
 10. `#! AVERAGE item` write average formula of all items from previous for-each, it has to be placed after the for-each was finished.
 11. `#! SUM item` similar to average
 12. `#! DUMP_COLS arrayVar` write to next columns all array items (1 item = 1 column)
+
+
+## Sample code:
+
+```javascript
+import Renderer from './xls-renderer/Renderer'
+import {Workbook} from 'exceljs'
+
+//*
+import DebugCellTemplatePool from "./xls-renderer-debug/CellTemplateDebugPool";
+const renderer = new Renderer(new DebugCellTemplatePool());
+/*/
+import CellTemplatePool from "./xls-renderer/CellTemplatePool";
+const renderer = new Renderer(new CellTemplatePool()); 
+//*/
+
+
+const viewModel = new MyAwesomeReportVm(); //or something else
+
+(async () => {
+    const result = await renderer.render(async () => {
+            const template = new Workbook();
+            return await template.xlsx.readFile('./my-awesome-raport-template.xlsx');
+        }, viewModel);     
+    
+    await result.xlsx.writeFile('./my-awesome-raport.xlsx');
+})();
+
+```
