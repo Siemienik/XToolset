@@ -12,7 +12,7 @@ export default class WsNameCell extends BaseCell {
 
         scope.setCurrentOutputValue(null);
 
-        scope.output.worksheets[scope.output_cell.ws].name = this._getName(scope);
+        scope.output.worksheets[scope.outputCell.ws].name = this._getName(scope);
         scope.incrementCol();
 
         return this;
@@ -28,7 +28,7 @@ export default class WsNameCell extends BaseCell {
         name = name.replace(/[\\\/*\[\]?]/g, '.');
 
         if (scope.output.worksheets.find(x => x.name === name)) {
-            name += ` ${scope.output_cell.ws}`;
+            name += ` ${scope.outputCell.ws}`;
         }
         
         name = name.length > 31 ? name.substr(name.length - 31) : name;

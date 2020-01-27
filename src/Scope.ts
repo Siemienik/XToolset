@@ -1,22 +1,21 @@
-import {Address, Cell, CellValue, Workbook} from "exceljs";
+import { Address, Cell, CellValue, Workbook } from 'exceljs';
 
-export interface CellCoord {
+export interface ICellCoord {
     r: number;
     c: number;
     ws: number;
 }
 
-export default class Scope {
+export class Scope {
+    public outputCell: ICellCoord = Object.freeze({ r: 1, c: 1, ws: 0 });
 
-    public output_cell: CellCoord = Object.freeze({r: 1, c: 1, ws: 0});
+    public templateCell: ICellCoord = Object.freeze({ r: 1, c: 1, ws: 0 });
 
-    public template_cell: CellCoord = Object.freeze({r: 1, c: 1, ws: 0});
+    private masters: { [id: string]: Address } = {};
 
-    private _masters: { [id: string]: Address; } = {};
+    private frozen: number = 0;
 
-    private _frozen: number = 0;
-
-    private _finished: boolean = false;
+    private finished: boolean = false;
 
     constructor(public template: Workbook, public output: Workbook, public vm: any) {
     }
@@ -25,24 +24,24 @@ export default class Scope {
         return this.getCurrentTemplateCell().value;
     }
 
-    getCurrentTemplateCell(): Cell {
-        return this.template.worksheets[this.template_cell.ws].getCell(this.template_cell.r, this.template_cell.c);
+    public getCurrentTemplateCell(): Cell {
+        return this.template.worksheets[this.templateCell.ws].getCell(this.templateCell.r, this.templateCell.c);
     }
 
-    setCurrentOutputValue(value: CellValue) {
-        if (this._frozen) {
+    public setCurrentOutputValue(value: CellValue) {
+        if (this.frozen) {
             return;
         }
-        this.output.worksheets[this.output_cell.ws].getCell(this.output_cell.r, this.output_cell.c).value = value;
+        this.output.worksheets[this.outputCell.ws].getCell(this.outputCell.r, this.outputCell.c).value = value;
     }
 
-    applyStyles() {
-        if (this._frozen) {
+    public applyStyles() {
+        if (this.frozen) {
             return;
         }
-        const ct = this.template_cell;
+        const ct = this.templateCell;
         const wst = this.template.worksheets[ct.ws];
-        const co = this.output_cell;
+        const co = this.outputCell;
         const wso = this.output.worksheets[co.ws];
         wso.getRow(co.r).height = wst.getRow(ct.r).height;
         wso.getCell(co.r, co.c).style = wst.getCell(ct.r, ct.c).style;
@@ -51,66 +50,65 @@ export default class Scope {
         }
     }
 
-    applyMerge() {
-        const tws = this.template.worksheets[this.template_cell.ws];
-        const tc = tws.getCell(this.template_cell.r, this.template_cell.c);
+    public applyMerge() {
+        const tws = this.template.worksheets[this.templateCell.ws];
+        const tc = tws.getCell(this.templateCell.r, this.templateCell.c);
 
-        const ows = this.output.worksheets[this.output_cell.ws];
-        const current = ows.getCell(this.output_cell.r, this.output_cell.c).model.address;
+        const ows = this.output.worksheets[this.outputCell.ws];
+        const current = ows.getCell(this.outputCell.r, this.outputCell.c).model.address;
 
         if (tc.model.master && tc.model.master !== tc.address) {
-            const range = `${this._masters[tc.model.master] || tc.model.master}:${current}`;
+            const range = `${this.masters[tc.model.master] || tc.model.master}:${current}`;
 
             ows.unMergeCells(range);
             ows.mergeCells(range);
         } else if (tc.isMerged) {
-            this._masters[tc.address] = current;
+            this.masters[tc.address] = current;
         }
     }
 
-    incrementCol() {
-        if (!this._finished) {
-            this.template_cell = Object.freeze({...this.template_cell, c: this.template_cell.c + 1});
+    public incrementCol() {
+        if (!this.finished) {
+            this.templateCell = Object.freeze({ ...this.templateCell, c: this.templateCell.c + 1 });
         }
 
-        this.output_cell = Object.freeze({...this.output_cell, c: this.output_cell.c + 1});
+        this.outputCell = Object.freeze({ ...this.outputCell, c: this.outputCell.c + 1 });
     }
 
-    incrementRow() {
-        if (!this._finished) {
-            this.template_cell = Object.freeze({...this.template_cell, r: this.template_cell.r + 1, c: 1});
+    public incrementRow() {
+        if (!this.finished) {
+            this.templateCell = Object.freeze({ ...this.templateCell, r: this.templateCell.r + 1, c: 1 });
         }
 
-        if (this._frozen) {
-            this.output.worksheets[this.output_cell.ws].spliceRows(this.output_cell.r + 1, 1); //todo refactoring
-            this.output_cell = Object.freeze({...this.output_cell, c: 1})
+        if (this.frozen) {
+            this.output.worksheets[this.outputCell.ws].spliceRows(this.outputCell.r + 1, 1); // todo refactoring
+            this.outputCell = Object.freeze({ ...this.outputCell, c: 1 });
         } else {
-            this.output_cell = Object.freeze({...this.output_cell, r: this.output_cell.r + 1, c: 1})
+            this.outputCell = Object.freeze({ ...this.outputCell, r: this.outputCell.r + 1, c: 1 });
         }
     }
 
-    freezeOutput() {
-        this._frozen++;
+    public freezeOutput() {
+        this.frozen++;
     }
 
-    unfreezeOutput() {
-        this._frozen = Math.max(this._frozen - 1, 0);
+    public unfreezeOutput() {
+        this.frozen = Math.max(this.frozen - 1, 0);
     }
 
     /**
      * @returns {boolean}
      */
-    isFrozen() {
-        return this._frozen > 0;
+    public isFrozen() {
+        return this.frozen > 0;
     }
 
-    finish() {
-        this._finished = true;
+    public finish() {
+        this.finished = true;
         this.unfreezeOutput();
     }
 
-    isFinished() {
-        return this._finished;
+    public isFinished() {
+        return this.finished;
     }
-
 }

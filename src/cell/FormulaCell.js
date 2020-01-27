@@ -10,7 +10,7 @@ class FormulaCell extends BaseCell {
     apply(scope) {
         super.apply(scope);
 
-        const shift = scope.output_cell.r - scope.template_cell.r;
+        const shift = scope.outputCell.r - scope.templateCell.r;
 
         const regex = /([a-zA-Z]+)([1-9][0-9]*)/g;
         const value = scope.getCurrentTemplateValue();

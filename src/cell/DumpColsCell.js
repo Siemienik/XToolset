@@ -18,7 +18,7 @@ export default class DumpColsCell extends BaseCell {
         cols.forEach((x) => {
             scope.setCurrentOutputValue(x);
             scope.applyStyles();
-            scope.output_cell = Object.freeze({...scope.output_cell, c: scope.output_cell.c + 1});
+            scope.outputCell = Object.freeze({ ...scope.outputCell, c: scope.outputCell.c + 1 });
         });
 
         scope.incrementCol();

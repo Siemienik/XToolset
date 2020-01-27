@@ -6,20 +6,20 @@ class FinishCell extends BaseCell {
         super.apply(scope);
         scope.setCurrentOutputValue(null);
 
-        let wst = scope.template.worksheets[scope.template_cell.ws];
+        let wst = scope.template.worksheets[scope.templateCell.ws];
 
         if (FinishCell._getCondition(scope)) { //todo refactoring scope.iterateWorksheet 
 
-            const wst_next = scope.template_cell.ws + 1;
+            const wst_next = scope.templateCell.ws + 1;
             wst = scope.template.worksheets[wst_next];
             if (wst) {
-                scope.template_cell = Object.freeze({
-                    ...scope.template_cell,
-                    ws: scope.template_cell.ws + 1,
+                scope.templateCell = Object.freeze({
+                    ...scope.templateCell,
+                    ws: scope.templateCell.ws + 1,
                     r: 1,
                     c: 1
                 });
-                scope.output_cell = Object.freeze({...scope.output_cell, ws: scope.output_cell.ws + 1, r: 1, c: 1});
+                scope.outputCell = Object.freeze({ ...scope.outputCell, ws: scope.outputCell.ws + 1, r: 1, c: 1 });
 
                 scope.unfreezeOutput();
             }
@@ -27,10 +27,10 @@ class FinishCell extends BaseCell {
                 scope.finish();
             }
         } else {//todo refactoring scope.duplicateWorksheet
-            let wso = scope.output.addWorksheet(`Sheet ${scope.output_cell.ws + 1}`, wst); //todo if append , problems may happen
+            let wso = scope.output.addWorksheet(`Sheet ${scope.outputCell.ws + 1}`, wst); //todo if append , problems may happen
 
-            scope.template_cell = Object.freeze({...scope.template_cell, r: 1, c: 1});
-            scope.output_cell = Object.freeze({...scope.output_cell, ws: scope.output_cell.ws + 1, r: 1, c: 1});
+            scope.templateCell = Object.freeze({ ...scope.templateCell, r: 1, c: 1 });
+            scope.outputCell = Object.freeze({ ...scope.outputCell, ws: scope.outputCell.ws + 1, r: 1, c: 1 });
 
 
             // noinspection JSCheckFunctionSignatures - todo exceljs type mismatch

@@ -18,12 +18,12 @@ class EndLoopCell extends BaseCell {
 
         scope.vm[target] = Object.freeze({
             ...scope.vm[target],
-            __end: scope.template_cell,
+            __end: scope.templateCell,
             __insetRows: true
         });
 
         if (__start && !__iterated) {
-            scope.template_cell = __start;
+            scope.templateCell = __start;
         } else {
             scope.incrementRow();
         }

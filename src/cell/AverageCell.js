@@ -15,8 +15,8 @@ export default class AverageCell extends BaseCell {
         const __endOutput = scope.vm[target] && scope.vm[target].__endOutput;
 
         if (__startOutput && __endOutput) {
-            const start = scope.output.worksheets[scope.output_cell.ws].getCell(__startOutput, scope.output_cell.c).address; //todo refactoring
-            const end = scope.output.worksheets[scope.output_cell.ws].getCell(__endOutput, scope.output_cell.c).address; //todo refactoring
+            const start = scope.output.worksheets[scope.outputCell.ws].getCell(__startOutput, scope.outputCell.c).address; //todo refactoring
+            const end = scope.output.worksheets[scope.outputCell.ws].getCell(__endOutput, scope.outputCell.c).address; //todo refactoring
 
             scope.setCurrentOutputValue({formula: `average(${start}:${end})`});
         }

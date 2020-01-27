@@ -30,9 +30,9 @@ class ForEachCell extends BaseCell {
         if (__index === 1) {
             super.apply(scope);
         }
-        
-        const __start = scope.vm[target] && scope.vm[target].__start || scope.template_cell;
-        const __startOutput = scope.vm[target] && scope.vm[target].__startOutput || scope.output_cell.r + 1;
+
+        const __start = scope.vm[target] && scope.vm[target].__start || scope.templateCell;
+        const __startOutput = scope.vm[target] && scope.vm[target].__startOutput || scope.outputCell.r + 1;
         const __end = scope.vm[target] && scope.vm[target].__end;
         const __last = typeof __from.split('.').reduce((p, c) => p[c] || {}, scope.vm)[__index] === 'undefined';
         let __endOutput = scope.vm[target] && scope.vm[target].__endOutput;
@@ -57,17 +57,17 @@ class ForEachCell extends BaseCell {
             if (!scope.isFrozen()) {
                 for (let i = __end.r; i > __start.r; i--) {
                     // noinspection JSCheckFunctionSignatures - todo exceljs signature mismatch
-                    scope.output.worksheets[scope.output_cell.ws].spliceRows( //todo refactoring
-                        scope.output_cell.r + 1,
+                    scope.output.worksheets[scope.outputCell.ws].spliceRows( //todo refactoring
+                        scope.outputCell.r + 1,
                         0,
-                        scope.template.worksheets[scope.template_cell.ws].getRow(i)
+                        scope.template.worksheets[scope.templateCell.ws].getRow(i),
                     );
                 }
             }
         }
 
         if (__iterated) {
-            __endOutput = __endOutput || scope.output_cell.r;
+            __endOutput = __endOutput || scope.outputCell.r;
         }
 
         scope.incrementRow();

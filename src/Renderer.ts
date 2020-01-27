@@ -1,13 +1,13 @@
-import Scope from "./Scope";
-import CellTemplatePool from "./CellTemplatePool"
-import {Workbook} from "exceljs";
+import { Workbook } from 'exceljs';
 
-export default class Renderer {
-    constructor(private cellTemplatePool: CellTemplatePool = new CellTemplatePool) {
+import { Scope } from './Scope';
+import { CellTemplatePool } from './CellTemplatePool';
+
+export class Renderer {
+    constructor(private cellTemplatePool: CellTemplatePool = new CellTemplatePool()) {
     }
 
-
-    async render(templateFactory: () => Workbook, vm: any): Promise<Workbook> {
+    public async render(templateFactory: () => Workbook, vm: any): Promise<Workbook> {
         const template = await templateFactory();
         const output = await templateFactory();
 
