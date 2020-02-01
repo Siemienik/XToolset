@@ -3,11 +3,11 @@ import { Cell } from 'exceljs';
 import { BaseCell, CellType } from './cell/BaseCell';
 import { NormalCell } from './cell/NormalCell';
 // import VariableCell from "./cell/VariableCell";
-// import FinishCell from "./cell/FinishCell";
+import { FinishCell } from './cell/FinishCell';
 // import ForEachCell from "./cell/ForEachCell";
 // import ContinueCell from "./cell/ContinueCell";
 // import EndLoopCell from "./cell/EndLoopCell";
-// import EndRowCell from "./cell/EndRowCell";
+import { EndRowCell } from './cell/EndRowCell';
 // import SumCell from "./cell/SumCell";
 // import AverageCell from "./cell/AverageCell";
 // import DeleteCell from "./cell/DeleteCell";
@@ -19,12 +19,12 @@ import { NormalCell } from './cell/NormalCell';
 export class CellTemplatePool {
     protected cells: CellType[] = [
         NormalCell,
-        // EndRowCell,
+        EndRowCell,
         // VariableCell,
         // FormulaCell,
         // HyperlinkCell,
         // ForEachCell,
-        // FinishCell,
+        FinishCell,
         // EndLoopCell,
         // ContinueCell,
         // DumpColsCell,

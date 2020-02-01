@@ -9,7 +9,7 @@ export class NormalCell extends BaseCell {
      * @param {Cell} cell
      * @returns {boolean}
      */
-    public static match(cell: Cell) {
+    public static match(cell: Cell): boolean {
         return (
             cell &&
             cell.type === ValueType.String &&
@@ -23,7 +23,7 @@ export class NormalCell extends BaseCell {
      * @param {Scope} scope
      * @returns {NormalCell}
      */
-    public apply(scope: Scope) {
+    public apply(scope: Scope): NormalCell {
         super.apply(scope);
 
         scope.incrementCol();

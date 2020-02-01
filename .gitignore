@@ -6,5 +6,5 @@
 /.idea/
 
 
-/src/example.js
+/src/example.ts
 *.xlsx

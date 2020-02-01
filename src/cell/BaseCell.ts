@@ -8,7 +8,7 @@ export class BaseCell {
     /**
      * check if this commend can parse `value`
      */
-    public static match(cell: Cell) {
+    public static match(cell: Cell): boolean {
         return false;
     }
 
@@ -16,7 +16,7 @@ export class BaseCell {
         throw new TypeError(`Cannot construct ${BaseCell.name} instances directly. It's abstract.`);
     }
 
-    public apply(scope: Scope) {
+    public apply(scope: Scope): BaseCell {
         if (scope.outputCell.c > 16384) {
             scope.outputCell = Object.freeze({ ...scope.outputCell, c: 16384 });
         }

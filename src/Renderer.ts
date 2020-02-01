@@ -7,7 +7,7 @@ export class Renderer {
     constructor(private cellTemplatePool: CellTemplatePool = new CellTemplatePool()) {
     }
 
-    public async render(templateFactory: () => Workbook, vm: any): Promise<Workbook> {
+    public async render(templateFactory: () => Promise<Workbook>, vm: any): Promise<Workbook> {
         const template = await templateFactory();
         const output = await templateFactory();
 

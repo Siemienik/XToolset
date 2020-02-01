@@ -1,13 +1,9 @@
-import BaseCell from "./BaseCell";
-import {ValueType} from "exceljs";
+import { BaseCell } from './BaseCell';
+import { Cell, ValueType } from 'exceljs';
+import { Scope } from '../Scope';
 
-export default class EndRowCell extends BaseCell {
-    /**
-     * @param {Scope} scope
-     *
-     * @returns {EndRowCell}
-     */
-    apply(scope) {
+export class EndRowCell extends BaseCell {
+    apply(scope: Scope): EndRowCell {
         super.apply(scope);
 
         scope.setCurrentOutputValue(null);
@@ -16,7 +12,7 @@ export default class EndRowCell extends BaseCell {
         return this;
     }
 
-    static match(cell) {
+    static match(cell: Cell): boolean {
         return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value === '#! END_ROW';
     }
 

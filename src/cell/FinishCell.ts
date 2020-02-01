@@ -1,8 +1,9 @@
-import BaseCell from "./BaseCell";
-import {ValueType} from "exceljs";
+import { BaseCell } from './BaseCell';
+import { Cell, ValueType } from 'exceljs';
+import { Scope } from '../Scope';
 
-class FinishCell extends BaseCell {
-    apply(scope) {
+export class FinishCell extends BaseCell {
+    apply(scope: Scope): FinishCell {
         super.apply(scope);
         scope.setCurrentOutputValue(null);
 
@@ -41,7 +42,7 @@ class FinishCell extends BaseCell {
         return this;
     }
 
-    static match(cell) {
+    static match(cell: Cell): boolean {
         return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 9) === '#! FINISH';
     }
 
@@ -56,8 +57,8 @@ class FinishCell extends BaseCell {
      * @returns {boolean}
      * @protected
      */
-    static _getCondition(scope) {
-        const args = scope.getCurrentTemplateValue().split(' ');
+    private static _getCondition(scope: Scope): boolean {
+        const args = scope.getCurrentTemplateValue()?.toString().split(' ') || [];
         if (args.length < 3) {
             return true;
         }
@@ -69,4 +70,3 @@ class FinishCell extends BaseCell {
     }
 }
 
-export default FinishCell
