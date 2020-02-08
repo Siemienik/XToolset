@@ -6,7 +6,7 @@ export class CellTemplateDebugPool extends CellTemplatePool {
     /**
      * do normal match and log in console result.
      */
-    match(cell: Cell): BaseCell {
+    public match(cell: Cell): BaseCell {
         const result = super.match(cell);
 
         console.log(result, cell && cell.value);

@@ -2,7 +2,7 @@ import { Cell } from 'exceljs';
 
 import { BaseCell, CellType } from './cell/BaseCell';
 import { NormalCell } from './cell/NormalCell';
-// import VariableCell from "./cell/VariableCell";
+import { VariableCell } from './cell/VariableCell';
 import { FinishCell } from './cell/FinishCell';
 // import ForEachCell from "./cell/ForEachCell";
 // import ContinueCell from "./cell/ContinueCell";
@@ -12,7 +12,7 @@ import { EndRowCell } from './cell/EndRowCell';
 // import AverageCell from "./cell/AverageCell";
 // import DeleteCell from "./cell/DeleteCell";
 // import DumpColsCell from "./cell/DumpColsCell";
-// import WsNameCell from "./cell/WsNameCell";
+import { WsNameCell } from './cell/WsNameCell';
 // import HyperlinkCell from "./cell/HyperlinkCell";
 // import FormulaCell from "./cell/FormulaCell";
 
@@ -20,7 +20,7 @@ export class CellTemplatePool {
     protected cells: CellType[] = [
         NormalCell,
         EndRowCell,
-        // VariableCell,
+        VariableCell,
         // FormulaCell,
         // HyperlinkCell,
         // ForEachCell,
@@ -30,7 +30,7 @@ export class CellTemplatePool {
         // DumpColsCell,
         // SumCell,
         // AverageCell,
-        // WsNameCell,
+        WsNameCell,
         // DeleteCell,
     ];
 

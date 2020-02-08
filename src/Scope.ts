@@ -1,10 +1,6 @@
 import { Address, Cell, CellValue, Workbook } from 'exceljs';
-
-export interface ICellCoord {
-    r: number;
-    c: number;
-    ws: number;
-}
+import { ViewModel } from './ViewModel';
+import { ICellCoord } from './ICellCoord';
 
 export class Scope {
     public outputCell: ICellCoord = Object.freeze({ r: 1, c: 1, ws: 0 });
@@ -17,7 +13,7 @@ export class Scope {
 
     private finished: boolean = false;
 
-    constructor(public template: Workbook, public output: Workbook, public vm: any) {
+    constructor(public template: Workbook, public output: Workbook, public vm: ViewModel) {
     }
 
     public getCurrentTemplateValue(): CellValue {
