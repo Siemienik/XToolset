@@ -1,14 +1,14 @@
-import BaseCell from "./BaseCell";
-import Scope from "../Scope";
-import {ValueType} from "exceljs";
+import { BaseCell } from './BaseCell';
+import { Scope } from '../Scope';
+import { Cell, ValueType } from 'exceljs';
 
 /**
- * Pattern: `#! FOR_EACH [TARGET] [FROM]`
- * Iterate through `vm[FROM]` and store current item in readonly `vm[TARGET]`.
+ * Pattern: `#! FOR_EACH [TARGET] [SOURCE]`
+ * Iterate through `vm[SOURCE]` and store current item in readonly `vm[TARGET]`.
  * `vm[TARGET]` has additional fields:
  *
- * * `__from` - keeps `FROM` parameter's value
- * * `__index` - current 1-based iteration index (`vm[TARGET]` is `vm[FROM][__index-1]`)
+ * * `__from` - keeps `SOURCE` parameter's value
+ * * `__index` - current 1-based iteration index (`vm[TARGET]` is `vm[SOURCE][__index-1]`)
  * * `__start` - template foreach start cell
  * * `__end` - template loop's end cell, it is undefined before first `END_LOOP`
  * * `__iterated` - iteration has been finished
@@ -16,14 +16,23 @@ import {ValueType} from "exceljs";
  * * `__startOutput` - first output cell
  * * `__endOutput` - last output cell
  */
-class ForEachCell extends BaseCell {
-    /**
-     * @param {Scope} scope
-     * @returns {ForEachCell}
-     */
-    apply(scope) {
-        const target = ForEachCell._getTargetParam(scope);
-        const __from = this._getFromParam(scope);
+export class ForEachCell extends BaseCell {
+    public static match(cell: Cell): boolean {
+        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 11) === '#! FOR_EACH';
+    }
+
+    protected static getTargetParam(scope: Scope): string {
+        return scope.getCurrentTemplateValue()?.toString().split(' ')[2] || '';
+    }
+
+    protected getSourceParam(scope: Scope): string {
+        return scope.getCurrentTemplateValue()?.toString().split(' ')[3] || '';
+    }
+
+
+    public apply(scope: Scope): ForEachCell {
+        const target = ForEachCell.getTargetParam(scope);
+        const __from = this.getSourceParam(scope);
 
         //todo refactoring
         const __index = (scope.vm[target] && scope.vm[target].__index || 0) + 1;
@@ -56,11 +65,10 @@ class ForEachCell extends BaseCell {
             __insetRows = false;
             if (!scope.isFrozen()) {
                 for (let i = __end.r; i > __start.r; i--) {
-                    // noinspection JSCheckFunctionSignatures - todo exceljs signature mismatch
                     scope.output.worksheets[scope.outputCell.ws].spliceRows( //todo refactoring
                         scope.outputCell.r + 1,
                         0,
-                        scope.template.worksheets[scope.templateCell.ws].getRow(i),
+                        [],
                     );
                 }
             }
@@ -87,33 +95,4 @@ class ForEachCell extends BaseCell {
         
         return this;
     }
-
-    /**
-     * @param {Scope} scope
-     * @returns {string}
-     * @protected
-     */
-    static _getTargetParam(scope) {
-        return scope.getCurrentTemplateValue().split(' ')[2];
-    }
-
-    /**
-     * @param {Scope} scope
-     * @returns {string}
-     * @protected
-     */
-    _getFromParam(scope) {
-        return scope.getCurrentTemplateValue().split(' ')[3];
-    }
-
-
-    /**
-     * @param {Cell} cell
-     * @returns {boolean}
-     */
-    static match(cell) {
-        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 11) === '#! FOR_EACH';
-    }
 }
-
-export default ForEachCell
