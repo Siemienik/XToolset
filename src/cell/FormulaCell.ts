@@ -1,19 +1,29 @@
-import BaseCell from "./BaseCell";
-import {ValueType} from "exceljs";
+import { BaseCell } from './BaseCell';
+import { Cell, CellFormulaValue, ValueType } from 'exceljs';
+import { Scope } from '../Scope';
 
-class FormulaCell extends BaseCell {
+export class FormulaCell extends BaseCell {
+    /**
+     * @inheritDoc
+     * @param {Cell} cell
+     * @returns {boolean}
+     */
+    public static match(cell: Cell): boolean {
+        return cell && cell.type === ValueType.Formula;
+    }
+
     /**
      * @inheritDoc
      * @param {Scope} scope
      * @returns {FormulaCell}
      */
-    apply(scope) {
+    public apply(scope: Scope): FormulaCell {
         super.apply(scope);
 
         const shift = scope.outputCell.r - scope.templateCell.r;
 
         const regex = /([a-zA-Z]+)([1-9][0-9]*)/g;
-        const value = scope.getCurrentTemplateValue();
+        const value = scope.getCurrentTemplateValue() as CellFormulaValue;
         let formula = value.formula;
 
         //todo extract method match addresses
@@ -25,26 +35,15 @@ class FormulaCell extends BaseCell {
         addresses.reverse();
 
         //todo extract method getShiftedFormula
-        let formulaChars = [...formula];
+        let formulaChars = Array.from(formula);
         addresses.forEach(a => formulaChars.splice(a.index, a.len, `${a.col}${a.row + shift}`));
         formula = formulaChars.join('');
 
-        scope.setCurrentOutputValue({formula});
+        scope.setCurrentOutputValue({ formula } as CellFormulaValue);
 
         scope.incrementCol();
 
         return this;
     }
 
-    /**
-     * @inheritDoc
-     * @param {Cell} cell
-     * @returns {boolean}
-     */
-    static match(cell) {
-        return cell && cell.type === ValueType.Formula;
-    }
-
 }
-
-export default FormulaCell

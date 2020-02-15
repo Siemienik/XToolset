@@ -10,19 +10,19 @@ import { FinishCell } from './cell/FinishCell';
 import { EndRowCell } from './cell/EndRowCell';
 // import SumCell from "./cell/SumCell";
 // import AverageCell from "./cell/AverageCell";
-// import DeleteCell from "./cell/DeleteCell";
+import { DeleteCell } from './cell/DeleteCell';
 // import DumpColsCell from "./cell/DumpColsCell";
 import { WsNameCell } from './cell/WsNameCell';
-// import HyperlinkCell from "./cell/HyperlinkCell";
-// import FormulaCell from "./cell/FormulaCell";
+import { HyperlinkCell } from './cell/HyperlinkCell';
+import { FormulaCell } from './cell/FormulaCell';
 
 export class CellTemplatePool {
     protected cells: CellType[] = [
         NormalCell,
         EndRowCell,
         VariableCell,
-        // FormulaCell,
-        // HyperlinkCell,
+        FormulaCell,
+        HyperlinkCell,
         // ForEachCell,
         FinishCell,
         // EndLoopCell,
@@ -31,7 +31,7 @@ export class CellTemplatePool {
         // SumCell,
         // AverageCell,
         WsNameCell,
-        // DeleteCell,
+        DeleteCell,
     ];
 
     protected instances: { [key: string]: BaseCell } = {};
