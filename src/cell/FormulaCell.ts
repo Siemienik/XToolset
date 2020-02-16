@@ -1,22 +1,12 @@
-import { BaseCell } from './BaseCell';
-import { Cell, CellFormulaValue, ValueType } from 'exceljs';
-import { Scope } from '../Scope';
+import {BaseCell} from './BaseCell';
+import {Cell, CellFormulaValue, ValueType} from 'exceljs';
+import {Scope} from '../Scope';
 
 export class FormulaCell extends BaseCell {
-    /**
-     * @inheritDoc
-     * @param {Cell} cell
-     * @returns {boolean}
-     */
     public static match(cell: Cell): boolean {
         return cell && cell.type === ValueType.Formula;
     }
 
-    /**
-     * @inheritDoc
-     * @param {Scope} scope
-     * @returns {FormulaCell}
-     */
     public apply(scope: Scope): FormulaCell {
         super.apply(scope);
 
@@ -26,16 +16,20 @@ export class FormulaCell extends BaseCell {
         const value = scope.getCurrentTemplateValue() as CellFormulaValue;
         let formula = value.formula;
 
-        //todo extract method match addresses
-        let matches;
-        let addresses = [];
-        while (matches = regex.exec(formula)) {
+        // todo extract method match addresses
+        const addresses = [];
+        while (true) {
+            const matches = regex.exec(formula);
+            if (matches === null) {
+                break;
+            }
+            
             addresses.push({index: matches.index, col: matches[1], row: +matches[2], len: matches[0].length})
         }
         addresses.reverse();
 
-        //todo extract method getShiftedFormula
-        let formulaChars = Array.from(formula);
+        // todo extract method getShiftedFormula
+        const formulaChars = Array.from(formula);
         addresses.forEach(a => formulaChars.splice(a.index, a.len, `${a.col}${a.row + shift}`));
         formula = formulaChars.join('');
 

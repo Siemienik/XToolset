@@ -2,6 +2,7 @@ import { BaseCell } from './BaseCell';
 import { Cell, ValueType } from 'exceljs';
 import { Scope } from '../Scope';
 
+/* tslint:disable:variable-name */
 export class FinishCell extends BaseCell {
     public static match(cell: Cell): boolean {
         return (
@@ -18,12 +19,8 @@ export class FinishCell extends BaseCell {
      * * condition's path follow to undefined
      * * condition is true
      * In other way, the same template sheet should render next output sheet - as long as condition is false
-     *
-     * @param {Scope} scope
-     * @returns {boolean}
-     * @protected
      */
-    private static _getCondition(scope: Scope): boolean {
+    protected static getCondition(scope: Scope): boolean {
         const args =
             scope
                 .getCurrentTemplateValue()
@@ -44,7 +41,7 @@ export class FinishCell extends BaseCell {
 
         let wst = scope.template.worksheets[scope.templateCell.ws];
 
-        if (FinishCell._getCondition(scope)) {
+        if (FinishCell.getCondition(scope)) {
             // todo refactoring scope.iterateWorksheet
 
             const wstNext = scope.templateCell.ws + 1;

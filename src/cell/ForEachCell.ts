@@ -2,6 +2,7 @@ import { BaseCell } from './BaseCell';
 import { Scope } from '../Scope';
 import { Cell, ValueType } from 'exceljs';
 
+/* tslint:disable:variable-name */
 /**
  * Pattern: `#! FOR_EACH [TARGET] [SOURCE]`
  * Iterate through `vm[SOURCE]` and store current item in readonly `vm[TARGET]`.
@@ -25,16 +26,12 @@ export class ForEachCell extends BaseCell {
         return scope.getCurrentTemplateValue()?.toString().split(' ')[2] || '';
     }
 
-    protected getSourceParam(scope: Scope): string {
-        return scope.getCurrentTemplateValue()?.toString().split(' ')[3] || '';
-    }
-
 
     public apply(scope: Scope): ForEachCell {
         const target = ForEachCell.getTargetParam(scope);
         const __from = this.getSourceParam(scope);
 
-        //todo refactoring
+        // todo refactoring
         const __index = (scope.vm[target] && scope.vm[target].__index || 0) + 1;
         if (__index === 1) {
             super.apply(scope);
@@ -65,7 +62,7 @@ export class ForEachCell extends BaseCell {
             __insetRows = false;
             if (!scope.isFrozen()) {
                 for (let i = __end.r; i > __start.r; i--) {
-                    scope.output.worksheets[scope.outputCell.ws].spliceRows( //todo refactoring
+                    scope.output.worksheets[scope.outputCell.ws].spliceRows( // todo refactoring
                         scope.outputCell.r + 1,
                         0,
                         [],
@@ -94,5 +91,9 @@ export class ForEachCell extends BaseCell {
         });
         
         return this;
+    }
+
+    protected getSourceParam(scope: Scope): string {
+        return scope.getCurrentTemplateValue()?.toString().split(' ')[3] || '';
     }
 }

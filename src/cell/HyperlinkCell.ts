@@ -23,7 +23,6 @@ export class HyperlinkCell extends BaseCell {
         const url = HyperlinkCell.getUrlParam(scope).split('.').reduce((p, c) => p[c] || {}, scope.vm);
         if (typeof url === 'string') {
             const label = HyperlinkCell.getLabelParam(scope).split('.').reduce((p, c) => p[c] || {}, scope.vm) || url;
-            console.log(label);
             scope.setCurrentOutputValue({ text: label, hyperlink: url });
         }
 

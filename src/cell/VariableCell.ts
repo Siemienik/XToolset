@@ -25,6 +25,7 @@ export class VariableCell extends BaseCell {
         const value = path.reduce((p, c) => (typeof p === 'object' ? p[c] : p), scope.vm);
         if (value === undefined) {
             // todo do it better (use logger or somethink like that)
+            // tslint:disable-next-line:no-console
             console.warn(
                 `WARN: ${path} is undefined for output: ${scope.outputCell} when template is:${scope.templateCell}`,
             );

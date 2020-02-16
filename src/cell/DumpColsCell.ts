@@ -3,7 +3,7 @@ import { Cell, ValueType } from 'exceljs';
 import { Scope } from '../Scope';
 
 export class DumpColsCell extends BaseCell {
-    static match(cell: Cell): boolean {
+    public static match(cell: Cell): boolean {
         return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 12) === '#! DUMP_COLS';
     }
 

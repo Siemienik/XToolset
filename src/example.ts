@@ -3,6 +3,7 @@ import { CellTemplateDebugPool } from './CellTemplateDebugPool';
 import { CellTemplatePool } from './CellTemplatePool';
 import { Workbook } from 'exceljs';
 
+// tslint:disable:comment-format 
 //*
 const debug = true;
 /*/

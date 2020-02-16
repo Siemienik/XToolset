@@ -2,6 +2,7 @@ import { BaseCell } from './BaseCell';
 import { Cell, ValueType } from 'exceljs';
 import { Scope } from '../Scope';
 
+/* tslint:disable:variable-name */
 export class EndLoopCell extends BaseCell {
     public static match(cell: Cell): boolean {
         return (

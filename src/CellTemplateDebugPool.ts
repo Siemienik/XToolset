@@ -1,7 +1,7 @@
 import { CellTemplatePool } from './CellTemplatePool';
 import { Cell } from 'exceljs';
 import { BaseCell } from './cell/BaseCell';
-
+/* tslint:disable:no-console */
 export class CellTemplateDebugPool extends CellTemplatePool {
     /**
      * do normal match and log in console result.
