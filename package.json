@@ -33,6 +33,7 @@
         "postversion": "git push && git push --tags"
     },
     "devDependencies": {
+        "@types/node": "^12.12.6",
         "@types/chai": "^4.1.7",
         "@types/mocha": "^5.2.6",
         "chai": "^4.2.0",
