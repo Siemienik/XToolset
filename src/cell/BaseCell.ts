@@ -4,7 +4,7 @@ import { Scope } from '../Scope';
 
 export declare type CellType = typeof BaseCell;
 
-export class BaseCell {
+export /* abstract */ class BaseCell { // can't be abstract :(
     /**
      * check if this commend can parse `value`
      */
@@ -12,7 +12,7 @@ export class BaseCell {
         return false;
     }
 
-    public BaseCell() {
+    public BaseCell() { // can't be marked by abstract keyword, so it throw type error.
         throw new TypeError(`Cannot construct ${BaseCell.name} instances directly. It's abstract.`);
     }
 

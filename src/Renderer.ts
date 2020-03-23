@@ -19,4 +19,13 @@ export class Renderer {
 
         return output;
     }
+
+    public async renderFromFile(templatePath: string, viewModel: any): Promise<Workbook> {
+        const result = await this.render(async () => {
+            const template = new Workbook();
+            return await template.xlsx.readFile(templatePath);
+        }, viewModel);
+
+        return await result;
+    }
 }
