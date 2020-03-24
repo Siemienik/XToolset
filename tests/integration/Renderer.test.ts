@@ -21,15 +21,16 @@ function assertCells(expected: Workbook, result: Workbook, factor: number = 10) 
 
 
             if (r === 1) {
-                chai.expect(ws.e.getColumn(c).width).eql(ws.r.getColumn(c).width);
+                chai.expect(ws.r.getColumn(c).width).eql(ws.e.getColumn(c).width);
             }
             if (c === 1) {
-                chai.expect(ws.e.getRow(r).height).eql(ws.r.getRow(r).height);
+                chai.expect(ws.r.getRow(r).height).eql(ws.e.getRow(r).height);
             }
-
-            chai.expect(cell.e.style).eql(cell.r.style);
-            chai.expect(cell.e.text).eql(cell.r.text);
-            chai.expect(cell.e.value).eql(cell.r.value);
+            
+            // console.log(r,c);
+            chai.expect(cell.r.style).eql(cell.e.style);
+            chai.expect(cell.r.text).eql(cell.e.text);
+            chai.expect(cell.r.value).eql(cell.e.value);
         }
     }
 }
@@ -57,11 +58,11 @@ describe('INTEGRATION:: Test xlsx renderer ', function () {
 
             chai.expect(() => assertCells(expected, failedWorksheetAmount, 20)).throw("expected 2 to deeply equal 3");
             chai.expect(() => assertCells(expected, failedWorksheetNames, 20)).throw('expected [ \'Sheet1\', \'Sheet2\' ] to deeply equal [ \'Sheet1\', \'Sheet3\' ]');
-            chai.expect(() => assertCells(expected, failedWidth, 20)).throw("expected 13 to deeply equal 7.90625");
-            chai.expect(() => assertCells(expected, failedHeight, 20)).throw("expected 15 to deeply equal 34.5");
+            chai.expect(() => assertCells(expected, failedWidth, 20)).throw("expected 7.90625 to deeply equal 13");
+            chai.expect(() => assertCells(expected, failedHeight, 20)).throw("expected 34.5 to deeply equal 15");
             chai.expect(() => assertCells(expected, failedStyle, 20)).throw("expected { Object (font, border, ...) } to deeply equal { Object (font, border, ...) }");
-            chai.expect(() => assertCells(expected, failedText, 20)).throw('expected \'sadasd\' to deeply equal \'sadas\'');
-            chai.expect(() => assertCells(expected, failedValue, 20)).throw('expected { Object (formula, result) } to deeply equal \'asdasda\'');
+            chai.expect(() => assertCells(expected, failedText, 20)).throw('expected \'sadas\' to deeply equal \'sadasd\'');
+            chai.expect(() => assertCells(expected, failedValue, 20)).throw('expected \'asdasda\' to deeply equal { Object (formula, result) }');
             chai.expect(() => assertCells(expected, failedTable, 20)).throw('expected { Object (font, border, ...) } to deeply equal { Object (font, border, ...) }');
         });
     });
@@ -82,6 +83,10 @@ describe('INTEGRATION:: Test xlsx renderer ', function () {
 
                 const expected = await new Workbook().xlsx.readFile(path.join(dataPath, s.name, "expected.xlsx"));
 
+                try{
+                    await result.xlsx.writeFile(path.join(dataPath, s.name, 'test-output.xlsx'));
+                }catch(e){}
+                
                 assertCells(expected, result);
             });
 

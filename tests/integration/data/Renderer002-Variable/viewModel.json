@@ -1,0 +1,44 @@
+{
+    "firstName": "Paweł",
+    "secondName": "Siemienik",
+    "email": "siemienik.pawel@gmail.com",
+    "address": {
+        "streetName": "Al.. Siemienika",
+        "city": {
+            "name": "BB",
+            "province": {
+                "name": "Silesia",
+                "country": {
+                    "name": "Poland"
+                }
+            }
+        }
+    },
+    "tags": [
+        "ziom",
+        "fullStack"
+    ],
+    "achievements": [
+        {
+            "name": "open source maintainer",
+            "description": "bla bla blaaa"
+        },
+        {
+            "name": "some Other",
+            "description": "some other bla bla"
+        }
+    ],
+    "friends": [
+        {
+            "firstName": "anyone"
+        },
+        {
+            "firstName": "my body",
+            "achievements": [
+                {
+                    "name": "type scriper"
+                }
+            ]
+        }
+    ]
+}
