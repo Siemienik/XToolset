@@ -33,6 +33,9 @@ const viewModel = new MyAwesomeReportVm(); //or something else
 })();
 ```
 
+## More examples: 
+
+for more example I invite to tests data: [click here and check `Renderer` folders](./tests/integration/data)
 
 # Documentation:
 
@@ -43,11 +46,11 @@ const viewModel = new MyAwesomeReportVm(); //or something else
 | - | [BaseCell](./src/cell/BaseCell.ts) | n/o | n/o | All Cell\`s definition classes extend it. | **abstract** |
 | Content | [NormalCell](./src/cell/NormalCell.ts) | 1 | not started by `##` or `#!` | This one copy all styles, width, properties and value form template.  | **default** |
 | Content | [VariableCell](./src/cell/VariableCell.ts) | 3 | `## pathToVariable ` | Write variable from `ViewModel`. <br/> Paths to object's property or array item are allowed.<br/> When asking about undefined variable it returns empty string. | **Paths examples:** <br/> `simplePath` <br/> `someObject.property` <br/> `array.0.field` <br/> `items.1.path.to.object.prop`|
-| Content | **TODO: describe it!** [HyperlinkCell](./src/cell/HyperlinkCell.ts) | | | | |
+| Content | [HyperlinkCell](./src/cell/HyperlinkCell.ts) | 5 | `#! HYPERLINK pathToLabel pathToTarget` | Create a hyperlink. | *Paths resolve exactly same as VariableCell* |
 | Content | **TODO: describe it!** [FormulaCell](./src/cell/FormulaCell.ts) | | | | |
 | Navigation | [EndRowCell](./src/cell/EndRowCell.ts) | 2 | `#! END_ROW` | Go to the beginning of next row |  |
 | Worksheet<br/>Navigation<br/>Loop | [FinishCell](./src/cell/FinishCell.ts) | 7 | `#! FINISH conditionPath` | Finish rendering for current worksheet and: <br/> 1) go to next worksheet if `conditionPath===true`<br/> 2) repeat this template worksheet again (`conditionPath === false`) - looping through worksheets <br/> 3) finished whole rendering when this worksheet is the last one.   | **Examples:**<br/> `#! FINISHED ` or `#! FINISHED itemFromLoop.__iterated` |
-| Worksheet | **TODO: describe it!** [WsNameCell](./src/cell/WsNameCell.ts) | | | | |
+| Worksheet | [WsNameCell](./src/cell/WsNameCell.ts) | 13 | `#! WS_NAME pathToVariable` | Set worksheet's name.  | **Examples:** <br/> `#! WS_NAME worksheetName` <br/> `#! WS_NAME item.title` <br/> `#! WS_NAME translatedNames.0` |
 | View Model | **TODO: describe it!** [DeleteCell](./src/cell/DeleteCell.ts) | | | | |
 | Loop | **TODO: describe it!** [DumpColsCell](./src/cell/DumpColsCell.ts) | | | | |
 | Loop | **TODO: describe it!** [ForEachCell](./src/cell/ForEachCell.ts) | | | | |
