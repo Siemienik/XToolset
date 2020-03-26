@@ -1,55 +1,54 @@
 {
-    "name": "xlsx-renderer",
-    "version": "2.0.1",
-    "description": "Allows render xlsx files based on template supplied by viewModel.",
-    "main": "lib/Renderer.js",
-    "types": "lib/Renderer.d.ts",
-    "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
-    "directories": {
-        "lib": "lib/"
-    },
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/Siemienik/xlsx-renderer"
-    },
-    "keywords": [
-        "excel",
-        "xlsx",
-        "rendering xlsx",
-        "generator",
-        "template"
-    ],
-    "scripts": {
-        "build": "tsc",
-        "format": "prettier --write \"src/**/*.ts\"",
-        "lint": "tslint -p tsconfig.json",
-        "lint:fix": "tslint -p tsconfig.json --fix",
-        "test": "mocha -r ts-node/register tests/**/*.test.ts",
-        "coverageRaport": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report",
-        "prepublishOnly": "npm test && npm run lint && npm run build",
-        "preversion": "npm run lint",
-        "version": "npm run format && git add -A src",
-        "postversion": "git push && git push --tags"
-    },
-    "devDependencies": {
-        "@types/node": "^12.12.6",
-        "@types/chai": "^4.1.7",
-        "@types/mocha": "^5.2.6",
-        "chai": "^4.2.0",
-        "mocha": "^6.1.4",
-        "nyc": "^14.0.0",
-        "prettier": "^1.17.0",
-        "ts-node": "^8.1.0",
-        "tslint": "^5.16.0",
-        "tslint-config-prettier": "^1.18.0",
-        "typescript": "^3.4.4"
-    },
-    "dependencies": {
-        "exceljs": "3.8.1"
-    },
-    "files": [
-        "lib/**/*"
-    ]
+  "name": "xlsx-renderer",
+  "version": "2.1.0",
+  "description": "Allows render xlsx files based on template supplied by viewModel.",
+  "main": "lib/Renderer.js",
+  "types": "lib/Renderer.d.ts",
+  "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
+  "directories": {
+    "lib": "lib/"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siemienik/xlsx-renderer"
+  },
+  "keywords": [
+    "excel",
+    "xlsx",
+    "rendering xlsx",
+    "generator",
+    "template"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "lint": "tslint -p tsconfig.json",
+    "lint:fix": "tslint -p tsconfig.json --fix",
+    "test": "mocha -r ts-node/register tests/**/*.test.ts",
+    "coverageRaport": "nyc -r lcov -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts && nyc report",
+    "prepublishOnly": "npm test && npm run lint && npm run build",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.6",
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.0.0",
+    "prettier": "^1.17.0",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.4"
+  },
+  "dependencies": {
+    "exceljs": "3.8.1"
+  },
+  "files": [
+    "lib/**/*"
+  ]
 }
-
