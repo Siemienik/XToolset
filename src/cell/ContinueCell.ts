@@ -4,7 +4,12 @@ import { Scope } from '../Scope';
 
 export class ContinueCell extends ForEachCell {
     public static match(cell: Cell): boolean {
-        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 11) === '#! CONTINUE';
+        return (
+            cell &&
+            cell.type === ValueType.String &&
+            typeof cell.value === 'string' &&
+            cell.value.substring(0, 11) === '#! CONTINUE'
+        );
     }
 
     public getSourceParam(scope: Scope): string {
@@ -12,5 +17,4 @@ export class ContinueCell extends ForEachCell {
 
         return scope.vm[target] && scope.vm[target].__from;
     }
-
 }

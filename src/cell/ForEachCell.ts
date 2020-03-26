@@ -19,30 +19,39 @@ import { Cell, ValueType } from 'exceljs';
  */
 export class ForEachCell extends BaseCell {
     public static match(cell: Cell): boolean {
-        return cell && cell.type === ValueType.String && typeof cell.value === 'string' && cell.value.substring(0, 11) === '#! FOR_EACH';
+        return (
+            cell &&
+            cell.type === ValueType.String &&
+            typeof cell.value === 'string' &&
+            cell.value.substring(0, 11) === '#! FOR_EACH'
+        );
     }
 
     protected static getTargetParam(scope: Scope): string {
-        return scope.getCurrentTemplateValue()?.toString().split(' ')[2] || '';
+        return (
+            scope
+                .getCurrentTemplateValue()
+                ?.toString()
+                .split(' ')[2] || ''
+        );
     }
-
 
     public apply(scope: Scope): ForEachCell {
         const target = ForEachCell.getTargetParam(scope);
         const __from = this.getSourceParam(scope);
 
         // todo refactoring
-        const __index = (scope.vm[target] && scope.vm[target].__index || 0) + 1;
+        const __index = ((scope.vm[target] && scope.vm[target].__index) || 0) + 1;
         if (__index === 1) {
             super.apply(scope);
         }
 
-        const __start = scope.vm[target] && scope.vm[target].__start || scope.templateCell;
-        const __startOutput = scope.vm[target] && scope.vm[target].__startOutput || scope.outputCell.r + 1;
+        const __start = (scope.vm[target] && scope.vm[target].__start) || scope.templateCell;
+        const __startOutput = (scope.vm[target] && scope.vm[target].__startOutput) || scope.outputCell.r + 1;
         const __end = scope.vm[target] && scope.vm[target].__end;
         const __last = typeof __from.split('.').reduce((p, c) => p[c] || {}, scope.vm)[__index] === 'undefined';
         let __endOutput = scope.vm[target] && scope.vm[target].__endOutput;
-        let __insetRows = scope.vm[target] && scope.vm[target].__insetRows || false;
+        let __insetRows = (scope.vm[target] && scope.vm[target].__insetRows) || false;
 
         let next = __from.split('.').reduce((p, c) => p[c] || {}, scope.vm)[__index - 1];
 
@@ -50,7 +59,7 @@ export class ForEachCell extends BaseCell {
         __iterated = typeof __iterated !== 'undefined' && __iterated;
 
         scope.setCurrentOutputValue(null);
-        
+
         if (!__iterated && !next) {
             __iterated = true;
             scope.freezeOutput();
@@ -62,7 +71,8 @@ export class ForEachCell extends BaseCell {
             __insetRows = false;
             if (!scope.isFrozen()) {
                 for (let i = __end.r; i > __start.r; i--) {
-                    scope.output.worksheets[scope.outputCell.ws].spliceRows( // todo refactoring
+                    scope.output.worksheets[scope.outputCell.ws].spliceRows(
+                        // todo refactoring
                         scope.outputCell.r + 1,
                         0,
                         [],
@@ -87,13 +97,18 @@ export class ForEachCell extends BaseCell {
             __insetRows,
             __startOutput,
             __endOutput,
-            __last
+            __last,
         });
-        
+
         return this;
     }
 
     protected getSourceParam(scope: Scope): string {
-        return scope.getCurrentTemplateValue()?.toString().split(' ')[3] || '';
+        return (
+            scope
+                .getCurrentTemplateValue()
+                ?.toString()
+                .split(' ')[3] || ''
+        );
     }
 }

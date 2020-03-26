@@ -1,6 +1,6 @@
-import {BaseCell} from './BaseCell';
-import {Cell, CellFormulaValue, ValueType} from 'exceljs';
-import {Scope} from '../Scope';
+import { BaseCell } from './BaseCell';
+import { Cell, CellFormulaValue, ValueType } from 'exceljs';
+import { Scope } from '../Scope';
 
 export class FormulaCell extends BaseCell {
     public static match(cell: Cell): boolean {
@@ -23,8 +23,8 @@ export class FormulaCell extends BaseCell {
             if (matches === null) {
                 break;
             }
-            
-            addresses.push({index: matches.index, col: matches[1], row: +matches[2], len: matches[0].length})
+
+            addresses.push({ index: matches.index, col: matches[1], row: +matches[2], len: matches[0].length });
         }
         addresses.reverse();
 
@@ -39,5 +39,4 @@ export class FormulaCell extends BaseCell {
 
         return this;
     }
-
 }
