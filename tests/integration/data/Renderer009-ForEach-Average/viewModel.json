@@ -1,0 +1,52 @@
+{
+    "projects": [
+        {
+            "name": "ExcelJS",
+            "role": "maintainer",
+            "platform": "github",
+            "link": "https://github.com/exceljs/exceljs",
+            "stars": 5300,
+            "forks": 682
+        },
+        {
+            "name": "xlsx-import",
+            "role": "owner",
+            "platform": "github",
+            "link": "https://github.com/siemienik/xlsx-import",
+            "stars": 2,
+            "forks": 0
+        },
+        {
+            "name": "xlsx-import",
+            "role": "owner",
+            "platform": "npm",
+            "link": "https://www.npmjs.com/package/xlsx-import",
+            "stars": "n.o.",
+            "forks": "n.o."
+        },
+        {
+            "name": "xlsx-renderer",
+            "role": "owner",
+            "platform": "github",
+            "link": "https://github.com/siemienik/xlsx-renderer",
+            "stars": 2,
+            "forks": 0
+        },
+        {
+            "name": "xlsx-renderer",
+            "role": "owner",
+            "platform": "npm",
+            "link": "https://www.npmjs.com/package/xlsx-renderer",
+            "stars": "n.o.",
+            "forks": "n.o."
+        },
+        {
+            "name": "TS Package Structure",
+            "role": "owner",
+            "platform": "github",
+            "link": "https://github.com/Siemienik/ts-package-structure",
+            "stars": 3,
+            "forks": 0
+        }
+    ]
+}

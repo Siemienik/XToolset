@@ -17,8 +17,6 @@ It consumes template which is common Excel file, then add yours data (called Vie
 npm i xlsx-renderer --save
 ```
 
-2. TODO add some example here (https://github.com/Siemienik/xlsx-renderer/issues/6)
-
 ## Sample code:
 
 ```javascript
@@ -52,12 +50,12 @@ for more example I invite to tests data: [click here and check `Renderer` folder
 | Worksheet<br/>Navigation<br/>Loop | [FinishCell](./src/cell/FinishCell.ts) | 7 | `#! FINISH conditionPath` | Finish rendering for current worksheet and: <br/> 1) go to next worksheet if `conditionPath===true`<br/> 2) repeat this template worksheet again (`conditionPath === false`) - looping through worksheets <br/> 3) finished whole rendering when this worksheet is the last one.   | **Examples:**<br/> `#! FINISHED ` or `#! FINISHED itemFromLoop.__iterated` |
 | Worksheet | [WsNameCell](./src/cell/WsNameCell.ts) | 13 | `#! WS_NAME pathToVariable` | Set worksheet's name.  | **Examples:** <br/> `#! WS_NAME worksheetName` <br/> `#! WS_NAME item.title` <br/> `#! WS_NAME translatedNames.0` |
 | Loop | **TODO: describe it!** [DumpColsCell](./src/cell/DumpColsCell.ts) | | | | |
-| Loop | **TODO: describe it! test done: simple; tests todo: nested, with formula, stripped, through worksheets,** [ForEachCell](./src/cell/ForEachCell.ts) | | | | |
-| Loop | **TODO: describe it!** [ContinueCell](./src/cell/ContinueCell.ts) | | | | |
-| Loop | **TODO: describe it!** [EndLoopCell](./src/cell/EndLoopCell.ts) | | | | |
-| Aggregation | **TODO: describe it!** [AverageCell](./src/cell/AverageCell.ts) | | | | |
-| Aggregation| **TODO: describe it!** [SumCell](./src/cell/SumCell.ts) | | | | |
-| View Model | **TODO: test - nested loop** [DeleteCell](./src/cell/DeleteCell.ts) | 14 | `#! DELETE pathToVariable` | Delete variable, useful for nested loops.|  |
+| Loop | **TODO: tests done: simple, stripped; tests todo: nested, with formula, special fields, through worksheets,** [ForEachCell](./src/cell/ForEachCell.ts) | 6 | #! FOR_EACH item items | Begin the loop named `item`, set the first element of `items` into `item` and go to the beginning of next line.| Connected to: `ContinueCell`, `EndLoopCell`, `DeleteCell`, `FinishedCell`, `SumCell`, `AverageCell`. |
+| Loop | [ContinueCell](./src/cell/ContinueCell.ts) | 9 | `#! CONTINUE item` | Iterate to next element of loop named `item` (check `ForEachCell` for more information) and navigate to the beginning of new line. | |
+| Loop | [EndLoopCell](./src/cell/EndLoopCell.ts) | 8 | `#! END_LOOP item` | Mark cell when the loop `item` finished. | |
+| Aggregation| [SumCell](./src/cell/SumCell.ts) | 11 | `#! SUM item` | Write sum formulae for current column and the `item`'s rows.  | [Example](./tests/integration/data/Renderer007-ForEach-Sum/) |
+| Aggregation | [AverageCell](./src/cell/AverageCell.ts) | 12 | `#! AVERAGE item` | Write average formulae for current column and the `item`'s rows.  | [Example](./tests/integration/data/Renderer009-ForEach-Average/) |
+| View Model | **TODO: test - nested loop** [DeleteCell](./src/cell/DeleteCell.ts) | 14 | `#! DELETE pathToVariable` | Delete variable, useful for nested loops.|  [Example](./tests/integration/data/Renderer009-ForEach-Average/)  |
 
 
 ## Commands [PREVIOUS VERSION]:

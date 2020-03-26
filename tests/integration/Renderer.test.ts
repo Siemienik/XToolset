@@ -5,13 +5,13 @@ import * as path from "path";
 import {Workbook} from "exceljs";
 import * as chai from 'chai'
 
-function isDir(path: Dirent | string): boolean {
-    if (typeof path ==="object") return path.isDirectory();
+function isDir(dirPath: Dirent | string): boolean {
+    if (typeof dirPath ==="object") { return dirPath.isDirectory(); }
 
     try {
-        return fs.lstatSync(path).isDirectory();
+        return fs.lstatSync(dirPath).isDirectory();
     } catch (e) {
-        return false;// lstatSync throws an error if path doesn't exist
+        return false;// lstatSync throws an error if dirPath doesn't exist
     }
 }
 
@@ -45,17 +45,17 @@ function assertCells(expected: Workbook, result: Workbook, factor: number = 10) 
     }
 }
 
-describe('INTEGRATION:: Test xlsx renderer ', function () {
+describe('INTEGRATION:: Test xlsx renderer ', () => {
 
-    describe('Checking if assertCells works ok.', function () {
-        it('Same - should pass ok', async function () {
+    describe('Checking if assertCells works ok.', () => {
+        it('Same - should pass ok', async () => {
             const expected = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'main.xlsx'));
             const correct = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'correct.xlsx'));
 
             assertCells(expected, correct, 20);
         });
 
-        it('Different - attempt to broke assertions', async function () {
+        it('Different - attempt to broke assertions', async () => {
             const expected = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'main.xlsx'));
             const failedWorksheetAmount = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-ws-amount.xlsx'));
             const failedWorksheetNames = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-ws-names.xlsx'));
@@ -76,7 +76,7 @@ describe('INTEGRATION:: Test xlsx renderer ', function () {
             chai.expect(() => assertCells(expected, failedTable, 20)).throw('expected { Object (font, border, ...) } to deeply equal { Object (font, border, ...) }');
         });
     });
-    describe('Load examples, render and compare with expected result', function () {
+    describe('Load examples, render and compare with expected result', () => {
         const dataPath = path.normalize(path.join(__dirname, 'data/'));
         const sets = fs.readdirSync(path.normalize(dataPath), {withFileTypes: true})
             .filter(isDir)
@@ -85,7 +85,7 @@ describe('INTEGRATION:: Test xlsx renderer ', function () {
 
         const renderer = new Renderer();
         sets.forEach(s => {
-            it(`Test for  ${s.name}`, async function () {
+            it(`Test for  ${s.name}`, async () => {
                 const result = await renderer.renderFromFile(
                     path.join(dataPath, s.name, "template.xlsx"),
                     require(path.join(dataPath, s.name, 'viewModel.json'))
