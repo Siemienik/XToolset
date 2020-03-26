@@ -6,7 +6,7 @@ import {Workbook} from "exceljs";
 import * as chai from 'chai'
 
 function isDir(path: Dirent | string): boolean {
-    if (path instanceof Dirent) return path.isDirectory();
+    if (typeof path ==="object") return path.isDirectory();
 
     try {
         return fs.lstatSync(path).isDirectory();
