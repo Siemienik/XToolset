@@ -1,9 +1,19 @@
 import {Renderer} from "../../src/Renderer";
 import * as fs from "fs";
+import {Dirent} from "fs";
 import * as path from "path";
 import {Workbook} from "exceljs";
 import * as chai from 'chai'
 
+function isDir(path: Dirent | string): boolean {
+    if (path instanceof Dirent) return path.isDirectory();
+
+    try {
+        return fs.lstatSync(path).isDirectory();
+    } catch (e) {
+        return false;// lstatSync throws an error if path doesn't exist
+    }
+}
 
 function assertCells(expected: Workbook, result: Workbook, factor: number = 10) {
     chai.expect(expected.worksheets.length).eql(result.worksheets.length);
@@ -26,7 +36,7 @@ function assertCells(expected: Workbook, result: Workbook, factor: number = 10) 
             if (c === 1) {
                 chai.expect(ws.r.getRow(r).height).eql(ws.e.getRow(r).height);
             }
-            
+
             // console.log(r,c);
             chai.expect(cell.r.style).eql(cell.e.style);
             chai.expect(cell.r.text).eql(cell.e.text);
@@ -69,7 +79,7 @@ describe('INTEGRATION:: Test xlsx renderer ', function () {
     describe('Load examples, render and compare with expected result', function () {
         const dataPath = path.normalize(path.join(__dirname, 'data/'));
         const sets = fs.readdirSync(path.normalize(dataPath), {withFileTypes: true})
-            .filter(i => i.isDirectory())
+            .filter(isDir)
             .filter(d => /^Renderer[0-9]*-/.test(d.name));
 
 
@@ -83,10 +93,11 @@ describe('INTEGRATION:: Test xlsx renderer ', function () {
 
                 const expected = await new Workbook().xlsx.readFile(path.join(dataPath, s.name, "expected.xlsx"));
 
-                try{
+                try {
                     await result.xlsx.writeFile(path.join(dataPath, s.name, 'test-output.xlsx'));
-                }catch(e){}
-                
+                } catch (e) {
+                }
+
                 assertCells(expected, result);
             });
 
