@@ -13,8 +13,7 @@ export class Scope {
 
     private finished: boolean = false;
 
-    constructor(public template: Workbook, public output: Workbook, public vm: ViewModel) {
-    }
+    constructor(public template: Workbook, public output: Workbook, public vm: ViewModel) {}
 
     public getCurrentTemplateValue(): CellValue {
         return this.getCurrentTemplateCell().value;

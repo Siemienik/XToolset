@@ -4,8 +4,7 @@ import { Scope } from './Scope';
 import { CellTemplatePool } from './CellTemplatePool';
 
 export class Renderer {
-    constructor(private cellTemplatePool: CellTemplatePool = new CellTemplatePool()) {
-    }
+    constructor(private cellTemplatePool: CellTemplatePool = new CellTemplatePool()) {}
 
     public async render(templateFactory: () => Promise<Workbook>, vm: any): Promise<Workbook> {
         const template = await templateFactory();
