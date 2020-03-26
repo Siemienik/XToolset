@@ -5,6 +5,5 @@
 /.nyc_output/
 /.idea/
 
-
-/src/example.ts
-*.xlsx
+test-output.xlsx
+~$*.xlsx

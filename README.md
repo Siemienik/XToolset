@@ -3,6 +3,12 @@
 
 # WIP current version of lib is under developing
 
+# Introduction
+
+This library makes generating xlsx files (Excel) easly. 
+
+It consumes template which is common Excel file, then add yours data (called ViewModel). Blend it and done, as result you'll get pretty Excel.
+
 # Getting Started:
 
 1. install package
@@ -11,14 +17,52 @@
 npm i xlsx-renderer --save
 ```
 
-`npm install`
+2. TODO add some example here (https://github.com/Siemienik/xlsx-renderer/issues/6)
 
-## In Cell Commands:
+## Sample code:
 
-1. `## varToDisplayInThisCell`
-2. `#! FINISH` - finish processing current worksheet
-2. `#! FINISH booleanVar` - if true it finishes processing current template worksheet, if false it add again this worksheet to output
-3. `#! END_ROW`
+```javascript
+import Renderer from './xls-renderer/Renderer'
+
+const viewModel = new MyAwesomeReportVm(); //or something else
+
+(async () => {
+    const result = await renderer.renderFromFile('./my-awesome-raport-template.xlsx', viewModel);     
+    
+    await result.xlsx.writeFile('./my-awesome-raport.xlsx');
+})();
+```
+
+## More examples: 
+
+for more example I invite to tests data: [click here and check `Renderer` folders](./tests/integration/data)
+
+# Documentation:
+
+## Cells:
+
+| Category | Name | Order | match rule | Description | More info |
+|----------|-----:|-------|--------|-------------|:---------|
+| - | [BaseCell](./src/cell/BaseCell.ts) | n/o | n/o | All Cell\`s definition classes extend it. | **abstract** |
+| Content | [NormalCell](./src/cell/NormalCell.ts) | 1 | not started by `##` or `#!` | This one copy all styles, width, properties and value form template.  | **default** |
+| Content | [VariableCell](./src/cell/VariableCell.ts) | 3 | `## pathToVariable ` | Write variable from `ViewModel`. <br/> Paths to object's property or array item are allowed.<br/> When asking about undefined variable it returns empty string. | **Paths examples:** <br/> `simplePath` <br/> `someObject.property` <br/> `array.0.field` <br/> `items.1.path.to.object.prop`|
+| Content | [HyperlinkCell](./src/cell/HyperlinkCell.ts) | 5 | `#! HYPERLINK pathToLabel pathToTarget` | Create a hyperlink. | *Paths resolve exactly same as VariableCell* |
+| Content | **TODO: describe it!** [FormulaCell](./src/cell/FormulaCell.ts) | | | | |
+| Navigation | [EndRowCell](./src/cell/EndRowCell.ts) | 2 | `#! END_ROW` | Go to the beginning of next row |  |
+| Worksheet<br/>Navigation<br/>Loop | [FinishCell](./src/cell/FinishCell.ts) | 7 | `#! FINISH conditionPath` | Finish rendering for current worksheet and: <br/> 1) go to next worksheet if `conditionPath===true`<br/> 2) repeat this template worksheet again (`conditionPath === false`) - looping through worksheets <br/> 3) finished whole rendering when this worksheet is the last one.   | **Examples:**<br/> `#! FINISHED ` or `#! FINISHED itemFromLoop.__iterated` |
+| Worksheet | [WsNameCell](./src/cell/WsNameCell.ts) | 13 | `#! WS_NAME pathToVariable` | Set worksheet's name.  | **Examples:** <br/> `#! WS_NAME worksheetName` <br/> `#! WS_NAME item.title` <br/> `#! WS_NAME translatedNames.0` |
+| Loop | **TODO: describe it!** [DumpColsCell](./src/cell/DumpColsCell.ts) | | | | |
+| Loop | **TODO: describe it! test done: simple; tests todo: nested, with formula, stripped, through worksheets,** [ForEachCell](./src/cell/ForEachCell.ts) | | | | |
+| Loop | **TODO: describe it!** [ContinueCell](./src/cell/ContinueCell.ts) | | | | |
+| Loop | **TODO: describe it!** [EndLoopCell](./src/cell/EndLoopCell.ts) | | | | |
+| Aggregation | **TODO: describe it!** [AverageCell](./src/cell/AverageCell.ts) | | | | |
+| Aggregation| **TODO: describe it!** [SumCell](./src/cell/SumCell.ts) | | | | |
+| View Model | **TODO: test - nested loop** [DeleteCell](./src/cell/DeleteCell.ts) | 14 | `#! DELETE pathToVariable` | Delete variable, useful for nested loops.|  |
+
+
+## Commands [PREVIOUS VERSION]:
+
+1. `#! END_ROW`
 4. `#! DELETE varName`
 5. `#! HYPERLINK labelVar urlVar`
 6. `#! WS_NAME nameVar` set worksheet name
@@ -29,32 +73,5 @@ npm i xlsx-renderer --save
 11. `#! SUM item` similar to average
 12. `#! DUMP_COLS arrayVar` write to next columns all array items (1 item = 1 column)
 
-
-## Sample code: (possible to be outdated yet - todo)
-
-```javascript
-import Renderer from './xls-renderer/Renderer'
-import {Workbook} from 'exceljs'
-
-//*
-import DebugCellTemplatePool from "./xls-renderer-debug/CellTemplateDebugPool";
-const renderer = new Renderer(new DebugCellTemplatePool());
-/*/
-import CellTemplatePool from "./xls-renderer/CellTemplatePool";
-const renderer = new Renderer(new CellTemplatePool()); 
-//*/
-
-
-const viewModel = new MyAwesomeReportVm(); //or something else
-
-(async () => {
-    const result = await renderer.render(async () => {
-            const template = new Workbook();
-            return await template.xlsx.readFile('./my-awesome-raport-template.xlsx');
-        }, viewModel);     
-    
-    await result.xlsx.writeFile('./my-awesome-raport.xlsx');
-})();
-```
-
+ 
 [LICENSE](LICENSE)
