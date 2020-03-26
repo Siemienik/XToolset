@@ -1,5 +1,10 @@
 /lib
 /node_modules
 /.idea
-/src/example.js
+/coverage/
+/.nyc_output/
+/.idea/
+
+
+/src/example.ts
 *.xlsx

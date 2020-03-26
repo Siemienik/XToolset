@@ -1,13 +1,14 @@
+![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xlsx-renderer/lint-build-test)![NPM](https://img.shields.io/npm/l/xlsx-renderer)![npm](https://img.shields.io/npm/v/xlsx-renderer)
 ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/siemienik/xlsx-renderer)![GitHub top language](https://img.shields.io/github/languages/top/siemienik/xlsx-renderer)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/siemienik/xlsx-renderer)
 
-# xlsx-renderer
-Render xlsx from a template (it uses another xlsx file with special commands like "#! FOR_EACH item items")
+# WIP current version of lib is under developing
 
-## Install:
+# Getting Started:
 
-package.json:
+1. install package
+
 ```
-    "xls-renderer": "git+ssh://git@github.com/siemienik/xlsx-renderer.git#release/v1",
+npm i xlsx-renderer --save
 ```
 
 `npm install`
@@ -29,7 +30,7 @@ package.json:
 12. `#! DUMP_COLS arrayVar` write to next columns all array items (1 item = 1 column)
 
 
-## Sample code:
+## Sample code: (possible to be outdated yet - todo)
 
 ```javascript
 import Renderer from './xls-renderer/Renderer'
@@ -54,5 +55,6 @@ const viewModel = new MyAwesomeReportVm(); //or something else
     
     await result.xlsx.writeFile('./my-awesome-raport.xlsx');
 })();
-
 ```
+
+[LICENSE](LICENSE)
