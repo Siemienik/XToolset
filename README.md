@@ -2,6 +2,9 @@
 ![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/siemienik/xlsx-import)![GitHub top language](https://img.shields.io/github/languages/top/siemienik/xlsx-import)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/siemienik/xlsx-import)
 
 # Importing data from xlsx as simple as possible
+
+[![Join the chat at https://gitter.im/xlsx-import/community](https://badges.gitter.im/xlsx-import/community.svg)](https://gitter.im/xlsx-import/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
  
 # Getting Started:
 
