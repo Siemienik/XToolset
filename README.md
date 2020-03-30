@@ -3,6 +3,8 @@
 
 # Introduction
 
+[![Join the chat at https://gitter.im/xlsx-renderer/community](https://badges.gitter.im/xlsx-renderer/community.svg)](https://gitter.im/xlsx-renderer/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 This library makes generating xlsx files (Excel) easly. 
 
 It consumes template which is common Excel file, then add yours data (called ViewModel). Blend it and done, as result you'll get pretty Excel.
