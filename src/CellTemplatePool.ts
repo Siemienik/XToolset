@@ -37,15 +37,7 @@ export class CellTemplatePool {
     protected instances: { [key: string]: BaseCell } = {};
 
     public match(cell: Cell): BaseCell {
-        const type = this.cells.find(x => x.match(cell));
-
-        return type ? this.getInstance(type) : this.getInstance(NormalCell);
-    }
-
-    private getInstance(type: CellType): BaseCell {
-        if (!this.cells.includes(type)) {
-            throw new TypeError(`parameter 'type' has to included in [${this.cells.map(x => x.name)}]`);
-        }
+        const type = this.cells.find(x => x.match(cell)) || NormalCell;
 
         if (!this.instances[type.name]) {
             this.instances[type.name] = new type();
