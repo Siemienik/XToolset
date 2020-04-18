@@ -23,11 +23,11 @@ export class VariableCell extends BaseCell {
                 .split('.') || [];
 
         const value = path.reduce((p, c) => (typeof p === 'object' ? p[c] : p), scope.vm);
-        if (value === undefined) {
+        if (value === undefined && !scope.isFrozen()) {
             // todo do it better (use logger or somethink like that)
             // tslint:disable-next-line:no-console
             console.warn(
-                `WARN: ${path} is undefined for output: ${scope.outputCell} when template is:${scope.templateCell}`,
+                `WARN: ${path} is undefined for output: ${JSON.stringify(scope.outputCell)} when template is:${JSON.stringify(scope.templateCell)}`,
             );
         }
         scope.setCurrentOutputValue(value);

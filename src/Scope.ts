@@ -23,14 +23,14 @@ export class Scope {
         return this.template.worksheets[this.templateCell.ws].getCell(this.templateCell.r, this.templateCell.c);
     }
 
-    public setCurrentOutputValue(value: CellValue) {
+    public setCurrentOutputValue(value: CellValue): void {
         if (this.frozen) {
             return;
         }
         this.output.worksheets[this.outputCell.ws].getCell(this.outputCell.r, this.outputCell.c).value = value;
     }
 
-    public applyStyles() {
+    public applyStyles(): void {
         if (this.frozen) {
             return;
         }
@@ -45,7 +45,7 @@ export class Scope {
         }
     }
 
-    public applyMerge() {
+    public applyMerge(): void {
         const tws = this.template.worksheets[this.templateCell.ws];
         const tc = tws.getCell(this.templateCell.r, this.templateCell.c);
 
@@ -62,7 +62,7 @@ export class Scope {
         }
     }
 
-    public incrementCol() {
+    public incrementCol(): void {
         if (!this.finished) {
             this.templateCell = Object.freeze({ ...this.templateCell, c: this.templateCell.c + 1 });
         }
@@ -70,7 +70,7 @@ export class Scope {
         this.outputCell = Object.freeze({ ...this.outputCell, c: this.outputCell.c + 1 });
     }
 
-    public incrementRow() {
+    public incrementRow(): void {
         if (!this.finished) {
             this.templateCell = Object.freeze({ ...this.templateCell, r: this.templateCell.r + 1, c: 1 });
         }
@@ -83,27 +83,24 @@ export class Scope {
         }
     }
 
-    public freezeOutput() {
+    public freezeOutput(): void {
         this.frozen++;
     }
 
-    public unfreezeOutput() {
+    public unfreezeOutput(): void {
         this.frozen = Math.max(this.frozen - 1, 0);
     }
 
-    /**
-     * @returns {boolean}
-     */
-    public isFrozen() {
+    public isFrozen(): boolean {
         return this.frozen > 0;
     }
 
-    public finish() {
+    public finish(): void {
         this.finished = true;
         this.unfreezeOutput();
     }
 
-    public isFinished() {
+    public isFinished(): boolean {
         return this.finished;
     }
 }
