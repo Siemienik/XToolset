@@ -20,11 +20,9 @@ export class DeleteCell extends BaseCell {
             ?.toString()
             .split(' ')[2]; // todo make some function for scope.getCurrentTemplateValue()?.toString().split(' ')  ;
 
-        if (target === undefined) {
-            return this;
-        } // it's ok here
-
-        scope.vm[target] = undefined;
+        if (target !== undefined) {
+            scope.vm[target] = undefined;
+        }
 
         scope.setCurrentOutputValue(null);
         scope.incrementCol();
