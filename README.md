@@ -4,7 +4,6 @@
 
 # Introduction
 
-
 This library makes generating xlsx files (Excel) easly. 
 
 It consumes template which is common Excel file, then add yours data (called ViewModel). Blend it and done, as result you'll get pretty Excel.
@@ -25,13 +24,13 @@ import Renderer from './xls-renderer/Renderer'
 const viewModel = new MyAwesomeReportVm(); //or something else
 
 (async () => {
-    const result = await renderer.renderFromFile('./my-awesome-raport-template.xlsx', viewModel);     
-    
+    const result = await renderer.renderFromFile('./my-awesome-raport-template.xlsx', viewModel);
+
     await result.xlsx.writeFile('./my-awesome-raport.xlsx');
 })();
 ```
 
-## More examples: 
+## More examples:
 
 for more example I invite to tests data: [click here and check `Renderer` folders](./tests/integration/data)
 
@@ -50,26 +49,11 @@ for more example I invite to tests data: [click here and check `Renderer` folder
 | Worksheet<br/>Navigation<br/>Loop | [FinishCell](./src/cell/FinishCell.ts) | 7 | `#! FINISH conditionPath` | Finish rendering for current worksheet and: <br/> 1) go to next worksheet if `conditionPath===true`<br/> 2) repeat this template worksheet again (`conditionPath === false`) - looping through worksheets <br/> 3) finished whole rendering when this worksheet is the last one.   | **Examples:**<br/> `#! FINISHED ` or `#! FINISHED itemFromLoop.__iterated` |
 | Worksheet | [WsNameCell](./src/cell/WsNameCell.ts) | 13 | `#! WS_NAME pathToVariable` | Set worksheet's name.  | **Examples:** <br/> `#! WS_NAME worksheetName` <br/> `#! WS_NAME item.title` <br/> `#! WS_NAME translatedNames.0` |
 | Loop | [DumpColsCell](./src/cell/DumpColsCell.ts) | 10 | `#! DUMP_COLS pathToArray` | Useful for writing through multiple columns. It put each value of array to next column. | [Example](./tests/integration/data/Renderer011-DumpCols/) |
-| Loop | **TODO: tests done: simple, stripped; tests todo: nested, with formula, special fields, through worksheets,** [ForEachCell](./src/cell/ForEachCell.ts) | 6 | #! FOR_EACH item items | Begin the loop named `item`, set the first element of `items` into `item` and go to the beginning of next line.| Connected to: `ContinueCell`, `EndLoopCell`, `DeleteCell`, `FinishedCell`, `SumCell`, `AverageCell`. |
+| Loop | **TODO: nested loop test, describe special vars** [ForEachCell](./src/cell/ForEachCell.ts) | 6 | #! FOR_EACH item items | Begin the loop named `item`, set the first element of `items` into `item` and go to the beginning of next line.| Connected to: `ContinueCell`, `EndLoopCell`, `DeleteCell`, `FinishedCell`, `SumCell`, `AverageCell`. |
 | Loop | [ContinueCell](./src/cell/ContinueCell.ts) | 9 | `#! CONTINUE item` | Iterate to next element of loop named `item` (check `ForEachCell` for more information) and navigate to the beginning of new line. | |
 | Loop | [EndLoopCell](./src/cell/EndLoopCell.ts) | 8 | `#! END_LOOP item` | Mark cell when the loop `item` finished. | |
 | Aggregation| [SumCell](./src/cell/SumCell.ts) | 11 | `#! SUM item` | Write sum formulae for current column and the `item`'s rows.  | [Example](./tests/integration/data/Renderer007-ForEach-Sum/) |
 | Aggregation | [AverageCell](./src/cell/AverageCell.ts) | 12 | `#! AVERAGE item` | Write average formulae for current column and the `item`'s rows.  | [Example](./tests/integration/data/Renderer009-ForEach-Average/) |
 | View Model | [DeleteCell](./src/cell/DeleteCell.ts) | 14 | `#! DELETE pathToVariable` | Delete variable, useful for nested loops.|  [Example](./tests/integration/data/Renderer009-ForEach-Average/)  |
 
-
-## Commands [PREVIOUS VERSION]:
-
-1. `#! END_ROW`
-4. `#! DELETE varName`
-5. `#! HYPERLINK labelVar urlVar`
-6. `#! WS_NAME nameVar` set worksheet name
-7. `#! FOR_EACH item collection` (to write item property `## item.property`),
-8. `#! CONTINUE item` item is set to the next collection item.
-9. `#! END_LOOP item`
-10. `#! AVERAGE item` write average formula of all items from previous for-each, it has to be placed after the for-each was finished.
-11. `#! SUM item` similar to average
-12. `#! DUMP_COLS arrayVar` write to next columns all array items (1 item = 1 column)
-
- 
 [LICENSE](LICENSE)

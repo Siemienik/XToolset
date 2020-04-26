@@ -79,9 +79,7 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
     describe('Load examples, render and compare with expected result', () => {
         const dataPath = path.normalize(path.join(__dirname, 'data/'));
         const sets = fs.readdirSync(path.normalize(dataPath), {withFileTypes: true})
-            .filter(isDir)
-            .filter(d => /^Renderer[0-9]*-/.test(d.name));
-
+            .filter(d => isDir(d) && /^Renderer[0-9]*-/.test(d.name));
 
         const renderer = new Renderer();
         sets.forEach(s => {
