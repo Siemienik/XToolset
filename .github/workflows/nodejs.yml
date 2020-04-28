@@ -1,4 +1,4 @@
-name: lint-build-test 
+name: lint-build-test
 
 on: [push]
 
@@ -24,5 +24,7 @@ jobs:
         npm run lint
         npm run build
         npm run test
+        npm run coverageRaport
+        bash <(curl -s https://codecov.io/bash)
       env:
         CI: true
