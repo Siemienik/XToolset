@@ -20,16 +20,13 @@ npm i xlsx-renderer --save
 
 ## Sample code:
 
-```javascript
+```ts
 import Renderer from './xls-renderer/Renderer'
 
-const viewModel = new MyAwesomeReportVm(); //or something else
+// ... 
 
-(async () => {
-    const result = await renderer.renderFromFile('./my-awesome-raport-template.xlsx', viewModel);
-
-    await result.xlsx.writeFile('./my-awesome-raport.xlsx');
-})();
+const result = await renderer.renderFromFile('./my-awesome-raport-template.xlsx', { awesome:"Oh yeah!", items:[/*...*/]});
+await result.xlsx.writeFile('./my-awesome-raport.xlsx');
 ```
 
 ## More examples:
