@@ -25,8 +25,8 @@ import Renderer from './xls-renderer/Renderer'
 
 // ... 
 
-const result = await renderer.renderFromFile('./my-awesome-raport-template.xlsx', { awesome:"Oh yeah!", items:[/*...*/]});
-await result.xlsx.writeFile('./my-awesome-raport.xlsx');
+const result = await renderer.renderFromFile('./report-template.xlsx', { awesome:"Oh yeah!", items:[/*...*/]});
+await result.xlsx.writeFile('./my-awesome-report.xlsx');
 ```
 
 ## More examples:
