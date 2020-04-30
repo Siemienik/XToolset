@@ -27,7 +27,9 @@ export class VariableCell extends BaseCell {
             // todo do it better (use logger or somethink like that)
             // tslint:disable-next-line:no-console
             console.warn(
-                `WARN: ${path} is undefined for output: ${JSON.stringify(scope.outputCell)} when template is:${JSON.stringify(scope.templateCell)}`,
+                `WARN: ${path} is undefined for output: ${JSON.stringify(
+                    scope.outputCell,
+                )} when template is:${JSON.stringify(scope.templateCell)}`,
             );
         }
         scope.setCurrentOutputValue(value);
