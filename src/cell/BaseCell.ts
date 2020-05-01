@@ -13,14 +13,16 @@ export /* abstract */ class BaseCell {
         return false;
     }
 
-    public BaseCell() {
+    constructor() {
+        if(this.constructor.name !== "BaseCell") return;
+
         // can't be marked by abstract keyword, so it throw type error.
         throw new TypeError(`Cannot construct ${BaseCell.name} instances directly. It's abstract.`);
     }
 
     public apply(scope: Scope): BaseCell {
         if (scope.outputCell.c > 16384) {
-            scope.outputCell = Object.freeze({ ...scope.outputCell, c: 16384 });
+            scope.finish(); //todo important: spec test
         }
         scope.setCurrentOutputValue(scope.getCurrentTemplateValue());
         scope.applyStyles();
