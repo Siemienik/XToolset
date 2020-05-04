@@ -24,8 +24,8 @@ npm i xlsx-renderer --save
 import Renderer from './xls-renderer/Renderer'
 
 // ... 
-
-const result = await renderer.renderFromFile('./report-template.xlsx', { awesome:"Oh yeah!", items:[/*...*/]});
+const viewModel = { awesome:"Oh yeah!", items:[/*...*/] };
+const result = await renderer.renderFromFile('./report-template.xlsx', viewModel);
 await result.xlsx.writeFile('./my-awesome-report.xlsx');
 ```
 
