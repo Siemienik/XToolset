@@ -21,8 +21,9 @@ npm i xlsx-renderer --save
 ## Sample code:
 
 ```ts
-import Renderer from './xls-renderer/Renderer'
-
+import {Renderer} from 'xlsx-renderer';
+// ...
+const renderer = new Renderer();
 // ... 
 const viewModel = { awesome:"Oh yeah!", items:[/*...*/] };
 const result = await renderer.renderFromFile('./report-template.xlsx', viewModel);
