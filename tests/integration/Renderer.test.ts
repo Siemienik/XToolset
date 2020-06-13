@@ -18,6 +18,7 @@ function isDir(dirPath: Dirent | string): boolean {
 function assertCells(expected: Workbook, result: Workbook, factor: number = 10) {
     chai.expect(expected.worksheets.length).eql(result.worksheets.length);
     chai.expect(expected.worksheets.map(x => x.name)).eql(result.worksheets.map(x => x.name));
+    //todo assert images
 
     for (let wi = 0; wi < expected.worksheets.length; wi++) {
         const ws = {e: expected.worksheets[wi], r: result.worksheets[wi]};
