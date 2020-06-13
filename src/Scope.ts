@@ -103,4 +103,8 @@ export class Scope {
     public isFinished(): boolean {
         return this.finished;
     }
+
+    public isOutOfColLimit(): boolean {
+        return this.outputCell.c > 16383;
+    }
 }

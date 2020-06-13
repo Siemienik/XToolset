@@ -21,7 +21,7 @@ export /* abstract */ class BaseCell {
     }
 
     public apply(scope: Scope): BaseCell {
-        if (scope.outputCell.c > 16384) {
+        if (scope.isOutOfColLimit()) {
             scope.finish(); // todo important: spec test
         }
         scope.setCurrentOutputValue(scope.getCurrentTemplateValue());
