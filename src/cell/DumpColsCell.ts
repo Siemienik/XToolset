@@ -15,7 +15,10 @@ export class DumpColsCell extends BaseCell {
     public apply(scope: Scope): DumpColsCell {
         super.apply(scope);
 
-        const path = scope.getCurrentTemplateString().substring(13).split('.');
+        const path = scope
+            .getCurrentTemplateString()
+            .substring(13)
+            .split('.');
         const cols = Array.from(path).reduce((p, c) => p[c] || [], scope.vm);
 
         scope.setCurrentOutputValue(null);
