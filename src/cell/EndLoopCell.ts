@@ -16,12 +16,8 @@ export class EndLoopCell extends BaseCell {
     public apply(scope: Scope): EndLoopCell {
         super.apply(scope);
 
-        const target =
-            scope
-                .getCurrentTemplateValue()
-                ?.toString()
-                .split(' ')[2] || '';
-        const __start = scope.vm[target] && scope.vm[target].__start;
+        const target = scope.getCurrentTemplateString().split(' ')[2];
+        const __start = scope.vm[target] && scope.vm[target].__start; // todo refactoring: simplify by using question mark
         const __iterated = scope.vm[target] && scope.vm[target].__iterated;
 
         scope.unfreezeOutput();

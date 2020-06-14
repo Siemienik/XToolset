@@ -15,6 +15,10 @@ export class Scope {
 
     constructor(public template: Workbook, public output: Workbook, public vm: ViewModel) {}
 
+    public getCurrentTemplateString(): string {
+        return this.getCurrentTemplateValue()?.toString() || '';
+    }
+
     public getCurrentTemplateValue(): CellValue {
         return this.getCurrentTemplateCell().value;
     }

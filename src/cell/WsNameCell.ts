@@ -33,12 +33,7 @@ export class WsNameCell extends BaseCell {
     }
 
     protected static _getTarget(scope: Scope): string {
-        return (
-            scope
-                .getCurrentTemplateValue()
-                ?.toString()
-                .split(' ')[2] || ''
-        );
+        return scope.getCurrentTemplateString().split(' ')[2];
     }
 
     public apply(scope: Scope): WsNameCell {

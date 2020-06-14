@@ -21,11 +21,7 @@ export class FinishCell extends BaseCell {
      * In other way, the same template sheet should render next output sheet - as long as condition is false
      */
     protected static getCondition(scope: Scope): boolean {
-        const args =
-            scope
-                .getCurrentTemplateValue()
-                ?.toString()
-                .split(' ') || [];
+        const args = scope.getCurrentTemplateString().split(' ');
         if (args.length < 3) {
             return true;
         }

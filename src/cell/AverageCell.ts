@@ -8,17 +8,12 @@ export class AverageCell extends BaseCell {
             cell &&
             cell.type === ValueType.String &&
             typeof cell.value === 'string' &&
-            cell.value.substring(0, 10) === '#! AVERAGE'
+            cell.value.substring(0, 10) === '#! AVERAGE' // todo refactoring: make utils that made this simply (here and in other cell's match functions
         );
     }
 
     protected static getTargetParam(scope: Scope): string {
-        return (
-            scope
-                .getCurrentTemplateValue()
-                ?.toString()
-                .split(' ')[2] || ''
-        );
+        return scope.getCurrentTemplateString().split(' ')[2];
     }
     public apply(scope: Scope): AverageCell {
         super.apply(scope);
