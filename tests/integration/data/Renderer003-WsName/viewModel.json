@@ -2,5 +2,6 @@
     "translatedNames": [
         "Hello",
         "World"
-    ]
+    ],
+    "veryLong": "IAmSureThatThisNameShouldBeTruncatedAfter31Chars"
 }
