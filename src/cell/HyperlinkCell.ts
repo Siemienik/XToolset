@@ -13,21 +13,11 @@ export class HyperlinkCell extends BaseCell {
     }
 
     protected static getLabelParam(scope: Scope): string {
-        return (
-            scope
-                .getCurrentTemplateValue()
-                ?.toString()
-                .split(' ')[2] || ''
-        );
+        return scope.getCurrentTemplateString().split(' ')[2];
     }
 
     protected static getUrlParam(scope: Scope): string {
-        return (
-            scope
-                .getCurrentTemplateValue()
-                ?.toString()
-                .split(' ')[3] || ''
-        );
+        return scope.getCurrentTemplateString().split(' ')[3];
     }
 
     public apply(scope: Scope): HyperlinkCell {

@@ -15,12 +15,7 @@ export class VariableCell extends BaseCell {
     public apply(scope: Scope) {
         super.apply(scope);
 
-        const path =
-            scope
-                .getCurrentTemplateValue()
-                ?.toString()
-                .substring(3)
-                .split('.') || [];
+        const path = scope.getCurrentTemplateString().substring(3).split('.');
 
         const value = path.reduce((p, c) => (typeof p === 'object' ? p[c] : p), scope.vm);
         if (value === undefined && !scope.isFrozen()) {

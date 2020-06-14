@@ -15,10 +15,7 @@ export class DeleteCell extends BaseCell {
     public apply(scope: Scope): DeleteCell {
         super.apply(scope);
 
-        const target = scope
-            .getCurrentTemplateValue()
-            ?.toString()
-            .split(' ')[2]; // todo make some function for scope.getCurrentTemplateValue()?.toString().split(' ')  ;
+        const target = scope.getCurrentTemplateString().split(' ')[2];
 
         if (target !== undefined) {
             scope.vm[target] = undefined;
