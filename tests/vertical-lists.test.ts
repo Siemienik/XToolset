@@ -1,9 +1,9 @@
 import * as chai from 'chai'
 
-import ImporterFactory from '../src/ImporterFactory' 
+import ImporterFactory from '../src/ImporterFactory'
 
 describe('testing vertical list - on file "marsjanie-db"', function () {
-    
+
     const configs = {
         people: {
             worksheet: 'szit1',
@@ -78,6 +78,24 @@ describe('testing vertical list - on file "marsjanie-db"', function () {
         const factory = new ImporterFactory();
         const importer = await  factory.From('tests/data/marsjanie-db.xlsx');
         const result = importer.GetAllItems(configs.groups);
+
+        const expected = [
+            {
+                "name": "Taka se",
+                "param": 12,
+            },
+            {
+                "name": "Inna grupa",
+                "param": 21,
+            },
+        ];
+
+        chai.expect(result).eql(expected);
+    });
+    it('with defined type', async function () {
+        const factory = new ImporterFactory();
+        const importer = await  factory.From('tests/data/marsjanie-db.xlsx');
+        const result = importer.GetAllItems({...configs.groups, type:'list'});
 
         const expected = [
             {
