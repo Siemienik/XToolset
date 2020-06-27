@@ -2,7 +2,7 @@ import {Renderer} from "../../src/Renderer";
 import * as fs from "fs";
 import {Dirent} from "fs";
 import * as path from "path";
-import {Workbook} from "exceljs";
+import { Anchor, Workbook, Worksheet } from 'exceljs';
 import * as chai from 'chai'
 
 function isDir(dirPath: Dirent | string): boolean {
@@ -15,10 +15,25 @@ function isDir(dirPath: Dirent | string): boolean {
     }
 }
 
+function getSimpleImagesObj(x:Worksheet) {
+    return  x.getImages().map(({ imageId, range }) => (
+        {
+            imageId,
+            brc: (range.br as Anchor).nativeCol,
+            brcf: (range.br as Anchor).nativeColOff,
+            brr: (range.br as Anchor).nativeRow,
+            brrf: (range.br as Anchor).nativeRowOff,
+            tlc: (range.tl as Anchor).nativeCol,
+            tlcf: (range.tl as Anchor).nativeColOff,
+            tlr: (range.tl as Anchor).nativeRow,
+            tlrf: (range.tl as Anchor).nativeRowOff
+        }));
+}
+
 function assertCells(expected: Workbook, result: Workbook, factor: number = 10) {
     chai.expect(expected.worksheets.length).eql(result.worksheets.length);
     chai.expect(expected.worksheets.map(x => x.name)).eql(result.worksheets.map(x => x.name));
-    //todo assert images
+    chai.expect(expected.worksheets.map(getSimpleImagesObj)).eql(result.worksheets.map(getSimpleImagesObj));
 
     for (let wi = 0; wi < expected.worksheets.length; wi++) {
         const ws = {e: expected.worksheets[wi], r: result.worksheets[wi]};
@@ -52,29 +67,35 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
         it('Same - should pass ok', async () => {
             const expected = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'main.xlsx'));
             const correct = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'correct.xlsx'));
+            const expectedImage = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'main-image.xlsx'));
+            const correctImage = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'correct-image.xlsx'));
 
             assertCells(expected, correct, 20);
         });
 
         it('Different - attempt to broke assertions', async () => {
             const expected = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'main.xlsx'));
-            const failedWorksheetAmount = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-ws-amount.xlsx'));
-            const failedWorksheetNames = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-ws-names.xlsx'));
-            const failedWidth = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-width.xlsx'));
             const failedHeight = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-height.xlsx'));
             const failedStyle = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-style.xlsx'));
+            const failedTable = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-table.xlsx'));
             const failedText = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-text.xlsx'));
             const failedValue = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-value.xlsx'));
-            const failedTable = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-table.xlsx'));
+            const failedWidth = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-width.xlsx'));
+            const failedWorksheetAmount = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-ws-amount.xlsx'));
+            const failedWorksheetNames = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-ws-names.xlsx'));
 
-            chai.expect(() => assertCells(expected, failedWorksheetAmount, 20)).throw("expected 2 to deeply equal 3");
-            chai.expect(() => assertCells(expected, failedWorksheetNames, 20)).throw('expected [ \'Sheet1\', \'Sheet2\' ] to deeply equal [ \'Sheet1\', \'Sheet3\' ]');
-            chai.expect(() => assertCells(expected, failedWidth, 20)).throw("expected 7.90625 to deeply equal 13");
             chai.expect(() => assertCells(expected, failedHeight, 20)).throw("expected 34.5 to deeply equal 15");
             chai.expect(() => assertCells(expected, failedStyle, 20)).throw("expected { Object (font, border, ...) } to deeply equal { Object (font, border, ...) }");
+            chai.expect(() => assertCells(expected, failedTable, 20)).throw('expected { Object (font, border, ...) } to deeply equal { Object (font, border, ...) }');
             chai.expect(() => assertCells(expected, failedText, 20)).throw('expected \'sadas\' to deeply equal \'sadasd\'');
             chai.expect(() => assertCells(expected, failedValue, 20)).throw('expected \'asdasda\' to deeply equal { Object (formula, result) }');
-            chai.expect(() => assertCells(expected, failedTable, 20)).throw('expected { Object (font, border, ...) } to deeply equal { Object (font, border, ...) }');
+            chai.expect(() => assertCells(expected, failedWidth, 20)).throw("expected 7.90625 to deeply equal 13");
+            chai.expect(() => assertCells(expected, failedWorksheetAmount, 20)).throw("expected 2 to deeply equal 3");
+            chai.expect(() => assertCells(expected, failedWorksheetNames, 20)).throw('expected [ \'Sheet1\', \'Sheet2\' ] to deeply equal [ \'Sheet1\', \'Sheet3\' ]');
+
+            const expectedImage = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'main-image.xlsx'));
+            const failedImage = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'f-image.xlsx'));
+            chai.expect(() => assertCells(expectedImage, failedImage, 20)).throw("expected [ Array(2) ] to deeply equal [ Array(2) ]");
         });
     });
     describe('Load examples, render and compare with expected result', () => {
