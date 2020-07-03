@@ -9,12 +9,12 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 11.x, 12.x, 13.x]
+        node-version: [8.x, 9.x, 10.x, 11.x, 12.x, 13.x, 14.x]
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@28c7f3d2b5162b5ddd3dfd9a45aa55eaf396478b # @v2; SECURE ALERT: always use hash instead of tags for actions
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
+      uses: actions/setup-node@44c9c187283081e4e88b54b0efad9e9d468165a4 # @v1; SECURE ALERT: always use hash instead of tags for actions
       with:
         node-version: ${{ matrix.node-version }}
     - name: npm install, lint, build, and test
