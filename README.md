@@ -58,13 +58,16 @@ for more example I invite to tests data: [click here and check `Renderer` folder
 
 # Supported platforms:
 
-## NODE:
-| Node version | 8 | 9 | 10 | 11 | 12 | 13 | 14 |
-|----------------|---|---|---|----|----|----|----|
-| Is supported? | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 | 🟢 |
+## Node:
+
+| Node version |  8  |  9  |  10 |  11 |  12 |  13 |  14 |
+|--------------|-----|-----|-----|-----|-----|-----|-----|
+| Supported?   | 🟢  | 🟢 | 🟢 |  🟢 | 🟢 |  🟢 | 🟢 |
+
+Discovered in: [#14](https://github.com/Siemienik/xlsx-renderer/issues/14)
 
 ## Browsers:
 
-Scheduled to check in issue: #13
+Scheduled to check in issue: [#13](https://github.com/Siemienik/xlsx-renderer/issues/13)
 
-[LICENSE](LICENSE)
+[MIT LICENSE](LICENSE)
