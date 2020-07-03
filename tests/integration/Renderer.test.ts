@@ -15,25 +15,34 @@ function isDir(dirPath: Dirent | string): boolean {
     }
 }
 
-function getSimpleImagesObj(x:Worksheet) {
-    return  x.getImages().map(({ imageId, range }) => (
-        {
+function getSimplestImages(x:Worksheet) {
+    return  x.getImages().map(({ imageId, range }) => {
+
+        /**
+         * TODO remove casting in the future
+         * @see https://github.com/Siemienik/xlsx-renderer/pull/31#discussion_r446581091
+         */
+        let br = (range.br as Anchor);
+        let tl = (range.tl as Anchor);
+
+        return {
             imageId,
-            brc: (range.br as Anchor).nativeCol,
-            brcf: (range.br as Anchor).nativeColOff,
-            brr: (range.br as Anchor).nativeRow,
-            brrf: (range.br as Anchor).nativeRowOff,
-            tlc: (range.tl as Anchor).nativeCol,
-            tlcf: (range.tl as Anchor).nativeColOff,
-            tlr: (range.tl as Anchor).nativeRow,
-            tlrf: (range.tl as Anchor).nativeRowOff
-        }));
+            brc: br.nativeCol,
+            brcf: br.nativeColOff,
+            brr: br.nativeRow,
+            brrf: br.nativeRowOff,
+            tlc: tl.nativeCol,
+            tlcf: tl.nativeColOff,
+            tlr: tl.nativeRow,
+            tlrf: tl.nativeRowOff
+        }
+    });
 }
 
 function assertCells(expected: Workbook, result: Workbook, factor: number = 10) {
     chai.expect(expected.worksheets.length).eql(result.worksheets.length);
     chai.expect(expected.worksheets.map(x => x.name)).eql(result.worksheets.map(x => x.name));
-    chai.expect(expected.worksheets.map(getSimpleImagesObj)).eql(result.worksheets.map(getSimpleImagesObj));
+    chai.expect(expected.worksheets.map(getSimplestImages)).eql(result.worksheets.map(getSimplestImages));
 
     for (let wi = 0; wi < expected.worksheets.length; wi++) {
         const ws = {e: expected.worksheets[wi], r: result.worksheets[wi]};
