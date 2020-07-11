@@ -1,4 +1,4 @@
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xlsx-renderer/lint-build-test)](https://github.com/Siemienik/xlsx-renderer/actions)[![codecov](https://codecov.io/gh/Siemienik/xlsx-renderer/branch/master/graph/badge.svg)](https://codecov.io/gh/Siemienik/xlsx-renderer)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xlsx-renderer/lint-build-test)](https://github.com/Siemienik/xlsx-renderer/actions)[![Snyk](https://snyk.io/test/github/siemienik/xlsx-renderer/badge.svg)](https://snyk.io/test/github/siemienik/xlsx-renderer)[![codecov](https://codecov.io/gh/Siemienik/xlsx-renderer/branch/master/graph/badge.svg)](https://codecov.io/gh/Siemienik/xlsx-renderer)
 
 [![NPM](https://img.shields.io/npm/l/xlsx-renderer)![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer)
 
