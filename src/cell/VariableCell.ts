@@ -7,6 +7,7 @@ export class VariableCell extends BaseCell {
         return (
             cell &&
             cell.type === ValueType.String &&
+            (cell.isMerged ? cell.master.address === cell.address : true) &&
             typeof cell.value === 'string' &&
             cell.value.substring(0, 2) === '##'
         );

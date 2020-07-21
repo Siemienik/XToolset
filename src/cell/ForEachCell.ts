@@ -1,7 +1,10 @@
 import { BaseCell } from './BaseCell';
 import { Scope } from '../Scope';
 import { Cell, ValueType } from 'exceljs';
-
+// TODO here is required Rnage class but Excels exports only an interface. TODO fix it in excels
+// @ts-ignore
+import Range from 'exceljs/lib/doc/range';
+import { ICellCoord } from '../ICellCoord';
 /* tslint:disable:variable-name */
 /**
  * Pattern: `#! FOR_EACH [TARGET] [SOURCE]`
@@ -16,6 +19,7 @@ import { Cell, ValueType } from 'exceljs';
  * * `__insetRows` - second and next iterations have to insert new rows
  * * `__startOutput` - first output cell
  * * `__endOutput` - last output cell
+ * * `__last` - boolean if it is last element of collection - useful for: `#! FINISH item.__last`
  */
 export class ForEachCell extends BaseCell {
     public static match(cell: Cell): boolean {
@@ -31,19 +35,44 @@ export class ForEachCell extends BaseCell {
         return scope.getCurrentTemplateString().split(' ')[2];
     }
 
+    protected static shiftMergedCells(__end: ICellCoord, __start:ICellCoord, scope: Scope) {
+        const shiftByR = __end.r - __start.r;
+        const outputWorksheet = scope.output.worksheets[scope.outputCell.ws];
+        // @ts-ignore
+        const merges = outputWorksheet._merges;
+        // @ts-ignore
+        outputWorksheet._merges = Object.keys(merges).reduce((val, key) => {
+            if (merges[key].top > __end.r) {
+                let { top, bottom } = merges[key].model;
+                const { left, right, sheetName } = merges[key].model;
+                top += shiftByR;
+                bottom += shiftByR;
+                // @ts-ignore
+                const newRange = new Range(top, left, bottom, right, sheetName);
+                // @ts-ignore
+                val[newRange.tl] = newRange;
+            } else {
+                // @ts-ignore
+                val[key] = merges[key];
+            }
+            return val;
+        }, {});
+    }
+
     public apply(scope: Scope): ForEachCell {
         const target = ForEachCell.getTargetParam(scope);
         const __from = this.getSourceParam(scope);
 
-        // todo refactoring
+        // TODO refactoring
         const __index = ((scope.vm[target] && scope.vm[target].__index) || 0) + 1;
         if (__index === 1) {
             super.apply(scope);
         }
 
-        const __start = (scope.vm[target] && scope.vm[target].__start) || scope.templateCell;
+        // TODO set types
+        const __start: ICellCoord = (scope.vm[target] && scope.vm[target].__start) || scope.templateCell;
         const __startOutput = (scope.vm[target] && scope.vm[target].__startOutput) || scope.outputCell.r + 1;
-        const __end = scope.vm[target] && scope.vm[target].__end;
+        const __end:ICellCoord= scope.vm[target] && scope.vm[target].__end;
         const __last = typeof __from.split('.').reduce((p, c) => p[c] || {}, scope.vm)[__index] === 'undefined';
         let __endOutput = scope.vm[target] && scope.vm[target].__endOutput;
         let __insetRows = (scope.vm[target] && scope.vm[target].__insetRows) || false;
@@ -73,6 +102,8 @@ export class ForEachCell extends BaseCell {
                         [],
                     );
                 }
+
+                ForEachCell.shiftMergedCells(__end, __start, scope);
             }
         }
 

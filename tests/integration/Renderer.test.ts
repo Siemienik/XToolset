@@ -62,9 +62,15 @@ function assertCells(expected: Workbook, result: Workbook, factor: number = 10) 
                 chai.expect(ws.r.getRow(r).height).eql(ws.e.getRow(r).height);
             }
 
-            // console.log(r,c);
             chai.expect(cell.r.style).eql(cell.e.style);
-            chai.expect(cell.r.text).eql(cell.e.text);
+            // TODO report bug, about merge cell which isn't a master. cell.text in that case throw error : `TypeError: Cannot read property 'toString' of null`
+            // TODO add to exceljs isMaster
+            // TODO update exceljs index.d.ts about cell.s (it misses cellvalues classes def)
+            if (!cell.r.isMerged || cell.r.address == cell.r.master.address) { // TODO after exceljs fix
+                if (!cell.e.isMerged || cell.e.address == cell.e.master.address) {// TODO after exceljs fix
+                    chai.expect(cell.r.text).eql(cell.e.text);
+                }
+            }
             chai.expect(cell.r.value).eql(cell.e.value);
         }
     }
@@ -78,6 +84,7 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
             const correct = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'correct.xlsx'));
             const expectedImage = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'main-image.xlsx'));
             const correctImage = await new Workbook().xlsx.readFile(path.join(__dirname, 'data', 'assertCells', 'correct-image.xlsx'));
+            // TODO important probably lack of assertions images assertion
 
             assertCells(expected, correct, 20);
         });
