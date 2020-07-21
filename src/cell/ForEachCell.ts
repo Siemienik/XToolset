@@ -1,10 +1,11 @@
 import { BaseCell } from './BaseCell';
 import { Scope } from '../Scope';
 import { Cell, ValueType } from 'exceljs';
-// TODO here is required Rnage class but Excels exports only an interface. TODO fix it in excels
+// TODO here is required Rnage class but Excels exports only an interface. TODO fix it in excels (@see https://github.com/Siemienik/xlsx-renderer/issues/44)
 // @ts-ignore
 import Range from 'exceljs/lib/doc/range';
 import { ICellCoord } from '../ICellCoord';
+
 /* tslint:disable:variable-name */
 /**
  * Pattern: `#! FOR_EACH [TARGET] [SOURCE]`
@@ -38,8 +39,10 @@ export class ForEachCell extends BaseCell {
     protected static shiftMergedCells(__end: ICellCoord, __start:ICellCoord, scope: Scope) {
         const shiftByR = __end.r - __start.r;
         const outputWorksheet = scope.output.worksheets[scope.outputCell.ws];
+        // TODO fix ts-ignore ( @see https://github.com/Siemienik/xlsx-renderer/issues/46 )
         // @ts-ignore
         const merges = outputWorksheet._merges;
+        // TODO fix ts-ignore ( @see https://github.com/Siemienik/xlsx-renderer/issues/46 )
         // @ts-ignore
         outputWorksheet._merges = Object.keys(merges).reduce((val, key) => {
             if (merges[key].top > __end.r) {
@@ -47,11 +50,14 @@ export class ForEachCell extends BaseCell {
                 const { left, right, sheetName } = merges[key].model;
                 top += shiftByR;
                 bottom += shiftByR;
+                // TODO fix ts-ignore ( @see https://github.com/Siemienik/xlsx-renderer/issues/46 )
                 // @ts-ignore
                 const newRange = new Range(top, left, bottom, right, sheetName);
+                // TODO fix ts-ignore ( @see https://github.com/Siemienik/xlsx-renderer/issues/46 )
                 // @ts-ignore
                 val[newRange.tl] = newRange;
             } else {
+                // TODO fix ts-ignore ( @see https://github.com/Siemienik/xlsx-renderer/issues/46 )
                 // @ts-ignore
                 val[key] = merges[key];
             }

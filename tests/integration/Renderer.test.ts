@@ -63,11 +63,11 @@ function assertCells(expected: Workbook, result: Workbook, factor: number = 10) 
             }
 
             chai.expect(cell.r.style).eql(cell.e.style);
-            // TODO report bug, about merge cell which isn't a master. cell.text in that case throw error : `TypeError: Cannot read property 'toString' of null`
-            // TODO add to exceljs isMaster
-            // TODO update exceljs index.d.ts about cell.s (it misses cellvalues classes def)
-            if (!cell.r.isMerged || cell.r.address == cell.r.master.address) { // TODO after exceljs fix
-                if (!cell.e.isMerged || cell.e.address == cell.e.master.address) {// TODO after exceljs fix
+            // TODO report bug, about merge cell which isn't a master. cell.text in that case throw error : `TypeError: Cannot read property 'toString' of null` (@see https://github.com/Siemienik/xlsx-renderer/issues/47)
+            // TODO add to exceljs isMaster (@see https://github.com/exceljs/exceljs/issues/1400)
+            // TODO update exceljs index.d.ts about cell.s (it misses cellvalues classes def) (@see https://github.com/Siemienik/xlsx-renderer/issues/44)
+            if (!cell.r.isMerged || cell.r.address == cell.r.master.address) { // TODO after exceljs fix (@see https://github.com/Siemienik/xlsx-renderer/issues/47)
+                if (!cell.e.isMerged || cell.e.address == cell.e.master.address) {// TODO after exceljs fix (@see https://github.com/Siemienik/xlsx-renderer/issues/47)
                     chai.expect(cell.r.text).eql(cell.e.text);
                 }
             }

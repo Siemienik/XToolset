@@ -17,7 +17,7 @@ jobs:
       uses: actions/setup-node@44c9c187283081e4e88b54b0efad9e9d468165a4 # @v1; SECURE ALERT: always use hash instead of tags for actions
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, lint, build, and test # TODO create more steps / actions
+    - name: npm install, lint, build, and test # TODO create more steps / actions (@see https://github.com/Siemienik/xlsx-renderer/issues/45)
       run: |
         npm install
         npm list

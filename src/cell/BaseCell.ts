@@ -19,11 +19,12 @@ export /* abstract */ class BaseCell {
             scope.templateCell.c,
         );
 
-        return ! (
+        return !(
             templateCell &&
-        templateCell.isMerged &&
-        templateCell.master &&
-        templateCell.master.address !== templateCell.address);
+            templateCell.isMerged &&
+            templateCell.master &&
+            templateCell.master.address !== templateCell.address
+        );
     }
 
     constructor() {
