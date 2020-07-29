@@ -70,8 +70,8 @@ interface Person {
     const author = importer.GetAllItems<Person>(config.owner);
 
 ```
+# See also
 
-# See also:
-
-* [xlsx-renderer](https://github.com/Siemienik/xlsx-rendererb)
-* [LICENSE](LICENSE)
+* [![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer) [XLSX-renderer](https://github.com/Siemienik/xlsx-renderer) - makes generating excel files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
+* [ts-package-structure](https://github.com/Siemienik/ts-package-structure) - the robust structure which I use to creating packages.
+* [MIT LICENSE](LICENSE)
