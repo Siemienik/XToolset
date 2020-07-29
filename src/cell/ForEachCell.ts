@@ -36,7 +36,7 @@ export class ForEachCell extends BaseCell {
         return scope.getCurrentTemplateString().split(' ')[2];
     }
 
-    protected static shiftMergedCells(__end: ICellCoord, __start:ICellCoord, scope: Scope) {
+    protected static shiftMergedCells(__end: ICellCoord, __start: ICellCoord, scope: Scope) {
         const shiftByR = __end.r - __start.r;
         const outputWorksheet = scope.output.worksheets[scope.outputCell.ws];
         // TODO fix ts-ignore ( @see https://github.com/Siemienik/xlsx-renderer/issues/46 )
@@ -78,7 +78,7 @@ export class ForEachCell extends BaseCell {
         // TODO set types
         const __start: ICellCoord = (scope.vm[target] && scope.vm[target].__start) || scope.templateCell;
         const __startOutput = (scope.vm[target] && scope.vm[target].__startOutput) || scope.outputCell.r + 1;
-        const __end:ICellCoord= scope.vm[target] && scope.vm[target].__end;
+        const __end: ICellCoord = scope.vm[target] && scope.vm[target].__end;
         const __last = typeof __from.split('.').reduce((p, c) => p[c] || {}, scope.vm)[__index] === 'undefined';
         let __endOutput = scope.vm[target] && scope.vm[target].__endOutput;
         let __insetRows = (scope.vm[target] && scope.vm[target].__insetRows) || false;
