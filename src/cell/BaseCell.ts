@@ -13,6 +13,20 @@ export /* abstract */ class BaseCell {
         return false;
     }
 
+    protected static isMasterCell(scope: Scope) {
+        const templateCell = scope.template.worksheets[scope.templateCell.ws].getCell(
+            scope.templateCell.r,
+            scope.templateCell.c,
+        );
+
+        return !(
+            templateCell &&
+            templateCell.isMerged &&
+            templateCell.master &&
+            templateCell.master.address !== templateCell.address
+        );
+    }
+
     constructor() {
         if (this.constructor.name !== 'BaseCell') {
             return;
@@ -26,8 +40,12 @@ export /* abstract */ class BaseCell {
         if (scope.isOutOfColLimit()) {
             scope.finish(); // todo important: spec test
         }
-        scope.setCurrentOutputValue(scope.getCurrentTemplateValue());
-        scope.applyStyles();
+
+        if (BaseCell.isMasterCell(scope)) {
+            scope.setCurrentOutputValue(scope.getCurrentTemplateValue());
+            scope.applyStyles();
+        }
+
         scope.applyMerge();
 
         return this;

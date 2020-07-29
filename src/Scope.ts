@@ -1,4 +1,7 @@
 import { Address, Cell, CellValue, Workbook } from 'exceljs';
+// TODO fix exceljs index.d.ts -> it provides only an interface Range (@see https://github.com/Siemienik/xlsx-renderer/issues/44)
+// @ts-ignore
+import Range from 'exceljs/lib/doc/range';
 import { ViewModel } from './ViewModel';
 import { ICellCoord } from './ICellCoord';
 
@@ -6,8 +9,6 @@ export class Scope {
     public outputCell: ICellCoord = Object.freeze({ r: 1, c: 1, ws: 0 });
 
     public templateCell: ICellCoord = Object.freeze({ r: 1, c: 1, ws: 0 });
-
-    private masters: { [id: string]: Address } = {};
 
     private frozen: number = 0;
 
@@ -38,6 +39,7 @@ export class Scope {
         if (this.frozen) {
             return;
         }
+        // TODO refactor names
         const ct = this.templateCell;
         const wst = this.template.worksheets[ct.ws];
         const co = this.outputCell;
@@ -50,19 +52,27 @@ export class Scope {
     }
 
     public applyMerge(): void {
+        // TODO refactor names
         const tws = this.template.worksheets[this.templateCell.ws];
         const tc = tws.getCell(this.templateCell.r, this.templateCell.c);
 
         const ows = this.output.worksheets[this.outputCell.ws];
-        const current = ows.getCell(this.outputCell.r, this.outputCell.c).model.address;
 
-        if (tc.model.master && tc.model.master !== tc.address) {
-            const range = `${this.masters[tc.model.master] || tc.model.master}:${current}`;
-
+        if (tc.isMerged && tc.address === (tc.master && tc.master.address)) {
+            // TODO fix ts-ignore ( @see https://github.com/Siemienik/xlsx-renderer/issues/46 )
+            // @ts-ignore
+            let { top, bottom } = tws._merges[tc.master.address];
+            // TODO fix ts-ignore ( @see https://github.com/Siemienik/xlsx-renderer/issues/46 )
+            // @ts-ignore
+            const { left, right } = tws._merges[tc.master.address];
+            const verticalShift = this.outputCell.r - top;
+            top += verticalShift;
+            bottom += verticalShift;
+            // TODO fix ts-ignore ( @see https://github.com/Siemienik/xlsx-renderer/issues/46 )
+            // @ts-ignore
+            const range = new Range(top, left, bottom, right).shortRange;
             ows.unMergeCells(range);
             ows.mergeCells(range);
-        } else if (tc.isMerged) {
-            this.masters[tc.address] = current;
         }
     }
 
@@ -80,7 +90,6 @@ export class Scope {
         }
 
         if (this.frozen) {
-            this.output.worksheets[this.outputCell.ws].spliceRows(this.outputCell.r + 1, 1); // todo refactoring
             this.outputCell = Object.freeze({ ...this.outputCell, c: 1 });
         } else {
             this.outputCell = Object.freeze({ ...this.outputCell, r: this.outputCell.r + 1, c: 1 });
