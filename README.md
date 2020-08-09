@@ -10,7 +10,7 @@ This amazing library makes generating excel files as simple as possible - it is 
 
 ## Use case
 
-1. **Are you filling nervous when the business wants to change the invoice layout?**
+1. **Are you feeling nervous when the business wants to change the invoice layout?**
 Now you may say "bye bye" to changing thousands of line codes. It is enough to update `invoice-template.xlsx` and use with this tool.
 
 2. **Do you need generate complex report?**
