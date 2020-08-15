@@ -1,0 +1,43 @@
+{
+  "name": "sxr",
+  "version": "0.0.0",
+  "license": "MIT",
+  "description": "todo sample description",
+  "main": "lib/Index.js",
+  "types": "lib/Index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siemienik/xlsx-renderer-cli"
+  },
+  "keywords": [
+    "jestem-leniem"
+  ],
+  "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
+  "scripts": {
+    "build": "tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "test": "mocha -r ts-node/register tests/**/*.test.ts tests/**/**/*.test.ts",
+    "coverageRaport": "nyc -r lcov -r=text -r=text-summary  -r=json -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts tests/**/**/*.test.ts && nyc report && cp coverage/coverage-final.json coverage/coverage.json",
+    "prepublishOnly": "npm test && npm run lint && npm run build",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.0.0",
+    "prettier": "^1.17.0",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.4"
+  },
+  "dependencies": {},
+  "files": [
+    "lib/**/*"
+  ]
+}
