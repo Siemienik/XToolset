@@ -21,7 +21,7 @@
     "template"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf lib/* &&  tsc",
     "format": "prettier --write \"src/**/*.ts\"",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "tslint -p tsconfig.json --fix",
