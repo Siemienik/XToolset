@@ -23,12 +23,12 @@ npm i xlsx-import --save
             worksheet: 'Favourites',
             columns: [
                 {
-                    index: 1, // row index (1,2,3....n)
+                    index: 1, // column index (1,2,3....n); `1` for column `A`
                     key: 'Id', // output item's field
                     mapper: (v: string) => Number.parseInt(v) // nullable, for transformating values
                 },
-                {index: 2, key: 'Title'},
-                {index: 5, key: 'Author'},
+                {index: 2, key: 'Title'}, // column `B`
+                {index: 5, key: 'Author'}, // column `E`
             ],
             rowOffset: 1, //offset header row
         },
@@ -36,9 +36,9 @@ npm i xlsx-import --save
             worksheet: 'About list owner',
             type: 'object',
             fields:[
-                {row: 2, col:1, key:'FirstName'},
-                {row: 2, col:2, key:'SecondName'},
-                {row: 3, col:1, key:'Age', mapper:Number.parseInt},
+                {row: 2, col:1, key:'FirstName'}, // `A2`
+                {row: 2, col:2, key:'SecondName'}, // `B2`
+                {row: 3, col:1, key:'Age', mapper:Number.parseInt}, // `A3`
             ]
         },
     };
