@@ -41,7 +41,7 @@
     "typescript": "^3.4.4"
   },
   "dependencies": {
-    "exceljs": "^3.5.0"
+    "exceljs": "^4.1.1"
   },
   "files": [
     "lib/**/*"
