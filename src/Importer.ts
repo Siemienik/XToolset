@@ -9,6 +9,7 @@ export default class Importer implements IImporter {
 
     public GetAllItems<T>(cfg: ISourceConfig): T[] {
         const ws = this.wb.getWorksheet(cfg.worksheet);
+        const MAPPER_DEFAULT = (v: string) => v;
 
         const result: T[] = [];
 
@@ -19,7 +20,7 @@ export default class Importer implements IImporter {
                 const singleton: { [id: string]: any } = {};
 
                 objectCfg.fields.forEach(fieldCfg => {
-                    const mapper = fieldCfg.mapper || ((v: string) => v);
+                    const mapper = fieldCfg.mapper || MAPPER_DEFAULT;
                     singleton[fieldCfg.key] = mapper(ws.getCell(fieldCfg.row, fieldCfg.col).text);
                 });
 
@@ -38,7 +39,7 @@ export default class Importer implements IImporter {
                     const item: { [id: string]: any } = {};
 
                     listCfg.columns.forEach(colCfg => {
-                        const mapper = colCfg.mapper || ((v: string) => v);
+                        const mapper = colCfg.mapper || MAPPER_DEFAULT;
                         item[colCfg.key] = mapper(row.getCell(colCfg.index).text);
                     });
 
