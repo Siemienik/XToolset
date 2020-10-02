@@ -1,8 +1,9 @@
 import * as chai from 'chai'
+import { ImportType } from '../src/config/ImportType';
 
 import ImporterFactory from '../src/ImporterFactory' 
 
-describe('reading sigle items (objects)', function () {
+describe('reading sigle items (objects)', () => {
     
     const configs = {
         author: {
@@ -17,8 +18,7 @@ describe('reading sigle items (objects)', function () {
             ]
         },
     };
-
-    it('getAllItems should return one correct object', async function () {
+    it('getAllItems should return one correct object', async () => {
         const factory = new ImporterFactory();
         const importer = await  factory.From('tests/data/marsjanie-db.xlsx');
         const result = importer.GetAllItems(configs.author);
@@ -29,5 +29,38 @@ describe('reading sigle items (objects)', function () {
 
         chai.expect(result).eql(expected);
         chai.expect(result.length).equals(1);
+    });
+
+    const definedTypesAsString = ['object', 'single', 'singleton'];
+    definedTypesAsString.forEach(type=> {
+        it(`for type (as string) '${type}' getAllItems should return one correct object`, async () => {
+            const factory = new ImporterFactory();
+            const importer = await factory.From('tests/data/marsjanie-db.xlsx');
+            const result = importer.GetAllItems(configs.author);
+
+            const expected = [
+                { firstName: 'Marian', secondName: 'Marianacki', age: 123, city: 'Pila-wojenna' }
+            ];
+
+            chai.expect(result).eql(expected);
+            chai.expect(result.length).equals(1);
+        });
+    });
+
+
+    const definedTypesAsEnum = [ImportType.Object, ImportType.Single, ImportType.Singleton];
+    definedTypesAsEnum.forEach(type=> {
+        it(`for type (as enum) '${type}' getAllItems should return one correct object`, async () => {
+            const factory = new ImporterFactory();
+            const importer = await factory.From('tests/data/marsjanie-db.xlsx');
+            const result = importer.GetAllItems(configs.author);
+
+            const expected = [
+                { firstName: 'Marian', secondName: 'Marianacki', age: 123, city: 'Pila-wojenna' }
+            ];
+
+            chai.expect(result).eql(expected);
+            chai.expect(result.length).equals(1);
+        });
     });
 });

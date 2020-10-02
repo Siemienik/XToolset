@@ -70,6 +70,27 @@ interface Person {
     const author = importer.GetAllItems<Person>(config.owner);
 
 ```
+# The configuration:
+
+## `worksheet` 
+
+It is a string, indicates which worksheet should be used for data source.
+
+## `types`
+
+| Enum `ImportType` | Raw values | Description
+|-----|------------|-----------
+| **Default:** <br/>`List`, aliases: `ListVertical`,  `Vertical`  | `list`, `list-vertical`, `vertical` | Used to import list of objects from worksheet reading from top to down (row by row). Each field has to defined column index (`A` is `1`, `B` is `2` ... etc.).
+| `Object`, aliases: `Single`,  `Singleton`  | `object`, `single`, `singletion` | Used to import single object from worksheet. Each field has to has defined row&col index.
+
+***What in case of performing incorrect `type` parameter value?*** 
+ 
+Here is implemented fallback mechanism to attempting to parse data as ListVertical, which is the common type used in this library.<br/> *In that case `console.warn` will be write.*
+
+## `fields` or `columns`
+
+This is `type` related configuration, for more information please study examples above, there are a full configuration used.
+
 # See also
 
 * [![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer) [XLSX-renderer](https://github.com/Siemienik/xlsx-renderer) - makes generating excel files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.

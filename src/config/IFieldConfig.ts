@@ -1,3 +1,4 @@
+// todo obsolete default export
 export default interface IFieldConfig {
     row: number;
     col: number | string;
