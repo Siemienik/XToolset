@@ -91,6 +91,28 @@ Here is implemented fallback mechanism to attempting to parse data as ListVertic
 
 This is `type` related configuration, for more information please study examples above, there are a full configuration used.
 
+# Reference
+
+## Mappers
+
+### Split mapper
+
+| Arguments        | Type     | Description                       |
+| ---------------- | -------- | --------------------------------- |
+| **`value`**      | `string` | Input string that will be splited |
+| **`separator?`** | `string` | Separator string                  |
+
+| Returns     | Type       | Description                        |
+| ----------- | ---------- | ---------------------------------- |
+| **`array`** | `string[]` | Resulting array of splited strings |
+
+#### Example
+
+```ts
+// TODO
+import ? from 'xlsx-import';
+```
+
 # See also
 
 * [![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer) [XLSX-renderer](https://github.com/Siemienik/xlsx-renderer) - makes generating excel files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
