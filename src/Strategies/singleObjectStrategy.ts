@@ -1,6 +1,7 @@
 import { Worksheet } from 'exceljs';
 import IObjectSourceConfig from '../config/IObjectSourceConfig';
 import ISourceConfig from '../config/ISourceConfig';
+import { MAPPER_DEFAULT } from '../mappers';
 import { ImportStrategy } from './ImportStrategy';
 
 export const singleObjectStrategy: ImportStrategy = <T>(cfg: ISourceConfig, ws: Worksheet): T[] => {
@@ -9,7 +10,7 @@ export const singleObjectStrategy: ImportStrategy = <T>(cfg: ISourceConfig, ws: 
     const singleton: { [id: string]: any } = {};
 
     objectCfg.fields.forEach(fieldCfg => {
-        const mapper = fieldCfg.mapper || ((v: string) => v);
+        const mapper = fieldCfg.mapper || MAPPER_DEFAULT;
         singleton[fieldCfg.key] = mapper(ws.getCell(fieldCfg.row, fieldCfg.col).text);
     });
 

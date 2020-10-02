@@ -96,3 +96,11 @@ This is `type` related configuration, for more information please study examples
 * [![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer) [XLSX-renderer](https://github.com/Siemienik/xlsx-renderer) - makes generating excel files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
 * [ts-package-structure](https://github.com/Siemienik/ts-package-structure) - the robust structure which I use to creating packages.
 * [MIT LICENSE](LICENSE)
+
+# Supported Node version:
+
+8 | 9 | 10 | 11 | 12 | 13 | 14
+--|---|---|---|----|---|---
+❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅
+
+Node v8 and v9 compatibly was drop after upgrade `ExcelJS` to version 4+ and it is able to turn on by downgrading `xlsx-import` to version 2.2.1 or if needed really impotant by requesting me directly.

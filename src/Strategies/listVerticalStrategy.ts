@@ -1,6 +1,7 @@
 import { Worksheet } from 'exceljs';
 import IListSourceConfig from '../config/IListSourceConfig';
 import ISourceConfig from '../config/ISourceConfig';
+import { MAPPER_DEFAULT } from '../mappers';
 import { ImportStrategy } from './ImportStrategy';
 
 export const listVerticalStrategy: ImportStrategy = <T>(cfg: ISourceConfig, ws: Worksheet): T[] => {
@@ -14,7 +15,7 @@ export const listVerticalStrategy: ImportStrategy = <T>(cfg: ISourceConfig, ws: 
         const item: { [id: string]: any } = {};
 
         listCfg.columns.forEach(colCfg => {
-            const mapper = colCfg.mapper || ((v: string) => v);
+            const mapper = colCfg.mapper || MAPPER_DEFAULT;
             item[colCfg.key] = mapper(row.getCell(colCfg.index).text);
         });
 
