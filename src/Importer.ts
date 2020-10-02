@@ -2,7 +2,7 @@ import { Workbook } from 'exceljs';
 import { IMPORT_TYPE_DEFAULT, ImportType } from './config/ImportType';
 import ISourceConfig from './config/ISourceConfig';
 import IImporter from './IImporter';
-import { getStrategyByType } from './Strategies';
+import { getStrategyByType } from './strategies';
 
 // todo obsolete default export
 export default class Importer implements IImporter {
