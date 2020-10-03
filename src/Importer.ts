@@ -24,4 +24,4 @@ export default class ImporterLegacy extends Importer implements IImporterLegacy 
     public GetAllItems<T>(cfg: ISourceConfig): T[] {
         return this.getAllItems<T>(cfg);
     }
-};
+}

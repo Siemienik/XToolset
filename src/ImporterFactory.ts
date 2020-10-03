@@ -16,7 +16,6 @@ export class ImporterFactory {
 export default class ImporterFactoryLegacy extends ImporterFactory {
     /** @deprecated Refactoring performed, please to use `import { ImporterFactory }` and rename to camelCase version `from`. */
     public async From(path: string): Promise<IImporter> {
-       return this.from(path);
+        return this.from(path);
     }
-};
-
+}

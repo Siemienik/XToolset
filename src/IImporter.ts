@@ -9,4 +9,4 @@ export interface IImporter {
 export default interface IImporterLegacy {
     /** @deprecated Refactoring performed, please to use `import { IImporter }` and rename to camelCase version `getAllItems`. */
     GetAllItems<T>(people: ISourceConfig): T[];
-};
+}

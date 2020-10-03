@@ -6,4 +6,4 @@ export interface IColumnConfig {
 
 /** @deprecated Default exports will be removed in January 2021. Please to use brackets (`{ IColumnConfig }`). */
 // tslint:disable-next-line:no-empty-interface
-export default interface IColumnConfigLegacy extends IColumnConfig {};
+export default interface IColumnConfigLegacy extends IColumnConfig {}
