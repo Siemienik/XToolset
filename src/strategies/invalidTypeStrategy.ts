@@ -1,6 +1,6 @@
 import { Worksheet } from 'exceljs';
 import { IMPORT_TYPE_DEFAULT, ImportType } from '../config/ImportType';
-import ISourceConfig from '../config/ISourceConfig';
+import { ISourceConfig } from '../config/ISourceConfig';
 import { ImportStrategy } from './ImportStrategy';
 import { listVerticalStrategy } from './listVerticalStrategy';
 

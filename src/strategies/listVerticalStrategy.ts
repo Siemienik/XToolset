@@ -1,6 +1,6 @@
 import { Worksheet } from 'exceljs';
-import IListSourceConfig from '../config/IListSourceConfig';
-import ISourceConfig from '../config/ISourceConfig';
+import { IListSourceConfig } from '../config/IListSourceConfig';
+import { ISourceConfig } from '../config/ISourceConfig';
 import { MAPPER_DEFAULT } from '../mappers';
 import { ImportStrategy } from './ImportStrategy';
 
