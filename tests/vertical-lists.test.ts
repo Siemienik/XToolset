@@ -1,8 +1,9 @@
-import * as chai from 'chai'
+import * as chai from 'chai';
+import { IMPORT_TYPE_DEFAULT, ImportType } from '../src/config/ImportType';
 
-import ImporterFactory from '../src/ImporterFactory'
+import ImporterFactory from '../src/ImporterFactory';
 
-describe('testing vertical list - on file "marsjanie-db"', function () {
+describe('testing vertical list - on file "marsjanie-db"', () => {
 
     const configs = {
         people: {
@@ -28,7 +29,7 @@ describe('testing vertical list - on file "marsjanie-db"', function () {
         },
     };
 
-    it('worksheet "szit1"', async function () {
+    it('worksheet "szit1"', async () => {
         const factory = new ImporterFactory();
         const importer = await  factory.From('tests/data/marsjanie-db.xlsx');
         const result = importer.GetAllItems(configs.people);
@@ -74,7 +75,8 @@ describe('testing vertical list - on file "marsjanie-db"', function () {
 
         chai.expect(result).eql(expected);
     });
-    it('worksheet "grupy"', async function () {
+
+    it('worksheet "grupy"', async () => {
         const factory = new ImporterFactory();
         const importer = await  factory.From('tests/data/marsjanie-db.xlsx');
         const result = importer.GetAllItems(configs.groups);
@@ -92,10 +94,63 @@ describe('testing vertical list - on file "marsjanie-db"', function () {
 
         chai.expect(result).eql(expected);
     });
-    it('with defined type', async function () {
+
+    const definedTypesAsString = ['list', 'list-vertical', 'vertical']; // not recommended
+    definedTypesAsString.forEach(type=> {
+        it(`with defined type as string '${type}'`, async () => {
+            const factory = new ImporterFactory();
+            const importer = await factory.From('tests/data/marsjanie-db.xlsx');
+            const result = importer.GetAllItems({ ...configs.groups, type });
+
+            const expected = [
+                {
+                    "name": "Taka se",
+                    "param": 12,
+                },
+                {
+                    "name": "Inna grupa",
+                    "param": 21,
+                },
+            ];
+
+            chai.expect(result).eql(expected);
+        });
+    })
+
+
+    const definedTypesAsEnum = [ImportType.List, ImportType.Vertical, ImportType.ListVertical, IMPORT_TYPE_DEFAULT];
+    definedTypesAsEnum.forEach(type=> {
+        it(`with defined type as enum '${type}'`, async () => {
+            const factory = new ImporterFactory();
+            const importer = await factory.From('tests/data/marsjanie-db.xlsx');
+            const result = importer.GetAllItems({ ...configs.groups, type });
+
+            const expected = [
+                {
+                    "name": "Taka se",
+                    "param": 12,
+                },
+                {
+                    "name": "Inna grupa",
+                    "param": 21,
+                },
+            ];
+
+            chai.expect(result).eql(expected);
+        });
+    })
+
+    it(`with defined invalid type`, async () => {
+        let didWarn = false;
+
+        // tslint:disable-next-line:no-console
+        const warnOriginal = console.warn;
+        // tslint:disable-next-line:no-console
+        console.warn = () => didWarn = true;
+
         const factory = new ImporterFactory();
-        const importer = await  factory.From('tests/data/marsjanie-db.xlsx');
-        const result = importer.GetAllItems({...configs.groups, type:'list'});
+        const importer = await factory.From('tests/data/marsjanie-db.xlsx');
+        const result = importer.GetAllItems({ ...configs.groups, type:'invalid-ktobywnocykodzil?' });
 
         const expected = [
             {
@@ -108,6 +163,10 @@ describe('testing vertical list - on file "marsjanie-db"', function () {
             },
         ];
 
+        chai.expect(didWarn).equal(true, 'Warn should be pushed.');
         chai.expect(result).eql(expected);
+
+        // tslint:disable-next-line:no-console
+        console.warn = warnOriginal;
     });
 });
