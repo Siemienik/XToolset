@@ -3,8 +3,7 @@ import { IImporter } from './IImporter';
 import { Importer } from './Importer';
 
 export class ImporterFactory {
-    // todo obsolete and rename to loverCase
-    public async From(path: string): Promise<IImporter> {
+    public async from(path: string): Promise<IImporter> {
         const wb = new Workbook();
         await wb.xlsx.readFile(path);
 
@@ -14,5 +13,10 @@ export class ImporterFactory {
 
 /** @deprecated Default exports will be removed in January 2021. Please to use brackets (`{ ImporterFactory }`). */
 // tslint:disable-next-line:no-empty-interface max-classes-per-file
-export default class ImporterFactoryLegacy extends ImporterFactory {};
+export default class ImporterFactoryLegacy extends ImporterFactory {
+    /** @deprecated Refactoring performed, please to use `import { ImporterFactory }` and rename to camelCase version `from`. */
+    public async From(path: string): Promise<IImporter> {
+       return this.from(path);
+    }
+};
 
