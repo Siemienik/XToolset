@@ -1,6 +1,6 @@
 import { Workbook } from 'exceljs';
-import { IImporter } from './IImporter';
-import { Importer } from './Importer';
+import IImporterLegacy, { IImporter } from './IImporter';
+import ImporterLegacy, { Importer } from './Importer';
 
 export class ImporterFactory {
     public async from(path: string): Promise<IImporter> {
@@ -15,7 +15,10 @@ export class ImporterFactory {
 // tslint:disable-next-line:no-empty-interface max-classes-per-file
 export default class ImporterFactoryLegacy extends ImporterFactory {
     /** @deprecated Refactoring performed, please to use `import { ImporterFactory }` and rename to camelCase version `from`. */
-    public async From(path: string): Promise<IImporter> {
-        return this.from(path);
+    public async From(path: string): Promise<ImporterLegacy> {
+        const wb = new Workbook();
+        await wb.xlsx.readFile(path);
+
+        return new ImporterLegacy(wb);
     }
 }

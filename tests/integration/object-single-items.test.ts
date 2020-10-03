@@ -1,7 +1,7 @@
 import * as chai from 'chai'
-import { ImportType } from '../src/config/ImportType';
+import { ImportType } from '../../src/config/ImportType';
 
-import ImporterFactory from '../src/ImporterFactory' 
+import {ImporterFactory} from '../../src/ImporterFactory'
 
 describe('reading sigle items (objects)', () => {
     
@@ -20,8 +20,8 @@ describe('reading sigle items (objects)', () => {
     };
     it('getAllItems should return one correct object', async () => {
         const factory = new ImporterFactory();
-        const importer = await  factory.From('tests/data/marsjanie-db.xlsx');
-        const result = importer.GetAllItems(configs.author);
+        const importer = await  factory.from('tests/data/marsjanie-db.xlsx');
+        const result = importer.getAllItems(configs.author);
 
         const expected = [
             {firstName:'Marian', secondName:'Marianacki',age:123,city:'Pila-wojenna'}
@@ -35,8 +35,8 @@ describe('reading sigle items (objects)', () => {
     definedTypesAsString.forEach(type=> {
         it(`for type (as string) '${type}' getAllItems should return one correct object`, async () => {
             const factory = new ImporterFactory();
-            const importer = await factory.From('tests/data/marsjanie-db.xlsx');
-            const result = importer.GetAllItems(configs.author);
+            const importer = await factory.from('tests/data/marsjanie-db.xlsx');
+            const result = importer.getAllItems(configs.author);
 
             const expected = [
                 { firstName: 'Marian', secondName: 'Marianacki', age: 123, city: 'Pila-wojenna' }
@@ -52,8 +52,8 @@ describe('reading sigle items (objects)', () => {
     definedTypesAsEnum.forEach(type=> {
         it(`for type (as enum) '${type}' getAllItems should return one correct object`, async () => {
             const factory = new ImporterFactory();
-            const importer = await factory.From('tests/data/marsjanie-db.xlsx');
-            const result = importer.GetAllItems(configs.author);
+            const importer = await factory.from('tests/data/marsjanie-db.xlsx');
+            const result = importer.getAllItems(configs.author);
 
             const expected = [
                 { firstName: 'Marian', secondName: 'Marianacki', age: 123, city: 'Pila-wojenna' }
