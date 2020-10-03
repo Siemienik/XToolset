@@ -65,9 +65,9 @@ interface Person {
 
     //...
 
-    const importer = await  factory.From(filePath);
-    const books = importer.GetAllItems<Book>(config.books); //it returns `Book[]`
-    const author = importer.GetAllItems<Person>(config.owner);
+    const importer = await  factory.from(filePath);
+    const books = importer.getAllItems<Book>(config.books); //it returns `Book[]`
+    const author = importer.getAllItems<Person>(config.owner);
 
 ```
 # The configuration:
