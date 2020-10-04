@@ -16,7 +16,7 @@ npm i xlsx-import --save
 ```
 
 2. write config
-```javascript
+```ts
     const config = {
         books: {
             type: 'list',
@@ -45,7 +45,7 @@ npm i xlsx-import --save
 ```
 
 3. Types:
-```typescipt
+```ts
 interface Book {
     Id: number;
     Title: string;
@@ -60,7 +60,7 @@ interface Person {
 ```
 
 4. Import:
-```typescipt
+```ts
     const factory = new ImporterFactory();
 
     //...
