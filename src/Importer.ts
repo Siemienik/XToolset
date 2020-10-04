@@ -1,11 +1,10 @@
 import { Workbook } from 'exceljs';
 import { IMPORT_TYPE_DEFAULT, ImportType } from './config/ImportType';
-import ISourceConfig from './config/ISourceConfig';
-import IImporter from './IImporter';
+import { ISourceConfig } from './config/ISourceConfig';
+import { IImporter } from './IImporter';
 import { getStrategyByType } from './strategies';
 
-// todo obsolete default export
-export default class Importer implements IImporter {
+export class Importer implements IImporter {
     constructor(private wb: Workbook) {}
 
     // todo obsolete and rename to loverCase
@@ -17,3 +16,7 @@ export default class Importer implements IImporter {
         return getStrategyByType(type)(cfg, ws);
     }
 }
+
+/** @deprecated Default exports will be removed in January 2021. Please to use brackets (`{ Importer }`). */
+// tslint:disable-next-line:no-empty-interface max-classes-per-file
+export default class ImporterLegacy extends Importer {};
