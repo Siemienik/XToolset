@@ -1,7 +1,7 @@
 import * as chai from 'chai';
-import { IMPORT_TYPE_DEFAULT, ImportType } from '../src/config/ImportType';
+import { IMPORT_TYPE_DEFAULT, ImportType } from '../../src/config/ImportType';
 
-import ImporterFactory from '../src/ImporterFactory';
+import ImporterFactory from '../../src/ImporterFactory';
 
 describe('testing vertical list - on file "marsjanie-db"', () => {
 

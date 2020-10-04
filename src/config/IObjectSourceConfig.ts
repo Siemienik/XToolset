@@ -7,4 +7,4 @@ export interface IObjectSourceConfig extends ISourceConfig {
 
 /** @deprecated Default exports will be removed in January 2021. Please to use brackets (`{ IObjectSourceConfig }`). */
 // tslint:disable-next-line:no-empty-interface
-export default interface IObjectSourceConfigLegacy extends IObjectSourceConfig {};
+export default interface IObjectSourceConfigLegacy extends IObjectSourceConfig {}

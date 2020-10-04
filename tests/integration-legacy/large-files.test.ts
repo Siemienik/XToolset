@@ -1,6 +1,6 @@
 import * as chai from 'chai'
 
-import ImporterFactory from '../src/ImporterFactory' 
+import ImporterFactory from '../../src/ImporterFactory'
 
 const configs = {
     large: {
@@ -13,8 +13,8 @@ const configs = {
     },
 };
 
-describe('64k rows', function () {
-    it('getAllItems return 64k correct items', async function () {
+describe('64k rows',  () => {
+    it('getAllItems return 64k correct items', async  () => {
         const factory = new ImporterFactory();
         const importer = await  factory.From('tests/data/large-64.xlsx');
         const result = importer.GetAllItems<{id:number, factor:number}>(configs.large);
