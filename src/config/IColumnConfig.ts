@@ -1,7 +1,9 @@
+import { ValueMapper } from '../abstracts/ValueMapper';
+
 export interface IColumnConfig {
     index: number;
     key: string;
-    mapper?: (id: string) => any;
+    mapper?: ValueMapper<any>;
 }
 
 /** @deprecated Default exports will be removed in January 2021. Please to use brackets (`{ IColumnConfig }`). */
