@@ -2,6 +2,8 @@
 
 This is an example how to use `xlsx-import` in a pure node javascript.
 
+**LIB Version:** `2.3.0`
+
 ## Usage
 
 ```bash
