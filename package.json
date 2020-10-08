@@ -1,6 +1,6 @@
 {
   "name": "xlsx-import",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "license": "MIT",
   "description": "Import data from xlsx file using configured pattern",
   "main": "xlsx-import/lib/ImporterFactory.js",
