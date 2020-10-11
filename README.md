@@ -30,15 +30,15 @@ npm i xlsx-import --save
                 {index: 2, key: 'Title'}, // column `B`
                 {index: 5, key: 'Author'}, // column `E`
             ],
-            rowOffset: 1, //offset header row
+            rowOffset: 1, // offset header row
         },
         owner: {
             worksheet: 'About list owner',
             type: 'object',
-            fields:[
-                {row: 2, col:1, key:'FirstName'}, // `A2`
-                {row: 2, col:2, key:'SecondName'}, // `B2`
-                {row: 3, col:1, key:'Age', mapper:Number.parseInt}, // `A3`
+            fields: [
+                {row: 2, col: 1, key: 'FirstName'}, // `A2`
+                {row: 2, col: 2, key: 'SecondName'}, // `B2`
+                {row: 3, col: 1, key: 'Age', mapper: Number.parseInt}, // `A3`
             ]
         },
     };
@@ -65,14 +65,14 @@ interface Person {
 
     //...
 
-    const importer = await  factory.from(filePath);
-    const books = importer.getAllItems<Book>(config.books); //it returns `Book[]`
+    const importer = await factory.from(filePath);
+    const books = importer.getAllItems<Book>(config.books); // it returns `Book[]`
     const author = importer.getAllItems<Person>(config.owner);
 
 ```
 # Samples
 
-Sample integration with `xlsx-import` are placed in [./samples](./samples) directory, Currently available:
+Sample integration with `xlsx-import` are placed in [./samples](./samples) directory. Currently available:
 
 * [NodeJS sample](./samples/nodejs/) of **importing an invoice** - it is pure JS example which runs on nodejs.
 
@@ -109,4 +109,4 @@ This is `type` related configuration, for more information please study examples
 --|---|---|---|----|---|---
 ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅
 
-Node v8 and v9 compatibly was drop after upgrade `ExcelJS` to version 4+ and it is able to turn on by downgrading `xlsx-import` to version 2.2.1 or if needed really impotant by requesting me directly.
+Node v8 and v9 compatibly was drop after upgrade `ExcelJS` to version 4+ and it is able to turn on by downgrading `xlsx-import` to version 2.2.1 or if needed really important by requesting me directly.
