@@ -1,8 +1,9 @@
-import * as chai from 'chai'
+import * as chai from 'chai';
+import { upperCaseMapper } from '../../../src/mappers';
 import { stringMapper } from '../../../src/mappers/stringMapper';
 
-describe('Mappers, unit tests', () =>{
-  describe('stringMapper', ()=>{
+describe('Mappers, unit tests', () => {
+  describe('stringMapper', () => {
       const dataProvider = [
           // it is designed for string input only
           {inValue: '', expectedResult: ''},
@@ -22,10 +23,25 @@ describe('Mappers, unit tests', () =>{
           {inValue: 0, expectedResult: 0},
           {inValue: 0x0, expectedResult: 0x0},
       ];
-      dataProvider.forEach(({inValue, expectedResult}) =>{
-          it(`stringMapper for input "${inValue}" SHOULD return "${expectedResult}"`, ()=>{
+      dataProvider.forEach(({inValue, expectedResult}) => {
+          it(`stringMapper for input "${inValue}" SHOULD return "${expectedResult}"`, () => {
               chai.expect(stringMapper(inValue as string)).equal(expectedResult);
-          })
-      })
-  })
-})
+          });
+      });
+  });
+
+  describe('upperCaseMapper', () => {
+      const dataProvider = [
+          { inValue: '', expectedResult: '' },
+          { inValue: 'asd', expectedResult: 'ASD' },
+          { inValue: 'Asd', expectedResult: 'ASD' },
+          { inValue: 'ASD', expectedResult: 'ASD' },
+          { inValue: 'asd ASD', expectedResult: 'ASD ASD' },
+      ];
+      dataProvider.forEach(({inValue, expectedResult}) => {
+          it(`upperCaseMapper for input "${inValue}" SHOULD return "${expectedResult}"`, () => {
+              chai.expect(upperCaseMapper(inValue)).equal(expectedResult);
+          });
+      });
+  });
+});
