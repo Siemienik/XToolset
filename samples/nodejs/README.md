@@ -2,7 +2,7 @@
 
 This is an example how to use `xlsx-import` in a pure node javascript.
 
-**LIB Version:** `2.3.0`
+**LIB Version:** `2.3.1`
 
 ## Usage
 
