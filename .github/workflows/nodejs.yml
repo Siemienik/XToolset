@@ -1,6 +1,6 @@
 name: lint-build-test
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
@@ -17,12 +17,16 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: npm install, lint, build, and test
+    - name: npm install
+      run: npm ci
+    - name: Check lint
+      run: npm run lint
+    - name: Check build
+      run: npm run build
+    - name: Check unit & integration tests
+      run: npm run test
+    - name: Run & publish coverage report
       run: |
-        npm ci
-        npm run lint
-        npm run build
-        npm run test
         npm run coverageReport
         bash <(curl -s https://codecov.io/bash)
       env:
