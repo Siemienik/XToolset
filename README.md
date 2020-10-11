@@ -44,7 +44,28 @@ npm i xlsx-import --save
     };
 ```
 
-3. Types:
+3. Use mappers (optional):
+
+Mapper is a function that transforms values. You can use [built-in mappers](#Mappers) or write your own
+
+```ts
+    import { upperCaseMapper } from 'xlsx-import/lib/mappers';
+
+    const config = {
+        // ...
+        owner: {
+            worksheet: 'About list owner',
+            type: 'object',
+            fields:[
+                {row: 2, col:1, key:'FirstName'},
+                {row: 2, col:2, key:'SecondName', mapper: upperCaseMapper},
+                {row: 3, col:1, key:'Age', mapper: Number.parseInt},
+            ]
+        },
+    };
+```
+
+4. Types:
 ```ts
 interface Book {
     Id: number;
@@ -59,7 +80,7 @@ interface Person {
 }
 ```
 
-4. Import:
+5. Import:
 ```ts
     const factory = new ImporterFactory();
 
@@ -96,6 +117,12 @@ Here is implemented fallback mechanism to attempting to parse data as ListVertic
 ## `fields` or `columns`
 
 This is `type` related configuration, for more information please study examples above, there are a full configuration used.
+
+## Mappers
+
+| Exported Name | Description
+|-----|-----------
+|upperCaseMapper|Transforms string to upper case
 
 # See also
 
