@@ -74,7 +74,7 @@ interface Person {
 
 Sample integration with `xlsx-import` are placed in [./samples](./samples) directory, Currently available:
 
-* [NodeJS sample](./samples/nodejs/README.md) of **importing an invoice** - it is pure JS example which runs on nodejs.
+* [NodeJS sample](./samples/nodejs/) of **importing an invoice** - it is pure JS example which runs on nodejs.
 
 # The configuration:
 
