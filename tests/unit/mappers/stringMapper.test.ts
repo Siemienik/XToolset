@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-import { upperCaseMapper } from '../../../src/mappers';
+import { upperCaseMapper, isEmpty } from '../../../src/mappers';
 import { stringMapper } from '../../../src/mappers/stringMapper';
 
 describe('Mappers, unit tests', () => {
@@ -41,6 +41,22 @@ describe('Mappers, unit tests', () => {
       dataProvider.forEach(({inValue, expectedResult}) => {
           it(`upperCaseMapper for input "${inValue}" SHOULD return "${expectedResult}"`, () => {
               chai.expect(upperCaseMapper(inValue)).equal(expectedResult);
+          });
+      });
+  });
+
+  describe('isEmpty', () => {
+    const dataProvider = [
+        { inValue: '', expectedResult: true },
+        { inValue: null, expectedResult: true },
+        { inValue: ' ', expectedResult: false }, // it is quite problematic case, however it isn't empty
+        { inValue: 'null', expectedResult: false },
+        { inValue: 'a', expectedResult: false},
+        { inValue: 'as d', expectedResult: false },
+      ]
+      dataProvider.forEach(({inValue, expectedResult}) => {
+          it(`isEmpty for input "${inValue}" SHOULD return "${expectedResult}"`, () => {
+              chai.expect(isEmpty(inValue as string)).equal(expectedResult);
           });
       });
   });
