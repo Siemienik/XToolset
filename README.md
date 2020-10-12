@@ -61,6 +61,7 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
                 {row: 2, col:2, key:'SecondName', mapper: upperCaseMapper},
                 {row: 2, col:3, key:'ArtistName', mapper: isEmpty},
                 {row: 3, col:1, key:'Age', mapper: Number.parseInt},
+                {row: 3, col:2, key:'Height', mapper: isFilled},
             ]
         },
     };
@@ -125,6 +126,7 @@ This is `type` related configuration, for more information please study examples
 |-----|-----------
 |upperCaseMapper|Transforms string to upper case
 |isEmpty|Examines if input is empty
+|isFilled|Examines if input is not empty
 
 # See also
 
