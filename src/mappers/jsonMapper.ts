@@ -12,4 +12,6 @@ interface IJsonResult {
     [key: string]: string | boolean | number
 }
 
-export const jsonMapper: ValueMapper<IJsonResult | null> = parseJSON
+type JsonMapper = ValueMapper<IJsonResult | null>
+
+export const jsonMapper: JsonMapper = parseJSON
