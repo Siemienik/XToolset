@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-import { upperCaseMapper, isEmpty, isFilled } from '../../../src/mappers';
+import { upperCaseMapper, jsonMapper, isEmpty, isFilled } from '../../../src/mappers';
 import { stringMapper } from '../../../src/mappers/stringMapper';
 
 describe('Mappers, unit tests', () => {
@@ -41,6 +41,29 @@ describe('Mappers, unit tests', () => {
       dataProvider.forEach(({inValue, expectedResult}) => {
           it(`upperCaseMapper for input "${inValue}" SHOULD return "${expectedResult}"`, () => {
               chai.expect(upperCaseMapper(inValue)).equal(expectedResult);
+          });
+      });
+  });
+
+  describe('jsonMapper', () => {
+    const dataProvider = [
+        { inValue: '', expectedResult: null },
+        { inValue: null, expectedResult: null },
+        { inValue: ' ', expectedResult: null },
+        { inValue: 'asd', expectedResult: null },
+        { inValue: 'null', expectedResult: null },
+        { inValue: 'false', expectedResult: false },
+        { inValue: 'true', expectedResult: true },
+        { inValue: '0', expectedResult: 0},
+        { inValue: '1', expectedResult: 1},
+        { inValue: '"string"', expectedResult: 'string'},
+        { inValue: '\'string\'', expectedResult: null},
+        { inValue: '{"a":1}', expectedResult: {a:1}},
+        { inValue: '{"a":[1]}', expectedResult: {a:[1]}},
+      ]
+      dataProvider.forEach(({inValue, expectedResult}) => {
+          it(`jsonMapper for input "${inValue}" SHOULD return "${JSON.stringify(expectedResult)}"`, () => {
+              chai.expect(jsonMapper(inValue as string)).is.eql(expectedResult);
           });
       });
   });

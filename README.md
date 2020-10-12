@@ -125,6 +125,7 @@ This is `type` related configuration, for more information please study examples
 | Exported Name | Description
 |-----|-----------
 |upperCaseMapper|Transforms string to upper case
+|jsonMapper|Transforms a json string to a TJsonResponse or to null if parsing was not possible
 |isEmpty|Examines if input is empty
 |isFilled|Examines if input is not empty
 

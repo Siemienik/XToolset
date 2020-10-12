@@ -5,3 +5,4 @@ export const MAPPER_DEFAULT = stringMapper;
 export { upperCaseMapper } from './upperCaseMapper';
 export { isEmpty } from './isEmpty';
 export { isFilled } from './isFilled';
+export { jsonMapper } from './jsonMapper';
