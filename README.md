@@ -49,7 +49,7 @@ npm i xlsx-import --save
 Mapper is a function that transforms values. You can use [built-in mappers](#Mappers) or write your own
 
 ```ts
-    import { upperCaseMapper } from 'xlsx-import/lib/mappers';
+    import { upperCaseMapper, isEmpty } from 'xlsx-import/lib/mappers';
 
     const config = {
         // ...
@@ -59,6 +59,7 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
             fields:[
                 {row: 2, col:1, key:'FirstName'},
                 {row: 2, col:2, key:'SecondName', mapper: upperCaseMapper},
+                {row: 2, col:3, key:'ArtistName', mapper: isEmpty},
                 {row: 3, col:1, key:'Age', mapper: Number.parseInt},
             ]
         },
@@ -123,6 +124,7 @@ This is `type` related configuration, for more information please study examples
 | Exported Name | Description
 |-----|-----------
 |upperCaseMapper|Transforms string to upper case
+|isEmpty|Examines if input is empty
 
 # See also
 
