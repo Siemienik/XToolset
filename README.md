@@ -49,7 +49,7 @@ npm i xlsx-import --save
 Mapper is a function that transforms values. You can use [built-in mappers](#Mappers) or write your own
 
 ```ts
-    import { upperCaseMapper, isEmpty } from 'xlsx-import/lib/mappers';
+    import { upperCaseMapper, isEmpty, isFilled } from 'xlsx-import/lib/mappers';
 
     const config = {
         // ...
@@ -57,11 +57,11 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
             worksheet: 'About list owner',
             type: 'object',
             fields:[
-                {row: 2, col:1, key:'FirstName'},
-                {row: 2, col:2, key:'SecondName', mapper: upperCaseMapper},
-                {row: 2, col:3, key:'ArtistName', mapper: isEmpty},
-                {row: 3, col:1, key:'Age', mapper: Number.parseInt},
-                {row: 3, col:2, key:'Height', mapper: isFilled},
+                {row: 2, col: 1, key: 'FirstName'},
+                {row: 2, col: 2, key: 'SecondName', mapper: upperCaseMapper},
+                {row: 2, col: 3, key: 'ArtistName', mapper: isEmpty},
+                {row: 3, col: 1, key: 'Age', mapper: Number.parseInt},
+                {row: 3, col: 2, key: 'Height', mapper: isFilled},
             ]
         },
     };
@@ -125,6 +125,7 @@ This is `type` related configuration, for more information please study examples
 | Exported Name | Description
 |-----|-----------
 |upperCaseMapper|Transforms string to upper case
+|lowerCaseMapper|Transforms string to lower case
 |isEmpty|Examines if input is empty
 |isFilled|Examines if input is not empty
 
