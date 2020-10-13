@@ -99,6 +99,7 @@ Sample integration with `xlsx-import` are placed in [./samples](./samples) direc
 
 * [NodeJS sample](./samples/nodejs/) of **importing an invoice** - it is pure JS example which runs on nodejs.
 * [NodeJS + TS sample](./samples/nodejs-ts/) of **importing an invoice** - it is Typescript example that can be transpiled down to pure JS or run directly with ts-node.
+* [ExpressJS sample](./samples/express/) - it is a small service created with ExpressJS can parse xlsx files with concrete structure
 
 # The configuration:
 
