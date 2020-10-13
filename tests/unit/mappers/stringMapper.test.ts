@@ -1,5 +1,11 @@
 import * as chai from 'chai';
-import { upperCaseMapper, jsonMapper, isEmpty, isFilled } from '../../../src/mappers';
+import {
+    isEmpty,
+    isFilled,
+    jsonMapper,
+    lowerCaseMapper,
+    upperCaseMapper
+} from '../../../src/mappers';
 import { stringMapper } from '../../../src/mappers/stringMapper';
 
 describe('Mappers, unit tests', () => {
@@ -41,6 +47,21 @@ describe('Mappers, unit tests', () => {
       dataProvider.forEach(({inValue, expectedResult}) => {
           it(`upperCaseMapper for input "${inValue}" SHOULD return "${expectedResult}"`, () => {
               chai.expect(upperCaseMapper(inValue)).equal(expectedResult);
+          });
+      });
+  });
+
+  describe('lowerCaseMapper', () => {
+      const dataProvider = [
+          { inValue: '', expectedResult: '' },
+          { inValue: 'asd', expectedResult: 'asd' },
+          { inValue: 'Asd', expectedResult: 'asd' },
+          { inValue: 'ASD', expectedResult: 'asd' },
+          { inValue: 'asd ASD', expectedResult: 'asd asd' },
+      ];
+      dataProvider.forEach(({inValue, expectedResult}) => {
+          it(`lowerCaseMapper for input "${inValue}" SHOULD return "${expectedResult}"`, () => {
+              chai.expect(lowerCaseMapper(inValue)).equal(expectedResult);
           });
       });
   });

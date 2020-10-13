@@ -1,17 +1,11 @@
 {
-  "date": "2020-10-08T00:00:00.000Z",
-  "dueDate": "2020-10-29T00:00:00.000Z",
-  "seller": {
-    "name": "Krupnik LTD.",
-    "taxIdNumber": "123456789",
-    "address": "ul. Usbewifi 5/G, MiastoNaK",
-    "accountNo": "PL 12 1234 1234 1234 1234 1234 1234"
-  },
   "buyer": {
     "name": "Bigos INC.",
     "taxIdNumber": "987654321",
     "address": "ul. Agiede 2020, MiastoNaK"
   },
+  "date": "2020-10-08T00:00:00.000Z",
+  "dueDate": "2020-10-29T00:00:00.000Z",
   "items": [
     {
       "item": "Mleczko do prania",
@@ -38,5 +32,11 @@
       "price": 19.89
     }
   ],
+  "seller": {
+    "name": "Krupnik LTD.",
+    "taxIdNumber": "123456789",
+    "address": "ul. Usbewifi 5/G, MiastoNaK",
+    "accountNo": "PL 12 1234 1234 1234 1234 1234 1234"
+  },
   "total": 867.24
 }

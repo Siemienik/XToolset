@@ -49,7 +49,7 @@ npm i xlsx-import --save
 Mapper is a function that transforms values. You can use [built-in mappers](#Mappers) or write your own
 
 ```ts
-    import { upperCaseMapper, isEmpty } from 'xlsx-import/lib/mappers';
+    import { upperCaseMapper, isEmpty, isFilled } from 'xlsx-import/lib/mappers';
 
     const config = {
         // ...
@@ -57,11 +57,11 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
             worksheet: 'About list owner',
             type: 'object',
             fields:[
-                {row: 2, col:1, key:'FirstName'},
-                {row: 2, col:2, key:'SecondName', mapper: upperCaseMapper},
-                {row: 2, col:3, key:'ArtistName', mapper: isEmpty},
-                {row: 3, col:1, key:'Age', mapper: Number.parseInt},
-                {row: 3, col:2, key:'Height', mapper: isFilled},
+                {row: 2, col: 1, key: 'FirstName'},
+                {row: 2, col: 2, key: 'SecondName', mapper: upperCaseMapper},
+                {row: 2, col: 3, key: 'ArtistName', mapper: isEmpty},
+                {row: 3, col: 1, key: 'Age', mapper: Number.parseInt},
+                {row: 3, col: 2, key: 'Height', mapper: isFilled},
             ]
         },
     };
@@ -98,6 +98,8 @@ interface Person {
 Sample integration with `xlsx-import` are placed in [./samples](./samples) directory. Currently available:
 
 * [NodeJS sample](./samples/nodejs/) of **importing an invoice** - it is pure JS example which runs on nodejs.
+* [NodeJS + TS sample](./samples/nodejs-ts/) of **importing an invoice** - it is Typescript example that can be transpiled down to pure JS or run directly with ts-node.
+* [ExpressJS sample](./samples/express/) - it is a small service created with ExpressJS can parse xlsx files with concrete structure
 
 # The configuration:
 
@@ -125,6 +127,7 @@ This is `type` related configuration, for more information please study examples
 | Exported Name | Description
 |-----|-----------
 |upperCaseMapper|Transforms string to upper case
+|lowerCaseMapper|Transforms string to lower case
 |jsonMapper|Transforms a json string to a TJsonResponse or to null if parsing was not possible
 |isEmpty|Examines if input is empty
 |isFilled|Examines if input is not empty
