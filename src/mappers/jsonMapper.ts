@@ -1,17 +1,11 @@
 import { ValueMapper } from '../abstracts/ValueMapper';
 
-const parseJSON = (value: string): IJsonResult | null => {
+type JsonMapper = <TJsonResult>(value: string) => TJsonResult | null;
+
+export const jsonMapper: JsonMapper = <TJsonResult extends any>(value: string): TJsonResult | null => {
     try {
         return JSON.parse(value)
     } catch (e) {
         return null
     }
 }
-
-interface IJsonResult {
-    [key: string]: string | boolean | number
-}
-
-type JsonMapper = ValueMapper<IJsonResult | null>
-
-export const jsonMapper: JsonMapper = parseJSON
