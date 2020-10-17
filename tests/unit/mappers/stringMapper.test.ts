@@ -8,7 +8,7 @@ import {
 } from '../../../src/mappers';
 import { stringMapper } from '../../../src/mappers/stringMapper';
 
-describe('Mappers, unit tests', () => {
+describe('UNIT TEST: src/mappers/', () => {
   describe('stringMapper', () => {
       const dataProvider = [
           // it is designed for string input only
@@ -36,6 +36,7 @@ describe('Mappers, unit tests', () => {
       });
   });
 
+  // todo move to upperCaseMapper.test.ts
   describe('upperCaseMapper', () => {
       const dataProvider = [
           { inValue: '', expectedResult: '' },
@@ -51,7 +52,8 @@ describe('Mappers, unit tests', () => {
       });
   });
 
-  describe('lowerCaseMapper', () => {
+    // todo move to lowerCaseMapper.test.ts
+    describe('lowerCaseMapper', () => {
       const dataProvider = [
           { inValue: '', expectedResult: '' },
           { inValue: 'asd', expectedResult: 'asd' },
@@ -66,6 +68,7 @@ describe('Mappers, unit tests', () => {
       });
   });
 
+  // todo move to jsonMapper.test.ts
   describe('jsonMapper', () => {
     const dataProvider = [
         { inValue: '', expectedResult: null },
@@ -89,6 +92,7 @@ describe('Mappers, unit tests', () => {
       });
   });
 
+  // todo move to isEmpty.test.ts
   describe('isEmpty', () => {
     const dataProvider = [
         { inValue: '', expectedResult: true },
@@ -105,6 +109,7 @@ describe('Mappers, unit tests', () => {
       });
   });
 
+  // todo move to isFilled.test.ts
   describe('isFilled', () => {
     const dataProvider = [
         { inValue: '', expectedResult: false },
