@@ -60,7 +60,7 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
                 {row: 2, col: 1, key: 'FirstName'},
                 {row: 2, col: 2, key: 'SecondName', mapper: upperCaseMapper},
                 {row: 3, col: 1, key: 'Age', mapper: Number.parseInt},
-
+                // three fields based on one cell but with different mapper
                 {row: 2, col: 3, key: 'EmployedIn'},
                 {row: 2, col: 3, key: 'IsUnemployed', mapper: isEmpty},
                 {row: 2, col: 3, key: 'IsEmployed', mapper: isFilled},
@@ -83,8 +83,8 @@ interface Person {
     Age: number;
 
     EmployedIn: string;
-    IsUnemployed:boolean;
-    IsEmployed:boolean;
+    IsUnemployed: boolean;
+    IsEmployed: boolean;
 }
 ```
 
