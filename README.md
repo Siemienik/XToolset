@@ -9,13 +9,13 @@
 
 # Getting Started:
 
-1. install package
+1. Install the package:
 
 ```
 npm i xlsx-import --save
 ```
 
-2. write config
+2. Write a config:
 ```ts
     const config = {
         books: {
@@ -59,9 +59,11 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
             fields:[
                 {row: 2, col: 1, key: 'FirstName'},
                 {row: 2, col: 2, key: 'SecondName', mapper: upperCaseMapper},
-                {row: 2, col: 3, key: 'ArtistName', mapper: isEmpty},
                 {row: 3, col: 1, key: 'Age', mapper: Number.parseInt},
-                {row: 3, col: 2, key: 'Height', mapper: isFilled},
+
+                {row: 2, col: 3, key: 'EmployedIn'},
+                {row: 2, col: 3, key: 'IsUnemployed', mapper: isEmpty},
+                {row: 2, col: 3, key: 'IsEmployed', mapper: isFilled},
             ]
         },
     };
@@ -79,10 +81,14 @@ interface Person {
     FirstName: string;
     SecondName: string;
     Age: number;
+
+    EmployedIn: string;
+    IsUnemployed:boolean;
+    IsEmployed:boolean;
 }
 ```
 
-5. Import:
+5. Import data:
 ```ts
     const factory = new ImporterFactory();
 
@@ -116,7 +122,7 @@ It is a string, indicates which worksheet should be used for data source.
 
 ***What in case of performing incorrect `type` parameter value?*** 
  
-Here is implemented fallback mechanism to attempting to parse data as ListVertical, which is the common type used in this library.<br/> *In that case `console.warn` will be write.*
+Here is a implementation of fallback mechanism to attempting to parse data as ListVertical, which is the common type used in this library.<br/> *In that case `console.warn` will be written.*
 
 ## `fields` or `columns`
 
@@ -131,6 +137,39 @@ This is `type` related configuration, for more information please study examples
 |jsonMapper|Transforms a json string to a TJsonResponse or to null if parsing was not possible
 |isEmpty|Examines if input is empty
 |isFilled|Examines if input is not empty
+|splitMapper|Transforms string into array of items
+
+### `splitMapper` 
+
+Configurable and immutable **splitMapper** with possibility to use specific `itemMapper<TReturnType>(mapper)` or `separator(string)`.
+
+* `.separator(';'): SplitMapper` - set separator
+* `.itemMapper(itemMapper): SplitMapper` - set mapper for items,
+
+Setting separator or item mapper do not change origin mapper but create new one. As a item mapper may use also another `splitMapper` like below:
+
+```ts
+// Building a mapper
+const sentenceSplitter = splitMapper.separator('. ');
+const wordSplitter = splitMapper.separator(' ');
+const wordsInSentencesMapper = sentenceSplitter.itemMapper<string[]>(wordSplitter);
+
+// Standalone usage:
+const input = 'Lorem ipsum dolor sit amet. consectetur adipiscing elit. Nullam placerat massa nec efficir. ';
+           
+const result = wordsInSentencesMapper(input);   
+// [
+//     ['Lorem', 'ipsum', 'dolor', 'sit', 'amet'],
+//     ['consectetur', 'adipiscing', 'elit'],
+//     ['Nullam', 'placerat', 'massa', 'nec', 'efficir'],
+//     ['']
+// ]
+
+
+// In a config:
+// {row: 3, col: 1, key: 'words', mapper: wordsInSentencesMapper},
+
+```
 
 # See also
 
@@ -141,7 +180,7 @@ This is `type` related configuration, for more information please study examples
 # Supported Node version:
 
 8 | 9 | 10 | 11 | 12 | 13 | 14
---|---|---|---|----|---|---
+--|---|----|----|----|----|---
 ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅
 
 Node v8 and v9 compatibly was drop after upgrade `ExcelJS` to version 4+ and it is able to turn on by downgrading `xlsx-import` to version 2.2.1 or if needed really important by requesting me directly.

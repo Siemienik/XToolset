@@ -7,3 +7,4 @@ export { lowerCaseMapper } from './lowerCaseMapper';
 export { isEmpty } from './isEmpty';
 export { isFilled } from './isFilled';
 export { jsonMapper } from './jsonMapper';
+export { splitMapper } from './splitMapper';
