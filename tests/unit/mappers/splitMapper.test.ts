@@ -73,6 +73,12 @@ describe('UNIT TEST: src/mappers/', () => {
         });
     });
     describe('splitMapper complex / advanced', () => {
+        const getWordInSentencesMapper = () =>{
+            const sentenceSplitter = splitMapper.separator('. ');
+            const wordSplitter = splitMapper.separator(' ');
+            return sentenceSplitter.itemMapper(wordSplitter);
+        }
+
         it(`Map sentence into matrix word in sentence`, () => {
             // assumptions
             const input = 'Lorem ipsum dolor sit amet. consectetur adipiscing elit. Nullam placerat massa nec efficir. ';
@@ -83,10 +89,8 @@ describe('UNIT TEST: src/mappers/', () => {
                 ['']
             ]
 
-            // building a mapper
-            const sentenceSplitter = splitMapper.separator('. ');
-            const wordSplitter = splitMapper.separator(' ');
-            const wordsInSentencesMapper = sentenceSplitter.itemMapper(wordSplitter);
+            // prepare
+            const wordsInSentencesMapper = getWordInSentencesMapper();
 
             // testing
             chai.expect(wordsInSentencesMapper(input)).eql(expectedResult);
