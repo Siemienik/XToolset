@@ -1,3 +1,3 @@
 import { ValueMapper } from '../abstracts/ValueMapper';
 
-export const booleanMapper: ValueMapper<Boolean> = value => Boolean(Number(value));
+export const booleanMapper: ValueMapper<boolean> = value => Boolean(Number(value));
