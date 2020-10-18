@@ -19,7 +19,7 @@ describe('UNIT TEST: src/mappers/', () => {
             { inValue: '123', expectedResult: true },
             { inValue: '0.1', expectedResult: true },
             { inValue: '-1', expectedResult: true },
-            { inValue: '   -1.2123asd', expectedResult: false }
+            { inValue: '   -1.2123asd', expectedResult: true }
         ];
         dataProvider.forEach(({ inValue, expectedResult }) => {
             it(`booleanMapper for input "${inValue}" SHOULD return "${expectedResult}"`, () => {

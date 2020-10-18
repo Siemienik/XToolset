@@ -1,3 +1,6 @@
 import { ValueMapper } from '../abstracts/ValueMapper';
 
-export const booleanMapper: ValueMapper<boolean> = value => Boolean(Number(value));
+const removeTextAfterValidNumber = (value: string) => value?.replace(/(\d)\D+$/g, '$1');
+
+export const booleanMapper: ValueMapper<boolean> = value =>
+    Boolean(Number(removeTextAfterValidNumber(value)));
