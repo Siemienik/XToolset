@@ -8,4 +8,5 @@ export { isEmpty } from './isEmpty';
 export { isFilled } from './isFilled';
 export { jsonMapper } from './jsonMapper';
 export { splitMapper } from './splitMapper';
+export { booleanMapper } from './booleanMapper';
 export { numberMapper } from './numberMapper';
