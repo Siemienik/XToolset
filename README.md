@@ -136,6 +136,8 @@ This is `type` related configuration, for more information please study examples
 |lowerCaseMapper|Transforms string to lower case
 |jsonMapper|Transforms a json string to a TJsonResponse or to null if parsing was not possible
 |integerMapper|Transforms string into integer
+|booleanMapper|Transforms string into boolean
+|numberMapper|Transforms string into number
 |isEmpty|Examines if input is empty
 |isFilled|Examines if input is not empty
 |splitMapper|Transforms string into array of items
