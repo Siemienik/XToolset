@@ -14,7 +14,7 @@ describe('UNIT TEST: src/mappers/', () => {
             { inValue: '123s', expectedResult: 123 },
             { inValue: '0.1', expectedResult: 0 },
             { inValue: '-1', expectedResult: -1 },
-            { inValue: '   -1.2123asd', expectedResult: -1.2123 }
+            { inValue: '   -1.2123asd', expectedResult: -1 }
         ];
         dataProvider.forEach(({ inValue, expectedResult }) => {
             it(`numberMapper for input "${inValue}" SHOULD return "${expectedResult}"`, () => {
