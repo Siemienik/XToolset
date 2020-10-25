@@ -24,6 +24,7 @@ jobs:
         run: npm run format:markdown
 
       - name: Commit changes
+        continue-on-error: allow
         run: |
           git config --global user.name '[CI] Linter'
           git config --global user.email 'siemienik@users.noreply.github.com'
