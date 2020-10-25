@@ -188,7 +188,6 @@ const result = wordsInSentencesMapper(input);
 Node v8 and v9 compatibly was drop after upgrade `ExcelJS` to version 4+ and it is able to turn on by downgrading `xlsx-import` to version 2.2.1 or if needed really important by requesting me directly.
 
 ## Supported browsers
-
 Chrome, Firefox. [_proved here_](https://github.com/Siemienik/xlsx-import/pull/57)
 
 ## See also
