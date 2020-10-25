@@ -20,7 +20,7 @@ jobs:
     - name: npm install
       run: npm ci
     - name: lint markdown
-      run: markdownlint **/*.md
+      run: node_modules/.bin/markdownlint **/*.md
     - name: Check lint
       run: npm run lint
     - name: Check build
