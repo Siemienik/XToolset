@@ -1,0 +1,32 @@
+name: code-quality
+
+on: ['pull_request']
+
+
+jobs:
+  markdown:
+    runs-on: ubuntu-latest
+    steps:
+
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
+
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+
+      - name: Install markdownlint cli
+        run: npm install markdownlint-cli
+
+      - name: Format markdown
+        run: npm run format:markdown
+
+      - name: Commit changes
+        run: |
+          git config --global user.name '[CI] Linter'
+          git config --global user.email 'siemienik@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          git commit -am "Markdown formatted"
+          git push
