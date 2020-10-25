@@ -133,7 +133,7 @@ Here is a implementation of fallback mechanism to attempting to parse data as Li
 
 This is `type` related configuration, for more information please study examples above, there are a full configuration used.
 
-#### Mappers
+## Mappers
 
 | Exported Name | Description
 |-----|-----------
@@ -147,7 +147,7 @@ This is `type` related configuration, for more information please study examples
 |isFilled|Examines if input is not empty
 |splitMapper|Transforms string into array of items
 
-##### `splitMapper`
+### `splitMapper`
 
 Configurable and immutable **splitMapper** with possibility to use specific `itemMapper<TReturnType>(mapper)` or `separator(string)`.
 
