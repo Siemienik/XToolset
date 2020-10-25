@@ -1,7 +1,8 @@
 name: code-quality
 
-on: ['pull_request']
-
+on:
+  push:
+    branches-ignore: ['master']
 
 jobs:
   markdown:
@@ -30,4 +31,4 @@ jobs:
           git config --global user.email 'siemienik@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git commit -am "[CI] Linter: markdown formatted"
-          git push
+          git push origin
