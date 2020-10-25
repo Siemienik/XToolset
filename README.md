@@ -1,4 +1,6 @@
-# Importing data from xlsx as simple as possible
+# XLSX-Import
+
+## Importing data from xlsx as simple as possible
 
  [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xlsx-import/lint-build-test)](https://github.com/Siemienik/xlsx-import/actions)[![codecov](https://codecov.io/gh/Siemienik/xlsx-import/branch/master/graph/badge.svg)](https://codecov.io/gh/Siemienik/xlsx-import)
 
@@ -6,16 +8,16 @@
 
  ![GitHub top language](https://img.shields.io/github/languages/top/siemienik/xlsx-import)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/siemienik/xlsx-import)
 
+## Getting Started
 
-# Getting Started:
+### 1. Install the package
 
-1. Install the package:
-
-```
+```shell script
 npm i xlsx-import --save
 ```
 
-2. Write a config:
+### 2. Write a config
+
 ```ts
     const config = {
         books: {
@@ -44,7 +46,7 @@ npm i xlsx-import --save
     };
 ```
 
-3. Use mappers (optional):
+### 3. Use mappers (optional)
 
 Mapper is a function that transforms values. You can use [built-in mappers](#Mappers) or write your own
 
@@ -69,7 +71,8 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
     };
 ```
 
-4. Types:
+### 4. Types
+
 ```ts
 interface Book {
     Id: number;
@@ -88,7 +91,8 @@ interface Person {
 }
 ```
 
-5. Import data:
+### 5. Import data
+
 ```ts
     const factory = new ImporterFactory();
 
@@ -99,7 +103,8 @@ interface Person {
     const author = importer.getAllItems<Person>(config.owner);
 
 ```
-# Samples
+
+## Samples
 
 Sample integration with `xlsx-import` are placed in [./samples](./samples) directory. Currently available:
 
@@ -107,28 +112,28 @@ Sample integration with `xlsx-import` are placed in [./samples](./samples) direc
 * [NodeJS + TS sample](./samples/nodejs-ts/) of **importing an invoice** - it is Typescript example that can be transpiled down to pure JS or run directly with ts-node.
 * [ExpressJS sample](./samples/express/) - it is a small service created with ExpressJS can parse xlsx files with concrete structure
 
-# The configuration:
+## The configuration
 
-## `worksheet` 
+### `worksheet`
 
 It is a string, indicates which worksheet should be used for data source.
 
-## `types`
+#### `types`
 
 | Enum `ImportType` | Raw values | Description
 |-----|------------|-----------
 | **Default:** <br/>`List`, aliases: `ListVertical`,  `Vertical`  | `list`, `list-vertical`, `vertical` | Used to import list of objects from worksheet reading from top to down (row by row). Each field has to defined column index (`A` is `1`, `B` is `2` ... etc.).
 | `Object`, aliases: `Single`,  `Singleton`  | `object`, `single`, `singletion` | Used to import single object from worksheet. Each field has to has defined row&col index.
 
-***What in case of performing incorrect `type` parameter value?*** 
- 
+***What in case of performing incorrect `type` parameter value?***
+
 Here is a implementation of fallback mechanism to attempting to parse data as ListVertical, which is the common type used in this library.<br/> *In that case `console.warn` will be written.*
 
-## `fields` or `columns`
+#### `fields` or `columns`
 
 This is `type` related configuration, for more information please study examples above, there are a full configuration used.
 
-## Mappers
+#### Mappers
 
 | Exported Name | Description
 |-----|-----------
@@ -142,7 +147,7 @@ This is `type` related configuration, for more information please study examples
 |isFilled|Examines if input is not empty
 |splitMapper|Transforms string into array of items
 
-### `splitMapper` 
+##### `splitMapper`
 
 Configurable and immutable **splitMapper** with possibility to use specific `itemMapper<TReturnType>(mapper)` or `separator(string)`.
 
@@ -159,8 +164,8 @@ const wordsInSentencesMapper = sentenceSplitter.itemMapper<string[]>(wordSplitte
 
 // Standalone usage:
 const input = 'Lorem ipsum dolor sit amet. consectetur adipiscing elit. Nullam placerat massa nec efficir. ';
-           
-const result = wordsInSentencesMapper(input);   
+
+const result = wordsInSentencesMapper(input);
 // [
 //     ['Lorem', 'ipsum', 'dolor', 'sit', 'amet'],
 //     ['consectetur', 'adipiscing', 'elit'],
@@ -174,16 +179,20 @@ const result = wordsInSentencesMapper(input);
 
 ```
 
-# See also
-
-* [![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer) [XLSX-renderer](https://github.com/Siemienik/xlsx-renderer) - makes generating excel files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
-* [ts-package-structure](https://github.com/Siemienik/ts-package-structure) - the robust structure which I use to creating packages.
-* [MIT LICENSE](LICENSE)
-
-# Supported Node version:
+## Supported Node version
 
 8 | 9 | 10 | 11 | 12 | 13 | 14
 --|---|----|----|----|----|---
 ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅
 
 Node v8 and v9 compatibly was drop after upgrade `ExcelJS` to version 4+ and it is able to turn on by downgrading `xlsx-import` to version 2.2.1 or if needed really important by requesting me directly.
+
+## Supported browsers
+
+Chrome, Firefox. [_proved here_](https://github.com/Siemienik/xlsx-import/pull/57)
+
+## See also
+
+* [![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer) [XLSX-renderer](https://github.com/Siemienik/xlsx-renderer) - makes generating excel files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
+* [ts-package-structure](https://github.com/Siemienik/ts-package-structure) - the robust structure which I use to creating packages.
+* [MIT LICENSE](LICENSE)
