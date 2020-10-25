@@ -5,6 +5,8 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
+    "test": "ts-node src/index.ts > result.json && (exit $(diff --suppress-common-lines --speed-large-files -y result.json result.snapshot.json | wc -l))",
+    "snapshot": "ts-node src/index.ts > result.snapshot.json",
     "build": "tsc"
   },
   "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
@@ -12,6 +14,6 @@
   "dependencies": {
     "ts-node": "9.0.0",
     "typescript": "4.0.3",
-    "xlsx-import": "^2.3.1"
+    "xlsx-import": "^2.3.3"
   }
 }

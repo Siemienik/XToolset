@@ -2,7 +2,7 @@
 
 This is an example how to use `xlsx-import` in node + typescript.
 
-**LIB Version:** `2.3.1`
+**LIB Version:** `2.3.3`
 
 ## Usage
 
@@ -15,6 +15,12 @@ npm start
 
 # or execute and save into file
 ./node_modules/.bin/ts-node src/index.ts > result.json
+
+# run test
+npm test
+
+# make new test snapshot (stay careful)
+npm run snapshot
 ```
 
 ## What happened

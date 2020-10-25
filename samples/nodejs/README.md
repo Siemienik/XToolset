@@ -2,7 +2,7 @@
 
 This is an example how to use `xlsx-import` in a pure node javascript.
 
-**LIB Version:** `2.3.1`
+**LIB Version:** `2.3.3`
 
 ## Usage
 
@@ -15,6 +15,12 @@ node index.js
 
 # or execute and save into file
 node index.js > result.json
+
+# run test
+npm test
+
+# make new test snapshot (stay careful)
+npm run snapshot
 ```
 
 ## What happened
