@@ -1,7 +1,8 @@
 name: code-quality
 
-on: ['pull_request']
-
+on:
+  push:
+    branches-ignore: ['master']
 
 jobs:
   markdown:
@@ -9,8 +10,8 @@ jobs:
     steps:
 
       - uses: actions/checkout@v2
-#        with:
-#          ref: ${{ github.head_ref }}
+        with:
+          ref: ${{ github.head_ref }}
 
       - name: Use Node.js 14.x
         uses: actions/setup-node@v1
@@ -30,4 +31,4 @@ jobs:
           git config --global user.email 'siemienik@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git commit -am "[CI] Linter: markdown formatted"
-          git push origin HEAD:${{ github.head_ref }}
+          git push origin
