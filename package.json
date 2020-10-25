@@ -18,7 +18,9 @@
   "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
   "scripts": {
     "build": "tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "npm run format:code && npm run format:markdown",
+    "format:code": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format:markdown": "markdownlint --fix **/*.md",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "tslint -p tsconfig.json --fix",
     "test": "mocha -r ts-node/register tests/**/*.test.ts tests/**/**/*.test.ts",
@@ -32,6 +34,7 @@
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
     "chai": "^4.2.0",
+    "markdownlint-cli": "^0.24.0",
     "mocha": "^6.1.4",
     "nyc": "^14.0.0",
     "prettier": "^1.17.0",

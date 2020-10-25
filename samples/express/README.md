@@ -6,7 +6,7 @@ This is an example how to use `xlsx-import` in node + express.
 
 ## Usage
 
-```bash
+```shell script
 # install dependencies
 npm install
 
@@ -67,21 +67,21 @@ Response from server (pretty printed)
 }
 ```
 
-## What happened?
+## What happened
 
 1. Server launched
 2. Request containing xlsx invoice file sent to the server
 3. Server parsed that file and returned info corresponding to
 structure declared in [`invoiceConfig.js`](routes/invoice/invoiceConfig.js).
 
-## What is worth to see here?
+## What is worth to see here
 
 1. Study config: [`invoiceConfig.js`](routes/invoice/invoiceConfig.js)
 2. Usage package in [`routes.js`](routes/invoice/routes.js)
 
-## What later:
+## What later
 
 1. Study documentation: [docs](./../../README.md)
 2. Start using `xlsx-import` in your project
-3. Ask a lot, report bugs and request for help: https://github.com/Siemienik/xlsx-import/issues
-4. [Sponsor `xlsx-import` project](https://github.com/sponsors/Siemienik) 
+3. Ask a lot, report bugs and request for help: <https://github.com/Siemienik/xlsx-import/issues>
+4. [Sponsor `xlsx-import` project](https://github.com/sponsors/Siemienik)
