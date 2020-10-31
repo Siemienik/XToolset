@@ -5,7 +5,7 @@
   "main": "lib/index.js",
   "scripts": {
     "start": "ts-node src/index.ts",
-    "test": "ts-node src/index.ts > result.json && (exit $(diff --suppress-common-lines --speed-large-files -y result.json result.snapshot.json | wc -l))",
+    "test": "ts-node src/index.ts test",
     "snapshot": "ts-node src/index.ts > result.snapshot.json",
     "build": "tsc"
   },

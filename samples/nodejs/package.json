@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "test": "node index.js > result.json && (exit $(diff --suppress-common-lines --speed-large-files -y result.json result.snapshot.json | wc -l))",
+    "test": "node index.js test",
     "snapshot": "node index.js > result.snapshot.json"
   },
   "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
