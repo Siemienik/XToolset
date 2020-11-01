@@ -3,7 +3,7 @@
 This is an example how to use `xlsx-import` in node + typescript.
 
 **LIB Version:** `2.3.3`
-    
+
 ## Scripts
 
 `npm run start` - run script by using ts-node
