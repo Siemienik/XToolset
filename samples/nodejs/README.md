@@ -4,6 +4,14 @@ This is an example how to use `xlsx-import` in a pure node javascript.
 
 **LIB Version:** `2.3.3`
 
+## Scripts
+
+`npm run start` - run script
+
+`npm run test` - run script and check output to match snapshot
+
+`npm run snapshot` - run script and save output into snapshot file
+
 ## Usage
 
 ```shell script
@@ -13,14 +21,14 @@ npm install
 # execute
 node index.js
 
-# or execute and save into file
-node index.js > result.json
-
 # run test
 npm test
 
 # make new test snapshot (stay careful)
 npm run snapshot
+
+# or execute and save into file
+node index.js > result.json
 ```
 
 ## What happened
