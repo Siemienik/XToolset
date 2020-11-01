@@ -108,10 +108,19 @@ interface Person {
 
 Sample integration with `xlsx-import` are placed in [./samples](./samples) directory. Currently available:
 
+### Frontend frameworks
+
+* [Vue sample](samples/vue/) - it is a web app created with Vue that displays parsed xlsx file
+* [React sample](samples/react/) - it is a web app created with React that displays parsed xlsx file
+
+### Console / CLI
+
 * [NodeJS sample](./samples/nodejs/) of **importing an invoice** - it is pure JS example which runs on nodejs.
 * [NodeJS + TS sample](./samples/nodejs-ts/) of **importing an invoice** - it is Typescript example that can be transpiled down to pure JS or run directly with ts-node.
+
+### Backend
+
 * [ExpressJS sample](./samples/express/) - it is a small service created with ExpressJS can parse xlsx files with concrete structure
-* [React sample](samples/react/) - it is a web app created with React that displays parsed xlsx file
 
 ## The configuration
 
@@ -180,17 +189,19 @@ const result = wordsInSentencesMapper(input);
 
 ```
 
-## Supported Node version
+## Supports
+
+### Supported browsers
+
+Browser supporting has been proved for ✅ _Chrome_ and ✅ _Firefox_ in [Vue & React Samples](#frontend-frameworks) and theirs tests.
+
+### Supported Node version
 
 8 | 9 | 10 | 11 | 12 | 13 | 14
 --|---|----|----|----|----|---
 ❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅
 
 Node v8 and v9 compatibly was drop after upgrade `ExcelJS` to version 4+ and it is able to turn on by downgrading `xlsx-import` to version 2.2.1 or if needed really important by requesting me directly.
-
-## Supported browsers
-
-Chrome, Firefox. [_proved here_](https://github.com/Siemienik/xlsx-import/pull/57)
 
 ## See also
 
