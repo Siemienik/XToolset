@@ -3,12 +3,12 @@ const { getInvoiceConfig } = require('./configs/invoiceConfig');
 
 const factory = new ImporterFactory();
 
-const importInvoice = async (invoicePath) => {
+const importInvoice = async invoicePath => {
     const config = getInvoiceConfig();
 
     const importer = await factory.from(invoicePath);
 
-    const {date, dueDate} = importer.getAllItems(config.misc)[0];
+    const { date, dueDate } = importer.getAllItems(config.misc)[0];
     const seller = importer.getAllItems(config.seller)[0];
     const buyer = importer.getAllItems(config.buyer)[0];
     const items = importer.getAllItems(config.items);
@@ -21,8 +21,8 @@ const importInvoice = async (invoicePath) => {
         seller,
         buyer,
         items,
-        total
-    }
-}
+        total,
+    };
+};
 
-module.exports = {importInvoice};
+module.exports = { importInvoice };

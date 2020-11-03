@@ -31,7 +31,7 @@ export default {
     name: 'App',
     components: {
         Invoice,
-        XlsxImportLogo
+        XlsxImportLogo,
     },
     props: {
         msg: String,

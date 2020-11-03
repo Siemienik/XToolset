@@ -21,27 +21,16 @@ export function THead(props) {
     );
 }
 
-
 export function THeadItem(props) {
-    return (
-        <th className="fw6 bb b--light-gray tl pb3 pr3">
-            {props.children}
-        </th>
-    );
+    return <th className="fw6 bb b--light-gray tl pb3 pr3">{props.children}</th>;
 }
 
 export function TBody(props) {
-    return (
-        <tbody className="lh-copy">
-            {props.children}
-        </tbody>
-    );
+    return <tbody className="lh-copy">{props.children}</tbody>;
 }
 
 export function TBodyRow(props) {
-    return (
-        <tr data-qa-name={props.dataQaName}>{props.children}</tr>
-    );
+    return <tr data-qa-name={props.dataQaName}>{props.children}</tr>;
 }
 
 export function TBodyItem(props) {

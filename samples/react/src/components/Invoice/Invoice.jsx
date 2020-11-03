@@ -1,8 +1,8 @@
 import React from 'react';
-import {Table, TBody, TBodyItem, TBodyRow, THead, THeadItem} from '../Table';
+import { Table, TBody, TBodyItem, TBodyRow, THead, THeadItem } from '../Table';
 
 export default function Invoice(props) {
-    const {invoice} = props;
+    const { invoice } = props;
     return (
         <div className="tl mt4 mb4">
             <div className="fw6">Buyer</div>
@@ -59,9 +59,15 @@ export default function Invoice(props) {
                 </TBody>
             </Table>
 
-            <div className="fw6" data-qa-name="date">Date: {invoice.date.toISOString()}</div>
-            <div className="fw6 mt2" data-qa-name="due-date">Due date: {invoice.dueDate.toISOString()}</div>
-            <div className="fw6 mt2" data-qa-name="total">Total: {invoice.total}</div>
+            <div className="fw6" data-qa-name="date">
+                Date: {invoice.date.toISOString()}
+            </div>
+            <div className="fw6 mt2" data-qa-name="due-date">
+                Due date: {invoice.dueDate.toISOString()}
+            </div>
+            <div className="fw6 mt2" data-qa-name="total">
+                Total: {invoice.total}
+            </div>
         </div>
     );
 }

@@ -4,10 +4,7 @@
             <table class="f6 w-100 mw8 center" cellspacing="0">
                 <thead>
                     <tr>
-                        <th
-                            class="fw6 bb b--light-gray tl pb3 pr3"
-                            v-for="item in headers" :key="item"
-                        >
+                        <th class="fw6 bb b--light-gray tl pb3 pr3" v-for="item in headers" :key="item">
                             {{ item }}
                         </th>
                     </tr>
@@ -18,11 +15,7 @@
                         v-for="(row, idx) in rows"
                         :data-qa-name="dataQaName ? dataQaName + '-' + idx : undefined"
                     >
-                        <slot
-                            name="items"
-                            :className="'pv3 pr3 bb b--light-gray'"
-                            :row="row"
-                        />
+                        <slot name="items" :className="'pv3 pr3 bb b--light-gray'" :row="row" />
                     </tr>
                 </tbody>
             </table>

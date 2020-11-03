@@ -4,7 +4,7 @@ import './Logo.css';
 
 export default function Logo() {
     return (
-        <div className="fixed bg-tiffany-blue br2 near-white pa2" style={{right: 12, top: 12}}>
+        <div className="fixed bg-tiffany-blue br2 near-white pa2" style={{ right: 12, top: 12 }}>
             <div className="f4 fw6">xlsx-import</div>
             <div className="mt3">
                 <a
@@ -17,5 +17,5 @@ export default function Logo() {
                 </a>
             </div>
         </div>
-    )
+    );
 }
