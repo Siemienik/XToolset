@@ -153,6 +153,7 @@ This is `type` related configuration, for more information please study examples
 |integerMapper|Transforms string into integer
 |booleanMapper|Transforms string into boolean
 |numberMapper|Transforms string into number
+|isValueMapper|Examines if value is included in accepted values provided
 |isEmpty|Examines if input is empty
 |isFilled|Examines if input is not empty
 |splitMapper|Transforms string into array of items
