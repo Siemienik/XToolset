@@ -19,7 +19,7 @@
   "scripts": {
     "build": "tsc",
     "format": "npm run format:code && npm run format:markdown",
-    "format:code": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format:code": "prettier --write \"**/*.{js,jsx,ts,vue}\"",
     "format:markdown": "markdownlint --fix **/*.md",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "tslint -p tsconfig.json --fix",

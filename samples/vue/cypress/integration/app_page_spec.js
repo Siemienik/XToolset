@@ -48,7 +48,9 @@ describe('The App', () => {
 
     it('renders parsed invoice file', () => {
         cy.visit('/');
-        cy.get('button').click().should('be.disabled');
+        cy.get('button')
+            .click()
+            .should('be.disabled');
         cy.get('[data-qa-name="buyer-name"]').contains(invoice.buyer.name);
         cy.get('[data-qa-name="buyer-tax-id"]').contains(invoice.buyer.taxIdNumber);
         cy.get('[data-qa-name="buyer-address"]').contains(invoice.buyer.address);

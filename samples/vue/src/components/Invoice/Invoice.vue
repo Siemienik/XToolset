@@ -6,11 +6,7 @@
                 <td :data-qa-name="row.name.dataQaName" :class="className">
                     {{ row.name.content }}
                 </td>
-                <td
-                    :data-qa-name="row.taxIdNumber.dataQaName"
-                    :class="className"
-                >{{ row.taxIdNumber.content }}
-                </td>
+                <td :data-qa-name="row.taxIdNumber.dataQaName" :class="className">{{ row.taxIdNumber.content }}</td>
                 <td :data-qa-name="row.address.dataQaName" :class="className">
                     {{ row.address.content }}
                 </td>
@@ -41,10 +37,7 @@
                 <td :data-qa-name="row.name.dataQaName" :class="className">
                     {{ row.name.content }}
                 </td>
-                <td
-                    :data-qa-name="row.taxIdNumber.dataQaName"
-                    :class="className"
-                >
+                <td :data-qa-name="row.taxIdNumber.dataQaName" :class="className">
                     {{ row.taxIdNumber.content }}
                 </td>
                 <td :data-qa-name="row.address.dataQaName" :class="className">
@@ -56,15 +49,9 @@
             </template>
         </Table>
 
-        <div class="fw6" data-qa-name="date">
-            Date: {{ invoice.date.toISOString() }}
-        </div>
-        <div class="fw6 mt2" data-qa-name="due-date">
-            Due date: {{ invoice.dueDate.toISOString() }}
-        </div>
-        <div class="fw6 mt2" data-qa-name="total">
-            Total: {{ invoice.total }}
-        </div>
+        <div class="fw6" data-qa-name="date">Date: {{ invoice.date.toISOString() }}</div>
+        <div class="fw6 mt2" data-qa-name="due-date">Due date: {{ invoice.dueDate.toISOString() }}</div>
+        <div class="fw6 mt2" data-qa-name="total">Total: {{ invoice.total }}</div>
     </div>
 </template>
 
@@ -105,26 +92,24 @@ export default {
             },
             items: {
                 headers: ['Title', 'Price', 'Qty', 'Unit Price'],
-                rows: this.invoice.items.map(item => (
-                    {
-                        item: {
-                            dataQaName: 'invoice-item',
-                            content: item.item,
-                        },
-                        price: {
-                            dataQaName: 'invoice-price',
-                            content: item.price,
-                        },
-                        qty: {
-                            dataQaName: 'invoice-quantity',
-                            content: item.quantity,
-                        },
-                        unitPrice: {
-                            dataQaName: 'invoice-unit-price',
-                            content: item.unitPrice,
-                        },
-                    }
-                )),
+                rows: this.invoice.items.map(item => ({
+                    item: {
+                        dataQaName: 'invoice-item',
+                        content: item.item,
+                    },
+                    price: {
+                        dataQaName: 'invoice-price',
+                        content: item.price,
+                    },
+                    qty: {
+                        dataQaName: 'invoice-quantity',
+                        content: item.quantity,
+                    },
+                    unitPrice: {
+                        dataQaName: 'invoice-unit-price',
+                        content: item.unitPrice,
+                    },
+                })),
             },
             seller: {
                 headers: ['Name', 'Tax ID', 'Address', 'Account Number'],

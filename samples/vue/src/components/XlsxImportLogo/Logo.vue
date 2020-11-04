@@ -20,14 +20,14 @@ import Github from './Github';
 export default {
     name: 'XlsxImportLogo',
     components: {
-        Github
-    }
-}
+        Github,
+    },
+};
 </script>
 
 <style scoped>
 .bg-tiffany-blue {
-    background-color: #07BEB8;
+    background-color: #07beb8;
 }
 
 .top-right {
