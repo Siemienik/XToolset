@@ -2,7 +2,17 @@
 
 This is an example how to use `xlsx-import` in node + typescript.
 
-**LIB Version:** `2.3.1`
+**LIB Version:** `2.3.3`
+
+## Scripts
+
+`npm run start` - run script by using ts-node
+
+`npm run build` - compiles into js
+
+`npm run test` - run script and check output to match snapshot
+
+`npm run snapshot` - run script and save output into snapshot file
 
 ## Usage
 
@@ -12,6 +22,13 @@ npm install
 
 # execute
 npm start
+
+# run test
+npm test
+
+# make new test snapshot (stay careful)
+npm run snapshot
+
 
 # or execute and save into file
 ./node_modules/.bin/ts-node src/index.ts > result.json
