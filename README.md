@@ -51,7 +51,11 @@ npm i xlsx-import --save
 Mapper is a function that transforms values. You can use [built-in mappers](#Mappers) or write your own
 
 ```ts
-    import { upperCaseMapper, isEmpty, isFilled } from 'xlsx-import/lib/mappers';
+    import { upperCaseMapper, isEmpty, isFilled, isValue } from 'xlsx-import/lib/mappers';
+
+    // isValue: assert / check the value
+    const isMale = isValue(['male', 'm']);
+    const isFemale = isValue(['female', 'f']);
 
     const config = {
         // ...
@@ -66,6 +70,9 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
                 {row: 2, col: 3, key: 'EmployedIn'},
                 {row: 2, col: 3, key: 'IsUnemployed', mapper: isEmpty},
                 {row: 2, col: 3, key: 'IsEmployed', mapper: isFilled},
+
+                {row: 2, col: 3, key: 'isMale', mapper: isMale},
+                {row: 2, col: 3, key: 'isFemale', mapper: isFemale},
             ]
         },
     };
