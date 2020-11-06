@@ -11,3 +11,4 @@ export { splitMapper } from './splitMapper';
 export { integerMapper } from './integerMapper';
 export { booleanMapper } from './booleanMapper';
 export { numberMapper } from './numberMapper';
+export { isValue } from './isValue';
