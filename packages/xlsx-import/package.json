@@ -1,6 +1,6 @@
 {
   "name": "xlsx-import",
-  "version": "2.3.4-0",
+  "version": "2.3.4-1",
   "license": "MIT",
   "description": "Import data from xlsx file using configured pattern",
   "main": "xlsx-import/lib/ImporterFactory.js",
@@ -17,7 +17,7 @@
   ],
   "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
   "scripts": {
-    "build": "tsc",
+    "build": "rm -rf lib/* && tsc",
     "format": "npm run format:code && npm run format:markdown",
     "format:code": "prettier --write \"**/*.{js,jsx,ts,vue}\"",
     "format:markdown": "markdownlint --fix **/*.md",
