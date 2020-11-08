@@ -82,9 +82,9 @@ for more example I invite to tests data: [click here and check `Renderer` folder
 
 ## Node:
 
-| Node version |  8  |  9  |  10 |  11 |  12 |  13 |  14 |
-|--------------|-----|-----|-----|-----|-----|-----|-----|
-| Supported?   | 🟢  | 🟢 | 🟢 |  🟢 | 🟢 |  🟢 | 🟢 |
+| Node version |  10 |  11 |  12 |  13 |  14 |
+|--------------|-----|-----|-----|-----|-----|
+| Supported?   | 🟢 |  🟢 | 🟢 |  🟢 | 🟢 |
 
 Discovered in: [#14](https://github.com/Siemienik/xlsx-renderer/issues/14)
 
