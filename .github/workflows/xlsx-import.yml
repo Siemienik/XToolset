@@ -1,6 +1,10 @@
-name: lint-build-test
+name: xlsx-import
 
 on: [push, pull_request]
+
+defaults:
+  run:
+    working-directory: ./packages/xlsx-import
 
 jobs:
   build:

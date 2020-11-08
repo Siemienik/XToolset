@@ -1,0 +1,52 @@
+{
+  "name": "xlsx-import",
+  "version": "2.3.4-1",
+  "license": "MIT",
+  "description": "Import data from xlsx file using configured pattern",
+  "main": "xlsx-import/lib/ImporterFactory.js",
+  "types": "xlsx-import/lib/ImporterFactory.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siemienik/xlsx-importer"
+  },
+  "keywords": [
+    "Importing data",
+    "Excel",
+    "XLSX",
+    "ExcelJs"
+  ],
+  "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
+  "scripts": {
+    "build": "rm -rf lib/* && tsc",
+    "format": "npm run format:code && npm run format:markdown",
+    "format:code": "prettier --write \"**/*.{js,jsx,ts,vue}\"",
+    "format:markdown": "markdownlint --fix **/*.md",
+    "lint": "tslint -p tsconfig.json",
+    "lint:fix": "tslint -p tsconfig.json --fix",
+    "test": "mocha -r ts-node/register tests/**/*.test.ts tests/**/**/*.test.ts",
+    "coverageReport": "nyc -r lcov -r=text -r=text-summary  -r=json -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts tests/**/**/*.test.ts && nyc report && cp coverage/coverage-final.json coverage/coverage.json",
+    "prepublishOnly": "npm test && npm run lint && npm run build",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "markdownlint-cli": "^0.24.0",
+    "mocha": "^6.1.4",
+    "nyc": "^14.0.0",
+    "prettier": "^1.17.0",
+    "ts-node": "^8.1.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.4"
+  },
+  "dependencies": {
+    "exceljs": "^4.1.1"
+  },
+  "files": [
+    "lib/**/*"
+  ]
+}
