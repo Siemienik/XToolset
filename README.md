@@ -12,6 +12,12 @@ It allows you to import xlsx spreadsheet file with data into your system with de
 
 [Read more :arrow_right:](packages/xlsx-import)
 
+### The `xlsx-renderer`
+
+Makes generating excel files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
+
+[Read more :arrow_right:](packages/xlsx-renderer)
+
 ### Samples
 
 Samples are available in a flat structure, and they are named by using : `[package_name]+[technology]` - for instance `xlsx-import+nodejs+ts`.
