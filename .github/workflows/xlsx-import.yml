@@ -1,4 +1,4 @@
-name: lint-build-test
+name: xlsx-import
 
 on: [push, pull_request]
 
