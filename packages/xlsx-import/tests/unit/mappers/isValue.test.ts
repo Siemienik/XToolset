@@ -1,7 +1,5 @@
 import * as chai from 'chai';
-import {
-    isValue,
-} from '../../../src/mappers';
+import { isValue } from '../../../src/mappers';
 
 describe('UNIT TEST: src/mappers/', () => {
     describe('isValue without accepted values', () => {
@@ -51,7 +49,7 @@ describe('UNIT TEST: src/mappers/', () => {
             });
         });
     });
-    
+
     describe('isValue with different case', () => {
         const dataProvider = [
             { inValue: 'TRUE', inAcceptedValue: ['true'], expectedResult: true },

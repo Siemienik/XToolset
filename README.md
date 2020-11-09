@@ -28,4 +28,6 @@ Samples are available in a flat structure, and they are named by using : `[packa
 
 All of these tools and packages are **free to use for commercial and non-commercial usages**, see the [MIT License](LICENSE).
 
-Additionally, we are able to provide B2B services - please contact with me for more details `hi@siemienik.pl`.
+Additionally, I am able to provide B2B services - please contact w
+
+ith me for more details `hi@siemienik.pl`.
