@@ -5,14 +5,9 @@ import * as path from "path";
 import { Anchor, Workbook, Worksheet } from 'exceljs';
 import * as chai from 'chai'
 
-function isDir(dirPath: Dirent | string): boolean {
-    if (typeof dirPath ==="object") { return dirPath.isDirectory(); }
-
-    try {
-        return fs.lstatSync(dirPath).isDirectory();
-    } catch (e) {
-        return false;// lstatSync throws an error if dirPath doesn't exist
-    }
+// TODO: it works for node 10+, for node 8/9 see git history
+function isDir(dirPath: Dirent): boolean {
+    return dirPath.isDirectory();
 }
 
 function getSimplestImages(x:Worksheet) {
