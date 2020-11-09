@@ -1,0 +1,9 @@
+/lib
+/node_modules
+/.idea
+/coverage/
+/.nyc_output/
+/.idea/
+
+test-output.xlsx
+~$*.xlsx

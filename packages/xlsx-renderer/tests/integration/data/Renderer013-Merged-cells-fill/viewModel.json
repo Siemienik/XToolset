@@ -1,0 +1,23 @@
+{
+  "some": "some value",
+  "data": "some data",
+  "name": "Looping thought ws",
+  "items": [
+    {
+      "col1": "col1 value",
+      "col2": 123
+    },
+    {
+      "col1": "col1 r2 value",
+      "col2": 234
+    },
+    {
+      "col1": "col1 r3 value",
+      "col2": 345
+    },
+    {
+      "col1": "col1 r4 value",
+      "col2": 456
+    }
+  ]
+}

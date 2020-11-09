@@ -1,0 +1,37 @@
+name: xlsx-renderer
+
+on: [push, pull_request] # todo path limitation
+
+defaults:
+  run:
+    working-directory: ./packages/xlsx-renderer
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        #        node-version: [8.x, 9.x, 10.x, 11.x, 12.x, 13.x, 14.x] # version 8 and 9 isn't supported in ExcelJS as default - may I resolve it further (or ignore)
+        node-version: [10.x, 11.x, 12.x, 13.x, 14.x]
+
+    steps:
+      - uses: actions/checkout@28c7f3d2b5162b5ddd3dfd9a45aa55eaf396478b # @v2; SECURE ALERT: always use hash instead of tags for actions
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@44c9c187283081e4e88b54b0efad9e9d468165a4 # @v1; SECURE ALERT: always use hash instead of tags for actions
+        with:
+          node-version: ${{ matrix.node-version }}
+      - name: npm install
+        run: npm ci
+      - name: Check lint
+        run: npm run lint
+      - name: Check build
+        run: npm run build
+      - name: Check unit & integration tests with coverage
+        run: npm run coverageReport
+      - name: Publish coverage report
+        continue-on-error: true
+        run: bash <(curl -s https://codecov.io/bash) -F xlsx-renderer
+        env:
+          CI: true
