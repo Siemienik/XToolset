@@ -1,0 +1,53 @@
+{
+  "name": "sxr",
+  "version": "0.0.1-1",
+  "license": "MIT",
+  "description": "Command line tool for generating XLSX files from a template.",
+  "main": "lib/program.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siemienik/xlsx-renderer-cli"
+  },
+  "keywords": [
+    "xlsx",
+    "cli",
+    "excel",
+    "template",
+    "render",
+    "generator"
+  ],
+  "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
+  "scripts": {
+    "build": "rm -rf lib/* && tsc",
+    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "lint": "tslint -p tsconfig.json",
+    "lint:fix": "tslint --fix -p tsconfig.json",
+    "prepublishOnly": "npm run lint && npm run build",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/node": "^14.0.27",
+    "prettier": "^1.17.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.4"
+  },
+  "dependencies": {
+    "commander": "^6.0.0",
+    "xlsx-renderer": "^2.2.1"
+  },
+  "files": [
+    "lib/scr.js",
+    "lib/program.js"
+  ],
+  "types": [
+    "lib/scr.d.ts",
+    "lib/program.d.ts"
+  ],
+  "bin": {
+    "sxr": "lib/sxr.js"
+  }
+}
