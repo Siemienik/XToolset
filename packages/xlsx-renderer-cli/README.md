@@ -1,28 +1,32 @@
-![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xlsx-renderer-cli/lint-build-test)![NPM](https://img.shields.io/npm/l/sxr)![npm](https://img.shields.io/npm/v/sxr)
-![Snyk Vulnerabilities for GitHub Repo](https://img.shields.io/snyk/vulnerabilities/github/siemienik/xlsx-renderer-cli)![GitHub top language](https://img.shields.io/github/languages/top/siemienik/xlsx-renderer-cli)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/siemienik/xlsx-renderer-cli)
+[![NPM](https://img.shields.io/npm/l/xlsx-renderer)![npm](https://img.shields.io/npm/v/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
+
 [![Join the chat at https://gitter.im/Siemienik/community](https://badges.gitter.im/Siemienik/community.svg)](https://gitter.im/Siemienik/community)
 
-# Getting Started:
+# XLSX-Renderer-CLI:
 
-## Global instalation
+Command line of [xlsx-renderer](../xlsx-renderer). Generates spreadsheet files based on the template with view model.
+
+## Global installation
 
 ```
-#install globally:
+# Install globally:
+
 npm i -g sxr
 
-#usages:
+# Usages:
+
 sxr --model vm.json template.xlsx > output.xlsx
 ```
 
-## Local instalation
+## Local installation
 
-1. Or install package
+1. Install package
 
 ```
-#install globally:
+# install globally:
 npm i --save sxr
 
-#usages:
+# usages:
 node_modules/.bin/sxr --model vm.json template.xlsx > output.xlsx
 ```
 
@@ -37,7 +41,7 @@ scripts:{
 
 bash:
 ```
-    npm run generate-xlsx
+npm run generate-xlsx
 ```
 
 # Examples:
@@ -61,7 +65,7 @@ sxr -o output.xlsx  template.xlsx "{\"jsonData\":true}"
 
 ## Arguments
 
-* `<template>` indicate which file is used as the template
+* `<template>` indicate  the template file,
 * `[model]` view model as a json used to generate a spreadsheet,
 
 ## Options
@@ -72,17 +76,17 @@ sxr -o output.xlsx  template.xlsx "{\"jsonData\":true}"
 
 ## Output
 
-`sxr` out-of-a-box pushes generated files into `stdout`, to save it into file please to append ` > filename.xlsx`.
+`sxr` out-of-a-box pushes generated files into `stdout`, to save it into a file please to append ` > filename.xlsx`.
 
 Library allowing also save output into file by using option `-o --output <filename>`
 
-It is also alloved using pipe parameter to forward generated file into another command.
+It is also allowed using pipe parameter to forward generated file into another command.
 
 # The template file
 
-The template structure is inherited from `xlsx-renderer`. Please use link below for more information:
+The template structure inherit from `xlsx-renderer`. Please use link below for more information:
 
-[**Documentation**](https://github.com/Siemienik/xlsx-renderer#documentation)
+[**Documentation**](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-renderer#documentation)
 
 ---
 

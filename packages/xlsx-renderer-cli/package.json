@@ -2,11 +2,12 @@
   "name": "sxr",
   "version": "0.0.1-1",
   "license": "MIT",
-  "description": "Command line tool for generating XLSX files from a template.",
+  "description": "Command line tool for generating XLSX files from a template. Part of XToolset",
   "main": "lib/program.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Siemienik/xlsx-renderer-cli"
+    "url": "git+https://github.com/Siemienik/XToolset",
+    "directory": "packages/xlsx-renderer-cli"
   },
   "keywords": [
     "xlsx",
@@ -14,7 +15,12 @@
     "excel",
     "template",
     "render",
-    "generator"
+    "generator",
+    "view model",
+    "spreadsheet",
+    "sheet",
+    "view engine",
+    "xlsx view engine"
   ],
   "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
   "scripts": {
