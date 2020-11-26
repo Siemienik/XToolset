@@ -113,21 +113,22 @@ interface Person {
 
 ## Samples
 
-Sample integration with `xlsx-import` are placed in [./samples](./samples) directory. Currently available:
+Sample integration with `xlsx-import` are placed in [./samples](../../samples) directory. Currently available:
 
 ### Frontend frameworks
 
-* [Vue sample](samples/vue/) - it is a web app created with Vue that displays parsed xlsx file
-* [React sample](samples/react/) - it is a web app created with React that displays parsed xlsx file
+* [Vue sample](../../samples/xlsx-import%2Bvue) - it is a web app created with Vue that displays parsed xlsx file
+* [React sample](../../samples/xlsx-import%2Breact) - it is a web app created with React that displays parsed xlsx file
+* [Angular sample](../../samples/xlsx-import%2Bangular) - it is a web app created with Angular that displays parsed xlsx file
 
 ### Console / CLI
 
-* [NodeJS sample](./samples/nodejs/) of **importing an invoice** - it is pure JS example which runs on nodejs.
-* [NodeJS + TS sample](./samples/nodejs-ts/) of **importing an invoice** - it is Typescript example that can be transpiled down to pure JS or run directly with ts-node.
+* [NodeJS sample](../../samples/xlsx-import%2Bnodejs/) of **importing an invoice** - it is pure JS example which runs on nodejs.
+* [NodeJS + TS sample](../../samples/xlsx-import%2Bnodejs%2Bts/) of **importing an invoice** - it is Typescript example that can be transpiled down to pure JS or run directly with ts-node.
 
 ### Backend
 
-* [ExpressJS sample](./samples/express/) - it is a small service created with ExpressJS can parse xlsx files with concrete structure
+* [ExpressJS sample](../../samples/xlsx-import%2Bexpress/) - it is a small service created with ExpressJS can parse xlsx files with concrete structure
 
 ## The configuration
 
