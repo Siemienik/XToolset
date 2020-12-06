@@ -14,9 +14,17 @@ It allows you to import xlsx spreadsheet file with data into your system with de
 
 ### The `xlsx-renderer`
 
-Makes generating excel files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
+Makes generating spreadsheet files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
 
 [Read more :arrow_right:](packages/xlsx-renderer)
+
+### The `xlsx-renderer-cli`
+
+[![NPM](https://img.shields.io/npm/l/xlsx-renderer)![npm](https://img.shields.io/npm/v/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
+
+Generate spreadsheets files following by the `template` with `view model` from command line.
+
+[Read more :arrow_right:](packages/xlsx-renderer-cli)
 
 ### Samples
 
