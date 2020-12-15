@@ -2,20 +2,29 @@
   "name": "xlsx-import",
   "version": "2.3.4-1",
   "license": "MIT",
-  "description": "Import data from xlsx file using configured pattern",
+  "description": "Import data from xlsx file using configured pattern and defined typescript types",
   "main": "xlsx-import/lib/ImporterFactory.js",
   "types": "xlsx-import/lib/ImporterFactory.d.ts",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Siemienik/xlsx-importer"
+    "url": "git+https://github.com/Siemienik/xtoolset",
+    "directory": "packages/xlsx-import"
   },
+  "funding": "https://github.com/sponsors/Siemienik",
   "keywords": [
     "Importing data",
     "Excel",
     "XLSX",
-    "ExcelJs"
+    "ExcelJs",
+    "Spreadsheets",
+    "configuration",
+    "xlsx",
+    "spread",
+    "sheet",
+    "data",
+    "import xlsx"
   ],
-  "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
+  "author": "Paweł Siemienik <npm@siemienik.pl>",
   "scripts": {
     "build": "rm -rf lib/* && tsc",
     "format": "npm run format:code && npm run format:markdown",
@@ -31,7 +40,7 @@
     "postversion": "git push && git push --tags"
   },
   "devDependencies": {
-    "@types/chai": "^4.1.7",
+    "@types/chai": "^4.2.14",
     "@types/mocha": "^5.2.6",
     "chai": "^4.2.0",
     "markdownlint-cli": "^0.24.0",
@@ -44,9 +53,11 @@
     "typescript": "^3.4.4"
   },
   "dependencies": {
-    "exceljs": "^4.1.1"
+    "exceljs": "^4.2.0"
   },
   "files": [
-    "lib/**/*"
+    "lib/**/*",
+    "README.md",
+    "LICENSE"
   ]
 }

@@ -7,7 +7,8 @@
     "type": "git",
     "url": "git+https://github.com/Siemienik/xtoolset"
   },
-  "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
+  "author": "Paweł Siemienik <npm@siemienik.pl>",
+  "funding": "https://github.com/sponsors/Siemienik",
   "scripts": {
     "format": "npm run format:markdown",
     "format:markdown": "markdownlint --fix **/*.md"
