@@ -2,6 +2,6 @@
   "default": true,
   "line-length": false,
   "no-inline-html": {
-    "allowed_elements": ["br"]
+    "allowed_elements": ["br","details","summary"]
   }
 }
