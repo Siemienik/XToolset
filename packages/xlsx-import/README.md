@@ -1,12 +1,10 @@
 # XLSX-Import
 
-## Importing data from xlsx as simple as possible
+[![NPM](https://img.shields.io/npm/l/xlsx-import)![npm](https://img.shields.io/npm/v/xlsx-import)](https://www.npmjs.com/package/xlsx-import) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import)](https://github.com/Siemienik/xtoolset/actions) [![codecov](https://codecov.io/gh/Siemienik/xtoolset/branch/master/graph/badge.svg?flag=xlsx-import)](https://codecov.io/gh/Siemienik/xtoolset/tree/master/packages/xlsx-import)
 
- [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xlsx-import/xlsx-import)](https://github.com/Siemienik/xlsx-import/actions)[![codecov](https://codecov.io/gh/Siemienik/xlsx-import/branch/master/graph/badge.svg)](https://codecov.io/gh/Siemienik/xlsx-import)
+Importing data from xlsx as simple as possible and map into configured data model with fully TypeScript typing support.
 
- [![NPM](https://img.shields.io/npm/l/xlsx-import)![npm](https://img.shields.io/npm/v/xlsx-import)](https://www.npmjs.com/package/xlsx-import)
-
- ![GitHub top language](https://img.shields.io/github/languages/top/siemienik/xlsx-import)![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/siemienik/xlsx-import)
+Part of [XToolset](https://github.com/siemienik/XToolset) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
 
 ## Getting Started
 
@@ -16,7 +14,27 @@
 npm i xlsx-import --save
 ```
 
-### 2. Write a config
+### 2. Declare types if using TypeScript
+
+```ts
+interface Book {
+    Id: number;
+    Title: string;
+    Author: string;
+}
+
+interface Person {
+    FirstName: string;
+    SecondName: string;
+    Age: number;
+
+    EmployedIn: string;
+    IsUnemployed: boolean;
+    IsEmployed: boolean;
+}
+```
+
+### 3. Write a config
 
 ```ts
     const config = {
@@ -46,9 +64,9 @@ npm i xlsx-import --save
     };
 ```
 
-### 3. Use mappers (optional)
+### 4. Use mappers (optional)
 
-Mapper is a function that transforms values. You can use [built-in mappers](#Mappers) or write your own
+Mapper is a function that transforms values. You can use [built-in mappers](#Mappers) or write your own.
 
 ```ts
     import { upperCaseMapper, isEmpty, isFilled, isValue } from 'xlsx-import/lib/mappers';
@@ -78,26 +96,6 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
     };
 ```
 
-### 4. Types
-
-```ts
-interface Book {
-    Id: number;
-    Title: string;
-    Author: string;
-}
-
-interface Person {
-    FirstName: string;
-    SecondName: string;
-    Age: number;
-
-    EmployedIn: string;
-    IsUnemployed: boolean;
-    IsEmployed: boolean;
-}
-```
-
 ### 5. Import data
 
 ```ts
@@ -113,24 +111,27 @@ interface Person {
 
 ## Samples
 
-Sample integration with `xlsx-import` are placed in [./samples](../../samples) directory. Currently available:
+Sample integration with `xlsx-import` are placed in [./samples](../../samples) directory. Currently, available:
 
 ### Frontend frameworks
 
-* [Vue sample](../../samples/xlsx-import%2Bvue) - it is a web app created with Vue that displays parsed xlsx file
-* [React sample](../../samples/xlsx-import%2Breact) - it is a web app created with React that displays parsed xlsx file
-* [Angular sample](../../samples/xlsx-import%2Bangular) - it is a web app created with Angular that displays parsed xlsx file
+* [Vue sample](../../samples/xlsx-import%2Bvue) - it is a web app created with Vue that displays parsed xlsx file.
+* [React sample](../../samples/xlsx-import%2Breact) - it is a web app created with React that displays parsed xlsx file.
+* [Angular sample](../../samples/xlsx-import%2Bangular) - it is a web app created with Angular that displays parsed xlsx file.
 
 ### Console / CLI
 
-* [NodeJS sample](../../samples/xlsx-import%2Bnodejs/) of **importing an invoice** - it is pure JS example which runs on nodejs.
-* [NodeJS + TS sample](../../samples/xlsx-import%2Bnodejs%2Bts/) of **importing an invoice** - it is Typescript example that can be transpiled down to pure JS or run directly with ts-node.
+* [NodeJS sample](../../samples/xlsx-import%2Bnodejs) of **importing an invoice** - it is pure JS example which runs on nodejs.
+* [NodeJS + TS sample](../../samples/xlsx-import%2Bnodejs%2Bts) of **importing an invoice** - it is Typescript example that can be transpiled down to pure JS or run directly with ts-node.
 
 ### Backend
 
-* [ExpressJS sample](../../samples/xlsx-import%2Bexpress/) - it is a small service created with ExpressJS can parse xlsx files with concrete structure
+* [ExpressJS sample](../../samples/xlsx-import%2Bexpress) - it is a small service created with ExpressJS can parse xlsx files with concrete structure
 
 ## The configuration
+
+<details>
+<summary>About configuration, expand to read more.</summary>
 
 ### `worksheet`
 
@@ -145,11 +146,13 @@ It is a string, indicates which worksheet should be used for data source.
 
 ***What in case of performing incorrect `type` parameter value?***
 
-Here is a implementation of fallback mechanism to attempting to parse data as ListVertical, which is the common type used in this library.<br/> *In that case `console.warn` will be written.*
+Here is an implementation of fallback mechanism to attempting to parse data as ListVertical, which is the common type used in this library.<br/> *In that case `console.warn` will be written.*
 
 #### `fields` or `columns`
 
 This is `type` related configuration, for more information please study examples above, there are a full configuration used.
+
+</details>
 
 ## Mappers
 
@@ -164,16 +167,19 @@ This is `type` related configuration, for more information please study examples
 |isValue|Examines if value is included in accepted values provided
 |isEmpty|Examines if input is empty
 |isFilled|Examines if input is not empty
-|splitMapper|Transforms string into array of items
+|[splitMapper](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-import#splitmapper)|Transforms string into array of items
 
 ### `splitMapper`
+
+<details>
+<summary>`splitMapper` documentation, expand to read more</summary>
 
 Configurable and immutable **splitMapper** with possibility to use specific `itemMapper<TReturnType>(mapper)` or `separator(string)`.
 
 * `.separator(';'): SplitMapper` - set separator
 * `.itemMapper(itemMapper): SplitMapper` - set mapper for items,
 
-Setting separator or item mapper do not change origin mapper but create new one. As a item mapper may use also another `splitMapper` like below:
+Setting separator or item mapper do not change origin mapper but create new one. As an item mapper may use also another `splitMapper` like below:
 
 ```ts
 // Building a mapper
@@ -198,22 +204,26 @@ const result = wordsInSentencesMapper(input);
 
 ```
 
-## Supports
+</details>
 
-### Supported browsers
+## Support
 
-Browser supporting has been proved for ✅ _Chrome_ and ✅ _Firefox_ in [Vue & React Samples](#frontend-frameworks) and theirs tests.
+If any help needed, just feel free to create an issue. We will be really thankful for added links into stackoverflow topics if exists.
 
-### Supported Node version
+We are ready to provide paid support, in order that please contact me: [hi@siemienik.pl](mailto://hi@siemienik.pl) or [support@siemienik.pl](mailto://support@siemienik.pl). 
 
-8 | 9 | 10 | 11 | 12 | 13 | 14
---|---|----|----|----|----|---
-❌ | ❌ | ✅ | ✅ | ✅ | ✅ | ✅
+### ✅ Browser Support
 
-Node v8 and v9 compatibly was drop after upgrade `ExcelJS` to version 4+ and it is able to turn on by downgrading `xlsx-import` to version 2.2.1 or if needed really important by requesting me directly.
+Browser supporting has been proved for ✅ _Chrome_ and ✅ _Firefox_ in [Angular & Vue & React Samples](#frontend-frameworks) and theirs tests. Feel welcome to run samples by yourselves and check it.
 
-## See also
+### ✅ NodeJS Support
 
-* [![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer) [XLSX-renderer](https://github.com/Siemienik/xlsx-renderer) - makes generating excel files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
-* [ts-package-structure](https://github.com/Siemienik/ts-package-structure) - the robust structure which I use to creating packages.
+ 10 | 11 | 12 | 13 | 14
+----|----|----|----|---
+ ✅ | ✅ | ✅ | ✅ | ✅
+
+If Node v8 & v9 needed, please contact us [support@siemienik.pl](mailto://support@siemienik.pl).
+
+---
+
 * [MIT LICENSE](LICENSE)
