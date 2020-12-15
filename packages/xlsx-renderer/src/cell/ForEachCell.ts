@@ -1,3 +1,4 @@
+import { deprecate } from 'util';
 import { BaseCell } from './BaseCell';
 import { Scope } from '../Scope';
 import { Cell, ValueType } from 'exceljs';
@@ -17,7 +18,8 @@ import { ICellCoord } from '../ICellCoord';
  * * `__start` - template foreach start cell
  * * `__end` - template loop's end cell, it is undefined before first `END_LOOP`
  * * `__iterated` - iteration has been finished
- * * `__insetRows` - second and next iterations have to insert new rows
+ * * `__last` - is this last element of a collection
+ * * `__insertRows` - second and next iterations have to insert new rows
  * * `__startOutput` - first output cell
  * * `__endOutput` - last output cell
  * * `__last` - boolean if it is last element of collection - useful for: `#! FINISH item.__last`
@@ -81,7 +83,7 @@ export class ForEachCell extends BaseCell {
         const __end: ICellCoord = scope.vm[target] && scope.vm[target].__end;
         const __last = typeof __from.split('.').reduce((p, c) => p[c] || {}, scope.vm)[__index] === 'undefined';
         let __endOutput = scope.vm[target] && scope.vm[target].__endOutput;
-        let __insetRows = (scope.vm[target] && scope.vm[target].__insetRows) || false;
+        let __insertRows = (scope.vm[target] && scope.vm[target].__insertRows) || false;
 
         let next = __from.split('.').reduce((p, c) => p[c] || {}, scope.vm)[__index - 1];
 
@@ -97,8 +99,8 @@ export class ForEachCell extends BaseCell {
 
         next = next || {};
 
-        if (__insetRows) {
-            __insetRows = false;
+        if (__insertRows) {
+            __insertRows = false;
             if (!scope.isFrozen()) {
                 for (let i = __end.r; i > __start.r; i--) {
                     scope.output.worksheets[scope.outputCell.ws].spliceRows(
@@ -126,7 +128,8 @@ export class ForEachCell extends BaseCell {
             __start,
             __end,
             __iterated,
-            __insetRows,
+            __insetRows: __insertRows, // todo deprecate and remove further, it was a typo
+            __insertRows,
             __startOutput,
             __endOutput,
             __last,
