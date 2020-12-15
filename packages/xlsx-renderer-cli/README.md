@@ -1,14 +1,14 @@
-[![NPM](https://img.shields.io/npm/l/xlsx-renderer)![npm](https://img.shields.io/npm/v/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
+[![NPM](https://img.shields.io/npm/l/sxr)![npm](https://img.shields.io/npm/v/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
 
 [![Join the chat at https://gitter.im/Siemienik/community](https://badges.gitter.im/Siemienik/community.svg)](https://gitter.im/Siemienik/community)
 
-# XLSX-Renderer-CLI:
+# XLSX Renderer - Command Line Interface :
 
 Command line of [xlsx-renderer](../xlsx-renderer). Generates spreadsheet files based on the template with view model.
 
 ## Global installation
 
-```
+```shell script
 # Install globally:
 
 npm i -g sxr
@@ -22,7 +22,7 @@ sxr --model vm.json template.xlsx > output.xlsx
 
 1. Install package
 
-```
+```shell script
 # install globally:
 npm i --save sxr
 
@@ -33,20 +33,20 @@ node_modules/.bin/sxr --model vm.json template.xlsx > output.xlsx
 2. Additionally, able to use with packages.json scripts:
 
 `package.json:`
-```js
+```json
 scripts:{
     "generate-xlsx":"sxr --model vm.json template.xlsx > output.xlsx"
 }
 ```
 
 bash:
-```
+```shell script
 npm run generate-xlsx
 ```
 
 # Examples:
 
-```
+```shell script
 cat vm.json | sxr template.xlsx > output.xlsx
 
 sxr template.xlsx "{\"jsonData\":true}" > output.xlsx
