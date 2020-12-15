@@ -210,7 +210,7 @@ const result = wordsInSentencesMapper(input);
 
 If any help needed, just feel free to create an issue. We will be really thankful for added links into stackoverflow topics if exists.
 
-We are ready to provide paid support, in order that please contact me: [hi@siemienik.pl](mailto://hi@siemienik.pl) or [support@siemienik.pl](mailto://support@siemienik.pl). 
+We are ready to provide paid support, in order that please contact me: [hi@siemienik.pl](mailto://hi@siemienik.pl) or [support@siemienik.pl](mailto://support@siemienik.pl).
 
 ### ✅ Browser Support
 
