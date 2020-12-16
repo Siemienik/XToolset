@@ -36,7 +36,7 @@ Examples are available in a flat structure, and they are named by using : `[pack
 
 [See `samples/`](./samples)
 
-Additionally, the `xlsx-renderer` has lots of examples used for the integration testing. 
+Additionally, the `xlsx-renderer` has lots of examples used for the integration testing.
 [Read more](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-renderer#examples).
 
 ## Premium support & MIT licensed
