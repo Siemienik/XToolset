@@ -22,10 +22,12 @@
     "view engine",
     "xlsx view engine"
   ],
-  "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
+  "author": "Paweł Siemienik <npm@siemienik.pl>",
   "scripts": {
     "build": "rm -rf lib/* && tsc",
-    "format": "prettier --write \"src/**/*.ts\" \"src/**/*.js\"",
+    "format": "npm run format:code && npm run format:markdown",
+    "format:code": "prettier --write \"**/*.{js,jsx,ts,vue}\"",
+    "format:markdown": "markdownlint --fix **/*.md",
     "lint": "tslint -p tsconfig.json",
     "lint:fix": "tslint --fix -p tsconfig.json",
     "prepublishOnly": "npm run lint && npm run build",
@@ -35,24 +37,26 @@
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
-    "@types/node": "^14.0.27",
+    "@types/node": "^14.14.14",
+    "markdownlint-cli": "^0.24.0",
     "prettier": "^1.17.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
     "typescript": "^3.4.4"
   },
   "dependencies": {
-    "commander": "^6.0.0",
-    "xlsx-renderer": "^2.2.1"
+    "commander": "^6.2.1",
+    "xlsx-renderer": "^2.3.1"
   },
   "files": [
-    "lib/scr.js",
-    "lib/program.js"
+    "lib/sxr.js",
+    "lib/program.js",
+    "lib/sxr.d.ts",
+    "lib/program.d.ts",
+    "LICENSE",
+    "README.md"
   ],
-  "types": [
-    "lib/scr.d.ts",
-    "lib/program.d.ts"
-  ],
+  "types": "lib/program.d.ts",
   "bin": {
     "sxr": "lib/sxr.js"
   }
