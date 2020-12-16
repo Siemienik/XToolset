@@ -39,7 +39,7 @@ Examples are available in a flat structure, and they are named by using : `[pack
 Additionally, the `xlsx-renderer` has lots of examples used for the integration testing.
 [Read more](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-renderer#examples).
 
-## Support 
+## Support
 
 If any help needed, just feel free to create an issue. We will be really thankful for added links into stackoverflow topics if exists.
 
