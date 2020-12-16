@@ -109,9 +109,9 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
 
 ```
 
-## Samples
+## Examples
 
-Sample integration with `xlsx-import` are placed in [./samples](../../samples) directory. Currently, available:
+Example integrations with `xlsx-import` are placed in [samples](../../samples) directory. Currently, available:
 
 ### Frontend frameworks
 
