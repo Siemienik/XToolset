@@ -11,6 +11,6 @@
   "author": "Paweł Siemienik <siemienik.pawel@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "xlsx-import": "^2.3.3"
+    "xlsx-import": "^2.3.4"
   }
 }
