@@ -57,5 +57,6 @@
   "types": "lib/program.d.ts",
   "bin": {
     "sxr": "lib/sxr.js"
-  }
+  },
+  "funding": "https://github.com/sponsors/Siemienik"
 }

@@ -1,6 +1,6 @@
 {
   "name": "xtoolset",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "license": "MIT",
   "description": "Fancy typescript / javascript spreadsheet tools for browsers and node, which helps handle spreadsheet files `xlsx` in smart way by using high level api",
   "repository": {
@@ -15,5 +15,10 @@
   },
   "devDependencies": {
     "markdownlint-cli": "^0.24.0"
-  }
+  },
+  "files": [
+    "LICENSE",
+    "README.md",
+    "index.js"
+  ]
 }
