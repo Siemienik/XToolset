@@ -39,8 +39,12 @@ Examples are available in a flat structure, and they are named by using : `[pack
 Additionally, the `xlsx-renderer` has lots of examples used for the integration testing.
 [Read more](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-renderer#examples).
 
-## Premium support & MIT licensed
+## Support 
+
+If any help needed, just feel free to create an issue. We will be really thankful for added links into stackoverflow topics if exists.
+
+We are ready to provide paid support, in order that please contact me: [hi@siemienik.pl](mailto://hi@siemienik.pl) or [support@siemienik.pl](mailto://support@siemienik.pl).
+
+## MIT licensed
 
 All of these tools and packages are **free to use for commercial and non-commercial usages**, see the [MIT License](LICENSE).
-
-Additionally, I am able to provide B2B services - please contact with me for more details `hi@siemienik.pl`.
