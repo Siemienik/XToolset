@@ -30,16 +30,17 @@ Generate spreadsheets files following by the `template` with `view model` from c
 
 [Read more :arrow_right:](packages/xlsx-renderer-cli)
 
-### Samples
+### Examples
 
-Samples are available in a flat structure, and they are named by using : `[package_name]+[technology]` - for instance `xlsx-import+nodejs+ts`.
+Examples are available in a flat structure, and they are named by using : `[package_name]+[technology]` - for instance `xlsx-import+nodejs+ts`.
 
-[See `samples/`](samples/)
+[See `samples/`](./samples)
+
+Additionally, the `xlsx-renderer` has lots of examples used for the integration testing. 
+[Read more](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-renderer#examples).
 
 ## Premium support & MIT licensed
 
 All of these tools and packages are **free to use for commercial and non-commercial usages**, see the [MIT License](LICENSE).
 
-Additionally, I am able to provide B2B services - please contact w
-
-ith me for more details `hi@siemienik.pl`.
+Additionally, I am able to provide B2B services - please contact with me for more details `hi@siemienik.pl`.
