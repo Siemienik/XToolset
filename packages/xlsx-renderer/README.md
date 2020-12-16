@@ -17,49 +17,51 @@ Imagine that it will not be terrible too much. Commonly generating files require
 3. **Did the boss said that it is only a little change in `sales-report.xlsx`, but it isn't?**
 With `xlsx-renderer` you mustn't change any line of code, just update your `template.xlsx`
 
-## How it works?
+## How it works
 
 It consumes a template which is common Excel file, then add yours data called view model. Blend it and done, as result you'll get result file.
 ![How it works](./docs/how-it-works-explanation.png)
 
-## Getting Started:
+## Getting Started
 
-1. Install package
+### 1. Install package
 
 ```shell script
 npm i xlsx-renderer --save
 ```
 
-2. Write code:
+### 2. Write code
 
 ```ts
 import {Renderer} from 'xlsx-renderer';
 // ...
 const renderer = new Renderer();
-// ... 
+// ...
 const viewModel = { awesome:"Oh yeah!", items:[/*...*/] };
 const result = await renderer.renderFromFile('./report-template.xlsx', viewModel);
 await result.xlsx.writeFile('./my-awesome-report.xlsx');
 ```
 
-3. Or use the command line interface [read more about xlsx-renderer-cli](../xlsx-renderer-cli)
+### 3. Consider using CLI
 
-## Documentation:
+It is possible to use the command line interface [read more about xlsx-renderer-cli](../xlsx-renderer-cli)
+
+## Documentation
 
 <details>
 <summary>The documentation, expand to read more.</summary>
 
-### Cells:
+### Cells
 
 | Category | Name | Matching Order | Matching Rule | Description | More info |
 |----------|-----:|-------|--------|-------------|:---------|
 | - | [BaseCell](./src/cell/BaseCell.ts) | n/o | n/o | All Cell\`s definition classes extend it. | **abstract** |
 | Content | [NormalCell](./src/cell/NormalCell.ts) | 1 | not started by `##` or `#!` | This one copy all styles, width, properties and value form template.  | **default** |
-| Content | [VariableCell](./src/cell/VariableCell.ts) | 3 | `## pathToVariable ` | Write variable from `ViewModel`. <br/> Paths to object's property or array item are allowed.<br/> When asking about undefined variable it returns empty string. | **Paths examples:** <br/> `simplePath` <br/> `someObject.property` <br/> `array.0.field` <br/> `items.1.path.to.object.prop`|
+| Content | [VariableCell](./src/cell/VariableCell.ts) | 3 | `## pathToVariable` | Write variable from `ViewModel`. <br/> Paths to object's property or array item are allowed.<br/> When asking about undefined variable it returns empty string. | **Paths examples:** <br/> `simplePath` <br/> `someObject.property` <br/> `array.0.field` <br/> `items.1.path.to.object.prop`|
 | Content | [HyperlinkCell](./src/cell/HyperlinkCell.ts) | 5 | `#! HYPERLINK pathToLabel pathToTarget` | Create a hyperlink. | *Paths resolve exactly same as VariableCell* |
 | Content | [FormulaCell](./src/cell/FormulaCell.ts) | 4 | Cell.type eq. formulae | It handles correctly formulas inside and outside of loops - when rows were shifted compared to the template. | *It is used automatically when formulae from the template being rendered* <br/> [Example](./tests/integration/data/Renderer010-Formula)|
 | Navigation | [EndRowCell](./src/cell/EndRowCell.ts) | 2 | `#! END_ROW` | Go to the beginning of next row |  |
-| Worksheet<br/>Navigation<br/>Loop | [FinishCell](./src/cell/FinishCell.ts) | 7 | `#! FINISH conditionPath` | Finish rendering for current worksheet and: <br/> 1) go to next worksheet if `conditionPath===true`<br/> 2) repeat this template worksheet again (`conditionPath === false`) - looping through worksheets <br/> 3) finished whole rendering when this worksheet is the last one.   | **Examples:**<br/> `#! FINISHED ` or `#! FINISHED itemFromLoop.__iterated` |
+| Worksheet<br/>Navigation<br/>Loop | [FinishCell](./src/cell/FinishCell.ts) | 7 | `#! FINISH conditionPath` | Finish rendering for current worksheet and: <br/> 1) go to next worksheet if `conditionPath===true`<br/> 2) repeat this template worksheet again (`conditionPath === false`) - looping through worksheets <br/> 3) finished whole rendering when this worksheet is the last one.   | **Examples:**<br/> `#! FINISHED` or `#! FINISHED itemFromLoop.__iterated` |
 | Worksheet | [WsNameCell](./src/cell/WsNameCell.ts) | 13 | `#! WS_NAME pathToVariable` | Set worksheet's name.  | **Examples:** <br/> `#! WS_NAME worksheetName` <br/> `#! WS_NAME item.title` <br/> `#! WS_NAME translatedNames.0` |
 | Loop | [DumpColsCell](./src/cell/DumpColsCell.ts) | 10 | `#! DUMP_COLS pathToArray` | Useful for writing through multiple columns. It put each value of array to next column. | [Example](./tests/integration/data/Renderer011-DumpCols) |
 | Loop | [ForEachCell](./src/cell/ForEachCell.ts) | 6 | #! FOR_EACH item items | Begin the loop named `item`, set the first element of `items` into `item` and go to the beginning of next line.| Connected to: `ContinueCell`, `EndLoopCell`, `DeleteCell`, `FinishedCell`, `SumCell`, `AverageCell`. |
@@ -71,7 +73,7 @@ await result.xlsx.writeFile('./my-awesome-report.xlsx');
 
 </details>
 
-## Examples:
+## Examples
 
 Actually, these examples are integration test fixtures. Each contains `template.xlsx` with a Template, `vm.json` with a ViewModel and `expected.xlsx` with the expected result.
 
@@ -101,7 +103,7 @@ If any help needed, just feel free to create an issue. We will be really thankfu
 
 We are ready to provide paid support, in order that please contact me: [hi@siemienik.pl](mailto://hi@siemienik.pl) or [support@siemienik.pl](mailto://support@siemienik.pl).
 
-### NodeJS Support:
+### NodeJS Support
 
 |  10 |  11 |  12 |  13 |  14 |
 |-----|-----|-----|-----|-----|
@@ -109,8 +111,7 @@ We are ready to provide paid support, in order that please contact me: [hi@siemi
 
 If Node v8 & v9 needed, please contact us [support@siemienik.pl](mailto://support@siemienik.pl).
 
-
-## Browser Support:
+## Browser Support
 
 XLSX Renderer may run on browser side, [read more how to do it](https://github.com/Siemienik/XToolset/issues/93#issuecomment-732309383).
 
