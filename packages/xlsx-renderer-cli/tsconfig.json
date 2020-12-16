@@ -10,7 +10,10 @@
         "lib":["es2017"],
         "resolveJsonModule": true
     },
-    "include": ["src"],
+    "files": [
+        "sxr.ts",
+        "program.ts"
+    ],
     "exclude": [
         "node_modules",
         "tests"

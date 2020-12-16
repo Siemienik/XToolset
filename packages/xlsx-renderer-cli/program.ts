@@ -2,7 +2,7 @@ import { Command, default as commander } from 'commander';
 import * as fs from 'fs';
 import { Stream } from 'stream';
 import { Renderer } from 'xlsx-renderer';
-import { version } from '../package.json';
+import { version } from './package.json';
 
 // DEBUG:
 
