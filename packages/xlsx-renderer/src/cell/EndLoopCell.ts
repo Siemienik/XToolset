@@ -22,11 +22,11 @@ export class EndLoopCell extends BaseCell {
 
         scope.unfreezeOutput();
 
-        const __insertRows =true;
+        const __insertRows = true;
         scope.vm[target] = Object.freeze({
             ...scope.vm[target],
             __end: scope.templateCell,
-            __insetRows: __insertRows,  // todo deprecate and remove further, it was a typo
+            __insetRows: __insertRows, // todo deprecate and remove further, it was a typo
             __insertRows,
         });
 
