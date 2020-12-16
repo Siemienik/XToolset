@@ -75,7 +75,12 @@ It is possible to use the command line interface [read more about xlsx-renderer-
 
 ## Examples
 
-Actually, these examples are integration test fixtures. Each contains `template.xlsx` with a Template, `vm.json` with a ViewModel and `expected.xlsx` with the expected result.
+Actually, these examples are integration test fixtures. Each contains:
+
+* `template.xlsx` with a Template file created in MS Excel,
+* `viewModel.json` with a ViewModel - data which will put into the template,
+* `expected.xlsx` with the expected result.
+* **After tests being run:** `test-output.xlsx` with fresh generated file.
 
 | Id | Example | Explanation |
 |----|---------|-------------|
