@@ -1,0 +1,63 @@
+{
+  "name": "sxi",
+  "version": "0.0.1-alpha1",
+  "license": "MIT",
+  "description": "Command Line Tool for importing data from xlsx file using configured pattern and defined typescript types",
+  "main": "lib/program.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Siemienik/XToolset",
+    "directory": "packages/xlsx-import-cli"
+  },
+  "keywords": [
+    "xlsx",
+    "cli",
+    "excel",
+    "template",
+    "spreadsheet",
+    "sheet",
+    "Importing data",
+    "ExcelJs",
+    "configuration",
+    "spread",
+    "data",
+    "import xlsx"
+  ],
+  "author": "Paweł Siemienik <npm@siemienik.pl>",
+  "scripts": {
+    "build": "rm -rf lib/* && tsc",
+    "format": "npm run format:code && npm run format:markdown",
+    "format:code": "prettier --write \"**/*.{js,jsx,ts,vue}\"",
+    "format:markdown": "markdownlint --fix **/*.md",
+    "lint": "tslint -p tsconfig.json",
+    "lint:fix": "tslint --fix -p tsconfig.json",
+    "prepublishOnly": "npm run lint && npm run build",
+    "preversion": "npm run lint",
+    "version": "npm run format && git add -A ./sxr.ts ./program.ts",
+    "postversion": "git push && git push --tags"
+  },
+  "dependencies": {
+    "commander": "^6.2.1",
+    "xlsx-import": "^2.3.4"
+  },
+  "devDependencies": {
+    "@types/commander": "^2.12.2",
+    "@types/node": "^14.14.14",
+    "markdownlint-cli": "^0.24.0",
+    "prettier": "^1.17.0",
+    "tslint": "^5.16.0",
+    "tslint-config-prettier": "^1.18.0",
+    "typescript": "^3.4.4"
+  },
+  "files": [
+    "**/*.js",
+    "**/*.d.ts",
+    "README.md",
+    "LICENSE"
+  ],
+  "types": "lib/program.d.ts",
+  "bin": {
+    "sxr": "lib/sxi.js"
+  },
+  "funding": "https://github.com/sponsors/Siemienik"
+}
