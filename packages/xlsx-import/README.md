@@ -109,6 +109,10 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
 
 ```
 
+## Command Line Interface (CLI)
+
+It is possible to use the command line interface [read more about xlsx-import-cli](../xlsx-import-cli).
+
 ## Examples
 
 Example integrations with `xlsx-import` are placed in [samples](../../samples) directory. Currently, available:

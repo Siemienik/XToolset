@@ -80,7 +80,7 @@ sxi config.js invoice.xlsx | sxr template.xlsx > refreshed-invoice.xlsx
 
 ### Output
 
-`sxi` out-of-a-box write into `stdout` imported data, to save it into a file please to append `> filename.xlsx`.
+The `sxi` writes into `stdout` imported data as a json, to save it into a file please to append `> filename.json`.
 
 <!---
 Library allowing also save output into file by using option `-o --output <output-file.json>`
@@ -92,7 +92,7 @@ It is also allowed using pipe parameter to forward imported data into another co
 
 The config inherit from `xlsx-import`. Please use link below for more information:
 
-[**XLSX Renderer Documentation**](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-import#xlsx-import)
+[**XLSX Import Documentation**](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-import#xlsx-import)
 
 ## Support
 
