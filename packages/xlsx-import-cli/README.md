@@ -2,7 +2,7 @@
 
 [![NPM](https://img.shields.io/npm/l/sxi)![npm](https://img.shields.io/npm/v/sxi)](https://www.npmjs.com/package/sxi) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import-cli)](https://github.com/Siemienik/xtoolset/actions)
 
-Command line of [xlsx-import](../xlsx-import). Configurable import spreadsheet files with TS types support.
+Command line interface for [xlsx-import](../xlsx-import). Configurable import spreadsheet files with TS types support.
 
 Part of [XToolset](https://github.com/siemienik/XToolset) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
 

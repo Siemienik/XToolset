@@ -2,7 +2,7 @@
 
 [![NPM](https://img.shields.io/npm/l/sxr)![npm](https://img.shields.io/npm/v/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
 
-Command line of [xlsx-renderer](../xlsx-renderer). Generates spreadsheet files based on the template with view model.
+Command line interface for [xlsx-renderer](../xlsx-renderer). Generates spreadsheet files based on the template with view model.
 
 Part of [XToolset](https://github.com/siemienik/XToolset) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
 
