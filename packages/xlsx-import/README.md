@@ -127,6 +127,7 @@ Example integrations with `xlsx-import` are placed in [samples](../../samples) d
 
 * [NodeJS sample](../../samples/xlsx-import%2Bnodejs) of **importing an invoice** - it is pure JS example which runs on nodejs.
 * [NodeJS + TS sample](../../samples/xlsx-import%2Bnodejs%2Bts) of **importing an invoice** - it is Typescript example that can be transpiled down to pure JS or run directly with ts-node.
+* [**:star: Command line of xlsx-import**](../../samples/xlsx-import-cli)  examples with prepared scripts based on cli version of xlsx-import.
 
 ### Backend
 
