@@ -1,4 +1,4 @@
-name: xlsx-renderer-cli
+name: xlsx-import-cli
 
 on: [push, pull_request] # todo path limitation
 
