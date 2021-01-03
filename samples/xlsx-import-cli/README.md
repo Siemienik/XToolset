@@ -6,10 +6,10 @@ This is an example how to use `xlsx-import-cli (sxi)` .
 
 ## Scripts
 
-* `npm run example:seller` same as `node_modules/.bin/sxi configs/seller.js invoice.xlsx` - imports seller data from invoice.xlsx. 
-* `npm run example:buyer` same as `node_modules/.bin/sxi configs/buyer.js invoice.xlsx` - imports buyer data from invoice.xlsx. 
-* `npm run example:items` same as `node_modules/.bin/sxi configs/items.js invoice.xlsx` - imports items data from invoice.xlsx. 
-* `npm run example:misc` same as `node_modules/.bin/sxi configs/misc.js invoice.xlsx` - imports misc data from invoice.xlsx. 
+* `npm run example:seller` same as `node_modules/.bin/sxi configs/seller.js invoice.xlsx` - imports seller data from invoice.xlsx.
+* `npm run example:buyer` same as `node_modules/.bin/sxi configs/buyer.js invoice.xlsx` - imports buyer data from invoice.xlsx.
+* `npm run example:items` same as `node_modules/.bin/sxi configs/items.js invoice.xlsx` - imports items data from invoice.xlsx.
+* `npm run example:misc` same as `node_modules/.bin/sxi configs/misc.js invoice.xlsx` - imports misc data from invoice.xlsx.
 
 * `npm run example:all`  runs all above at once.
 
