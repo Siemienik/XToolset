@@ -6,7 +6,7 @@ Helps handle spreadsheet files `xlsx` in smart way by using high level api.
 
 ## Tools
 
-### :star: The `xlsx-import`
+### The `xlsx-import`
 
 [![NPM](https://img.shields.io/npm/l/xlsx-import)![npm](https://img.shields.io/npm/v/xlsx-import)](https://www.npmjs.com/package/xlsx-import) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import)](https://github.com/Siemienik/xtoolset/actions) [![codecov](https://codecov.io/gh/Siemienik/xtoolset/branch/master/graph/badge.svg?flag=xlsx-import)](https://codecov.io/gh/Siemienik/xtoolset/tree/master/packages/xlsx-import)
 
@@ -14,13 +14,15 @@ It allows you to import xlsx spreadsheet file with data into your system with de
 
 [Read more :arrow_right:](packages/xlsx-import)
 
-### The `xlsx-import-cli` (`sxi`)
+#### The `xlsx-import-cli` (`sxi`)
 
 [![NPM](https://img.shields.io/npm/l/sxi)![npm](https://img.shields.io/npm/v/sxi)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import-cli)](https://github.com/Siemienik/xtoolset/actions)
 
 Imports data from spreadsheet file using command line.
 
-### :star: The `xlsx-renderer`
+[Read more :arrow_right:](packages/xlsx-import-cli)
+
+### The `xlsx-renderer`
 
 [![NPM](https://img.shields.io/npm/l/xlsx-renderer)![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer)](https://github.com/Siemienik/xtoolset/actions) [![codecov](https://codecov.io/gh/Siemienik/xtoolset/branch/master/graph/badge.svg?flag=xlsx-renderer)](https://codecov.io/gh/Siemienik/xtoolset/tree/master/packages/xlsx-renderer)
 
@@ -28,7 +30,7 @@ Makes generating spreadsheet files as simple as possible - it is enough one line
 
 [Read more :arrow_right:](packages/xlsx-renderer)
 
-### The `xlsx-renderer-cli` (`sxr`)
+#### The `xlsx-renderer-cli` (`sxr`)
 
 [![NPM](https://img.shields.io/npm/l/sxr)![npm](https://img.shields.io/npm/v/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
 
