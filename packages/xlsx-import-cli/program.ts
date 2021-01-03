@@ -31,8 +31,10 @@ const mainCommand = (program: commander.Command, outputStream: WritableStream) =
         return config;
     };
 
-    program.description('Import data from [input] spreadsheet (as an argument or stdin) using importer <config>. \n' +
-        ' (Read more about config: https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-import#3-write-a-config).');
+    program.description(
+        'Import data from [input] spreadsheet (as an argument or stdin) using importer <config>. \n' +
+            ' (Read more about config: https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-import#3-write-a-config).',
+    );
     // todo: // program.option('-o --output <filename>', 'write output json into file');
     program.arguments('<config> <input>').action(async (configPathRaw: string, inputRaw: string) => {
         const configPath = path.resolve(configPathRaw);
