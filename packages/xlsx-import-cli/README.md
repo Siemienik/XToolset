@@ -63,6 +63,8 @@ sxi config.js invoice.xlsx | sxr template.xlsx > refreshed-invoice.xlsx
 
 ```
 
+[Run prepared examples! :rocket:](../../samples/xlsx-import-cli)
+
 ## Command body
 
 `sxi [options] <config.js> [input.xlsx]`
