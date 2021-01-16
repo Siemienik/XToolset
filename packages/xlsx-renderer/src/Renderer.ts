@@ -10,7 +10,10 @@ export class Renderer {
         const template = await templateFactory();
         const output = await templateFactory();
 
-        const scope = new Scope(template, output, vm);
+        // todo Temporary fixation for VM mutating problem, @see https://github.com/Siemienik/XToolset/issues/137
+        const vmCopy = JSON.parse(JSON.stringify(vm));
+
+        const scope = new Scope(template, output, vmCopy);
 
         while (!scope.isFinished()) {
             this.cellTemplatePool.match(scope.getCurrentTemplateCell()).apply(scope);

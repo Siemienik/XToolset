@@ -86,7 +86,7 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
             const correctImage = await new Workbook().xlsx.readFile(
                 path.join(__dirname, 'data', 'assertCells', 'correct-image.xlsx'),
             );
-            // TODO important probably lack of assertions images assertion
+            // TODO important probably lack of assertions images assertion!
 
             assertCells(expected, correct, 20);
         });
@@ -157,10 +157,16 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
         const renderer = new Renderer();
         sets.forEach(s => {
             it(`Test for  ${s.name}`, async () => {
+                const viewModelOriginal = require(path.join(dataPath, s.name, 'viewModel.json'));
+                const viewModel = JSON.parse(JSON.stringify(viewModelOriginal));
+
                 const result = await renderer.renderFromFile(
                     path.join(dataPath, s.name, 'template.xlsx'),
-                    require(path.join(dataPath, s.name, 'viewModel.json')),
+                    viewModel,
                 );
+
+                // viewModel shouldn't be modified. @see https://github.com/Siemienik/XToolset/issues/137
+                chai.expect(viewModel).eql(viewModelOriginal);
 
                 const expected = await new Workbook().xlsx.readFile(path.join(dataPath, s.name, 'expected.xlsx'));
 
