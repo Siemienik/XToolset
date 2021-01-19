@@ -26,8 +26,8 @@ const books: Array<Book> = xlsx.getAllItems<Book>(config.books);
 Imports data from spreadsheet file using command line.
 
 ```shell script
-$ npm install -g sxi # install globally
-$ sxi books.cfg.js my-awesome-books.xlsx > books-list.json
+npm install -g sxi # install globally
+sxi books.cfg.js my-awesome-books.xlsx > books-list.json
 ```
 
 [Read more :arrow_right:](packages/xlsx-import-cli)
@@ -53,8 +53,8 @@ await renderer.renderFromFile('./invoice-template.xlsx', invoiceData)
 Generate spreadsheets files following by the `template` with `view model` from command line.
 
 ```shell script
-$ npm install -g sxr # install globally
-$ sxr --model invoice-data.json invoice-template.xlsx > invoice.xlsx
+npm install -g sxr # install globally
+sxr --model invoice-data.json invoice-template.xlsx > invoice.xlsx
 ```
 
 [Read more :arrow_right:](packages/xlsx-renderer-cli)
