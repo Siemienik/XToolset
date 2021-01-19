@@ -4,7 +4,7 @@
 
 Importing data from xlsx as simple as possible and map into configured data model with fully TypeScript typing support.
 
-Part of [XToolset](https://github.com/siemienik/XToolset) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
+Part of [XToolSet](https://github.com/siemienik/XToolSet) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
 
 ## Getting Started
 
@@ -172,7 +172,7 @@ This is `type` related configuration, for more information please study examples
 |isValue|Examines if value is included in accepted values provided
 |isEmpty|Examines if input is empty
 |isFilled|Examines if input is not empty
-|[splitMapper](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-import#splitmapper)|Transforms string into array of items
+|[splitMapper](https://github.com/Siemienik/XToolSet/tree/master/packages/xlsx-import#splitmapper)|Transforms string into array of items
 
 ### `splitMapper`
 

@@ -4,7 +4,7 @@
 
 Generate spreadsheet files in smart way based on a template **XLSX** file created in your favourite spreadsheet application.
 
-Part of [XToolset](https://github.com/siemienik/XToolset) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
+Part of [XToolSet](https://github.com/siemienik/XToolSet) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
 
 ## Use case
 
@@ -118,7 +118,7 @@ If Node v8 & v9 needed, please contact us [support@siemienik.pl](mailto://suppor
 
 ## Browser Support
 
-XLSX Renderer may run on browser side, [read more how to do it](https://github.com/Siemienik/XToolset/issues/93#issuecomment-732309383).
+XLSX Renderer may run on browser side, [read more how to do it](https://github.com/Siemienik/XToolSet/issues/93#issuecomment-732309383).
 
 ---
 
