@@ -4,7 +4,7 @@
 
 Command line interface for [xlsx-renderer](../xlsx-renderer). Generates spreadsheet files based on the template with view model.
 
-Part of [XToolset](https://github.com/siemienik/XToolset) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
+Part of [XToolSet](https://github.com/siemienik/XToolSet) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
 
 ## Usages
 
@@ -94,7 +94,7 @@ It is also allowed using pipe parameter to forward generated file into another c
 
 The template structure inherit from `xlsx-renderer`. Please use link below for more information:
 
-[**XLSX Renderer Documentation**](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-renderer#xlsx-renderer)
+[**XLSX Renderer Documentation**](https://github.com/Siemienik/XToolSet/tree/master/packages/xlsx-renderer#xlsx-renderer)
 
 ## Support
 

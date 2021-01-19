@@ -1,8 +1,12 @@
-# XToolset
+<center>
 
-Fancy typescript / javascript spreadsheet tools for browsers and node: `xlsx-import`, `xlsx-renderer`, `xlsx-renderer-cli`
+![XToolSet Banner](./media/xtoolset-logo-final.svg)
 
-Helps handle spreadsheet files `xlsx` in smart way by using high level api.
+Fancy TypeScript / JavaScript spreadsheet package for browsers and node: `xlsx-import`, `xlsx-renderer`, and command line tools
+
+***Helps handle spreadsheet files `xlsx` in smart way by using high level api.***
+
+</center>
 
 ## Packages
 
@@ -66,7 +70,7 @@ Examples are available in a flat structure, and they are named by using : `[pack
 [See `samples/`](./samples)
 
 Additionally, the `xlsx-renderer` has lots of examples used for the integration testing.
-[Read more](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-renderer#examples).
+[Read more](https://github.com/Siemienik/XToolSet/tree/master/packages/xlsx-renderer#examples).
 
 ## Support
 
