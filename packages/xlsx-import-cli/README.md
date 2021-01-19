@@ -4,7 +4,7 @@
 
 Command line interface for [xlsx-import](../xlsx-import). Configurable import spreadsheet files with TS types support.
 
-Part of [XToolset](https://github.com/siemienik/XToolset) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
+Part of [XToolSet](https://github.com/siemienik/XToolSet) - collection of tools makes handling spreadsheet handy, easy with great developer experience.
 
 ## Usages
 
@@ -94,7 +94,7 @@ It is also allowed using pipe parameter to forward imported data into another co
 
 The config inherit from `xlsx-import`. Please use link below for more information:
 
-[**XLSX Import Documentation**](https://github.com/Siemienik/XToolset/tree/master/packages/xlsx-import#xlsx-import)
+[**XLSX Import Documentation**](https://github.com/Siemienik/XToolSet/tree/master/packages/xlsx-import#xlsx-import)
 
 ## Support
 
