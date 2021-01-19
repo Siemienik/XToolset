@@ -2,7 +2,7 @@
 
 <p align="center">Fancy TypeScript / JavaScript spreadsheet package for browsers, and node, and command line tools</p>
 
-<p align="center"><strong><i>Helps handle spreadsheet files `xlsx` in smart way by using high level api.</i><strong></p>
+<p align="center"><strong><i>Helps handle spreadsheet files `xlsx` in smart way by using high level api.</i></strong></p>
 
 
 ## Packages
