@@ -1,12 +1,9 @@
-<center>
+[![XToolSet Banner](./media/xtoolset-logo-final.svg)](https://github.com/sponsors/Siemienik)
 
-![XToolSet Banner](./media/xtoolset-logo-final.svg)
+<p align="center">Fancy TypeScript / JavaScript spreadsheet package for browsers, and node, and command line tools</p>
 
-Fancy TypeScript / JavaScript spreadsheet package for browsers and node: `xlsx-import`, `xlsx-renderer`, and command line tools
+<p align="center"><strong><i>Helps handle spreadsheet files `xlsx` in smart way by using high level api.</i><strong></p>
 
-***Helps handle spreadsheet files `xlsx` in smart way by using high level api.***
-
-</center>
 
 ## Packages
 
@@ -39,9 +36,9 @@ await renderer.renderFromFile('./invoice-template.xlsx', invoiceData)
 
 ## Command Line Tools
 
-### The `xlsx-import-cli` (`sxi`)
+### The `xlsx-import-cli` (package: `sxi`)
 
-[![NPM](https://img.shields.io/npm/l/sxi)![npm](https://img.shields.io/npm/v/sxi)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import-cli)](https://github.com/Siemienik/xtoolset/actions)
+[![NPM](https://img.shields.io/npm/l/sxi)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import-cli)](https://github.com/Siemienik/xtoolset/actions)
 
 Imports data from spreadsheet file using command line.
 
@@ -51,9 +48,9 @@ sxi books.cfg.js my-awesome-books.xlsx > books-list.json
 
 [Read more :arrow_right:](packages/xlsx-import-cli)
 
-### The `xlsx-renderer-cli` (`sxr`)
+### The `xlsx-renderer-cli` (package: `sxr`)
 
-[![NPM](https://img.shields.io/npm/l/sxr)![npm](https://img.shields.io/npm/v/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
+[![NPM](https://img.shields.io/npm/l/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
 
 Generate spreadsheets files following by the `template` with `view model` from command line.
 
@@ -63,7 +60,7 @@ sxr --model invoice-data.json invoice-template.xlsx > invoice.xlsx
 
 [Read more :arrow_right:](packages/xlsx-renderer-cli)
 
-### Examples
+## Examples
 
 Examples are available in a flat structure, and they are named by using : `[package_name]+[technology]` - for instance `xlsx-import+nodejs+ts`.
 
@@ -78,6 +75,6 @@ If any help needed, just feel free to create an issue. We will be really thankfu
 
 We are ready to provide paid support, in order that please contact me: [hi@siemienik.pl](mailto://hi@siemienik.pl) or [support@siemienik.pl](mailto://support@siemienik.pl).
 
-## MIT licensed
+### MIT licensed
 
 All of these tools and packages are **free to use for commercial and non-commercial usages**, see the [MIT License](LICENSE).
