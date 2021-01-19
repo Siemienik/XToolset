@@ -12,6 +12,11 @@ Helps handle spreadsheet files `xlsx` in smart way by using high level api.
 
 It allows you to import xlsx spreadsheet file with data into your system with defined TypeScript types.
 
+```ts
+const xlsx = await importerFactory.from('./my-awesome-books.xlsx');
+const books: Array<Book> = xlsx.getAllItems<Book>(config.books);
+```
+
 [Read more :arrow_right:](packages/xlsx-import)
 
 #### The `xlsx-import-cli` (`sxi`)
@@ -19,6 +24,11 @@ It allows you to import xlsx spreadsheet file with data into your system with de
 [![NPM](https://img.shields.io/npm/l/sxi)![npm](https://img.shields.io/npm/v/sxi)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import-cli)](https://github.com/Siemienik/xtoolset/actions)
 
 Imports data from spreadsheet file using command line.
+
+```shell script
+$ npm install -g sxi # install globally
+$ sxi books.cfg.js my-awesome-books.xlsx > books-list.json
+```
 
 [Read more :arrow_right:](packages/xlsx-import-cli)
 
@@ -28,6 +38,12 @@ Imports data from spreadsheet file using command line.
 
 Makes generating spreadsheet files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
 
+```ts
+const renderer = new Renderer();
+await renderer.renderFromFile('./invoice-template.xlsx', invoiceData)
+    .then(wb => wb.xlsx.writeFile('./invoice.xlsx'));
+```
+
 [Read more :arrow_right:](packages/xlsx-renderer)
 
 #### The `xlsx-renderer-cli` (`sxr`)
@@ -35,6 +51,11 @@ Makes generating spreadsheet files as simple as possible - it is enough one line
 [![NPM](https://img.shields.io/npm/l/sxr)![npm](https://img.shields.io/npm/v/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
 
 Generate spreadsheets files following by the `template` with `view model` from command line.
+
+```shell script
+$ npm install -g sxr # install globally
+$ sxr --model invoice-data.json invoice-template.xlsx > invoice.xlsx
+```
 
 [Read more :arrow_right:](packages/xlsx-renderer-cli)
 
