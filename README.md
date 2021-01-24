@@ -7,7 +7,7 @@
 
 ## Packages
 
-### The `xlsx-import`
+### [The `xlsx-import`](packages/xlsx-import)
 
 [![NPM](https://img.shields.io/npm/l/xlsx-import)![npm](https://img.shields.io/npm/v/xlsx-import)](https://www.npmjs.com/package/xlsx-import) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import)](https://github.com/Siemienik/xtoolset/actions) [![codecov](https://codecov.io/gh/Siemienik/xtoolset/branch/master/graph/badge.svg?flag=xlsx-import)](https://codecov.io/gh/Siemienik/xtoolset/tree/master/packages/xlsx-import)
 
@@ -20,7 +20,7 @@ const books: Array<Book> = xlsx.getAllItems<Book>(config.books);
 
 [Read more :arrow_right:](packages/xlsx-import)
 
-### The `xlsx-renderer`
+### [The `xlsx-renderer`](packages/xlsx-renderer)
 
 [![NPM](https://img.shields.io/npm/l/xlsx-renderer)![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer)](https://github.com/Siemienik/xtoolset/actions) [![codecov](https://codecov.io/gh/Siemienik/xtoolset/branch/master/graph/badge.svg?flag=xlsx-renderer)](https://codecov.io/gh/Siemienik/xtoolset/tree/master/packages/xlsx-renderer)
 
@@ -36,7 +36,7 @@ await renderer.renderFromFile('./invoice-template.xlsx', invoiceData)
 
 ## Command Line Tools
 
-### The `xlsx-import-cli` (package: `sxi`)
+### [The `xlsx-import-cli` (package: `sxi`)](packages/xlsx-import-cli)
 
 [![NPM](https://img.shields.io/npm/l/sxi)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import-cli)](https://github.com/Siemienik/xtoolset/actions)
 
@@ -48,7 +48,7 @@ sxi books.cfg.js my-awesome-books.xlsx > books-list.json
 
 [Read more :arrow_right:](packages/xlsx-import-cli)
 
-### The `xlsx-renderer-cli` (package: `sxr`)
+### [The `xlsx-renderer-cli` (package: `sxr`)](packages/xlsx-renderer-cli)
 
 [![NPM](https://img.shields.io/npm/l/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
 
