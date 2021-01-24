@@ -88,7 +88,7 @@ Mapper is a function that transforms values. You can use [built-in mappers](#Map
                 {row: 2, col: 3, key: 'EmployedIn'},
                 {row: 2, col: 3, key: 'IsUnemployed', mapper: isEmpty},
                 {row: 2, col: 3, key: 'IsEmployed', mapper: isFilled},
-
+                // custom mappers defined above
                 {row: 2, col: 3, key: 'isMale', mapper: isMale},
                 {row: 2, col: 3, key: 'isFemale', mapper: isFemale},
             ]
@@ -133,32 +133,105 @@ Example integrations with `xlsx-import` are placed in [samples](../../samples) d
 
 * [ExpressJS sample](../../samples/xlsx-import%2Bexpress) - it is a small service created with ExpressJS can parse xlsx files with concrete structure
 
-## The configuration
+## The Configuration
 
-<details>
-<summary>About configuration, expand to read more.</summary>
+Xlsx supports two modes of importing files: [Vertical List](#verticallist) and [Single Object](#singleobject).
 
-### `worksheet`
+**Example:**
 
-It is a string, indicates which worksheet should be used for data source.
+```js
+const cfg = {
+     // Indicates which worksheet should be used for data source .
+     // For CSV typically `sheet 1` works perfectly.
+     // string, required.
+    worksheet:'sheet 1',   
 
-#### `types`
+    // Indicates importing strategy, described below 
+    type : 'object' // or 'list'
+
+    // ... type required fields, read below
+}
+``` 
+
+* **`worksheet`**
+
+(string, required) Indicates which worksheet should be used for data source. For CSV typically `sheet 1` works perfectly.
+     
+* **`types`**
 
 | Enum `ImportType` | Raw values | Description
 |-----|------------|-----------
-| **Default:** <br/>`List`, aliases: `ListVertical`,  `Vertical`  | `list`, `list-vertical`, `vertical` | Used to import list of objects from worksheet reading from top to down (row by row). Each field has to defined column index (`A` is `1`, `B` is `2` ... etc.).
+| **Default:** <br/>`List`, aliases: `ListVertical`,  `Vertical`  | `list`, `list-vertical`, `vertical` | Used to import list of objects from worksheet reading from top to down (row by row). Each field has to defined column index (`A` is `1`, `B` is `2` ... etc.). Fallback mechanism use this option for incorrect `type` value (warn message will be printed).  
 | `Object`, aliases: `Single`,  `Singleton`  | `object`, `single`, `singletion` | Used to import single object from worksheet. Each field has to has defined row&col index.
 
-***What in case of performing incorrect `type` parameter value?***
+### Type: `ListVertical`
 
-Here is an implementation of fallback mechanism to attempting to parse data as ListVertical, which is the common type used in this library.<br/> *In that case `console.warn` will be written.*
+**For type values:** `list`, `list-vertical`, `vertical` 
 
-#### `fields` or `columns`
+`ListVertical` iterates each row after `offset` and read data by using configured columns indexes.
 
-This is `type` related configuration, for more information please study examples above, there are a full configuration used.
+**Example:**
 
-</details>
+```js
+const cfg = { 
+    worksheet:'sheet 1',       
+    type : 'list',
 
+    // How many rows should omit, default 0
+    rowOffset: 1,
+
+    // Configure columns
+    columns: [
+        {
+            // Column index (1,2,3....n); `1` for column `A`
+            index: 1, 
+
+            // Indicade where in imported object data should be placed
+            key: 'id',
+
+            // A function which allow us to map a result field.
+            // The xlsx-importer has build-in mappers, @see #Mappers 
+            mapper: (v: string) => Number.parseInt(v)
+        },
+        /* more columns ... */
+    ],
+}
+```
+
+### Type: `SingleObject`
+
+**For type values:** `object`, `single`, `singletion`
+
+
+`SingleObject` do **not** iterate through the worksheet. It picks data from specific targets configured in the field: `fields`. It always produces exactly one object.
+
+**Example:**
+
+```ts
+const cfg = { 
+    worksheet:'sheet 1',       
+    type : 'object',
+
+    // configure fields
+    fields: [
+        {
+            // Specify column index. Indexing starts from 1. That means, `1` is `A`, `2` is `B`, etc...
+            // Indicade row index. Row indexing starts from 1, index 0 doesn't exist.
+            // This example target into `A2`.
+            col: 2, row: 2, 
+            
+            // Indicade where in imported object data should be placed
+            key: 'secondName', 
+    
+            // A function which allow us to map a result field. 
+            // The xlsx-importer has build-in mappers, @see #Mappers 
+            // Below implemented mapper, which makes upper first letter.
+            mapper: (v: string) => v.replace(/^[a-z]/, (match) => match.toUpperCase() ) 
+        },
+        /* more fields ... */
+    ],
+}
+```
 ## Mappers
 
 | Exported Name | Description
