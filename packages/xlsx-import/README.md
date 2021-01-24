@@ -144,9 +144,9 @@ const cfg = {
      // Indicates which worksheet should be used for data source .
      // For CSV typically `sheet 1` works perfectly.
      // string, required.
-    'worksheet':'sheet 1',   
+    worksheet:'sheet 1',   
 
-    'type' : 'object' // or 'list'
+    type : 'object' // or 'list'
 
     // ... type required fields, read below
 }
@@ -167,7 +167,31 @@ const cfg = {
 
 **For type values:** `list`, `list-vertical`, `vertical` 
 
-//todo
+`ListVertical` iterates each row after `offset` and read data by using configured columns indexes.
+
+**Example:**
+```js
+const cfg = { 
+    worksheet:'sheet 1',       
+    type : 'list',
+
+    // how many rows should omit, default 0
+    rowOffset: 1,
+
+    // configure columns
+    columns: [
+        {
+            // column index (1,2,3....n); `1` for column `A`
+            index: 1, 
+            // indicade where in imported object data should be placed
+            key: 'id',
+            // a function which allow us to map a result field. The xlsx-importer has build-in mappers, @see #Mappers 
+            mapper: (v: string) => Number.parseInt(v)
+        },
+        /* more columns ... */
+    ],
+}
+```
 
 ### Type: `Object`
 
