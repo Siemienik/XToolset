@@ -146,6 +146,7 @@ const cfg = {
      // string, required.
     worksheet:'sheet 1',   
 
+    // Indicates importing strategy, described below 
     type : 'object' // or 'list'
 
     // ... type required fields, read below
@@ -170,22 +171,26 @@ const cfg = {
 `ListVertical` iterates each row after `offset` and read data by using configured columns indexes.
 
 **Example:**
+
 ```js
 const cfg = { 
     worksheet:'sheet 1',       
     type : 'list',
 
-    // how many rows should omit, default 0
+    // How many rows should omit, default 0
     rowOffset: 1,
 
-    // configure columns
+    // Configure columns
     columns: [
         {
-            // column index (1,2,3....n); `1` for column `A`
+            // Column index (1,2,3....n); `1` for column `A`
             index: 1, 
-            // indicade where in imported object data should be placed
+
+            // Indicade where in imported object data should be placed
             key: 'id',
-            // a function which allow us to map a result field. The xlsx-importer has build-in mappers, @see #Mappers 
+
+            // A function which allow us to map a result field.
+            // The xlsx-importer has build-in mappers, @see #Mappers 
             mapper: (v: string) => Number.parseInt(v)
         },
         /* more columns ... */
@@ -193,12 +198,40 @@ const cfg = {
 }
 ```
 
-### Type: `Object`
+### Type: `SingleObject`
 
 **For type values:** `object`, `single`, `singletion`
 
-//todo
 
+`SingleObject` do **not** iterate through the worksheet. It picks data from specific targets configured in the field: `fields`. It always produces exactly one object.
+
+**Example:**
+
+```ts
+const cfg = { 
+    worksheet:'sheet 1',       
+    type : 'object',
+
+    // configure fields
+    fields: [
+        {
+            // Specify column index. Indexing starts from 1. That means, `1` is `A`, `2` is `B`, etc...
+            // Indicade row index. Row indexing starts from 1, index 0 doesn't exist.
+            // This example target into `A2`.
+            col: 2, row: 2, 
+            
+            // Indicade where in imported object data should be placed
+            key: 'secondName', 
+    
+            // A function which allow us to map a result field. 
+            // The xlsx-importer has build-in mappers, @see #Mappers 
+            // Below implemented mapper, which makes upper first letter.
+            mapper: (v: string) => v.replace(/^[a-z]/, (match) => match.toUpperCase() ) 
+        },
+        /* more fields ... */
+    ],
+}
+```
 ## Mappers
 
 | Exported Name | Description
