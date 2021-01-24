@@ -1,6 +1,6 @@
 {
   "name": "xlsx-renderer",
-  "version": "2.3.1",
+  "version": "2.3.2",
   "description": "Allows render spreadsheet (xlsx) files based on the template supplied by indeed viewModel.",
   "main": "lib/Renderer.js",
   "types": "lib/Renderer.d.ts",
