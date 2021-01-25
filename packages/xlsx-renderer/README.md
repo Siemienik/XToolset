@@ -108,11 +108,11 @@ If any help needed, just feel free to create an issue. We will be really thankfu
 
 We are ready to provide paid support, in order that please contact me: [hi@siemienik.pl](mailto://hi@siemienik.pl) or [support@siemienik.pl](mailto://support@siemienik.pl).
 
-### NodeJS Support
+### ✅ NodeJS Support
 
-|  10 |  11 |  12 |  13 |  14 |
-|-----|-----|-----|-----|-----|
-| 🟢 |  🟢 | 🟢 |  🟢 | 🟢 |
+|  10 |  11 |  12 |  13 |  14 | 15 |
+|-----|-----|-----|-----|-----|----|
+| 🟢 |  🟢 | 🟢 |  🟢 | 🟢 | 🟢 |
 
 If Node v8 & v9 needed, please contact us [support@siemienik.pl](mailto://support@siemienik.pl).
 

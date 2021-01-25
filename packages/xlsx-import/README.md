@@ -296,9 +296,9 @@ Browser supporting has been proved for ✅ _Chrome_ and ✅ _Firefox_ in [Angula
 
 ### ✅ NodeJS Support
 
- 10 | 11 | 12 | 13 | 14
-----|----|----|----|---
- ✅ | ✅ | ✅ | ✅ | ✅
+ 10 | 11 | 12 | 13 | 14 | 15
+----|----|----|----|----|----
+ ✅ | ✅ | ✅ | ✅ | ✅ | ✅
 
 If Node v8 & v9 needed, please contact us [support@siemienik.pl](mailto://support@siemienik.pl).
 
