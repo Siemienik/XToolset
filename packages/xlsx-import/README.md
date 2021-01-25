@@ -135,7 +135,7 @@ Example integrations with `xlsx-import` are placed in [samples](../../samples) d
 
 ## The Configuration
 
-Xlsx supports two modes of importing files: [Vertical List](#verticallist) and [Single Object](#singleobject).
+Xlsx supports two modes of importing files: [Vertical List](##type-listvertical) and [Single Object](#type-singleobject).
 
 **Example:**
 
