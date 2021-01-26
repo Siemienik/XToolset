@@ -6,7 +6,7 @@ import { CellTemplatePool } from './CellTemplatePool';
 export class Renderer {
     constructor(private cellTemplatePool: CellTemplatePool = new CellTemplatePool()) {}
 
-    public async render(templateFactory: () => Promise<Workbook>, vm: any): Promise<Workbook> {
+    public async render(templateFactory: () => Promise<Workbook>, vm: unknown): Promise<Workbook> {
         const template = await templateFactory();
         const output = await templateFactory();
 
@@ -22,10 +22,19 @@ export class Renderer {
         return output;
     }
 
-    public async renderFromFile(templatePath: string, viewModel: any): Promise<Workbook> {
+    public async renderFromFile(templatePath: string, viewModel: unknown): Promise<Workbook> {
         const result = await this.render(async () => {
             const template = new Workbook();
             return await template.xlsx.readFile(templatePath);
+        }, viewModel);
+
+        return await result;
+    }
+
+    public async renderFromArrayBuffer(templateArrayBuffer: ArrayBuffer, viewModel: unknown): Promise<Workbook> {
+        const result = await this.render(async () => {
+            const template = new Workbook();
+            return await template.xlsx.load(templateArrayBuffer);
         }, viewModel);
 
         return await result;

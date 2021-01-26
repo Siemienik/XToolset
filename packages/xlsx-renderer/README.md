@@ -38,9 +38,17 @@ import {Renderer} from 'xlsx-renderer';
 const renderer = new Renderer();
 // ...
 const viewModel = { awesome:"Oh yeah!", items:[/*...*/] };
+
+// for node:
 const result = await renderer.renderFromFile('./report-template.xlsx', viewModel);
 await result.xlsx.writeFile('./my-awesome-report.xlsx');
+
+// for browsers:
+const result2 = await renderer.renderFromArrayBuffer(templateArrayBuffer, viewModel);
+await result2.xlsx.writeBuffer().then(/* use saveAs() to download on a browser */);
 ```
+
+For more explanations for browser usages go into [#93 comment](https://github.com/Siemienik/XToolSet/issues/93#issuecomment-732309383)
 
 ### 3. Consider using CLI
 
