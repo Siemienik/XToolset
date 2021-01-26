@@ -71,7 +71,33 @@ function assertCells(expected: Workbook, result: Workbook, factor: number = 10) 
     }
 }
 
+async function safe(cb:(...a:unknown[])=>void){
+    try {
+        cb();
+    } catch (e) {
+        // tslint:disable-next-line:no-console
+        console.warn(e);
+    }
+}
+
 describe('INTEGRATION:: Test xlsx renderer ', () => {
+    it('check safe utility', async () => {
+        const {warn} = console;
+
+        let called = 0;
+        // tslint:disable-next-line:no-console
+        console.warn = () => { called++ };
+
+        // tslint:disable-next-line:no-empty
+        safe(() => {  })
+        chai.expect(0).equal(called);
+
+        safe(() => { throw new Error() });
+        chai.expect(1).equal(called);
+
+        // tslint:disable-next-line:no-console
+        console.warn=warn;
+    });
     describe('Checking if assertCells works ok.', () => {
         it('Same - should pass ok', async () => {
             const expected = await new Workbook().xlsx.readFile(
@@ -170,12 +196,7 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
 
                 const expected = await new Workbook().xlsx.readFile(path.join(dataPath, file.name, 'expected.xlsx'));
 
-                try {
-                    await result.xlsx.writeFile(path.join(dataPath, file.name, 'test-output.xlsx'));
-                } catch (e) {
-                    // tslint:disable-next-line:no-console
-                    console.warn('Error during write test output');
-                }
+                await safe(async () => {await result.xlsx.writeFile(path.join(dataPath, file.name, 'test-output.xlsx'))});
 
                 assertCells(expected, result);
             });
@@ -195,12 +216,7 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
 
             const expected = await new Workbook().xlsx.readFile(path.join(dataPath, sets[0].name, 'expected.xlsx'));
 
-            try {
-                await result.xlsx.writeFile(path.join(dataPath, sets[0].name, 'test-output-ab.xlsx'));
-            } catch (e) {
-                // tslint:disable-next-line:no-console
-                console.warn('Error during write test output');
-            }
+            await safe(async () => {await result.xlsx.writeFile(path.join(dataPath, sets[0].name, 'test-output.xlsx'))});
 
             assertCells(expected, result);
         });
