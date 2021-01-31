@@ -71,7 +71,33 @@ function assertCells(expected: Workbook, result: Workbook, factor: number = 10) 
     }
 }
 
+async function safe(cb:(...a:unknown[])=>void){
+    try {
+        cb();
+    } catch (e) {
+        // tslint:disable-next-line:no-console
+        console.warn(e);
+    }
+}
+
 describe('INTEGRATION:: Test xlsx renderer ', () => {
+    it('check safe utility', async () => {
+        const {warn} = console;
+
+        let called = 0;
+        // tslint:disable-next-line:no-console
+        console.warn = () => { called++ };
+
+        // tslint:disable-next-line:no-empty
+        safe(() => {  })
+        chai.expect(0).equal(called);
+
+        safe(() => { throw new Error() });
+        chai.expect(1).equal(called);
+
+        // tslint:disable-next-line:no-console
+        console.warn=warn;
+    });
     describe('Checking if assertCells works ok.', () => {
         it('Same - should pass ok', async () => {
             const expected = await new Workbook().xlsx.readFile(
@@ -155,27 +181,44 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
             .filter(d => isDir(d) && /^Renderer[0-9]*-/.test(d.name));
 
         const renderer = new Renderer();
-        sets.forEach(s => {
-            it(`Test for  ${s.name}`, async () => {
-                const viewModelOriginal = require(path.join(dataPath, s.name, 'viewModel.json'));
+        sets.forEach(file => {
+            it(`Test for  ${file.name}`, async () => {
+                const viewModelOriginal = require(path.join(dataPath, file.name, 'viewModel.json'));
                 const viewModel = JSON.parse(JSON.stringify(viewModelOriginal));
 
                 const result = await renderer.renderFromFile(
-                    path.join(dataPath, s.name, 'template.xlsx'),
+                    path.join(dataPath, file.name, 'template.xlsx'),
                     viewModel,
                 );
 
                 // viewModel shouldn't be modified. @see https://github.com/Siemienik/XToolset/issues/137
                 chai.expect(viewModel).eql(viewModelOriginal);
 
-                const expected = await new Workbook().xlsx.readFile(path.join(dataPath, s.name, 'expected.xlsx'));
+                const expected = await new Workbook().xlsx.readFile(path.join(dataPath, file.name, 'expected.xlsx'));
 
-                try {
-                    await result.xlsx.writeFile(path.join(dataPath, s.name, 'test-output.xlsx'));
-                } catch (e) {}
+                await safe(async () => {await result.xlsx.writeFile(path.join(dataPath, file.name, 'test-output.xlsx'))});
 
                 assertCells(expected, result);
             });
+        });
+
+        it(`Test for ArrayBuffer import from ${sets[0].name}`, async () => {
+            const viewModelOriginal = require(path.join(dataPath, sets[0].name, 'viewModel.json'));
+            const viewModel = JSON.parse(JSON.stringify(viewModelOriginal));
+
+            const result = await renderer.renderFromArrayBuffer(
+                fs.readFileSync(path.join(dataPath, sets[0].name, 'template.xlsx')),
+                viewModel,
+            );
+
+            // viewModel shouldn't be modified. @see https://github.com/Siemienik/XToolset/issues/137
+            chai.expect(viewModel).eql(viewModelOriginal);
+
+            const expected = await new Workbook().xlsx.readFile(path.join(dataPath, sets[0].name, 'expected.xlsx'));
+
+            await safe(async () => {await result.xlsx.writeFile(path.join(dataPath, sets[0].name, 'test-output.xlsx'))});
+
+            assertCells(expected, result);
         });
     });
 });
