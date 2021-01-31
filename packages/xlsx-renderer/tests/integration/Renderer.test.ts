@@ -71,7 +71,7 @@ function assertCells(expected: Workbook, result: Workbook, factor: number = 10) 
     }
 }
 
-async function safe(cb:(...a:unknown[])=>void){
+async function safe(cb: (...a: unknown[]) => void) {
     try {
         cb();
     } catch (e) {
@@ -82,21 +82,25 @@ async function safe(cb:(...a:unknown[])=>void){
 
 describe('INTEGRATION:: Test xlsx renderer ', () => {
     it('check safe utility', async () => {
-        const {warn} = console;
+        const { warn } = console;
 
         let called = 0;
         // tslint:disable-next-line:no-console
-        console.warn = () => { called++ };
+        console.warn = () => {
+            called++;
+        };
 
         // tslint:disable-next-line:no-empty
-        safe(() => {  })
+        safe(() => {});
         chai.expect(0).equal(called);
 
-        safe(() => { throw new Error() });
+        safe(() => {
+            throw new Error();
+        });
         chai.expect(1).equal(called);
 
         // tslint:disable-next-line:no-console
-        console.warn=warn;
+        console.warn = warn;
     });
     describe('Checking if assertCells works ok.', () => {
         it('Same - should pass ok', async () => {
@@ -196,7 +200,9 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
 
                 const expected = await new Workbook().xlsx.readFile(path.join(dataPath, file.name, 'expected.xlsx'));
 
-                await safe(async () => {await result.xlsx.writeFile(path.join(dataPath, file.name, 'test-output.xlsx'))});
+                await safe(async () => {
+                    await result.xlsx.writeFile(path.join(dataPath, file.name, 'test-output.xlsx'));
+                });
 
                 assertCells(expected, result);
             });
@@ -216,7 +222,9 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
 
             const expected = await new Workbook().xlsx.readFile(path.join(dataPath, sets[0].name, 'expected.xlsx'));
 
-            await safe(async () => {await result.xlsx.writeFile(path.join(dataPath, sets[0].name, 'test-output.xlsx'))});
+            await safe(async () => {
+                await result.xlsx.writeFile(path.join(dataPath, sets[0].name, 'test-output.xlsx'));
+            });
 
             assertCells(expected, result);
         });
