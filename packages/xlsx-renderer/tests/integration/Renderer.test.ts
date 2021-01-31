@@ -185,9 +185,9 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
             .readdirSync(path.normalize(dataPath), { withFileTypes: true })
             .filter(d => isDir(d) && /^Renderer[0-9]*-/.test(d.name));
 
-        const renderer = new Renderer(new CellTemplateDebugPool());
         sets.forEach(file => {
             it(`Test for  ${file.name}`, async () => {
+                const renderer = new Renderer();
                 const viewModelOriginal = require(path.join(dataPath, file.name, 'viewModel.json'));
                 const viewModel = JSON.parse(JSON.stringify(viewModelOriginal));
 
@@ -209,22 +209,24 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
             });
         });
 
-        it(`Test for ArrayBuffer import from ${sets[0].name}`, async () => {
-            const viewModelOriginal = require(path.join(dataPath, sets[0].name, 'viewModel.json'));
+        const fixture = sets[5].name;
+        it(`Test for ArrayBuffer import from ${fixture} with a debug`, async () => {
+            const renderer = new Renderer(new CellTemplateDebugPool());
+            const viewModelOriginal = require(path.join(dataPath, fixture, 'viewModel.json'));
             const viewModel = JSON.parse(JSON.stringify(viewModelOriginal));
 
             const result = await renderer.renderFromArrayBuffer(
-                fs.readFileSync(path.join(dataPath, sets[0].name, 'template.xlsx')),
+                fs.readFileSync(path.join(dataPath, fixture, 'template.xlsx')),
                 viewModel,
             );
 
             // viewModel shouldn't be modified. @see https://github.com/Siemienik/XToolset/issues/137
             chai.expect(viewModel).eql(viewModelOriginal);
 
-            const expected = await new Workbook().xlsx.readFile(path.join(dataPath, sets[0].name, 'expected.xlsx'));
+            const expected = await new Workbook().xlsx.readFile(path.join(dataPath, fixture, 'expected.xlsx'));
 
             await safe(async () => {
-                await result.xlsx.writeFile(path.join(dataPath, sets[0].name, 'test-output.xlsx'));
+                await result.xlsx.writeFile(path.join(dataPath, fixture, 'test-output.xlsx'));
             });
 
             assertCells(expected, result);
