@@ -1,3 +1,4 @@
+import { CellTemplateDebugPool } from '../../src/CellTemplateDebugPool';
 import { Renderer } from '../../src/Renderer';
 import * as fs from 'fs';
 import { Dirent } from 'fs';
@@ -184,7 +185,7 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
             .readdirSync(path.normalize(dataPath), { withFileTypes: true })
             .filter(d => isDir(d) && /^Renderer[0-9]*-/.test(d.name));
 
-        const renderer = new Renderer();
+        const renderer = new Renderer(new CellTemplateDebugPool());
         sets.forEach(file => {
             it(`Test for  ${file.name}`, async () => {
                 const viewModelOriginal = require(path.join(dataPath, file.name, 'viewModel.json'));

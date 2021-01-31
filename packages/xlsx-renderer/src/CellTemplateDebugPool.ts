@@ -9,7 +9,7 @@ export class CellTemplateDebugPool extends CellTemplatePool {
     public match(cell: Cell): BaseCell {
         const result = super.match(cell);
 
-        console.log(result, cell && cell.value);
+        console.log(cell?.fullAddress, result, cell?.value);
 
         return result;
     }
