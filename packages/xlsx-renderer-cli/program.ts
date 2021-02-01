@@ -2,6 +2,8 @@ import { Command, default as commander } from 'commander';
 import * as fs from 'fs';
 import { Stream } from 'stream';
 import { Renderer } from 'xlsx-renderer';
+import { CellTemplateDebugPool } from 'xlsx-renderer/lib/CellTemplateDebugPool';
+import { CellTemplatePool } from 'xlsx-renderer/lib/CellTemplatePool';
 import { version } from './package.json';
 
 // DEBUG:
@@ -21,6 +23,10 @@ const debugOption = (program: commander.Command, writeDebugFn: WriteDebugFn) => 
 
 // XLSX-RENDERER:
 
+const getTemplatePool = (debug: boolean) => {
+    return debug ? new CellTemplateDebugPool() : new CellTemplatePool();
+};
+
 const mainCommand = (program: commander.Command, outputStream: Stream) => {
     const readModel = (file?: string) => {
         if (file) {
@@ -33,7 +39,8 @@ const mainCommand = (program: commander.Command, outputStream: Stream) => {
     program.option('-o --output <filename>', 'write output into file');
     program.option('-m --model <filename>', 'read file as a [model] (using both is denied)');
     program.arguments('<template> [model]').action(async (template: string, modelRaw?: string) => {
-        writeDebug('Options:', program.opts());
+        const options = program.opts();
+        writeDebug('Options:', options);
         writeDebug('Arguments:', { template, modelRaw });
 
         if (program.model && modelRaw) {
@@ -44,7 +51,7 @@ const mainCommand = (program: commander.Command, outputStream: Stream) => {
 
         writeDebug('Model: ', model);
 
-        const renderer = new Renderer();
+        const renderer = new Renderer(getTemplatePool(options.debug));
         const result = await renderer.renderFromFile(template, model);
 
         if (program.output) {

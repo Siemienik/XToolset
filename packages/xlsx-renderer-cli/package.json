@@ -1,6 +1,6 @@
 {
   "name": "sxr",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "license": "MIT",
   "description": "Command line tool for generating XLSX files from a template. Part of XToolset",
   "main": "lib/program.js",
@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
-    "@types/node": "^14.14.14",
+    "@types/node": "^14.14.22",
     "markdownlint-cli": "^0.24.0",
     "prettier": "^1.17.0",
     "tslint": "^5.16.0",
@@ -46,7 +46,7 @@
   },
   "dependencies": {
     "commander": "^6.2.1",
-    "xlsx-renderer": "^2.3.1"
+    "xlsx-renderer": "^2.3.4"
   },
   "files": [
     "**/*.js",
