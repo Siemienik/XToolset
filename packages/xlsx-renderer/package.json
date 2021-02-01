@@ -1,6 +1,6 @@
 {
   "name": "xlsx-renderer",
-  "version": "2.3.3",
+  "version": "2.3.4",
   "description": "Allows render spreadsheet (xlsx) files based on the template supplied by indeed viewModel.",
   "main": "lib/Renderer.js",
   "types": "lib/Renderer.d.ts",
@@ -45,7 +45,7 @@
   "devDependencies": {
     "@types/chai": "^4.1.7",
     "@types/mocha": "^5.2.6",
-    "@types/node": "^12.12.6",
+    "@types/node": "^12.19.15",
     "chai": "^4.2.0",
     "markdownlint-cli": "^0.24.0",
     "mocha": "^6.1.4",
