@@ -41,7 +41,7 @@ export class CellTemplatePool {
 
         if (!this.instances.has(type)) {
             this.instances.set(type, new type());
-        };
+        }
 
         return this.instances.get(type) as BaseCell;
     }
