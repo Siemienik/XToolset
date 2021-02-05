@@ -34,15 +34,15 @@ export class CellTemplatePool {
         DeleteCell,
     ];
 
-    protected instances: { [key: string]: BaseCell } = {};
+    protected instances: Map<CellType, BaseCell> = new Map();
 
     public match(cell: Cell): BaseCell {
-        const type = this.cells.find(x => x.match(cell)) || NormalCell;
+        const type: CellType = this.cells.find(x => x.match(cell)) || NormalCell;
 
-        if (!this.instances[type.name]) {
-            this.instances[type.name] = new type();
-        }
+        if (!this.instances.has(type)) {
+            this.instances.set(type, new type());
+        };
 
-        return this.instances[type.name];
+        return this.instances.get(type) as BaseCell;
     }
 }
