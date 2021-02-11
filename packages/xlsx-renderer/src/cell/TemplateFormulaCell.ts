@@ -2,7 +2,7 @@ import { BaseCell } from './BaseCell';
 import { Cell, CellFormulaValue, ValueType } from 'exceljs';
 import { Scope } from '../Scope';
 
-const variableRegex = /\${[^{]+}/g;
+const variableRegex = /\${[^{]+?}/g;
 
 /**
  * @description
