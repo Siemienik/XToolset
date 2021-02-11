@@ -21,6 +21,7 @@ export class VariableCell extends BaseCell {
             .substring(3)
             .split('.');
 
+        // todo refactoring extract, similar like in TemplateFormulaCell
         const value = path.reduce((p, c) => (typeof p === 'object' ? p[c] : p), scope.vm);
         if (value === undefined && !scope.isFrozen()) {
             // todo do it better (use logger or somethink like that)
