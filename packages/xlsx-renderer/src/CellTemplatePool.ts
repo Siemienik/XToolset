@@ -3,6 +3,7 @@ import { Cell } from 'exceljs';
 import { BaseCell, CellType } from './cell/BaseCell';
 import { NormalCell } from './cell/NormalCell';
 import { TemplateFormulaCell } from './cell/TemplateFormulaCell';
+import { TemplateStringCell } from './cell/TemplateStringCell';
 import { VariableCell } from './cell/VariableCell';
 import { FinishCell } from './cell/FinishCell';
 import { ForEachCell } from './cell/ForEachCell';
@@ -22,6 +23,7 @@ export class CellTemplatePool {
         NormalCell,
         EndRowCell,
         VariableCell,
+        TemplateStringCell,
         TemplateFormulaCell,
         FormulaCell,
         HyperlinkCell,

@@ -14,7 +14,7 @@ export class NormalCell extends BaseCell {
             cell &&
             cell.type === ValueType.String &&
             typeof cell.value === 'string' &&
-            !['##', '#!', "#="].includes(cell.value.substring(0, 2))
+            !['##', '#!', "#=", '#`'].includes(cell.value.substring(0, 2)) // todo documentation: describe prefixes in a documentation
         );
     }
 
