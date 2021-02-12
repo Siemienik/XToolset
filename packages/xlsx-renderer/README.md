@@ -56,9 +56,6 @@ It is possible to use the command line interface [read more about xlsx-renderer-
 
 ## Documentation
 
-<details>
-<summary>The documentation, expand to read more.</summary>
-
 ### Cells
 
 | Category | Name | Matching Order | Matching Rule | Description | More info |
@@ -80,8 +77,6 @@ It is possible to use the command line interface [read more about xlsx-renderer-
 | Aggregation | [AverageCell](./src/cell/AverageCell.ts) | 13 | `#! AVERAGE item` | Write average formulae for current column and the `item`'s rows.  | [Example](./tests/integration/data/Renderer009-ForEach-Average) |
 | View Model | [DeleteCell](./src/cell/DeleteCell.ts) | 15 | `#! DELETE pathToVariable` | Delete variable, useful for nested loops.|  [Example](./tests/integration/data/Renderer009-ForEach-Average)  |
 
-</details>
-
 ## Examples
 
 Actually, these examples are integration test fixtures. Each contains:
@@ -90,6 +85,8 @@ Actually, these examples are integration test fixtures. Each contains:
 * `viewModel.json` with a ViewModel - data which will put into the template,
 * `expected.xlsx` with the expected result.
 * **After tests being run:** `test-output.xlsx` with fresh generated file.
+
+_These examples might be runned by using the command line tool, [read more](../xlsx-renderer-cli)._
 
 | Id | Example | Explanation |
 |----|---------|-------------|
@@ -110,6 +107,7 @@ Actually, these examples are integration test fixtures. Each contains:
 | 14 | [ForEach-merged](./tests/integration/data/Renderer014-ForEach-merged) | Checks merged cells behaviour |
 | 15 | [ForEach-merged-two-tables](./tests/integration/data/Renderer015-ForEach-merged-two-tables) | Checks merged cells behaviour |
 | 16 | [ForEach-merged-pyramid](./tests/integration/data/Renderer016-ForEach-merged-pyramid) | Checks merged cells behaviour |
+| 17 | [TemplateFormulaCell](./tests/integration/data/Renderer017-TemplateFormulaCell) | Dynamic formula creation |
 
 ## Support
 
