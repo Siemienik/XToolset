@@ -63,19 +63,20 @@ It is possible to use the command line interface [read more about xlsx-renderer-
 | - | [BaseCell](./src/cell/BaseCell.ts) | n/o | n/o | All Cell\`s definition classes extend it. | **abstract** |
 | Content | [NormalCell](./src/cell/NormalCell.ts) | 1 | not started by `##`, `#!` or `#=` | This one copy all styles, width, properties and value form template.  | **default** |
 | Content | [VariableCell](./src/cell/VariableCell.ts) | 3 | `## pathToVariable` | Write variable from `ViewModel`. <br/> Paths to object's property or array item are allowed.<br/> When asking about undefined variable it returns empty string. | **Paths examples:** <br/> `simplePath` <br/> `someObject.property` <br/> `array.0.field` <br/> `items.1.path.to.object.prop`|
-| Content | [HyperlinkCell](./src/cell/HyperlinkCell.ts) | 6 | `#! HYPERLINK pathToLabel pathToTarget` | Create a hyperlink. | *Paths resolve exactly same as VariableCell* |
-| Content | [FormulaCell](./src/cell/FormulaCell.ts) | 5 | Cell.type eq. formulae | It handles correctly formulas inside and outside of loops - when rows were shifted compared to the template. | *It is used automatically when formulae from the template being rendered* <br/> [Example](./tests/integration/data/Renderer010-Formula)|
-| Content | [TemplateFormulaCell](./src/cell/TemplateFormulaCell.ts) | 4 | Starts with `#= ` | This one allows you to put a template string into a cell as a formula. To write in a variable use `${pathToVariable}`. | **Example:**<br/> `#= ${summaryFormula}(A2:A${item.__endOutput.r})` gives something like `=MAX(A2:A2910)` <br/> [Example](./tests/integration/data/Renderer017-TemplateFormula)|
+| Content | [TemplateStringCell](./src/cell/TemplateStringCell.ts) | 4 | Starts with <code>#` </code> | Template string allows you to create advanced text, for example concat two variables or put them into a sentence. To write in a variable use `${pathToVariable}`. | **Example:**<br/> <code>#` Hello ${name}! How are you?</code> gives for instance `Hello World! How are you?` <br/> [Example](./tests/integration/data/Renderer018-TemplateString)|
+| Content | [HyperlinkCell](./src/cell/HyperlinkCell.ts) | 7 | `#! HYPERLINK pathToLabel pathToTarget` | Create a hyperlink. | *Paths resolve exactly same as VariableCell* |
+| Content | [FormulaCell](./src/cell/FormulaCell.ts) | 6 | Cell.type eq. formulae | It handles correctly formulas inside and outside of loops - when rows were shifted compared to the template. | *It is used automatically when formulae from the template being rendered* <br/> [Example](./tests/integration/data/Renderer010-Formula)|
+| Content | [TemplateFormulaCell](./src/cell/TemplateFormulaCell.ts) | 5 | Starts with `#= ` | This one allows you to put a template string (custom formula) into a cell as a formula. To write in a variable use `${pathToVariable}`. | **Example:**<br/> `#= ${summaryFormula}(A2:A${item.__endOutput.r})` gives something like `=MAX(A2:A2910)` <br/> [Example](./tests/integration/data/Renderer017-TemplateFormula)|
 | Navigation | [EndRowCell](./src/cell/EndRowCell.ts) | 2 | `#! END_ROW` | Go to the beginning of next row |  |
-| Worksheet<br/>Navigation<br/>Loop | [FinishCell](./src/cell/FinishCell.ts) | 8 | `#! FINISH conditionPath` | Finish rendering for current worksheet and: <br/> 1) go to next worksheet if `conditionPath===true`<br/> 2) repeat this template worksheet again (`conditionPath === false`) - looping through worksheets <br/> 3) finished whole rendering when this worksheet is the last one.   | **Examples:**<br/> `#! FINISHED` or `#! FINISHED itemFromLoop.__iterated` |
-| Worksheet | [WsNameCell](./src/cell/WsNameCell.ts) | 14 | `#! WS_NAME pathToVariable` | Set worksheet's name.  | **Examples:** <br/> `#! WS_NAME worksheetName` <br/> `#! WS_NAME item.title` <br/> `#! WS_NAME translatedNames.0` |
-| Loop | [DumpColsCell](./src/cell/DumpColsCell.ts) | 11 | `#! DUMP_COLS pathToArray` | Useful for writing through multiple columns. It put each value of array to next column. | [Example](./tests/integration/data/Renderer011-DumpCols) |
-| Loop | [ForEachCell](./src/cell/ForEachCell.ts) | 7 | #! FOR_EACH item items | Begin the loop named `item`, set the first element of `items` into `item` and go to the beginning of next line.| Connected to: `ContinueCell`, `EndLoopCell`, `DeleteCell`, `FinishedCell`, `SumCell`, `AverageCell`. |
-| Loop | [ContinueCell](./src/cell/ContinueCell.ts) | 10 | `#! CONTINUE item` | Iterate to next element of loop named `item` (check `ForEachCell` for more information) and navigate to the beginning of new line. | |
-| Loop | [EndLoopCell](./src/cell/EndLoopCell.ts) | 9 | `#! END_LOOP item` | Mark cell when the loop `item` finished. | |
-| Aggregation| [SumCell](./src/cell/SumCell.ts) | 12 | `#! SUM item` | Write sum formulae for current column and the `item`'s rows.  | [Example](./tests/integration/data/Renderer007-ForEach-Sum) |
-| Aggregation | [AverageCell](./src/cell/AverageCell.ts) | 13 | `#! AVERAGE item` | Write average formulae for current column and the `item`'s rows.  | [Example](./tests/integration/data/Renderer009-ForEach-Average) |
-| View Model | [DeleteCell](./src/cell/DeleteCell.ts) | 15 | `#! DELETE pathToVariable` | Delete variable, useful for nested loops.|  [Example](./tests/integration/data/Renderer009-ForEach-Average)  |
+| Worksheet<br/>Navigation<br/>Loop | [FinishCell](./src/cell/FinishCell.ts) | 9 | `#! FINISH conditionPath` | Finish rendering for current worksheet and: <br/> 1) go to next worksheet if `conditionPath===true`<br/> 2) repeat this template worksheet again (`conditionPath === false`) - looping through worksheets <br/> 3) finished whole rendering when this worksheet is the last one.   | **Examples:**<br/> `#! FINISHED` or `#! FINISHED itemFromLoop.__iterated` |
+| Worksheet | [WsNameCell](./src/cell/WsNameCell.ts) | 15 | `#! WS_NAME pathToVariable` | Set worksheet's name.  | **Examples:** <br/> `#! WS_NAME worksheetName` <br/> `#! WS_NAME item.title` <br/> `#! WS_NAME translatedNames.0` |
+| Loop | [DumpColsCell](./src/cell/DumpColsCell.ts) | 12 | `#! DUMP_COLS pathToArray` | Useful for writing through multiple columns. It put each value of array to next column. | [Example](./tests/integration/data/Renderer011-DumpCols) |
+| Loop | [ForEachCell](./src/cell/ForEachCell.ts) | 8 | #! FOR_EACH item items | Begin the loop named `item`, set the first element of `items` into `item` and go to the beginning of next line.| Connected to: `ContinueCell`, `EndLoopCell`, `DeleteCell`, `FinishedCell`, `SumCell`, `AverageCell`. |
+| Loop | [ContinueCell](./src/cell/ContinueCell.ts) | 11 | `#! CONTINUE item` | Iterate to next element of loop named `item` (check `ForEachCell` for more information) and navigate to the beginning of new line. | |
+| Loop | [EndLoopCell](./src/cell/EndLoopCell.ts) | 10 | `#! END_LOOP item` | Mark cell when the loop `item` finished. | |
+| Aggregation| [SumCell](./src/cell/SumCell.ts) | 13 | `#! SUM item` | Write sum formulae for current column and the `item`'s rows.  | [Example](./tests/integration/data/Renderer007-ForEach-Sum) |
+| Aggregation | [AverageCell](./src/cell/AverageCell.ts) | 14 | `#! AVERAGE item` | Write average formulae for current column and the `item`'s rows.  | [Example](./tests/integration/data/Renderer009-ForEach-Average) |
+| View Model | [DeleteCell](./src/cell/DeleteCell.ts) | 16 | `#! DELETE pathToVariable` | Delete variable, useful for nested loops.|  [Example](./tests/integration/data/Renderer009-ForEach-Average)  |
 
 ## Examples
 
@@ -108,6 +109,8 @@ _These examples might be runned by using the command line tool, [read more](../x
 | 15 | [ForEach-merged-two-tables](./tests/integration/data/Renderer015-ForEach-merged-two-tables) | Checks merged cells behaviour |
 | 16 | [ForEach-merged-pyramid](./tests/integration/data/Renderer016-ForEach-merged-pyramid) | Checks merged cells behaviour |
 | 17 | [TemplateFormulaCell](./tests/integration/data/Renderer017-TemplateFormulaCell) | Dynamic formula creation |
+| 18 | [TemplateStringCell](./tests/integration/data/Renderer018-TemplateStringCell) | Dynamic content creation following by custom template string (`Hello ${name}`). |
+
 
 ## Support
 
@@ -123,9 +126,9 @@ We are ready to provide paid support, in order that please contact me: [hi@siemi
 
 If Node v8 & v9 needed, please contact us [support@siemienik.pl](mailto://support@siemienik.pl).
 
-## Browser Support
+###  ✅ Browser Support
 
-XLSX Renderer may run on browser side, [read more how to do it](https://github.com/Siemienik/XToolSet/issues/93#issuecomment-732309383).
+XLSX Renderer may run on browser side, [read more how to do it](https://github.com/Siemienik/XToolSet/issues/93).
 
 ---
 
