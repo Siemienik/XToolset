@@ -17,7 +17,7 @@ npm i -g sxr
 
 # Usages:
 
-sxr --model vm.json template.xlsx > output.xlsx
+sxr --model vm.json --output output.xlsx template.xlsx
 ```
 
 ### Local installation
@@ -29,10 +29,10 @@ sxr --model vm.json template.xlsx > output.xlsx
 npm i --save sxr
 
 # usages:
-node_modules/.bin/sxr --model vm.json template.xlsx > output.xlsx
+node_modules/.bin/sxr --model vm.json --output output.xlsx template.xlsx
 
 # usages with npx
-npx sxr --model vm.json template.xlsx > output.xlsx
+npx sxr --model vm.json --output output.xlsx template.xlsx
 ```
 
 #### 2. Additionally, possible to use with packages.json scripts
@@ -42,7 +42,7 @@ npx sxr --model vm.json template.xlsx > output.xlsx
 ```json
 {
     "scripts": {
-        "generate-xlsx":"sxr --model vm.json template.xlsx > output.xlsx"
+        "generate-xlsx":"sxr --model vm.json --output output.xlsx template.xlsx"
     }
 }
 ```
@@ -56,11 +56,11 @@ npm run generate-xlsx
 ## Examples
 
 ```shell script
-cat vm.json | sxr template.xlsx > output.xlsx
+cat vm.json | sxr  --output output.xlsx template.xlsx
 
-sxr template.xlsx "{\"jsonData\":true}" > output.xlsx
+sxr --output output.xlsx template.xlsx "{\"jsonData\":true}"
 
-sxr --model vm.json template.xlsx > output.xlsx
+sxr --model vm.json --output output.xlsx template.xlsx
 
 sxr --model vm.json -o output.xlsx  template.xlsx
 
@@ -88,7 +88,7 @@ sxr -o output.xlsx  template.xlsx "{\"jsonData\":true}"
 
 Library allowing also save output into file by using option `-o --output <filename>`
 
-It is also allowed using pipe parameter to forward generated file into another command.
+<!-- TODO: It is also allowed using pipe parameter to forward generated file into another command. -->
 
 ## The template file
 

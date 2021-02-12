@@ -56,9 +56,6 @@ It is possible to use the command line interface [read more about xlsx-renderer-
 
 ## Documentation
 
-<details>
-<summary>The documentation, expand to read more.</summary>
-
 ### Cells
 
 | Category | Name | Matching Order | Matching Rule | Description | More info |
@@ -69,7 +66,7 @@ It is possible to use the command line interface [read more about xlsx-renderer-
 | Content | [TemplateStringCell](./src/cell/TemplateStringCell.ts) | 4 | Starts with <code>#` </code> | Template string allows you to create advanced text, for example concat two variables or put them into a sentence. To write in a variable use `${patToVariable}`. | **Example:**<br/> <code>#` Hello ${name}! How are you?</code> gives for instance `Hello World! How are you?` <br/> [Example](./tests/integration/data/Renderer018-TemplateString)|
 | Content | [HyperlinkCell](./src/cell/HyperlinkCell.ts) | 7 | `#! HYPERLINK pathToLabel pathToTarget` | Create a hyperlink. | *Paths resolve exactly same as VariableCell* |
 | Content | [FormulaCell](./src/cell/FormulaCell.ts) | 6 | Cell.type eq. formulae | It handles correctly formulas inside and outside of loops - when rows were shifted compared to the template. | *It is used automatically when formulae from the template being rendered* <br/> [Example](./tests/integration/data/Renderer010-Formula)|
-| Content | [TemplateFormulaCell](./src/cell/TemplateFormulaCell.ts) | 5 | Starts with `#= ` | This one allows you to put a template string (custom formula) into a cell as a formula. To write in a variable use `${patToVariable}`. | **Example:**<br/> `#= ${summaryFormula}(A2:A${tem.__endOutput.r})` gives something like `=MAX(A2:A2910)` <br/> [Example](./tests/integration/data/Renderer017-TemplateFormula)|
+| Content | [TemplateFormulaCell](./src/cell/TemplateFormulaCell.ts) | 5 | Starts with `#= ` | This one allows you to put a template string (custom formula) into a cell as a formula. To write in a variable use `${pathToVariable}`. | **Example:**<br/> `#= ${summaryFormula}(A2:A${item.__endOutput.r})` gives something like `=MAX(A2:A2910)` <br/> [Example](./tests/integration/data/Renderer017-TemplateFormula)|
 | Navigation | [EndRowCell](./src/cell/EndRowCell.ts) | 2 | `#! END_ROW` | Go to the beginning of next row |  |
 | Worksheet<br/>Navigation<br/>Loop | [FinishCell](./src/cell/FinishCell.ts) | 9 | `#! FINISH conditionPath` | Finish rendering for current worksheet and: <br/> 1) go to next worksheet if `conditionPath===true`<br/> 2) repeat this template worksheet again (`conditionPath === false`) - looping through worksheets <br/> 3) finished whole rendering when this worksheet is the last one.   | **Examples:**<br/> `#! FINISHED` or `#! FINISHED itemFromLoop.__iterated` |
 | Worksheet | [WsNameCell](./src/cell/WsNameCell.ts) | 15 | `#! WS_NAME pathToVariable` | Set worksheet's name.  | **Examples:** <br/> `#! WS_NAME worksheetName` <br/> `#! WS_NAME item.title` <br/> `#! WS_NAME translatedNames.0` |
@@ -81,8 +78,6 @@ It is possible to use the command line interface [read more about xlsx-renderer-
 | Aggregation | [AverageCell](./src/cell/AverageCell.ts) | 14 | `#! AVERAGE item` | Write average formulae for current column and the `item`'s rows.  | [Example](./tests/integration/data/Renderer009-ForEach-Average) |
 | View Model | [DeleteCell](./src/cell/DeleteCell.ts) | 16 | `#! DELETE pathToVariable` | Delete variable, useful for nested loops.|  [Example](./tests/integration/data/Renderer009-ForEach-Average)  |
 
-</details>
-
 ## Examples
 
 Actually, these examples are integration test fixtures. Each contains:
@@ -91,6 +86,8 @@ Actually, these examples are integration test fixtures. Each contains:
 * `viewModel.json` with a ViewModel - data which will put into the template,
 * `expected.xlsx` with the expected result.
 * **After tests being run:** `test-output.xlsx` with fresh generated file.
+
+_These examples might be runned by using the command line tool, [read more](../xlsx-renderer-cli)._
 
 | Id | Example | Explanation |
 |----|---------|-------------|
@@ -111,6 +108,7 @@ Actually, these examples are integration test fixtures. Each contains:
 | 14 | [ForEach-merged](./tests/integration/data/Renderer014-ForEach-merged) | Checks merged cells behaviour |
 | 15 | [ForEach-merged-two-tables](./tests/integration/data/Renderer015-ForEach-merged-two-tables) | Checks merged cells behaviour |
 | 16 | [ForEach-merged-pyramid](./tests/integration/data/Renderer016-ForEach-merged-pyramid) | Checks merged cells behaviour |
+| 17 | [TemplateFormulaCell](./tests/integration/data/Renderer017-TemplateFormulaCell) | Dynamic formula creation |
 
 ## Support
 
