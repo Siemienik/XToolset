@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "name": "Item A",
+      "weight": 13.5,
+      "price": 12.1
+    },
+    {
+      "name": "Item B",
+      "weight": 13.5,
+      "price": 12
+    },
+    {
+      "name": "Item C",
+      "weight": 3.5,
+      "price": 12.7
+    },
+    {
+      "name": "Item D",
+      "weight": 13,
+      "price": 2.1
+    },
+    {
+      "name": "Item E",
+      "weight": 1.5,
+      "price": 32
+    }
+  ]
+}
