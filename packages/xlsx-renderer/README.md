@@ -109,6 +109,8 @@ _These examples might be runned by using the command line tool, [read more](../x
 | 15 | [ForEach-merged-two-tables](./tests/integration/data/Renderer015-ForEach-merged-two-tables) | Checks merged cells behaviour |
 | 16 | [ForEach-merged-pyramid](./tests/integration/data/Renderer016-ForEach-merged-pyramid) | Checks merged cells behaviour |
 | 17 | [TemplateFormulaCell](./tests/integration/data/Renderer017-TemplateFormulaCell) | Dynamic formula creation |
+| 18 | [TemplateStringCell](./tests/integration/data/Renderer018-TemplateStringCell) | Dynamic content creation following by custom template string (`Hello ${name}`). |
+
 
 ## Support
 
@@ -124,9 +126,9 @@ We are ready to provide paid support, in order that please contact me: [hi@siemi
 
 If Node v8 & v9 needed, please contact us [support@siemienik.pl](mailto://support@siemienik.pl).
 
-## Browser Support
+###  ✅ Browser Support
 
-XLSX Renderer may run on browser side, [read more how to do it](https://github.com/Siemienik/XToolSet/issues/93#issuecomment-732309383).
+XLSX Renderer may run on browser side, [read more how to do it](https://github.com/Siemienik/XToolSet/issues/93).
 
 ---
 
