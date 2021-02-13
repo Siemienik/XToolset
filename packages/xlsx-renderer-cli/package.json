@@ -1,6 +1,6 @@
 {
   "name": "sxr",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "license": "MIT",
   "description": "Command line tool for generating XLSX files from a template. Part of XToolset",
   "main": "lib/program.js",
@@ -32,8 +32,7 @@
     "lint:fix": "tslint --fix -p tsconfig.json",
     "prepublishOnly": "npm run lint && npm run build",
     "preversion": "npm run lint",
-    "version": "npm run format && git add -A ./sxr.ts ./program.ts",
-    "postversion": "git push && git push --tags"
+    "version": "npm run format && git add -A ./sxr.ts ./program.ts"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",

@@ -23,11 +23,9 @@ export class TemplateStringCell extends BaseCell {
     public apply(scope: Scope): TemplateStringCell {
         super.apply(scope);
 
-        const template = scope
-            .getCurrentTemplateString()
-            .substring(3);
+        const template = scope.getCurrentTemplateString().substring(3);
 
-        const result = template.replace(variableRegex, (match) => {
+        const result = template.replace(variableRegex, match => {
             const path = match.slice(2, -1).split('.');
 
             // todo refactoring extract, similar like in VariableCell
@@ -36,11 +34,9 @@ export class TemplateStringCell extends BaseCell {
                 // todo do it better (use logger or something like that)
                 // tslint:disable-next-line:no-console
                 console.warn(
-                    `WARN: ${path} is undefined for template string output: ${
-                        JSON.stringify(scope.outputCell)
-                    } when template is:${
-                        JSON.stringify(scope.templateCell)
-                    }`
+                    `WARN: ${path} is undefined for template string output: ${JSON.stringify(
+                        scope.outputCell,
+                    )} when template is:${JSON.stringify(scope.templateCell)}`,
                 );
             }
 

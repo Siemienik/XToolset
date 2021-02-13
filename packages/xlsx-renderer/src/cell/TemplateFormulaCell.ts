@@ -13,7 +13,7 @@ export class TemplateFormulaCell extends BaseCell {
     public static match(cell: Cell): boolean {
         return (
             cell &&
-            cell.type === ValueType. String &&
+            cell.type === ValueType.String &&
             (cell.isMerged ? cell.master.address === cell.address : true) &&
             typeof cell.value === 'string' &&
             cell.value.substring(0, 3) === '#= '
@@ -23,11 +23,9 @@ export class TemplateFormulaCell extends BaseCell {
     public apply(scope: Scope): TemplateFormulaCell {
         super.apply(scope);
 
-        const template = scope
-            .getCurrentTemplateString()
-            .substring(3);
+        const template = scope.getCurrentTemplateString().substring(3);
 
-        const formula = template.replace(variableRegex, (match) => {
+        const formula = template.replace(variableRegex, match => {
             const path = match.slice(2, -1).split('.');
 
             // todo refactoring extract, similar like in VariableCell
@@ -36,17 +34,14 @@ export class TemplateFormulaCell extends BaseCell {
                 // todo do it better (use logger or something like that)
                 // tslint:disable-next-line:no-console
                 console.warn(
-                    `WARN: ${path} is undefined for template formula output: ${
-                        JSON.stringify(scope.outputCell)
-                    } when template is:${
-                        JSON.stringify(scope.templateCell)
-                    }`
+                    `WARN: ${path} is undefined for template formula output: ${JSON.stringify(
+                        scope.outputCell,
+                    )} when template is:${JSON.stringify(scope.templateCell)}`,
                 );
             }
 
             return value;
         });
-
 
         scope.setCurrentOutputValue({ formula } as CellFormulaValue);
         scope.incrementCol();

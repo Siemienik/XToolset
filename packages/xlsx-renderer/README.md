@@ -66,7 +66,7 @@ It is possible to use the command line interface [read more about xlsx-renderer-
 | Content | [TemplateStringCell](./src/cell/TemplateStringCell.ts) | 4 | Starts with <code>#` </code> | Template string allows you to create advanced text, for example concat two variables or put them into a sentence. To write in a variable use `${pathToVariable}`. | **Example:**<br/> <code>#` Hello ${name}! How are you?</code> gives for instance `Hello World! How are you?` <br/> [Example](./tests/integration/data/Renderer018-TemplateString)|
 | Content | [HyperlinkCell](./src/cell/HyperlinkCell.ts) | 7 | `#! HYPERLINK pathToLabel pathToTarget` | Create a hyperlink. | *Paths resolve exactly same as VariableCell* |
 | Content | [FormulaCell](./src/cell/FormulaCell.ts) | 6 | Cell.type eq. formulae | It handles correctly formulas inside and outside of loops - when rows were shifted compared to the template. | *It is used automatically when formulae from the template being rendered* <br/> [Example](./tests/integration/data/Renderer010-Formula)|
-| Content | [TemplateFormulaCell](./src/cell/TemplateFormulaCell.ts) | 5 | Starts with `#= ` | This one allows you to put a template string (custom formula) into a cell as a formula. To write in a variable use `${pathToVariable}`. | **Example:**<br/> `#= ${summaryFormula}(A2:A${item.__endOutput.r})` gives something like `=MAX(A2:A2910)` <br/> [Example](./tests/integration/data/Renderer017-TemplateFormula)|
+| Content | [TemplateFormulaCell](./src/cell/TemplateFormulaCell.ts) | 5 | Starts with `#=` | This one allows you to put a template string (custom formula) into a cell as a formula. To write in a variable use `${pathToVariable}`. | **Example:**<br/> `#= ${summaryFormula}(A2:A${item.__endOutput.r})` gives something like `=MAX(A2:A2910)` <br/> [Example](./tests/integration/data/Renderer017-TemplateFormula)|
 | Navigation | [EndRowCell](./src/cell/EndRowCell.ts) | 2 | `#! END_ROW` | Go to the beginning of next row |  |
 | Worksheet<br/>Navigation<br/>Loop | [FinishCell](./src/cell/FinishCell.ts) | 9 | `#! FINISH conditionPath` | Finish rendering for current worksheet and: <br/> 1) go to next worksheet if `conditionPath===true`<br/> 2) repeat this template worksheet again (`conditionPath === false`) - looping through worksheets <br/> 3) finished whole rendering when this worksheet is the last one.   | **Examples:**<br/> `#! FINISHED` or `#! FINISHED itemFromLoop.__iterated` |
 | Worksheet | [WsNameCell](./src/cell/WsNameCell.ts) | 15 | `#! WS_NAME pathToVariable` | Set worksheet's name.  | **Examples:** <br/> `#! WS_NAME worksheetName` <br/> `#! WS_NAME item.title` <br/> `#! WS_NAME translatedNames.0` |
@@ -111,7 +111,6 @@ _These examples might be runned by using the command line tool, [read more](../x
 | 17 | [TemplateFormulaCell](./tests/integration/data/Renderer017-TemplateFormulaCell) | Dynamic formula creation |
 | 18 | [TemplateStringCell](./tests/integration/data/Renderer018-TemplateStringCell) | Dynamic content creation following by custom template string (`Hello ${name}`). |
 
-
 ## Support
 
 If any help needed, just feel free to create an issue. We will be really thankful for added links into stackoverflow topics if exists.
@@ -126,7 +125,7 @@ We are ready to provide paid support, in order that please contact me: [hi@siemi
 
 If Node v8 & v9 needed, please contact us [support@siemienik.pl](mailto://support@siemienik.pl).
 
-###  ✅ Browser Support
+### ✅ Browser Support
 
 XLSX Renderer may run on browser side, [read more how to do it](https://github.com/Siemienik/XToolSet/issues/93).
 
