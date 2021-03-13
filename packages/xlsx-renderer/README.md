@@ -127,7 +127,32 @@ If Node v8 & v9 needed, please contact us [support@siemienik.pl](mailto://suppor
 
 ### ✅ Browser Support
 
-XLSX Renderer may run on browser side, [read more how to do it](https://github.com/Siemienik/XToolSet/issues/93).
+XLSX Renderer may run on browser side. [**Read more about browser support**](https://github.com/Siemienik/XToolset/issues/93#issuecomment-797835786).
+
+```js
+import { Renderer } from "xlsx-renderer";
+import { saveAs } from "file-saver";
+
+// ... define viewModel:
+const viewModel = {}; 
+
+//... generate a report:
+
+// 1. Download a template.
+fetch("./template.xlsx")
+  // 2. Get template as ArrayBuffer.
+  .then((response) => response.arrayBuffer())
+  // 3. Fill the template with data (generate a report).
+  .then((buffer) => new Renderer().renderFromArrayBuffer(buffer, viewModel))
+  // 4. Get a report as buffer.
+  .then((report) => report.xlsx.writeBuffer())
+  // 5. Use `saveAs` to download on browser site.
+  .then((buffer) => saveAs(new Blob([buffer]), `${Date.now()}_report.xlsx`))
+  // Handle errors.
+  .catch((err) => console.log("Error writing excel export", err));
+```
+
+[**Read more about browser support**](https://github.com/Siemienik/XToolset/issues/93#issuecomment-797835786).
 
 ---
 
