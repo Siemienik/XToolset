@@ -134,7 +134,7 @@ import { Renderer } from "xlsx-renderer";
 import { saveAs } from "file-saver";
 
 // ... define viewModel:
-const viewModel = {}; 
+const viewModel = {};
 
 //... generate a report:
 

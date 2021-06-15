@@ -1,6 +1,6 @@
 {
   "name": "xlsx-import",
-  "version": "2.3.4",
+  "version": "2.3.5",
   "license": "MIT",
   "description": "Import data from xlsx file using configured pattern and defined typescript types",
   "main": "xlsx-import/lib/ImporterFactory.js",
@@ -10,7 +10,9 @@
     "url": "git+https://github.com/Siemienik/xtoolset",
     "directory": "packages/xlsx-import"
   },
-  "funding": "https://github.com/sponsors/Siemienik",
+  "funding": {
+    "url": "https://github.com/sponsors/Siemienik"
+  },
   "keywords": [
     "Importing data",
     "Excel",

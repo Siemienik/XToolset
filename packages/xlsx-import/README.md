@@ -144,19 +144,19 @@ const cfg = {
      // Indicates which worksheet should be used for data source .
      // For CSV typically `sheet 1` works perfectly.
      // string, required.
-    worksheet:'sheet 1',   
+    worksheet:'sheet 1',
 
-    // Indicates importing strategy, described below 
+    // Indicates importing strategy, described below
     type : 'object' // or 'list'
 
     // ... type required fields, read below
 }
-``` 
+```
 
 * **`worksheet`**
 
 (string, required) Indicates which worksheet should be used for data source. For CSV typically `sheet 1` works perfectly.
-     
+
 * **`types`**
 
 | Enum `ImportType` | Raw values | Description
@@ -166,15 +166,15 @@ const cfg = {
 
 ### Type: `ListVertical`
 
-**For type values:** `list`, `list-vertical`, `vertical` 
+**For type values:** `list`, `list-vertical`, `vertical`
 
 `ListVertical` iterates each row after `offset` and read data by using configured columns indexes.
 
 **Example:**
 
 ```js
-const cfg = { 
-    worksheet:'sheet 1',       
+const cfg = {
+    worksheet:'sheet 1',
     type : 'list',
 
     // How many rows should omit, default 0
@@ -184,13 +184,13 @@ const cfg = {
     columns: [
         {
             // Column index (1,2,3....n); `1` for column `A`
-            index: 1, 
+            index: 1,
 
             // Indicade where in imported object data should be placed
             key: 'id',
 
             // A function which allow us to map a result field.
-            // The xlsx-importer has build-in mappers, @see #Mappers 
+            // The xlsx-importer has build-in mappers, @see #Mappers
             mapper: (v: string) => Number.parseInt(v)
         },
         /* more columns ... */
@@ -202,14 +202,13 @@ const cfg = {
 
 **For type values:** `object`, `single`, `singletion`
 
-
 `SingleObject` do **not** iterate through the worksheet. It picks data from specific targets configured in the field: `fields`. It always produces exactly one object.
 
 **Example:**
 
 ```ts
-const cfg = { 
-    worksheet:'sheet 1',       
+const cfg = {
+    worksheet:'sheet 1',
     type : 'object',
 
     // configure fields
@@ -218,20 +217,21 @@ const cfg = {
             // Specify column index. Indexing starts from 1. That means, `1` is `A`, `2` is `B`, etc...
             // Indicade row index. Row indexing starts from 1, index 0 doesn't exist.
             // This example target into `A2`.
-            col: 2, row: 2, 
-            
+            col: 2, row: 2,
+
             // Indicade where in imported object data should be placed
-            key: 'secondName', 
-    
-            // A function which allow us to map a result field. 
-            // The xlsx-importer has build-in mappers, @see #Mappers 
+            key: 'secondName',
+
+            // A function which allow us to map a result field.
+            // The xlsx-importer has build-in mappers, @see #Mappers
             // Below implemented mapper, which makes upper first letter.
-            mapper: (v: string) => v.replace(/^[a-z]/, (match) => match.toUpperCase() ) 
+            mapper: (v: string) => v.replace(/^[a-z]/, (match) => match.toUpperCase() )
         },
         /* more fields ... */
     ],
 }
 ```
+
 ## Mappers
 
 | Exported Name | Description
