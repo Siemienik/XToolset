@@ -1,80 +1,21 @@
 [![XToolSet Banner](./media/xtoolset-logo-final.svg)](https://github.com/sponsors/Siemienik)
 
-<p align="center">Fancy TypeScript / JavaScript spreadsheet package for browsers, and node, and command line tools</p>
+## Set of appealing spreadsheet tools:
 
-<p align="center"><strong><i>Helps handle spreadsheet files `xlsx` in smart way by using high level api.</i></strong></p>
+* Package [XLSX-Renderer](https://siemienik.com/docs/xlsx-renderer) - Export data to Ecma-376 `.XLSX` Excel files based on template, 
+* Package [XLSX-Import](https://siemienik.com/docs/xlsx-import) - Import data from Workbooks / Worksheets Excel files,
+* Command line tools
 
+## Now working with:
 
-## Packages
+| **TypeScript** | **JavaScript** | **NodeJS** | **React** | **Angular** | **Vue** |
+|---|---|---|---|---|---|
+| ![TypeScript](./media/vendors/ts-logo-256.png) | ![JavaScript](./media/vendors/js-logo-256.png) | ![NodeJS](./media/vendors/nodejs-logo-256.png) | ![React](./media/vendors/react-logo-256.png) | ![Angular](./media/vendors/angular-logo-256.png) | ![Vue](./media/vendors/vue-logo-256.png) | 
 
-### [The `xlsx-import`](packages/xlsx-import)
+## Useful:
 
-[![NPM](https://img.shields.io/npm/l/xlsx-import)![npm](https://img.shields.io/npm/v/xlsx-import)](https://www.npmjs.com/package/xlsx-import) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import)](https://github.com/Siemienik/xtoolset/actions) [![codecov](https://codecov.io/gh/Siemienik/xtoolset/branch/master/graph/badge.svg?flag=xlsx-import)](https://codecov.io/gh/Siemienik/xtoolset/tree/master/packages/xlsx-import)
-
-It allows you to import xlsx spreadsheet file with data into your system with defined TypeScript types.
-
-```ts
-const xlsx = await importerFactory.from('./my-awesome-books.xlsx');
-const books: Array<Book> = xlsx.getAllItems<Book>(config.books);
-```
-
-[Read more :arrow_right:](packages/xlsx-import)
-
-### [The `xlsx-renderer`](packages/xlsx-renderer)
-
-[![NPM](https://img.shields.io/npm/l/xlsx-renderer)![npm](https://img.shields.io/npm/v/xlsx-renderer)](https://www.npmjs.com/package/xlsx-renderer) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer)](https://github.com/Siemienik/xtoolset/actions) [![codecov](https://codecov.io/gh/Siemienik/xtoolset/branch/master/graph/badge.svg?flag=xlsx-renderer)](https://codecov.io/gh/Siemienik/xtoolset/tree/master/packages/xlsx-renderer)
-
-Makes generating spreadsheet files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
-
-```ts
-const renderer = new Renderer();
-await renderer.renderFromFile('./invoice-template.xlsx', invoiceData)
-    .then(wb => wb.xlsx.writeFile('./invoice.xlsx'));
-```
-
-[Read more :arrow_right:](packages/xlsx-renderer)
-
-## Command Line Tools
-
-### [The `xlsx-import-cli` (package: `sxi`)](packages/xlsx-import-cli)
-
-[![NPM](https://img.shields.io/npm/l/sxi)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-import-cli)](https://github.com/Siemienik/xtoolset/actions)
-
-Imports data from spreadsheet file using command line.
-
-```shell script
-sxi books.cfg.js my-awesome-books.xlsx > books-list.json
-```
-
-[Read more :arrow_right:](packages/xlsx-import-cli)
-
-### [The `xlsx-renderer-cli` (package: `sxr`)](packages/xlsx-renderer-cli)
-
-[![NPM](https://img.shields.io/npm/l/sxr)](https://www.npmjs.com/package/sxr) [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/siemienik/xtoolset/xlsx-renderer-cli)](https://github.com/Siemienik/xtoolset/actions)
-
-Generate spreadsheets files following by the `template` with `view model` from command line.
-
-```shell script
-sxr --model invoice-data.json invoice-template.xlsx > invoice.xlsx
-```
-
-[Read more :arrow_right:](packages/xlsx-renderer-cli)
-
-## Examples
-
-Examples are available in a flat structure, and they are named by using : `[package_name]+[technology]` - for instance `xlsx-import+nodejs+ts`.
-
-[See `samples/`](./samples)
-
-Additionally, the `xlsx-renderer` has lots of examples used for the integration testing.
-[Read more](https://github.com/Siemienik/XToolSet/tree/master/packages/xlsx-renderer#examples).
-
-## Support
-
-If any help needed, just feel free to create an issue. We will be really thankful for added links into stackoverflow topics if exists.
-
-We are ready to provide paid support, in order that please contact me: [hi@siemienik.pl](mailto://hi@siemienik.pl) or [support@siemienik.pl](mailto://support@siemienik.pl).
-
-### MIT licensed
-
-All of these tools and packages are **free to use for commercial and non-commercial usages**, see the [MIT License](LICENSE).
+ * [Official documentation on Siemienik.com](https://siemienik.com/docs/xtoolset),
+ * [:hearth: Sponsor me](https://github.com/sponsors/siemienik),
+ * [Gitter community](https://gitter.im/Siemienik/community),
+ * Order feature or consulting: consulting@siemienik.com,
+ * License: [MIT](./LICENSE)
