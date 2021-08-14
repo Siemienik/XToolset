@@ -1,6 +1,6 @@
 {
   "name": "sxi",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "license": "MIT",
   "description": "Command Line Tool for importing data from xlsx file using configured pattern and defined typescript types",
   "main": "lib/program.js",
@@ -37,7 +37,7 @@
   },
   "dependencies": {
     "commander": "^6.2.1",
-    "xlsx-import": "^2.3.5"
+    "xlsx-import": "^2.3.6"
   },
   "devDependencies": {
     "@types/commander": "^2.12.2",
