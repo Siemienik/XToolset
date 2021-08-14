@@ -14,8 +14,8 @@
 
 ## Useful:
 
- * [Official documentation on Siemienik.com](https://siemienik.com/docs/xtoolset),
- * [:heart: Sponsor me](https://github.com/sponsors/siemienik),
- * [Gitter community](https://gitter.im/Siemienik/community),
- * Order feature or consulting: consulting@siemienik.com,
+ * [Official documentation on Siemienik.com](https://siemienik.com/docs/xtoolset)
+ * [:heart: Sponsor me](https://github.com/sponsors/siemienik)
+ * [Gitter community](https://gitter.im/Siemienik/community)
+ * Order feature or consulting: consulting@siemienik.com
  * License: [MIT](./LICENSE)
