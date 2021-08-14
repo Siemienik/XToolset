@@ -24,7 +24,7 @@ Makes generating spreadsheet files as simple as possible - it is enough one line
 ## Useful:
 
 * Part of XToolset, see: [Official XToolset documentation on Siemienik.com](https://siemienik.com/docs/xtoolset),
-* [:hearth: Sponsor me](https://github.com/sponsors/siemienik),
+* [:heart: Sponsor me](https://github.com/sponsors/siemienik),
 * [Gitter community](https://gitter.im/Siemienik/community),
 * Order feature or consulting: consulting@siemienik.com,
 * License: [MIT](./LICENSE)
