@@ -1,6 +1,6 @@
 {
   "name": "sxr",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "license": "MIT",
   "description": "Command line tool for generating XLSX files from a template. Part of XToolset",
   "main": "lib/program.js",
