@@ -20,8 +20,7 @@ describe('UNIT TEST: src/mappers/', () => {
         ];
         dataProvider.forEach(({ inValue, expectedResult }) => {
             it(`dateMapper for input "${inValue}" SHOULD return "${expectedResult}"`, () => {
-                const date = dateMapper(inValue as string);
-                chai.expect(date.getTime()).eql(expectedResult);
+                chai.expect(dateMapper(inValue as string).getTime()).eql(expectedResult);
             });
         });
     });
