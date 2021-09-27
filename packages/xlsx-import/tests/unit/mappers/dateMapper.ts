@@ -1,5 +1,5 @@
 import * as chai from 'chai';
-import { dateMapper } from '../../../src/mappers/dateMapper';
+import { dateMapper } from '../../../src/mappers';
 
 describe('UNIT TEST: src/mappers/', () => {
     describe('dateMapper', () => {
