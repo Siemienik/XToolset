@@ -1,8 +1,9 @@
 import * as chai from 'chai';
 import { ImportType } from '../../src/config/ImportType';
-
 import { ImporterFactory } from '../../src/ImporterFactory';
 import path from "path";
+import {readFileSync} from 'fs'
+
 
 describe('reading sigle items (objects)', () => {
     const configs = {
@@ -29,9 +30,8 @@ describe('reading sigle items (objects)', () => {
     });
     it('getAllItems should return one correct object from buffer', async () => {
         const factory = new ImporterFactory();
-        const fs = require('fs')
         const filePath = path.resolve(__dirname, '../data/','marsjanie-db.xlsx')
-        const buffer = fs.readFileSync(filePath)
+        const buffer = readFileSync(filePath)
         const importer = await factory.fromBuffer(buffer);
         const result = importer.getAllItems(configs.author)
 
