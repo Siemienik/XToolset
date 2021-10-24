@@ -5,7 +5,10 @@ describe('UNIT TEST: src/mappers/', () => {
     describe('dateMapper', () => {
         const dataProvider = [
             // data time
-            { inValue: 'Thu Oct 08 2020 02:00:00 GMT+0200 (Central European Summer Time)', expectedResult: 1602115200000 },
+            {
+                inValue: 'Thu Oct 08 2020 02:00:00 GMT+0200 (Central European Summer Time)',
+                expectedResult: 1602115200000,
+            },
             { inValue: 'Thu Jan 30 1750 02:00:00 GMT-0900', expectedResult: -6939954000000 },
             { inValue: 'Thu Jan 30 3125', expectedResult: 36450774000000 },
 

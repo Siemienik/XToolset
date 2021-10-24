@@ -1,7 +1,8 @@
 import * as chai from 'chai';
 import { ImportType } from '../../src/config/ImportType';
-
 import { ImporterFactory } from '../../src/ImporterFactory';
+import path from 'path';
+import { readFileSync } from 'fs';
 
 describe('reading sigle items (objects)', () => {
     const configs = {
@@ -26,7 +27,18 @@ describe('reading sigle items (objects)', () => {
         chai.expect(result).eql(expected);
         chai.expect(result.length).equals(1);
     });
+    it('getAllItems should return one correct object from buffer', async () => {
+        const factory = new ImporterFactory();
+        const filePath = path.resolve(__dirname, '../data/', 'marsjanie-db.xlsx');
+        const buffer = readFileSync(filePath);
+        const importer = await factory.fromBuffer(buffer);
+        const result = importer.getAllItems(configs.author);
 
+        const expected = [{ firstName: 'Marian', secondName: 'Marianacki', age: 123, city: 'Pila-wojenna' }];
+
+        chai.expect(result).eql(expected);
+        chai.expect(result.length).equals(1);
+    });
     const definedTypesAsString = ['object', 'single', 'singleton'];
     definedTypesAsString.forEach(type => {
         it(`for type (as string) '${type}' getAllItems should return one correct object`, async () => {
