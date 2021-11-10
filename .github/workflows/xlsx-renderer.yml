@@ -14,7 +14,7 @@ jobs:
     strategy:
       matrix:
         #        node-version: [8.x, 9.x, 10.x, 11.x, 12.x, 13.x, 14.x, 15.x] # version 8 and 9 isn't supported in ExcelJS as default - may I resolve it further (or ignore)
-        node-version: [10.x, 11.x, 12.x, 13.x, 14.x, 15.x]
+        node-version: [10.x, 11.x, 12.x, 13.x, 14.x, 15.x, 16.x, 17.x]
 
     steps:
       - uses: actions/checkout@5a4ac9002d0be2fb38bd78e4b4dbde5606d7042f # @v2.3.4; Using hash for security purposes
