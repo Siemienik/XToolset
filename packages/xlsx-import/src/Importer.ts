@@ -17,10 +17,9 @@ export class Importer implements IImporter {
     }
 
     public getFirstItem<T>(config: ISourceConfig): T {
-        const wsData:T[] = this.getAllItems(config);
+        const wsData: T[] = this.getAllItems(config);
         return wsData[0];
     }
-
 }
 
 /** @deprecated Default exports will be removed in January 2021. Please to use brackets (`{ Importer }`). */

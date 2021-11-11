@@ -176,8 +176,8 @@ describe('testing vertical list - on file "marsjanie-db"', () => {
         const expected = {
             name: 'Taka se',
             param: 12,
-        }
-        
+        };
+
         chai.expect(result).eql(expected);
-    })
+    });
 });

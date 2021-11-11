@@ -1,6 +1,6 @@
 {
   "name": "xlsx-import",
-  "version": "2.3.7",
+  "version": "2.4.4",
   "license": "MIT",
   "description": "Import data from xlsx file using configured pattern and defined typescript types",
   "main": "xlsx-import/lib/ImporterFactory.js",
