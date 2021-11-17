@@ -5,6 +5,9 @@
 
 version: 2
 updates:
-  - directory: "/packages/" # Location of package manifests
+  - package-ecosystem: "npm"
+    directory: "/packages/"
     schedule:
       interval: "daily"
+    reviewers:
+      - siemienik
