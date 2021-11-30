@@ -167,4 +167,17 @@ describe('testing vertical list - on file "marsjanie-db"', () => {
         // tslint:disable-next-line:no-console
         console.warn = warnOriginal;
     });
+
+    it(`should return first item of sheet's values array`, async () => {
+        const factory = new ImporterFactory();
+        const importer = await factory.from('tests/data/marsjanie-db.xlsx');
+        const result = importer.getFirstItem(configs.groups);
+
+        const expected = {
+            name: 'Taka se',
+            param: 12,
+        };
+
+        chai.expect(result).eql(expected);
+    });
 });
