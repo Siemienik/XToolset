@@ -1,33 +1,31 @@
+type JsonMapperSignature<TDefaultResult> = <TJsonResult>(value: string) => TJsonResult | TDefaultResult;
 
-type callSignature = <TJsonResult, TDefaultResult>(value: string) => TJsonResult | TDefaultResult;
+export type JsonMapper<TJsonResult> = JsonMapperSignature<TJsonResult> & {
+    default: <TDefaultResult>(value: TDefaultResult) => JsonMapper<TDefaultResult>;
+};
 
-type JsonMapper = {
-    default: <TDefaultResult>(defaultResult: TDefaultResult) => JsonMapper
-} & callSignature;
-
-interface IJsonMapperOptions {
-    default: any;
+interface IJsonMapperOptions<TDefaultResult> {
+    default: TDefaultResult;
 }
 
-const factory = (options: Readonly<IJsonMapperOptions>): JsonMapper => {
-    const mapper = (json: string) => {
+const factory = <TDefaultResult>(options: Readonly<IJsonMapperOptions<TDefaultResult>>): JsonMapper<TDefaultResult> => {
+    const mapper: JsonMapper<TDefaultResult> = <TJsonResult>(json: string): TJsonResult | TDefaultResult => {
         try {
             return JSON.parse(json);
         } catch (e) {
-            return options.default
+            return options.default;
         }
-    }
+    };
 
-    mapper.default = <TDefaultResult>(defaultResult: TDefaultResult) => factory({
-        ...options,
-        default: defaultResult
-    });
+    mapper.default = <TJSonResult>(defaultResult: TJSonResult) =>
+        factory<TJSonResult>({
+            ...options,
+            default: defaultResult,
+        });
 
     return mapper;
 };
 
-
-
-export const jsonMapper: JsonMapper = factory({
+export const jsonMapper = factory({
     default: null,
 });

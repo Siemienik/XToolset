@@ -25,8 +25,8 @@ describe('UNIT TEST: src/mappers/', () => {
         });
 
         it('Should return default value on error', () => {
-            const mapper = jsonMapper.default({a: 1});
-            chai.expect(mapper('invalid')).eql({a: 1});
-        })
+            const mapper = jsonMapper.default({ a: 1 });
+            chai.expect(mapper('invalid')).eql({ a: 1 });
+        });
     });
 });
