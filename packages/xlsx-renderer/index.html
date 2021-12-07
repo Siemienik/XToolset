@@ -1,0 +1,6 @@
+<script src="bundle/xlsx-renderer.full.js" ></script>
+<script>
+    const {Renderer, CellTemplateDebugPool} = xlsxRenderer;
+    const renderer = new Renderer(new CellTemplateDebugPool());
+    console.log(renderer.renderFromArrayBuffer); // log
+</script>

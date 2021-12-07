@@ -29,7 +29,10 @@
     "generate spreadsheet"
   ],
   "scripts": {
-    "build": "rm -rf lib/* &&  tsc",
+    "clear": "rm -rf lib/*",
+    "build": "npm run clear && npm run build:lib && npm run build:bundle",
+    "build:lib": "tsc",
+    "build:bundle": "webpack",
     "format": "npm run format:code && npm run format:markdown",
     "format:code": "prettier --write \"**/*.{js,jsx,ts,vue}\"",
     "format:markdown": "markdownlint --fix **/*.md",
@@ -53,7 +56,9 @@
     "ts-node": "^8.1.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",
-    "typescript": "^3.4.4"
+    "typescript": "^3.4.4",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
   },
   "dependencies": {
     "exceljs": "^4.1.1"
