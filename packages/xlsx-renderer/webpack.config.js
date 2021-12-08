@@ -20,7 +20,7 @@ module.exports = {
         library: 'xlsxRenderer',
         libraryTarget: 'umd',
         globalObject: 'this',
-        path: path.resolve(__dirname, 'bundle'),
+        path: path.resolve(__dirname, 'dist'),
         filename: 'xlsx-renderer.full.js',
     },
 };

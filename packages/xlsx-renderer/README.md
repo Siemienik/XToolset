@@ -4,6 +4,25 @@
 
 Export data to Ecma-376 `.XLSX` Excel files based on template,
 
+## Installation
+
+### NPM / Yarn:
+
+```bash
+npm install --save xlsx-renderer
+# OR:
+yarn add xlsx-renderer
+```
+
+### CDN:
+
+```html
+<script src="https://cdn.jsdelivr.net/npm/xlsx-renderer/dist/xlsx-renderer.full.js" />
+<script type="application/javascript">
+    const { Renderer } = xlsxRenderer;
+</script>
+```
+
 ## Example
 
 ```ts
