@@ -1,4 +1,5 @@
 [![XToolSet Banner](./media/xtoolset-logo-final.svg)](https://github.com/sponsors/Siemienik)
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSiemienik%2FXToolset.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2FSiemienik%2FXToolset?ref=badge_shield)
 
 ## Set of appealing spreadsheet tools:
 
@@ -19,3 +20,6 @@
  * [Gitter community](https://gitter.im/Siemienik/community)
  * Order feature or consulting: consulting@siemienik.com
  * License: [MIT](./LICENSE)
+
+
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2FSiemienik%2FXToolset.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2FSiemienik%2FXToolset?ref=badge_large)
