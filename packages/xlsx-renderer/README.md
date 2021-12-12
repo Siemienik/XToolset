@@ -14,22 +14,34 @@ npm install --save xlsx-renderer
 yarn add xlsx-renderer
 ```
 
+Then write a code:
+
+```ts
+import { Renderer } from "xlsx-renderer";
+
+const renderer = new Renderer();
+await renderer.renderFromFile('./invoice-template.xlsx', invoiceData)
+    .then(wb => wb.xlsx.writeFile('./invoice.xlsx'));
+```
+
 ### CDN:
 
 ```html
 <script src="https://cdn.jsdelivr.net/npm/xlsx-renderer/dist/xlsx-renderer.full.js" />
 <script type="application/javascript">
     const { Renderer } = xlsxRenderer;
+    const viewModel = {};
+    
+    const report = fetch("./template.xlsx") // 1. Download a template.
+        // 2. Get template as ArrayBuffer.
+        .then((response) => response.arrayBuffer())
+        // 3. Fill the template with data (generate a report).
+        .then((buffer) => new Renderer().renderFromArrayBuffer(buffer, viewModel))
+        // Handle errors.
+        .catch((err) => console.error("Error while report generation", err));
 </script>
 ```
 
-## Example
-
-```ts
-const renderer = new Renderer();
-await renderer.renderFromFile('./invoice-template.xlsx', invoiceData)
-    .then(wb => wb.xlsx.writeFile('./invoice.xlsx'));
-```
 
 Makes generating spreadsheet files as simple as possible - it is enough one line to generate pretty customizable spreadsheet file.
 
