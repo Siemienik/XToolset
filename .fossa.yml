@@ -1,0 +1,8 @@
+version: 3
+
+apiKey: $FOSSA_API_KEY
+
+# Excluding samples from scan.
+paths:
+  exclude:
+    - ./samples
