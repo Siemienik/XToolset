@@ -17,5 +17,6 @@
  * [Official documentation on Siemienik.com](https://siemienik.com/docs/xtoolset)
  * [:heart: Sponsor me](https://github.com/sponsors/siemienik)
  * [Gitter community](https://gitter.im/Siemienik/community)
+ * [Repo with examples](https://github.com/Siemienik/XToolset-examples) 
  * Order feature or consulting: consulting@siemienik.com
  * License: [MIT](./LICENSE)
