@@ -4,6 +4,7 @@
         "module": "commonjs",
         "declaration": true,
         "outDir": "./lib",
+        "rootDir": "./src/",
         "strict": true,
         "esModuleInterop": true,
         "sourceMap": true,
@@ -11,8 +12,8 @@
         "resolveJsonModule": true
     },
     "files": [
-        "sxi.ts",
-        "program.ts"
+        "src/sxi.ts",
+        "src/program.ts"
     ],
     "exclude": [
         "node_modules",
