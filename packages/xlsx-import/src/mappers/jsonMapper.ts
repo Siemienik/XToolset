@@ -1,9 +1,31 @@
-type JsonMapper = <TJsonResult>(value: string) => TJsonResult | null;
+type JsonMapperSignature<TDefaultResult> = <TJsonResult>(value: string) => TJsonResult | TDefaultResult;
 
-export const jsonMapper: JsonMapper = <TJsonResult extends any>(value: string): TJsonResult | null => {
-    try {
-        return JSON.parse(value);
-    } catch (e) {
-        return null;
-    }
+export type JsonMapper<TJsonResult> = JsonMapperSignature<TJsonResult> & {
+    default: <TDefaultResult>(value: TDefaultResult) => JsonMapper<TDefaultResult>;
 };
+
+interface IJsonMapperOptions<TDefaultResult> {
+    default: TDefaultResult;
+}
+
+const factory = <TDefaultResult>(options: Readonly<IJsonMapperOptions<TDefaultResult>>): JsonMapper<TDefaultResult> => {
+    const mapper: JsonMapper<TDefaultResult> = <TJsonResult>(json: string): TJsonResult | TDefaultResult => {
+        try {
+            return JSON.parse(json);
+        } catch (e) {
+            return options.default;
+        }
+    };
+
+    mapper.default = <TJSonResult>(defaultResult: TJSonResult) =>
+        factory<TJSonResult>({
+            ...options,
+            default: defaultResult,
+        });
+
+    return mapper;
+};
+
+export const jsonMapper = factory({
+    default: null,
+});
