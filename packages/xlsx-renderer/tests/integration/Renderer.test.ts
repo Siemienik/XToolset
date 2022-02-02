@@ -153,14 +153,14 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
 
             chai.expect(() => assertCells(expected, failedHeight, 20)).throw('expected 34.5 to deeply equal 15');
             chai.expect(() => assertCells(expected, failedStyle, 20)).throw(
-                'expected { Object (font, border, ...) } to deeply equal { Object (font, border, ...) }',
+                'expected { font: { size: 11, …(4) }, …(2) } to deeply equal { font: { size: 11, …(4) }, …(2) }',
             );
             chai.expect(() => assertCells(expected, failedTable, 20)).throw(
-                'expected { Object (font, border, ...) } to deeply equal { Object (font, border, ...) }',
+                'expected { font: { size: 11, …(4) }, …(2) } to deeply equal { font: { size: 11, …(4) }, …(2) }',
             );
             chai.expect(() => assertCells(expected, failedText, 20)).throw("expected 'sadas' to deeply equal 'sadasd'");
             chai.expect(() => assertCells(expected, failedValue, 20)).throw(
-                "expected 'asdasda' to deeply equal { Object (formula, result) }",
+                "expected 'asdasda' to deeply equal { formula: '\"asdasda\"', …(1) }",
             );
             chai.expect(() => assertCells(expected, failedWidth, 20)).throw('expected 7.90625 to deeply equal 13');
             chai.expect(() => assertCells(expected, failedWorksheetAmount, 20)).throw('expected 2 to deeply equal 3');
@@ -175,7 +175,7 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
                 path.join(__dirname, 'data', 'assertCells', 'f-image.xlsx'),
             );
             chai.expect(() => assertCells(expectedImage, failedImage, 20)).throw(
-                'expected [ Array(2) ] to deeply equal [ Array(2) ]',
+                'expected [ …(2) ] to deeply equal [ …(2) ]',
             );
         });
     });
