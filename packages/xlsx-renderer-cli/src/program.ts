@@ -4,7 +4,6 @@ import { Stream } from 'stream';
 import { Renderer } from 'xlsx-renderer';
 import { CellTemplateDebugPool } from 'xlsx-renderer/lib/CellTemplateDebugPool';
 import { CellTemplatePool } from 'xlsx-renderer/lib/CellTemplatePool';
-import { version } from './package.json';
 
 // DEBUG:
 
@@ -68,7 +67,7 @@ const mainCommand = (program: commander.Command, outputStream: Stream) => {
 
 export const cli = (argv: string[], outputStream: Stream, writeDebugFn: WriteDebugFn = writeDebug) => {
     const program = new Command();
-    program.version(version);
+    program.version(require('../package.json').version);
 
     debugOption(program, writeDebugFn);
     mainCommand(program, outputStream);
