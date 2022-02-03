@@ -1,5 +1,5 @@
-import { CellTemplateDebugPool } from '../../src/CellTemplateDebugPool';
-import { Renderer } from '../../src/Renderer';
+import { CellTemplateDebugPool } from '../../src';
+import { Renderer } from '../../src';
 import * as fs from 'fs';
 import { Dirent } from 'fs';
 import * as path from 'path';
@@ -17,8 +17,8 @@ function getSimplestImages(x: Worksheet) {
          * TODO remove casting in the future
          * @see https://github.com/Siemienik/xlsx-renderer/pull/31#discussion_r446581091
          */
-        let br = range.br as Anchor;
-        let tl = range.tl as Anchor;
+        const br = range.br as Anchor;
+        const tl = range.tl as Anchor;
 
         return {
             imageId,
@@ -60,9 +60,9 @@ function assertCells(expected: Workbook, result: Workbook, factor: number = 10) 
             // TODO report bug, about merge cell which isn't a master. cell.text in that case throw error : `TypeError: Cannot read property 'toString' of null` (@see https://github.com/Siemienik/xlsx-renderer/issues/47)
             // TODO add to exceljs isMaster (@see https://github.com/exceljs/exceljs/issues/1400)
             // TODO update exceljs index.d.ts about cell.s (it misses cellvalues classes def) (@see https://github.com/Siemienik/xlsx-renderer/issues/44)
-            if (!cell.r.isMerged || cell.r.address == cell.r.master.address) {
+            if (!cell.r.isMerged || cell.r.address === cell.r.master.address) {
                 // TODO after exceljs fix (@see https://github.com/Siemienik/xlsx-renderer/issues/47)
-                if (!cell.e.isMerged || cell.e.address == cell.e.master.address) {
+                if (!cell.e.isMerged || cell.e.address === cell.e.master.address) {
                     // TODO after exceljs fix (@see https://github.com/Siemienik/xlsx-renderer/issues/47)
                     chai.expect(cell.r.text).eql(cell.e.text);
                 }
@@ -92,10 +92,10 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
         };
 
         // tslint:disable-next-line:no-empty
-        safe(() => {});
+        await safe(() => {});
         chai.expect(0).equal(called);
 
-        safe(() => {
+        await safe(() => {
             throw new Error();
         });
         chai.expect(1).equal(called);
@@ -111,13 +111,15 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
             const correct = await new Workbook().xlsx.readFile(
                 path.join(__dirname, 'data', 'assertCells', 'correct.xlsx'),
             );
+            // TODO important probably lack of assertions images assertion!
+            /*
             const expectedImage = await new Workbook().xlsx.readFile(
                 path.join(__dirname, 'data', 'assertCells', 'main-image.xlsx'),
             );
             const correctImage = await new Workbook().xlsx.readFile(
                 path.join(__dirname, 'data', 'assertCells', 'correct-image.xlsx'),
             );
-            // TODO important probably lack of assertions images assertion!
+            */
 
             assertCells(expected, correct, 20);
         });
@@ -153,14 +155,14 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
 
             chai.expect(() => assertCells(expected, failedHeight, 20)).throw('expected 34.5 to deeply equal 15');
             chai.expect(() => assertCells(expected, failedStyle, 20)).throw(
-                'expected { Object (font, border, ...) } to deeply equal { Object (font, border, ...) }',
+                'expected { font: { size: 11, …(4) }, …(2) } to deeply equal { font: { size: 11, …(4) }, …(2) }',
             );
             chai.expect(() => assertCells(expected, failedTable, 20)).throw(
-                'expected { Object (font, border, ...) } to deeply equal { Object (font, border, ...) }',
+                'expected { font: { size: 11, …(4) }, …(2) } to deeply equal { font: { size: 11, …(4) }, …(2) }',
             );
             chai.expect(() => assertCells(expected, failedText, 20)).throw("expected 'sadas' to deeply equal 'sadasd'");
             chai.expect(() => assertCells(expected, failedValue, 20)).throw(
-                "expected 'asdasda' to deeply equal { Object (formula, result) }",
+                "expected 'asdasda' to deeply equal { formula: '\"asdasda\"', …(1) }",
             );
             chai.expect(() => assertCells(expected, failedWidth, 20)).throw('expected 7.90625 to deeply equal 13');
             chai.expect(() => assertCells(expected, failedWorksheetAmount, 20)).throw('expected 2 to deeply equal 3');
@@ -175,7 +177,7 @@ describe('INTEGRATION:: Test xlsx renderer ', () => {
                 path.join(__dirname, 'data', 'assertCells', 'f-image.xlsx'),
             );
             chai.expect(() => assertCells(expectedImage, failedImage, 20)).throw(
-                'expected [ Array(2) ] to deeply equal [ Array(2) ]',
+                'expected [ …(2) ] to deeply equal [ …(2) ]',
             );
         });
     });

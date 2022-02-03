@@ -11,16 +11,21 @@ module.exports = {
             {
                 test: /\.ts$/,
                 use: 'ts-loader',
-                exclude: /node_modules/,
+                exclude: path.resolve(__dirname, 'node_modules'),
             },
         ],
     },
     output: {
-        clean: true,
-        library: 'xlsxRenderer',
-        libraryTarget: 'umd',
-        globalObject: 'this',
         path: path.resolve(__dirname, 'dist'),
-        filename: 'xlsx-renderer.full.js',
+        filename: 'xlsx-renderer.js',
+        clean: true,
+        library: {
+            name: 'xlsxRenderer',
+            type: 'umd',
+        },
+        globalObject: 'this',
+    },
+    externals: {
+        exceljs: 'ExcelJS',
     },
 };

@@ -67,6 +67,7 @@
   },
   "files": [
     "lib/**/*",
+    "dist/*",
     "README.md",
     "LICENSE"
   ]

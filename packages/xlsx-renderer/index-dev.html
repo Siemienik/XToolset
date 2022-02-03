@@ -1,0 +1,21 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/6.26.0/polyfill.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.js" integrity="sha512-cGr/NaKGtjxGJokVug48VTo4KNaVgqDxylS4lT5Wi39OFsqfv4J/eMZKOfrcwh/lAnOlK5/P7tEnRkdsbZrxUA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="dist/xlsx-renderer.js" ></script>
+<script>
+    const {Renderer, CellTemplateDebugPool} = xlsxRenderer;
+    const renderer = new Renderer(new CellTemplateDebugPool());
+
+    renderer.render(
+        () => {
+            const wb = new ExcelJS.Workbook();
+            const ws = wb.addWorksheet("test");
+
+            ws.addRow(["Hello", "#` ${name}!", "#! FINISH"]);
+
+            return wb;
+        },
+        { name: "World" }
+    )
+    .then( wb => console.log( wb.model ))
+    .catch( err => { throw err; } );
+</script>

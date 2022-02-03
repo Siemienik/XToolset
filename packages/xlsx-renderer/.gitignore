@@ -3,7 +3,7 @@
 /.idea
 /coverage/
 /.nyc_output/
-/.idea/
+/dist/
 
 test-output.xlsx
 test-output-ab.xlsx

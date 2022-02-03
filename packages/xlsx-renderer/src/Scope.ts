@@ -1,4 +1,4 @@
-import { Address, Cell, CellValue, Workbook } from 'exceljs';
+import { Cell, CellValue, Workbook } from 'exceljs';
 // TODO fix exceljs index.d.ts -> it provides only an interface Range (@see https://github.com/Siemienik/xlsx-renderer/issues/44)
 // @ts-ignore
 import Range from 'exceljs/lib/doc/range';
