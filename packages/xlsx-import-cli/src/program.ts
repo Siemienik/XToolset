@@ -1,7 +1,6 @@
 import { Command, default as commander } from 'commander';
 import path from 'path';
 import { ImporterFactory } from 'xlsx-import/lib/ImporterFactory';
-import { version } from './package.json';
 import WritableStream = NodeJS.WritableStream;
 
 // DEBUG:
@@ -58,7 +57,7 @@ const mainCommand = (program: commander.Command, outputStream: WritableStream) =
 
 export const cli = (argv: string[], outputStream: WritableStream, writeDebugFn: WriteDebugFn = writeDebug) => {
     const program = new Command();
-    program.version(version);
+    program.version(require('../package.json').version);
 
     debugOption(program, writeDebugFn);
     mainCommand(program, outputStream);

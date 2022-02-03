@@ -48,8 +48,8 @@
     "xlsx-renderer": "^2.4.2"
   },
   "files": [
-    "**/*.js",
-    "**/*.d.ts",
+    "lib/*.js",
+    "lib/*.d.ts",
     "README.md",
     "LICENSE"
   ],
