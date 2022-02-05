@@ -37,7 +37,7 @@
   "devDependencies": {
     "@types/commander": "^2.12.2",
     "@types/node": "^14.14.25",
-    "markdownlint-cli": "^0.24.0",
+    "markdownlint-cli": "^0.31.0",
     "prettier": "^1.17.0",
     "tslint": "^5.16.0",
     "tslint-config-prettier": "^1.18.0",

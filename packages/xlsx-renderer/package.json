@@ -46,7 +46,7 @@
     "@types/mocha": "^5.2.7",
     "@types/node": "^12.19.15",
     "chai": "^4.2.0",
-    "markdownlint-cli": "^0.24.0",
+    "markdownlint-cli": "^0.31.0",
     "mocha": "^9.2.0",
     "nyc": "^15.1.0",
     "prettier": "^1.17.0",
