@@ -6,7 +6,8 @@
         "outDir": "./lib",
         "strict": true,
         "esModuleInterop": true,
-        "sourceMap": true
+        "sourceMap": true,
+        "lib": ["ES2015", "DOM", "ES2017", "ES2017.Object", "ESNext", "DOM.Iterable"]
     },
     "include": ["src"],
     "exclude": [
