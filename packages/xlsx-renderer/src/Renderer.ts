@@ -2,6 +2,7 @@ import { Workbook } from 'exceljs';
 
 import { Scope } from './Scope';
 import { CellTemplatePool } from './CellTemplatePool';
+import { createVmProxyHandler } from './ViewModel';
 
 export class Renderer {
     constructor(private cellTemplatePool: CellTemplatePool = new CellTemplatePool()) {}
@@ -10,10 +11,7 @@ export class Renderer {
         const template = await templateFactory();
         const output = await templateFactory();
 
-        // todo Temporary fixation for VM mutating problem, @see https://github.com/Siemienik/XToolset/issues/137
-        const vmCopy = JSON.parse(JSON.stringify(vm));
-
-        const scope = new Scope(template, output, vmCopy);
+        const scope = new Scope(template, output, new Proxy(vm, createVmProxyHandler()));
 
         while (!scope.isFinished()) {
             this.cellTemplatePool.match(scope.getCurrentTemplateCell()).apply(scope);
@@ -23,20 +21,16 @@ export class Renderer {
     }
 
     public async renderFromFile(templatePath: string, viewModel: unknown): Promise<Workbook> {
-        const result = await this.render(async () => {
+        return this.render(async () => {
             const template = new Workbook();
             return await template.xlsx.readFile(templatePath);
         }, viewModel);
-
-        return await result;
     }
 
     public async renderFromArrayBuffer(templateArrayBuffer: ArrayBuffer, viewModel: unknown): Promise<Workbook> {
-        const result = await this.render(async () => {
+        return this.render(async () => {
             const template = new Workbook();
             return await template.xlsx.load(templateArrayBuffer);
         }, viewModel);
-
-        return await result;
     }
 }
