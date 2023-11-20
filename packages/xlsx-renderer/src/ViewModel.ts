@@ -5,16 +5,10 @@ export const createVmProxyHandler = ()=> {
 
     return {
         get(target: any, p: PropertyKey): any {
-            if (typeof p !== 'string' && typeof p !== 'number') {
-                return;
-            }
-            return p in data ? data[p] : target[p]
+            return p in data ? data[p as string] : target[p]
         },
-        set(target: unknown, p: PropertyKey, value: unknown): boolean {
-            if (typeof p !== 'string' && typeof p !== 'number') {
-                return false;
-            }
-            data[p] = value
+        set(target: any, p: PropertyKey, value: unknown): boolean {
+            data[p as string] = value
 
             return true
         },
