@@ -1,6 +1,5 @@
 import * as chai from 'chai';
-import { CellValue, Workbook } from 'exceljs';
-import { ValueType } from 'exceljs';
+import { ValueType, Workbook } from 'exceljs';
 import { Renderer } from '../../src/Renderer';
 
 const WS_NAME = 'test ws';
