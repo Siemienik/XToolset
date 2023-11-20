@@ -1,6 +1,6 @@
 {
   "name": "xlsx-import",
-  "version": "2.4.4",
+  "version": "2.4.7",
   "license": "MIT",
   "description": "Import data from xlsx file using configured pattern and defined typescript types",
   "main": "xlsx-import/lib/ImporterFactory.js",
@@ -38,8 +38,7 @@
     "coverageReport": "nyc -r lcov -r=text -r=text-summary  -r=json -e .ts -x \"*.test.ts\" mocha -r ts-node/register tests/**/*.test.ts tests/**/**/*.test.ts && nyc report && cp coverage/coverage-final.json coverage/coverage.json",
     "prepublishOnly": "npm test && npm run lint && npm run build",
     "preversion": "npm run lint",
-    "version": "npm run format && git add -A src",
-    "postversion": "git push && git push --tags"
+    "version": "npm run format && git add -A src"
   },
   "devDependencies": {
     "@types/chai": "^4.2.14",

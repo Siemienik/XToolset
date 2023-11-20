@@ -27,8 +27,8 @@ describe('testing vertical list - on file "marsjanie-db"', () => {
             rowOffset: 1,
         },
         not_existing_wroksheet: {
-            worksheet: 'dummy'
-        }
+            worksheet: 'dummy',
+        },
     };
 
     it('worksheet "szit1"', async () => {
@@ -184,7 +184,7 @@ describe('testing vertical list - on file "marsjanie-db"', () => {
         chai.expect(result).eql(expected);
     });
 
-    it(`should return a meaningful error when the worksheet is not found`, async() => {
+    it(`should return a meaningful error when the worksheet is not found`, async () => {
         const factory = new ImporterFactory();
         const importer = await factory.from('tests/data/marsjanie-db.xlsx');
         const result = () => importer.getAllItems(configs.not_existing_wroksheet);
